@@ -13,6 +13,7 @@
   "devDependencies": {
     "@parcel/transformer-html": "^2.0.0-alpha.3",
     "@parcel/transformer-posthtml": "^2.0.0-alpha.3",
+    "@parcel/transformer-svg-react": "^2.0.0-nightly.1739",
     "@types/node": "^14.14.21",
     "@types/parcel-env": "^0.0.0",
     "@types/react": "^17.0.0",
