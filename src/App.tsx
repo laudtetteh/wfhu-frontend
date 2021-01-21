@@ -1,9 +1,10 @@
 import React from 'react'
+import logo from '../assets/logo.svg'
 
 export function App () {
   return (
-    <div>
-      hello world
-    </div>
+    <header className='bg-yellow-400'>
+      {logo()}
+    </header>
   )
 }
