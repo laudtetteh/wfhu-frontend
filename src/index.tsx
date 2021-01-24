@@ -1,11 +1,13 @@
 /// <reference path='./index.d.ts'/>
-
+// Packages
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// Containers
 import { App } from './App'
 
-import './index.css'
+// CSS
+import '../assets/css/index.css'
 
 if (module.hot) {
   module.hot.accept()
