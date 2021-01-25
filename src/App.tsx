@@ -12,26 +12,37 @@ import { Blog } from './containers/Blog';
 import { Contact } from './containers/Contact';
 
 // Components
-import { Header } from './components/Header';
+import { Header } from './components/elements/Header';
+
+const topMenu = [
+  { name: 'About', URL: '/about' },
+  { name: 'Blog', URL: '/blog' },
+  { name: 'Contact', URL: '/contact' }
+];
 
 export function App() {
 
-  return (
+return (
 
     <Suspense fallback="Loading...">
-      <Router>
+
+        <Router>
 
         <div id="wrapper">
-          <Header />
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-          </Switch>
+            <Header links={topMenu}/>
 
-        </div>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/blog" component={Blog} />
+                <Route exact path="/contact" component={Contact} />
+            </Switch>
 
-      </Router>
+            </div>
+
+        </Router>
+
     </Suspense>
-  );
+    );
 }
