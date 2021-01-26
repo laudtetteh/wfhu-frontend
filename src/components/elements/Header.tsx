@@ -2,9 +2,9 @@
 import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import { Link, NavLink } from 'react-router-dom';
-import { MainNav } from "../Nav/main";
 // Components
 import Query from "../../components/Query";
+import { MainNav } from "../Nav/main";
 // Queries
 import TOPMENU_QUERY from "../../queries/top-menu/top-menu";
 

@@ -10,7 +10,7 @@ const CATEGORY_POSTS_QUERY = gql`
         name
         description
         image {
-          url
+          formats
         }
         category {
           id
