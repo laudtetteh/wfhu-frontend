@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../../assets/images/logo.svg'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import Nav from "../Nav";
 
 export const Header = ({links}) => {
 
@@ -20,12 +21,14 @@ export const Header = ({links}) => {
                         <NavLink exact
                             to={link.URL} activeClassName="current" key={index}>
 
-                          <span title={link.name}>{link.name}</span>
+                          <span name={link.name}>{link.name}</span>
 
                         </NavLink>
                     )
                 })}
             </nav>
+
+            <Nav />
 
         </React.Fragment>
     );

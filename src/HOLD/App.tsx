@@ -8,7 +8,7 @@ import logo from '../assets/logo.svg';
 // Containers
 import { Home } from './containers/Home';
 import { About } from './containers/About';
-import { Blog } from './containers/Blog';
+import { Blog } from './containers/BlogPage';
 import { Contact } from './containers/Contact';
 
 // Components

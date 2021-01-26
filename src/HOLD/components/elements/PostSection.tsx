@@ -9,7 +9,7 @@ export const PostSection = () => {
 
         async function fetchPosts() {
 
-            let response = await fetch(process.env.REACT_APP_API_URL + '/posts');
+            let response = await fetch(process.env.REACT_APP_BACKEND_URL + '/posts');
 
             response = await response.json();
 
