@@ -7,7 +7,7 @@ const TOPMENU_QUERY = gql`
         link {
           id
           label
-          URL
+          path
         }
       }
     }

@@ -11,7 +11,7 @@ const MainNav = ({links}) => {
                 return (
 
                     <NavLink exact
-                        to={link.URL}
+                        to={link.path}
                         activeClassName="current"
                         key={index}>
 
