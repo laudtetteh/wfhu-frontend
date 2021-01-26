@@ -9,13 +9,12 @@ const MainNav = ({links}) => {
             {links.map((link, index) => {
 
                 return (
-                    <li className="mr-6">
+                    <li className="mr-6" key={index}>
                         <NavLink exact
                             to={link.path}
                             name={link.label}
                             className="text-red hover:text-yellow"
-                            activeClassName="current"
-                            key={index}>
+                            activeClassName="current">
 
                           {link.label}
 

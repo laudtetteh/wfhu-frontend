@@ -15,9 +15,6 @@ import Category from "../../containers/Category";
 import Categories from "../../containers/Categories";
 // Components
 import { Header } from '../../components/Elements/Header';
-import Query from "../../components/Query";
-// Queries
-import TOPMENU_QUERY from "../../queries/top-menu/top-menu";
 
 function App() {
 
@@ -29,11 +26,7 @@ function App() {
                 <React.Fragment>
                     <div id="wrapper">
 
-                        <Query query={TOPMENU_QUERY}>
-                            {({ data: { topMenu } }) => {
-                              return <Header links={topMenu.link} />;
-                            }}
-                        </Query>
+                        <Header />
 
                         <Switch>
                             <Route exact path="/" component={Home} />

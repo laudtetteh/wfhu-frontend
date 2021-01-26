@@ -1,21 +1,17 @@
 import gql from "graphql-tag";
 
-const POSTS_QUERY = gql`
-  query Posts {
-    posts {
+const TESTIMONIAL_QUERY = gql`
+  query Testimonials($id: ID!) {
+    testimonial(id: $id) {
       id
       name
       description
       image {
         url
       }
-      category {
-        id
-        name
-      }
       published_at
     }
   }
 `;
 
-export default POSTS_QUERY;
+export default TESTIMONIAL_QUERY;

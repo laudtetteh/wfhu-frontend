@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { STFDate } from '../../utils/helpers';
 
 const Card = ({ post }) => {
 
@@ -19,16 +20,22 @@ const Card = ({ post }) => {
                     </div>
                     <div className="uk-card-body">
                         <p id="name" className="uk-text-large">
-                            {post.name}
+                            Title: {post.name}
                         </p>
                     </div>
                 </div>
             </Link>
 
             <Link to={`/category/${post.category.id}`}>
+
                 <p id="category" className="uk-text-uppercase">
-                    {post.category.name}
+                    Category: {post.category.name}
                 </p>
+
+                <p id="published_at" className="uk-text-uppercase">
+                    <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
+                </p>
+
             </Link>
         </React.Fragment>
   );
