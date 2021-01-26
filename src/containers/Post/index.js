@@ -11,19 +11,18 @@ const Post = () => {
   return (
     <Query query={POST_QUERY} id={id}>
       {({ data: { post } }) => {
-        const imageUrl =
-          process.env.NODE_ENV !== "development"
-            ? post.image.url
-            : process.env.REACT_APP_BACKEND_URL + post.image.url;
+
+        // const imageUrl =
+        //   process.env.NODE_ENV !== "development"
+        //     ? post.image.url
+        //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
+
+        const imageUrl = post.image.url;
+
         return (
           <div>
-            <div
-              id="banner"
-              className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
-              data-src={imageUrl}
-              data-srcset={imageUrl}
-              data-uk-img
-            >
+            <div className="uk-card-media-top">
+              <img src={imageUrl} alt={post.image.url} height="100" />
               <h1>{post.name}</h1>
             </div>
 

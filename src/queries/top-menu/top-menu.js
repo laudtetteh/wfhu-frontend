@@ -5,9 +5,9 @@ const TOPMENU_QUERY = gql`
       topMenu {
         id
         link {
-          id
-          label
-          path
+            id
+            label
+            path
         }
       }
     }

@@ -14,7 +14,7 @@ import Post from "../../containers/Post";
 import Category from "../../containers/Category";
 import Categories from "../../containers/Categories";
 // Components
-import { Header } from '../../components/elements/Header';
+import { Header } from '../../components/Elements/Header';
 import Query from "../../components/Query";
 // Queries
 import TOPMENU_QUERY from "../../queries/top-menu/top-menu";
@@ -38,7 +38,7 @@ function App() {
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/about" component={About} />
-                            <Route exact path="/blog" component={Blog} posts={Posts} />
+                            <Route exact path="/blog" component={Blog} />
                             <Route exact path="/contact" component={Contact} />
                             <Route path="/post/:id" component={Post} exact />
                             <Route path="/category/:id" component={Category} exact />
