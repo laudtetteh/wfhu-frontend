@@ -1,23 +1,50 @@
-import React from "react";
+// Packages
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Switch, Route } from "react-router-dom";
+// Assets
+import logo from '../../../assets/images/logo.svg';
 
-import Nav from "../../components/Nav";
-import Posts from "../Posts";
-import Post from "../Post";
-import Category from "../Category";
+// Containers
+import { Home } from '../Home';
+import { About } from '../About';
+import { Blog } from '../Blog';
+import { Contact } from '../Contact';
+
+// Components
+import { Header } from '../../components/elements/Header';
+
+const topMenu = [
+    { name: 'About', URL: '/about' },
+    { name: 'Blog', URL: '/blog' },
+    { name: 'Contact', URL: '/contact' }
+];
 
 function App() {
-  return (
-    <div className="App">
-      <Nav />
-      <Switch>
-        <Route path="/" component={Posts} exact />
-        <Route path="/post/:id" component={Post} exact />
-        <Route path="/category/:id" component={Category} exact />
-      </Switch>
-    </div>
-  );
+
+    return (
+
+        <Suspense fallback="Loading...">
+
+            <Router>
+
+                <div id="wrapper">
+
+                    <Header links={topMenu}/>
+
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/blog" component={Blog} />
+                        <Route exact path="/contact" component={Contact} />
+                    </Switch>
+
+                </div>
+
+            </Router>
+
+        </Suspense>
+    );
 }
 
 export default App;
