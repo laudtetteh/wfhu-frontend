@@ -15,7 +15,7 @@ const MainNav = ({links}) => {
                         activeClassName="current"
                         key={index}>
 
-                      <span name={link.name}>{link.name}</span>
+                      <span name={link.label}>{link.label}</span>
 
                     </NavLink>
                 )

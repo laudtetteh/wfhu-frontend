@@ -1,27 +1,23 @@
 // Packages
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 // Assets
 import logo from '../../../assets/images/logo.svg';
-
-// Containers
+// Page Containers
 import { Home } from '../Home';
 import { About } from '../About';
 import { Blog } from '../Blog';
 import { Contact } from '../Contact';
-
-// Components
-import { Header } from '../../components/elements/Header';
+// Other Containers
 import Posts from "../../containers/Posts";
 import Post from "../../containers/Post";
 import Category from "../../containers/Category";
-
-const topMenu = [
-    { name: 'About', URL: '/about' },
-    { name: 'Blog', URL: '/blog' },
-    { name: 'Contact', URL: '/contact' }
-];
+import Categories from "../../containers/Categories";
+// Components
+import { Header } from '../../components/elements/Header';
+import Query from "../../components/Query";
+// Queries
+import TOPMENU_QUERY from "../../queries/top-menu/top-menu";
 
 function App() {
 
@@ -30,25 +26,28 @@ function App() {
         <Suspense fallback="Loading...">
 
             <Router>
+                <React.Fragment>
+                    <div id="wrapper">
 
-                <div id="wrapper">
+                        <Query query={TOPMENU_QUERY}>
+                            {({ data: { topMenu } }) => {
+                              return <Header links={topMenu.link} />;
+                            }}
+                        </Query>
 
-                    <Header links={topMenu}/>
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/about" component={About} />
+                            <Route exact path="/blog" component={Blog} posts={Posts} />
+                            <Route exact path="/contact" component={Contact} />
+                            <Route path="/post/:id" component={Post} exact />
+                            <Route path="/category/:id" component={Category} exact />
+                            <Route path="/categories" component={Categories} exact />
+                        </Switch>
 
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/about" component={About} />
-                        <Route exact path="/blog" component={Blog} posts={Posts} />
-                        <Route exact path="/contact" component={Contact} />
-
-                        <Route path="/post/:id" component={Post} exact />
-                        <Route path="/category/:id" component={Category} exact />
-                    </Switch>
-
-                </div>
-
+                    </div>
+                </React.Fragment>
             </Router>
-
         </Suspense>
     );
 }

@@ -5,10 +5,8 @@ import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import client from '../apolloClient';
 import { BrowserRouter as Router } from 'react-router-dom';
-
-// Containers
+// App Container
 import { App } from './App'
-
 // CSS
 import '../assets/css/index.css'
 
@@ -17,10 +15,10 @@ if (module.hot) {
 }
 
 ReactDOM.render(
-  <Router>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </Router>,
-  document.getElementById('root'),
+    <Router>
+        <ApolloProvider client={client}>
+            <App />
+        </ApolloProvider>
+    </Router>,
+    document.getElementById('root'),
 );
