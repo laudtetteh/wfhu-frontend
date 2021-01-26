@@ -7,7 +7,7 @@ const POST_QUERY = gql`
       name
       description
       image {
-        url
+        formats
       }
       category {
         id

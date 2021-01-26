@@ -7,7 +7,7 @@ const TESTIMONIAL_QUERY = gql`
       name
       description
       image {
-        url
+        formats
       }
       published_at
     }

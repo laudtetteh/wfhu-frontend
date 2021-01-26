@@ -9,14 +9,14 @@ const Card = ({ post }) => {
   //     ? post.image.url
   //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
 
-    const imageUrl = post.image.url;
+  const imageUrl = post.image.formats.post_loop.url;
 
     return (
         <React.Fragment>
             <Link to={`/post/${post.id}`} className="uk-link-reset">
                 <div className="uk-card uk-card-muted">
                     <div className="uk-card-media-top">
-                        <img src={imageUrl} alt={post.image.url} height="100" />
+                        <img src={imageUrl} alt={imageUrl} height="100" />
                     </div>
                     <div className="uk-card-body">
                         <p id="name" className="uk-text-large">
