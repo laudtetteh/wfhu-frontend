@@ -13,6 +13,9 @@ import { Contact } from '../Contact';
 
 // Components
 import { Header } from '../../components/elements/Header';
+import Posts from "../../containers/Posts";
+import Post from "../../containers/Post";
+import Category from "../../containers/Category";
 
 const topMenu = [
     { name: 'About', URL: '/about' },
@@ -35,8 +38,11 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/about" component={About} />
-                        <Route exact path="/blog" component={Blog} />
+                        <Route exact path="/blog" component={Blog} posts={Posts} />
                         <Route exact path="/contact" component={Contact} />
+
+                        <Route path="/post/:id" component={Post} exact />
+                        <Route path="/category/:id" component={Category} exact />
                     </Switch>
 
                 </div>

@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <div className="uk-section">
         <div className="uk-container uk-container-large">
-          <h1>Strapi blog</h1>
+          <h1>Blog Posts</h1>
           <Query query={POSTS_QUERY}>
             {({ data: { posts } }) => {
               return <Posts posts={posts} />;

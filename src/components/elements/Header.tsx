@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../../assets/images/logo.svg'
 import { Link, NavLink } from 'react-router-dom';
-import { MainNav } from "../Nav";
+import { MainNav } from "../Nav/main";
 
 export const Header = ({links}) => {
 
