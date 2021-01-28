@@ -7,22 +7,15 @@ const Posts = ({ posts }) => {
     const rightPosts = posts.slice(leftPostsCount, posts.length);
 
     return (
-        <div>
-            <div className="uk-child-width-1-2" data-uk-grid>
-                <div>
-                    {leftPosts.map((post, i) => {
-                        return <Card post={post} key={`post__${post.id}`} />;
-                    })}
-                </div>
-                <div>
-                    <div className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
-                        {rightPosts.map((post, i) => {
-                            return <Card post={post} key={`post__${post.id}`} />;
-                        })}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <React.Fragment>
+            {leftPosts.map((post, i) => {
+                return <div> <Card post={post} key={`post__${post.id}`} /></div>
+            })}
+
+            {rightPosts.map((post, i) => {
+                return <div> <Card post={post} key={`post__${post.id}`} /></div>
+            })}
+        </React.Fragment>
     );
 };
 

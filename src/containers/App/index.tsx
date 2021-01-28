@@ -15,6 +15,7 @@ import Category from "../../containers/Category";
 import Categories from "../../containers/Categories";
 // Components
 import { Header } from '../../components/Elements/Header';
+import { FooterScripts } from '../../utils/helpers';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
 
             <Router>
                 <React.Fragment>
-                    <div id="wrapper">
+                    <div id="wrapper" className="md:container md:mx-auto">
 
                         <Header />
 
@@ -37,8 +38,10 @@ function App() {
                             <Route path="/category/:id" component={Category} exact />
                             <Route path="/categories" component={Categories} exact />
                         </Switch>
-
                     </div>
+
+                    <FooterScripts />
+
                 </React.Fragment>
             </Router>
         </Suspense>

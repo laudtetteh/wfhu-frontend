@@ -4,19 +4,22 @@ import Query from "../../components/Query";
 import TESTIMONIALS_QUERY from "../../queries/testimonial/testimonials";
 
 const Testimonial = () => {
+
     return (
-        <div>
-            <div className="uk-section">
-                <div className="uk-container uk-container-large">
-                    <h1>Testimonials</h1>
-                    <Query query={TESTIMONIALS_QUERY}>
-                        {({ data: { testimonials } }) => {
-                            return <Testimonials testimonials={testimonials} />;
-                        }}
-                    </Query>
-                </div>
+
+        <React.Fragment>
+
+            <h1>Testimonials</h1>
+
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <Query query={TESTIMONIALS_QUERY}>
+                    {({ data: { testimonials } }) => {
+                        return <Testimonials testimonials={testimonials} />;
+                    }}
+                </Query>
             </div>
-        </div>
+
+        </React.Fragment>
     );
 };
 

@@ -12,30 +12,27 @@ const Card = ({ testimonial }) => {
 
     return (
         <React.Fragment>
-            <Link to={`/testimonial/${testimonial.id}`} className="uk-link-reset">
-                <div className="uk-card uk-card-muted">
 
+            <div className="">
+                <Link to={`/testimonial/${testimonial.id}`} className="">
+                    <img src={imageUrl} alt={imageUrl} height="100" />
+                </Link>
+            </div>
 
-                    <div className="uk-card-media-top">
-                        <img src={imageUrl} alt={imageUrl} height="100" />
-                    </div>
+            <div className="">
 
+                <p id="" className="">
+                    Content: {testimonial.description}
+                </p>
 
-                    <div className="uk-card-body">
+                <p id="name" className="">
+                    - {testimonial.name}
+                </p>
 
-                        <p id="description" className="uk-text-large">
-                            Content: {testimonial.description}
-                        </p>
+            </div>
 
-                        <p id="name" className="uk-text-large">
-                            - {testimonial.name}
-                        </p>
-
-                    </div>
-                </div>
-            </Link>
         </React.Fragment>
-  );
+    );
 };
 
 export default Card;
