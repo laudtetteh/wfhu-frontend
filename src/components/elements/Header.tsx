@@ -1,14 +1,20 @@
 // Packages
 import React from 'react'
-import logo from '../../../assets/images/logo.svg'
 import { Link, NavLink } from 'react-router-dom';
+import CSS from 'csstype';
 // Components
 import Query from "../../components/Query";
 import { MainNav } from "../Nav/main";
+// Assets
+import logo from '../../../assets/images/logo.svg'
 // Queries
 import TOPMENU_QUERY from "../../queries/top-menu/top-menu";
 
-export const Header = ({links}) => {
+const svgContainer: CSS.Properties = {
+    maxWidth: '400px'
+};
+
+export const Header = () => {
 
     return (
 
@@ -19,7 +25,7 @@ export const Header = ({links}) => {
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
                     <Link to="/"
                         className="text-white no-underline hover:text-white hover:no-underline">
-                        {logo()}
+                            <img src={logo} className="site-logo" style={svgContainer}/>
                     </Link>
                 </div>
 
@@ -36,6 +42,7 @@ export const Header = ({links}) => {
                 </Query>
 
             </nav>
+
         </React.Fragment>
     );
 }

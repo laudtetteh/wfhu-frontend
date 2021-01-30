@@ -13,9 +13,10 @@ const Card = ({ testimonial }) => {
     return (
         <React.Fragment>
 
+        <div className="mx-auto">
             <div className="">
                 <Link to={`/testimonial/${testimonial.id}`} className="">
-                    <img src={imageUrl} alt={imageUrl} height="100" />
+                    <img src={imageUrl} alt={imageUrl} height="100" className="rounded-xl w-full"/>
                 </Link>
             </div>
 
@@ -30,6 +31,8 @@ const Card = ({ testimonial }) => {
                 </p>
 
             </div>
+
+        </div>
 
         </React.Fragment>
     );

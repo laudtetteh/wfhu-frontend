@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Assets
 import logo from '../../../assets/images/logo.svg';
 // Page Containers
-import { Home } from '../Home';
-import { About } from '../About';
-import { Blog } from '../Blog';
-import { Contact } from '../Contact';
+// import { Home } from '../Home';
+// import { About } from '../About';
+// import { Blog } from '../Blog';
+// import { Contact } from '../Contact';
+import { Pages } from '../Pages';
 // Other Containers
 import Posts from "../../containers/Posts";
 import Post from "../../containers/Post";
@@ -25,15 +26,16 @@ function App() {
 
             <Router>
                 <React.Fragment>
-                    <div id="wrapper" className="md:container md:mx-auto">
+
+                    <div id="wrapper" className="container mx-auto">
 
                         <Header />
 
                         <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/about" component={About} />
-                            <Route exact path="/blog" component={Blog} />
-                            <Route exact path="/contact" component={Contact} />
+                            <Route exact path="/" component={Pages} />
+                            <Route exact path="/about" component={Pages} />
+                            <Route exact path="/blog" component={Pages} />
+                            <Route exact path="/contact" component={Pages} />
                             <Route path="/post/:id" component={Post} exact />
                             <Route path="/category/:id" component={Category} exact />
                             <Route path="/categories" component={Categories} exact />

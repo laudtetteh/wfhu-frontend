@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const POSTS_QUERY = gql`
-    query Posts {
-        posts(limit: 3) {
+    query Posts($limit: Int!)  {
+        posts(limit: $limit) {
             id
             name
             description

@@ -11,7 +11,7 @@ const Testimonial = () => {
 
             <h1>Testimonials</h1>
 
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
                 <Query query={TESTIMONIALS_QUERY}>
                     {({ data: { testimonials } }) => {
                         return <Testimonials testimonials={testimonials} />;

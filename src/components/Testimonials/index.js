@@ -9,11 +9,11 @@ const Testimonials = ({ testimonials }) => {
     return (
         <React.Fragment>
             {leftTestimonials.map((testimonial, i) => {
-                return <div><Card testimonial={testimonial} key={`testimonial__${testimonial.id}`} /></div>
+                return <Card testimonial={testimonial} key={`testimonial__${testimonial.id}`} />
             })}
 
             {rightTestimonials.map((testimonial, i) => {
-                return <div><Card testimonial={testimonial} key={`testimonial__${testimonial.id}`} /></div>
+                return <Card testimonial={testimonial} key={`testimonial__${testimonial.id}`} />
             })}
         </React.Fragment>
     );

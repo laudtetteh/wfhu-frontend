@@ -8,12 +8,12 @@ const Posts = ({ posts }) => {
 
     return (
         <React.Fragment>
-            {leftPosts.map((post, i) => {
-                return <div> <Card post={post} key={`post__${post.id}`} /></div>
+            {leftPosts.map((post, index) => {
+                return <div key={index}> <Card post={post} key={`post__${post.id}`} /></div>
             })}
 
-            {rightPosts.map((post, i) => {
-                return <div> <Card post={post} key={`post__${post.id}`} /></div>
+            {rightPosts.map((post, index) => {
+                return <div key={index}> <Card post={post} key={`post__${post.id}`} /></div>
             })}
         </React.Fragment>
     );

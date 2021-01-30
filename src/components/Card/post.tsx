@@ -16,7 +16,7 @@ const Card = ({ post }) => {
 
             <div className="">
                 <Link to={`/post/${post.id}`}>
-                    <img src={imageUrl} alt={imageUrl} height="100" />
+                    <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
                 </Link>
             </div>
 

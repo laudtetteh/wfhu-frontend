@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const TESTIMONIALS_QUERY = gql`
     query Testimonials {
-        testimonials(limit: 3) {
+        testimonials(limit: 4) {
             id
             name
             description
