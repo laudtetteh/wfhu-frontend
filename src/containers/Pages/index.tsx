@@ -24,11 +24,12 @@ export const Pages = (props) => {
                     case 'about':
                       return <About page={pages} />;
                     case 'blog':
-                      return <Blog page={pages} />;
+                    // console.log(pages[0].slug);
+                      return <Blog page={pages[0]} />;
                     case 'contact':
                       return <Contact page={pages} />;
                     default:
-                      return null;
+                      return <NotFound page={pages} />;
                 }}
             }}
         </Query>
