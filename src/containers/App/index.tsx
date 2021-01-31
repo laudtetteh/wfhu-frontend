@@ -3,11 +3,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Assets
 import logo from '../../../assets/images/logo.svg';
-// Page Containers
-// import { Home } from '../Home';
-// import { About } from '../About';
-// import { Blog } from '../Blog';
-// import { Contact } from '../Contact';
+// Pages Container
 import { Pages } from '../Pages';
 // Other Containers
 import Posts from "../../containers/Posts";
@@ -25,6 +21,7 @@ function App() {
         <Suspense fallback="Loading...">
 
             <Router>
+
                 <React.Fragment>
 
                     <div id="wrapper" className="container mx-auto">
@@ -36,16 +33,19 @@ function App() {
                             <Route exact path="/about" component={Pages} />
                             <Route exact path="/blog" component={Pages} />
                             <Route exact path="/contact" component={Pages} />
-                            <Route path="/post/:id" component={Post} exact />
-                            <Route path="/category/:id" component={Category} exact />
-                            <Route path="/categories" component={Categories} exact />
+                            <Route exact path="/post/:id" component={Post} />
+                            <Route exact path="/category/:id" component={Category} />
+                            <Route exact path="/categories" component={Categories} />
                         </Switch>
+
                     </div>
 
                     <FooterScripts />
 
                 </React.Fragment>
+
             </Router>
+
         </Suspense>
     );
 }

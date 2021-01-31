@@ -1,6 +1,7 @@
 // Packages
 import React from 'react';
 import Moment from 'react-moment';
+import {Helmet} from "react-helmet";
 // import {usePath} from 'hookrouter';
 
 const STFDate = ({_timestamp, _format}) => {
@@ -14,4 +15,15 @@ const FooterScripts = () => {
     return true;
 }
 
-export {STFDate, FooterScripts};
+const DocumentHead = ({title}) => {
+    return (
+        <Helmet>
+            <title>{title} | Work From Home University</title>
+        </Helmet>
+    );
+
+};
+
+export {STFDate, FooterScripts, DocumentHead};
+
+

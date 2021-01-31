@@ -4,32 +4,64 @@ import { Home } from '../Home';
 import { About } from '../About';
 import { Blog } from '../Blog';
 import { Contact } from '../Contact';
-// Components
-import Page from "../../components/Page";
-// Queries
+import { NotFound } from '../NotFound';
 import Query from "../../components/Query";
 import PAGES_QUERY from "../../queries/page/pages";
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
 
 export const Pages = (props) => {
     // Remove all slashes from path
-    const path = props.location.pathname.replace(/^\/|\/$/g, '');
+    let path = props.location.pathname.replace(/^\/|\/$/g, '');
+
+    if(path === '' ) {
+        path='home';
+    }
 
     return(
+
         <Query query={PAGES_QUERY} slug={path}>
+
             {({ data: { pages } }) => {
                 // Determine which page to query from the API
                 {switch (path) {
                     case 'home':
-                      return <Home page={pages} />;
+                        return (
+                            <React.Fragment>
+                                <DocumentHead title="Home" />
+                                <Home pageLoad={pages[0]} />
+                            </React.Fragment>
+                        )
                     case 'about':
-                      return <About page={pages} />;
+                        return (
+                            <React.Fragment>
+                                <DocumentHead title="About" />
+                                <About pageLoad={pages[0]} />
+                            </React.Fragment>
+                        )
                     case 'blog':
-                    // console.log(pages[0].slug);
-                      return <Blog page={pages[0]} />;
+                        return (
+                            <React.Fragment>
+                                <DocumentHead title="Blog" />
+                                <Blog pageLoad={pages[0]} />
+                            </React.Fragment>
+                        )
                     case 'contact':
-                      return <Contact page={pages} />;
+                        return (
+                            <React.Fragment>
+                                <DocumentHead title="Contact" />
+                                <Contact pageLoad={pages[0]} />
+                            </React.Fragment>
+                        )
+
                     default:
-                      return <NotFound page={pages} />;
+
+                        return (
+                            <React.Fragment>
+                                <DocumentHead title="404 - Page Not Found" />
+                                <NotFound />
+                            </React.Fragment>
+                        )
                 }}
             }}
         </Query>

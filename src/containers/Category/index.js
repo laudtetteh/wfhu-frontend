@@ -6,22 +6,32 @@ import Posts from "../../components/Posts";
 import Query from "../../components/Query";
 // Queries
 import CATEGORY_POSTS_QUERY from "../../queries/category/posts";
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
 
 const Category = () => {
+
     let { id } = useParams();
 
     return (
+
         <Query query={CATEGORY_POSTS_QUERY} id={id}>
+
             {({ data: { category } }) => {
+
                 return (
-                    <div>
-                        <div className="uk-section">
-                            <div className="uk-container uk-container-large">
-                                <h1>{category.name}</h1>
-                                <Posts posts={category.posts} />
-                            </div>
+
+                    <React.Fragment>
+
+                        <DocumentHead title={category.name} />
+
+                        <div className="">
+                            <h1>{category.name}</h1>
+                            <Posts posts={category.posts} />
                         </div>
-                    </div>
+
+                    </React.Fragment>
+
                 );
             }}
         </Query>

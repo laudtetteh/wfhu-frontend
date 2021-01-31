@@ -2,7 +2,6 @@
 * Blog Container
 *
 */
-
 // Packages
 import React from "react";
 import { Switch, Route } from "react-router-dom";
@@ -14,16 +13,15 @@ import Posts from "../Posts";
 import Query from "../../components/Query";
 import PAGES_QUERY from "../../queries/page/pages";
 
-export const Blog = (page) => {
-// console.log(page.page);
-const _thispage = page.page;
-const _no_of_posts = _thispage.dynamic_fields[0].no_of_posts;
+export const Blog = ({pageLoad}) => {
+// console.log(pageLoad);
+const _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
 
     return (
 
         <React.Fragment>
 
-            <div className="App">
+            <div className="Blog">
 
                 <BlogNav />
 
