@@ -1,5 +1,5 @@
 import React from 'react';
-export function Contact() {
+export const NotFound = () => {
 
     return(
 
