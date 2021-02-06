@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.7",
+    "@parcel/transformer-raw": "^2.0.0-alpha.3",
+    "@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
     "apollo-boost": "^0.4.9",
     "autoprefixer": "^10.2.4",
     "babel-runtime": "^6.26.0",
