@@ -51757,16 +51757,16 @@ helpers.prelude(module);
 try {
   var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
   _parcelHelpers.defineInteropFlag(exports);
-  _parcelHelpers.export(exports, "Contact", function () {
-    return Contact;
+  _parcelHelpers.export(exports, "NotFound", function () {
+    return NotFound;
   });
   var _react = require('react');
   var _reactDefault = _parcelHelpers.interopDefault(_react);
   var _jsxFileName = "/Users/laudtetteh/code/sites/wfhu-frontend/src/containers/NotFound/index.tsx";
-  function Contact() {
+  const NotFound = () => {
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
-        __self: this,
+        __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 6,
@@ -51774,7 +51774,7 @@ try {
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
         className: "font-sans text-red text-4xl text-center pt-12",
-        __self: this,
+        __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 7,
@@ -51782,7 +51782,7 @@ try {
         }
       }, "The resource you requested could not be found. ", /*#__PURE__*/_reactDefault.default.createElement("a", {
         href: "/",
-        __self: this,
+        __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 8,
@@ -51790,10 +51790,10 @@ try {
         }
       }, "Return to the homepage"), "?"))
     );
-  }
-  _c = Contact;
+  };
+  _c = NotFound;
   var _c;
-  $RefreshReg$(_c, "Contact");
+  $RefreshReg$(_c, "NotFound");
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
