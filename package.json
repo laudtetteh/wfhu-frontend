@@ -48,9 +48,5 @@
     "react-script-tag": "^1.1.2",
     "reactstrap": "^8.9.0",
     "tailwindcss": "^2.0.2"
-  },
-  "engines": {
-    "node": ">= 10.0.0",
-    "npm": ">= 6.0.0"
   }
 }
