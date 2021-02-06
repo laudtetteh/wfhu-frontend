@@ -7,6 +7,9 @@ import { STFDate } from '../../utils/helpers';
 
 import POST_QUERY from "../../queries/post/post";
 
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
+
 const Post = () => {
     let { id } = useParams();
         return (
@@ -23,6 +26,8 @@ const Post = () => {
 
                 return (
                     <React.Fragment>
+
+                        <DocumentHead title={post.name} />
 
                         <div className="">
                             <Link to={`/post/${post.id}`}>

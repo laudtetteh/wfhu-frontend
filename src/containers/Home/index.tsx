@@ -10,10 +10,9 @@ export const Home = ({pageLoad}) => {
     const _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
 
     return (
+        <React.Fragment>
 
         <DocumentHead title="Home"/>
-
-        <React.Fragment>
 
             <Testimonials />
 
