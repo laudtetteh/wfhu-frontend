@@ -1769,6 +1769,13 @@
   dependencies:
     "@parcel/plugin" "2.0.0-nightly.576+9b0f3ac7"
 
+"@parcel/transformer-raw@^2.0.0-alpha.3":
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@parcel/transformer-raw/-/transformer-raw-2.0.0-alpha.3.tgz#7b79417fd3d56c740c8da599d6f9152a9578a153"
+  integrity sha512-qXiCcQP1xw16Qu+q82vd+W9EGborKCPDAACHpbk5YwnjVHzD+oS4dh9yIxacLY0D7UdAydi4+zyKuZsQIE+0Lg==
+  dependencies:
+    "@parcel/plugin" "^2.0.0-alpha.3"
+
 "@parcel/transformer-react-refresh-babel@2.0.0-nightly.576+9b0f3ac7":
   version "2.0.0-nightly.576"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-react-refresh-babel/-/transformer-react-refresh-babel-2.0.0-nightly.576.tgz#a0d831e1f601411ea46d8396544b5ddd68d471aa"
@@ -1833,6 +1840,14 @@
   dependencies:
     "@parcel/plugin" "2.0.0-nightly.576+9b0f3ac7"
 
+"@parcel/transformer-typescript-tsc@^2.0.0-alpha.3":
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@parcel/transformer-typescript-tsc/-/transformer-typescript-tsc-2.0.0-alpha.3.tgz#3753c10f34470d31fd35bc81a4d2c6ba70112022"
+  integrity sha512-KL3uKP6KXaN62CmfCgkNz3ki1AWyFdrdv01s+QKAkNTd6IViOZjrioHmcu/AXhcDhdwGfL1fvneMqjrNol6pTQ==
+  dependencies:
+    "@parcel/plugin" "^2.0.0-alpha.3"
+    "@parcel/ts-utils" "^2.0.0-alpha.3"
+
 "@parcel/transformer-typescript-types@2.0.0-nightly.576+9b0f3ac7":
   version "2.0.0-nightly.576"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-typescript-types/-/transformer-typescript-types-2.0.0-nightly.576.tgz#baa9eb250958094f9118ca2961c79090d67053ed"
@@ -1877,6 +1892,13 @@
   version "2.0.0-nightly.576"
   resolved "https://registry.yarnpkg.com/@parcel/ts-utils/-/ts-utils-2.0.0-nightly.576.tgz#5c8b45afe8425361402d94c1aaaa9638f75d7df5"
   integrity sha512-/bBUBwQ5ob5AU+tvHrLlk8Bnr2X5GCr+f1+tc0tUZDyFkejIiOaKhsXJVtaXgWSkrm5BBcMexEGUIKHXsc2eCQ==
+  dependencies:
+    nullthrows "^1.1.1"
+
+"@parcel/ts-utils@^2.0.0-alpha.3":
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@parcel/ts-utils/-/ts-utils-2.0.0-alpha.3.tgz#d0e050970be3743d9175b85f8af7819e5c9a88fe"
+  integrity sha512-t8572ROIJU4QNVlvW8XhKZigMsKj68YmSGs/wglqsl9xBJJIHiw8HSPyQcDiUCiU1INORCSHAkemeVYUNKflYw==
   dependencies:
     nullthrows "^1.1.1"
 
