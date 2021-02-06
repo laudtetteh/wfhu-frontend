@@ -37767,7 +37767,7 @@ try {
   var _containersCategoryDefault = _parcelHelpers.interopDefault(_containersCategory);
   var _containersCategories = require("../../containers/Categories");
   var _containersCategoriesDefault = _parcelHelpers.interopDefault(_containersCategories);
-  var _componentsElementsHeader = require('../../components/Elements/Header');
+  var _componentsElementsHeader = require('../../components/elements/Header');
   var _utilsHelpers = require('../../utils/helpers');
   var _jsxFileName = "/Users/laudtetteh/code/sites/wfhu-frontend/src/containers/App/index.tsx";
   function App() {
@@ -37907,7 +37907,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","react-router-dom":"1PMSK","../Pages":"6FmrB","../../containers/Post":"2MKJn","../../containers/Category":"6d5tf","../../containers/Categories":"1M3Tt","../../utils/helpers":"2yh8I","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../../components/Elements/Header":"ZZEX3"}],"1PMSK":[function(require,module,exports) {
+},{"react":"3b2NM","react-router-dom":"1PMSK","../Pages":"6FmrB","../../containers/Post":"2MKJn","../../containers/Category":"6d5tf","../../containers/Categories":"1M3Tt","../../utils/helpers":"2yh8I","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../../components/elements/Header":"20J7s"}],"1PMSK":[function(require,module,exports) {
 "use strict";
 if ("development" === "production") {
   module.exports = require("./cjs/react-router-dom.min.js");
@@ -61281,7 +61281,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","../../components/Query":"6MQsw","react-router-dom":"1PMSK","../../queries/category/categories":"4X7Ml","../../utils/helpers":"2yh8I","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"ZZEX3":[function(require,module,exports) {
+},{"react":"3b2NM","../../components/Query":"6MQsw","react-router-dom":"1PMSK","../../queries/category/categories":"4X7Ml","../../utils/helpers":"2yh8I","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"20J7s":[function(require,module,exports) {
 var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -61302,7 +61302,7 @@ try {
   var _assetsImagesLogoSvgDefault = _parcelHelpers.interopDefault(_assetsImagesLogoSvg);
   var _queriesTopMenuTopMenu = require("../../queries/top-menu/top-menu");
   var _queriesTopMenuTopMenuDefault = _parcelHelpers.interopDefault(_queriesTopMenuTopMenu);
-  var _jsxFileName = "/Users/laudtetteh/code/sites/wfhu-frontend/src/components/Elements/Header.tsx";
+  var _jsxFileName = "/Users/laudtetteh/code/sites/wfhu-frontend/src/components/elements/Header.tsx";
   const svgContainer = {
     maxWidth: '400px'
   };
