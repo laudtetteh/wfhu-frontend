@@ -1,21 +1,19 @@
 [build]
-  base    = "/"
   publish = "/dist"
   command = "yarn build"
 
 [context.production]
+  publish = "/dist"
   command = "yarn build"
   [context.production.environment]
     REACT_APP_SERVER_URL = "https://wfhu-frontend-prod.studiotenfour.biz"
     REACT_APP_API_URL = "https://wfhu-backend-prod.studiotenfour.biz"
 
 [context.deploy-preview.environment]
-  command = "yarn build"
   REACT_APP_API_URL = "https://wfhu-backend-staging.studiotenfour.biz"
 
 [context.branch-deploy]
+  publish = "/dist"
   command = "yarn build"
-  [context.staging.environment]
-    REACT_APP_SERVER_URL = "https://wfhu-frontend-staging.studiotenfour.biz"
-    REACT_APP_API_URL = "https://wfhu-backend-prod.studiotenfour.biz"
+  environment = { REACT_APP_SERVER_URL = "https://wfhu-frontend-staging.studiotenfour.biz", REACT_APP_API_URL = "https://wfhu-backend-prod.studiotenfour.biz", NODE_VERSION = "14.15.4", NPM_VERSION = "6.14.10" }
 
