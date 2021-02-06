@@ -11,7 +11,7 @@ import Post from "../../containers/Post";
 import Category from "../../containers/Category";
 import Categories from "../../containers/Categories";
 // Components
-import { Header } from '../../components/Elements/Header';
+import { Header } from '../../components/Elements/Header.tsx';
 import { FooterScripts } from '../../utils/helpers';
 
 function App() {
