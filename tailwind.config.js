@@ -7,7 +7,9 @@ module.exports = {
   ],
   darkMode: false,
   variants: {
-    extend: {}
+    extend: {
+      margin: ['first', 'last'],
+    }
   },
   plugins: [],
   theme: {

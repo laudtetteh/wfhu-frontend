@@ -2,7 +2,8 @@ import React from "react";
 import { useParams } from "react-router";
 import Query from "../../components/Query";
 import ReactMarkdown from "react-markdown";
-import Moment from "react-moment";
+import { Link } from "react-router-dom";
+import { STFDate } from '../../utils/helpers';
 
 import POST_QUERY from "../../queries/post/post";
 
@@ -17,24 +18,39 @@ const Post = () => {
                 //     ? post.image.url
                 //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
 
-                const imageUrl = post.image.url;
+                // const imageUrl = post.image.url;
+                const imageUrl = post.image.formats.post_loop.url;
 
                 return (
-                    <div>
-                        <div className="uk-card-media-top">
-                            <img src={imageUrl} alt={post.image.url} height="100" />
-                            <h1>{post.name}</h1>
+                    <React.Fragment>
+
+                        <div className="">
+                            <Link to={`/post/${post.id}`}>
+                                <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
+                            </Link>
                         </div>
 
-                        <div className="uk-section">
-                            <div className="uk-container uk-container-small">
-                                <ReactMarkdown source={post.description} />
-                                <p>
-                                  <Moment format="MMM Do YYYY">{post.published_at}</Moment>
-                                </p>
-                            </div>
+                        <div className="">
+                            <p id="name" className="">
+                                Title: {post.name}
+                            </p>
                         </div>
-                    </div>
+
+                        <Link to={`/category/${post.category.id}`}>
+                            <p id="" className="">
+                                Category: {post.category.name}
+                            </p>
+                        </Link>
+
+                        <p>
+                            <ReactMarkdown source={post.description} />
+                        </p>
+
+                        <p id="" className="">
+                            <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
+                        </p>
+
+                    </React.Fragment>
                 );
             }}
         </Query>

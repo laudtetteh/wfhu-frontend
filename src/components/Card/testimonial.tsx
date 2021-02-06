@@ -15,9 +15,7 @@ const Card = ({ testimonial }) => {
 
         <div className="mx-auto">
             <div className="">
-                <Link to={`/testimonial/${testimonial.id}`} className="">
-                    <img src={imageUrl} alt={imageUrl} height="100" className="rounded-xl w-full"/>
-                </Link>
+                <img src={imageUrl} alt={imageUrl} height="100" className="rounded-xl w-full"/>
             </div>
 
             <div className="">

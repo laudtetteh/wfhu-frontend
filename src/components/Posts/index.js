@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../Card/post";
+import PostCard from "../Card/post";
 
 const Posts = ({ posts }) => {
     const leftPostsCount = Math.ceil(posts.length / 5);
@@ -9,11 +9,11 @@ const Posts = ({ posts }) => {
     return (
         <React.Fragment>
             {leftPosts.map((post, index) => {
-                return <div key={index}> <Card post={post} key={`post__${post.id}`} /></div>
+                return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
             })}
 
             {rightPosts.map((post, index) => {
-                return <div key={index}> <Card post={post} key={`post__${post.id}`} /></div>
+                return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
             })}
         </React.Fragment>
     );

@@ -20,7 +20,7 @@ export const Header = () => {
 
         <React.Fragment>
 
-            <nav className="flex items-center justify-between flex-wrap bg-white p-6 w-full z-10 top-0">
+            <nav className="flex items-center justify-between flex-wrap bg-white py-6 w-full z-10 top-0">
 
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
                     <Link to="/"
