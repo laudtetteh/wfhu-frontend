@@ -14,7 +14,7 @@
   REACT_APP_API_URL = "https://wfhu-backend-staging.studiotenfour.biz"
 
 [context.branch-deploy]
-  command = "yarn build:staging"
+  command = "yarn build"
   [context.staging.environment]
     REACT_APP_SERVER_URL = "https://wfhu-frontend-staging.studiotenfour.biz"
     REACT_APP_API_URL = "https://wfhu-backend-staging.studiotenfour.biz"
