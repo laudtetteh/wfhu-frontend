@@ -1,0 +1,2 @@
+!function(){function e(){if(!e._executed){e._executed=!0;var n=("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequireafa8,t={};document.getElementById("nav-toggle").onclick=function(){document.getElementById("nav-content").classList.toggle("hidden")},n.register("2BjPC",(function(){return t}))}}for(var n=["2BjPC"],t=0;t<n.length;t++)parcelRequireafa8.registerBundle(n[t],e)}();
+//# sourceMappingURL=footer-scripts.de6ab035.js.map
