@@ -1,0 +1,21 @@
+[build]
+  base    = "/"
+  publish = "/build"
+  command = "parcel index.html"
+
+[context.production]
+  command = "yarn build"
+  [context.production.environment]
+    REACT_APP_SERVER_URL = "https://wfhu-frontend-prod.studiotenfour.biz"
+    REACT_APP_API_URL = "https://wfhu-backend-prod.studiotenfour.biz"
+
+[context.deploy-preview.environment]
+  command = "yarn build:staging"
+  REACT_APP_API_URL = "https://wfhu-backend-staging.studiotenfour.biz"
+
+[context.branch-deploy]
+  command = "yarn build:staging"
+  [context.staging.environment]
+    REACT_APP_SERVER_URL = "https://wfhu-frontend-staging.studiotenfour.biz"
+    REACT_APP_API_URL = "https://wfhu-backend-staging.studiotenfour.biz"
+
