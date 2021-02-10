@@ -3,7 +3,7 @@
 *
 */
 // Packages
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Switch, Route } from "react-router-dom";
 // Components
 import { BlogNav } from "../../components/Nav/blog";
@@ -13,9 +13,7 @@ import Posts from "../Posts";
 import Query from "../../components/Query";
 import PAGES_QUERY from "../../queries/page/pages";
 
-export const Blog = ({pageLoad}) => {
-// console.log(pageLoad);
-const _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
+export const Blog = ({pageBag}) => {
 
     return (
 
@@ -26,7 +24,7 @@ const _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
                 <BlogNav />
 
                 <section>
-                    <Posts limit={_no_of_posts}/>
+                    <Posts limit={pageBag.noOfPosts ? pageBag.noOfPosts : 0}/>
                 </section>
 
             </div>

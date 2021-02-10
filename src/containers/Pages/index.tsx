@@ -9,10 +9,12 @@ import Query from "../../components/Query";
 import PAGES_QUERY from "../../queries/page/pages";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
+import { getPageData } from '../../utils/getPageData';
 
 export const Pages = (props) => {
     // Remove all slashes from path
     let path = props.location.pathname.replace(/^\/|\/$/g, '');
+    let pageBag;
 
     if(path === '' ) {
         path='home';
@@ -23,34 +25,38 @@ export const Pages = (props) => {
         <Query query={PAGES_QUERY} slug={path}>
 
             {({ data: { pages } }) => {
+
+                pageBag = getPageData(pages[0]);
+
                 // Determine which page to query from the API
                 {switch (path) {
+
                     case 'home':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="Home" />
-                                <Home pageLoad={pages[0]} />
+                                <Home pageBag={pageBag} />
                             </React.Fragment>
                         )
                     case 'about':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="About" />
-                                <About pageLoad={pages[0]} />
+                                <About pageBag={pageBag} />
                             </React.Fragment>
                         )
                     case 'blog':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="Blog" />
-                                <Blog pageLoad={pages[0]} />
+                                <Blog pageBag={pageBag} />
                             </React.Fragment>
                         )
                     case 'contact':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="Contact" />
-                                <Contact pageLoad={pages[0]} />
+                                <Contact pageBag={pageBag} />
                             </React.Fragment>
                         )
 
@@ -66,5 +72,4 @@ export const Pages = (props) => {
             }}
         </Query>
     );
-
 }

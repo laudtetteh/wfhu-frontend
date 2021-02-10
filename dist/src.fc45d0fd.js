@@ -56946,12 +56946,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Packages
 // Containers
 var Home = function Home(_ref) {
-  var pageLoad = _ref.pageLoad;
-  var _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
+  var pageBag = _ref.pageBag;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
     title: "Home"
   }), _react.default.createElement(_Testimonials.default, null), _react.default.createElement(_Posts.default, {
-    limit: _no_of_posts
+    limit: pageBag.noOfPosts ? pageBag.noOfPosts : 0
   }));
 };
 
@@ -56968,10 +56967,12 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function About() {
+function About(_ref) {
+  var pageBag = _ref.pageBag;
+  // console.log(pageBag);
   return _react.default.createElement("div", null, _react.default.createElement("h1", {
     className: "font-sans text-red text-4xl text-center pt-12"
-  }, "This is the About page. Styled with Tailwind"));
+  }, pageBag.description, ". Styled with Tailwind"));
 }
 },{"react":"node_modules/react/index.js"}],"src/queries/category/categories.js":[function(require,module,exports) {
 "use strict";
@@ -57065,13 +57066,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 // Containers
 var Blog = function Blog(_ref) {
-  var pageLoad = _ref.pageLoad;
-  // console.log(pageLoad);
-  var _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
+  var pageBag = _ref.pageBag;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "Blog"
   }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
-    limit: _no_of_posts
+    limit: pageBag.noOfPosts ? pageBag.noOfPosts : 0
   }))));
 };
 
@@ -57088,10 +57087,11 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Contact() {
+function Contact(_ref) {
+  var pageBag = _ref.pageBag;
   return _react.default.createElement("div", null, _react.default.createElement("h1", {
     className: "font-sans text-red text-4xl text-center pt-12"
-  }, "This is the Contact page. Styled with Tailwind"));
+  }, pageBag.description, ". Styled with Tailwind"));
 }
 },{"react":"node_modules/react/index.js"}],"src/containers/NotFound/index.tsx":[function(require,module,exports) {
 "use strict";
@@ -57133,7 +57133,30 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n                __typename\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n            published_at\n        }\n    }\n"])));
 var _default = PAGES_QUERY;
 exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/src/index.js"}],"src/containers/Pages/index.tsx":[function(require,module,exports) {
+},{"graphql-tag":"node_modules/graphql-tag/src/index.js"}],"src/utils/getPageData.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getPageData = void 0;
+
+var getPageData = function getPageData(props) {
+  var pageData = {};
+
+  if (props.description !== undefined) {
+    pageData["description"] = props.description;
+  }
+
+  if (props.dynamic_fields !== undefined && props.dynamic_fields[0] !== undefined) {
+    pageData["noOfPosts"] = props.dynamic_fields[0].no_of_posts;
+  }
+
+  return pageData;
+};
+
+exports.getPageData = getPageData;
+},{}],"src/containers/Pages/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57159,6 +57182,8 @@ var _pages = _interopRequireDefault(require("../../queries/page/pages"));
 
 var _helpers = require("../../utils/helpers");
 
+var _getPageData = require("../../utils/getPageData");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Page Containers
@@ -57166,6 +57191,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Pages = function Pages(props) {
   // Remove all slashes from path
   var path = props.location.pathname.replace(/^\/|\/$/g, '');
+  var pageBag;
 
   if (path === '') {
     path = 'home';
@@ -57176,35 +57202,36 @@ var Pages = function Pages(props) {
     slug: path
   }, function (_ref) {
     var pages = _ref.data.pages;
-    // Determine which page to query from the API
+    pageBag = (0, _getPageData.getPageData)(pages[0]); // Determine which page to query from the API
+
     {
       switch (path) {
         case 'home':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "Home"
           }), _react.default.createElement(_Home.Home, {
-            pageLoad: pages[0]
+            pageBag: pageBag
           }));
 
         case 'about':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "About"
           }), _react.default.createElement(_About.About, {
-            pageLoad: pages[0]
+            pageBag: pageBag
           }));
 
         case 'blog':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "Blog"
           }), _react.default.createElement(_Blog.Blog, {
-            pageLoad: pages[0]
+            pageBag: pageBag
           }));
 
         case 'contact':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "Contact"
           }), _react.default.createElement(_Contact.Contact, {
-            pageLoad: pages[0]
+            pageBag: pageBag
           }));
 
         default:
@@ -57217,7 +57244,7 @@ var Pages = function Pages(props) {
 };
 
 exports.Pages = Pages;
-},{"react":"node_modules/react/index.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../NotFound":"src/containers/NotFound/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../NotFound":"src/containers/NotFound/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx","../../utils/getPageData":"src/utils/getPageData.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -69769,7 +69796,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60310" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60352" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

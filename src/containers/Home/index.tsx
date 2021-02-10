@@ -5,18 +5,16 @@ import Testimonials from '../Testimonials';
 import Posts from '../Posts';
 import { DocumentHead } from '../../utils/helpers';
 
-export const Home = ({pageLoad}) => {
-
-    const _no_of_posts = pageLoad.dynamic_fields[0].no_of_posts;
+export const Home = ({pageBag}) => {
 
     return (
         <React.Fragment>
 
-        <DocumentHead title="Home"/>
+            <DocumentHead title="Home"/>
 
             <Testimonials />
 
-            <Posts limit={_no_of_posts}/>
+            <Posts limit={pageBag.noOfPosts ? pageBag.noOfPosts : 0}/>
 
         </React.Fragment>
     )
