@@ -4,13 +4,14 @@
   "main": "index.html",
   "license": "MIT",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --no-cache -d dist"
+    "start": "parcel index.html --public-url ./",
+    "build": "parcel build index.html --no-cache -d dist --public-url ./"
   },
   "ts-standard": {
     "project": "./tsconfig.json"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "@parcel/transformer-html": "^2.0.0-alpha.3",
     "@parcel/transformer-svg-react": "^2.0.0-nightly.1739",
     "@types/node": "^14.14.21",

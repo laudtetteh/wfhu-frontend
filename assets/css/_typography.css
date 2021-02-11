@@ -22,6 +22,14 @@ h2, .h2 {
        url('../fonts/bellota-text-v2-latin-regular.svg#BellotaText') format('svg');*/
 /*}*/
 
+
+/*$fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/webfonts";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular.scss";*/
+
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
 .font-roboto {
     font-family: 'Roboto';
 }
