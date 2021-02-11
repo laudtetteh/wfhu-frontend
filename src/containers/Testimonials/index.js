@@ -9,16 +9,11 @@ const Testimonial = () => {
 
         <React.Fragment>
 
-            <div className="container mx-auto">
-
-            <h2 className="section-heading font-bellota text-4xl text-red text-center">Testimonials</h2>
-
-                <Query query={TESTIMONIALS_QUERY}>
-                    {({ data: { testimonials } }) => {
-                        return <Testimonials testimonials={testimonials} />;
-                    }}
-                </Query>
-            </div>
+            <Query query={TESTIMONIALS_QUERY}>
+                {({ data: { testimonials } }) => {
+                    return <Testimonials testimonials={testimonials} />;
+                }}
+            </Query>
 
         </React.Fragment>
     );

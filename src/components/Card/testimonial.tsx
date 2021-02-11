@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TrimText } from '../../utils/helpers';
 
 const Card = ({ testimonial }) => {
 
@@ -20,11 +21,11 @@ const Card = ({ testimonial }) => {
 
             <div className="">
 
-                <p id="" className="">
-                    Content: {testimonial.description}
+                <p className="card-testimonial-description text-base mt-3 mb-3">
+                    <TrimText text={testimonial.description} limit="40" />
                 </p>
 
-                <p id="name" className="">
+                <p className="card-testimonial-name text-base italic">
                     - {testimonial.name}
                 </p>
 

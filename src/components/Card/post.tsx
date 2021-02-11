@@ -14,19 +14,19 @@ const Card = ({ post }) => {
     return (
         <React.Fragment>
 
-            <Link to={`/post/${post.id}`} className="post-card--image">
+            <Link to={`/post/${post.id}`} className="card-post--image">
                 <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
             </Link>
 
 
-            <Link to={`/post/${post.id}`} className="post-card--title no-underline">
+            <Link to={`/post/${post.id}`} className="card-post--title no-underline">
                 <p id="name" className="font-roboto text-lg text-yellow">
                     {post.name}
                 </p>
             </Link>
 
 
-            <p id="" className="post-card--date text-xs text-gray-light italic">
+            <p id="" className="card-post--date text-xs text-gray-light italic">
                 <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
             </p>
 

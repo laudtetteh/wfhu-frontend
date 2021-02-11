@@ -24,6 +24,22 @@ const DocumentHead = ({title}) => {
 
 };
 
-export {STFDate, FooterScripts, DocumentHead};
+const TrimText = ({text, limit}) => {
+    let trimmed = '';
+
+    if(text.length > limit) {
+
+        trimmed = text.substring(0,limit) + '...';
+
+    } else if(text.length == limit) {
+
+        trimmed = text.substring(0,limit);
+
+    }
+
+    return trimmed;
+}
+
+export {STFDate, FooterScripts, DocumentHead, TrimText};
 
 
