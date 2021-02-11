@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
+    "@fullhuman/postcss-purgecss": "3.0",
     "@parcel/transformer-html": "^2.0.0-alpha.3",
     "@parcel/transformer-svg-react": "^2.0.0-nightly.1739",
     "@types/node": "^14.14.21",
