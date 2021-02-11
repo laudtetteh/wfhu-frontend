@@ -24,9 +24,11 @@ function App() {
 
                 <React.Fragment>
 
-                    <div id="wrapper" className="container mx-auto">
+                    <div id="wrapper">
 
-                        <Header />
+                        <section className="w-full">
+                            <Header />
+                        </section>
 
                         <Switch>
                             <Route exact path="/" component={Pages} />

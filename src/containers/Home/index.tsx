@@ -12,9 +12,13 @@ export const Home = ({pageBag}) => {
 
             <DocumentHead title="Home"/>
 
-            <Testimonials />
+            <section className="w-full bg-none">
+                <Testimonials />
+            </section>
 
-            <Posts limit={pageBag.noOfPosts ? pageBag.noOfPosts : 0}/>
+            <section className="w-full stf-bg-3">
+                <Posts limit={pageBag.noOfPosts ? pageBag.noOfPosts : 0}/>
+            </section>
 
         </React.Fragment>
     )

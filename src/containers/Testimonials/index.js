@@ -9,9 +9,10 @@ const Testimonial = () => {
 
         <React.Fragment>
 
-            <h1>Testimonials</h1>
+            <div className="container mx-auto">
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+            <h2 className="section-heading font-bellota text-4xl text-red text-center">Testimonials</h2>
+
                 <Query query={TESTIMONIALS_QUERY}>
                     {({ data: { testimonials } }) => {
                         return <Testimonials testimonials={testimonials} />;

@@ -30,9 +30,7 @@ const Post = () => {
                         <DocumentHead title={post.name} />
 
                         <div className="">
-                            <Link to={`/post/${post.id}`}>
-                                <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
-                            </Link>
+                            <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
                         </div>
 
                         <div className="">
@@ -48,7 +46,7 @@ const Post = () => {
                         </Link>
 
                         <p>
-                            <ReactMarkdown source={post.description} />
+                            Content: <ReactMarkdown source={post.description} />
                         </p>
 
                         <p id="" className="">

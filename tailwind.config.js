@@ -1,5 +1,4 @@
 // const colors = require('tailwindcss/colors')
-
 module.exports = {
   purge: [
     './src/**/*.html',
@@ -13,6 +12,13 @@ module.exports = {
   },
   plugins: [],
   theme: {
+    fontFamily: {
+     'sans': ['ui-sans-serif', 'system-ui'],
+     'serif': ['ui-serif', 'Georgia'],
+     'mono': ['ui-monospace', 'SFMono-Regular'],
+     'bellota': ['bellota'],
+     'roboto': ['roboto'],
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',

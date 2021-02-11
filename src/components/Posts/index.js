@@ -8,13 +8,15 @@ const Posts = ({ posts }) => {
 
     return (
         <React.Fragment>
-            {leftPosts.map((post, index) => {
-                return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
-            })}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop">
+                {leftPosts.map((post, index) => {
+                    return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
+                })}
 
-            {rightPosts.map((post, index) => {
-                return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
-            })}
+                {rightPosts.map((post, index) => {
+                    return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
+                })}
+            </div>
         </React.Fragment>
     );
 };

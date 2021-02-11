@@ -9,9 +9,13 @@ const GetPosts = ({limit}) => {
 
         <React.Fragment>
 
-            <h1>Blog Posts</h1>
+            <div className="container mx-auto py-10">
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <h2 className="section-heading font-bellota text-4xl text-white mb-3">
+                    Blog Posts
+                    <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
+                </h2>
+
                 <Query query={POSTS_QUERY} limit={limit}>
                     {({ data: { posts } }) => {
                       return <Posts posts={posts} />;

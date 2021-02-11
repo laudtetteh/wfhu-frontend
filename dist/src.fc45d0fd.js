@@ -46179,7 +46179,9 @@ var Testimonials = function Testimonials(_ref) {
   var leftTestimonialsCount = Math.ceil(testimonials.length / 5);
   var leftTestimonials = testimonials.slice(0, leftTestimonialsCount);
   var rightTestimonials = testimonials.slice(leftTestimonialsCount, testimonials.length);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, leftTestimonials.map(function (testimonial, i) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "grid grid-cols-1 gap-4 md:grid-cols-4"
+  }, leftTestimonials.map(function (testimonial, i) {
     return /*#__PURE__*/_react.default.createElement(_testimonial.default, {
       testimonial: testimonial,
       key: "testimonial__".concat(testimonial.id)
@@ -46189,7 +46191,7 @@ var Testimonials = function Testimonials(_ref) {
       testimonial: testimonial,
       key: "testimonial__".concat(testimonial.id)
     });
-  }));
+  })));
 };
 
 var _default = Testimonials;
@@ -49754,9 +49756,11 @@ var _testimonials = _interopRequireDefault(require("../../queries/testimonial/te
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Testimonial = function Testimonial() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Testimonials"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "grid grid-cols-1 gap-4 md:grid-cols-4"
-  }, /*#__PURE__*/_react.default.createElement(_Query.default, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container mx-auto"
+  }, /*#__PURE__*/_react.default.createElement("h2", {
+    className: "section-heading font-bellota text-4xl text-red text-center"
+  }, "Testimonials"), /*#__PURE__*/_react.default.createElement(_Query.default, {
     query: _testimonials.default
   }, function (_ref) {
     var testimonials = _ref.data.testimonials;
@@ -56801,30 +56805,23 @@ var Card = function Card(_ref) {
   //     ? post.image.url
   //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
   var imageUrl = post.image.formats.post_loop.url;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: ""
-  }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/post/".concat(post.id)
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/post/".concat(post.id),
+    className: "post-card--image"
   }, _react.default.createElement("img", {
     src: imageUrl,
     alt: imageUrl,
     height: "100",
     className: "w-full"
-  }))), _react.default.createElement("div", {
-    className: ""
-  }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/post/".concat(post.id)
+  })), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/post/".concat(post.id),
+    className: "post-card--title no-underline"
   }, _react.default.createElement("p", {
     id: "name",
-    className: ""
-  }, "Title: ", post.name))), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/category/".concat(post.category.id)
-  }, _react.default.createElement("p", {
+    className: "font-roboto text-lg text-yellow"
+  }, post.name)), _react.default.createElement("p", {
     id: "",
-    className: ""
-  }, "Category: ", post.category.name)), _react.default.createElement("p", {
-    id: "",
-    className: ""
+    className: "post-card--date text-xs text-gray-light italic"
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
@@ -56852,7 +56849,9 @@ var Posts = function Posts(_ref) {
   var leftPostsCount = Math.ceil(posts.length / 5);
   var leftPosts = posts.slice(0, leftPostsCount);
   var rightPosts = posts.slice(leftPostsCount, posts.length);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, leftPosts.map(function (post, index) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
+  }, leftPosts.map(function (post, index) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: index
     }, " ", /*#__PURE__*/_react.default.createElement(_post.default, {
@@ -56866,7 +56865,7 @@ var Posts = function Posts(_ref) {
       post: post,
       key: "post__".concat(post.id)
     }));
-  }));
+  })));
 };
 
 var _default = Posts;
@@ -56910,9 +56909,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var GetPosts = function GetPosts(_ref) {
   var limit = _ref.limit;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Blog Posts"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "grid grid-cols-1 gap-4 md:grid-cols-3"
-  }, /*#__PURE__*/_react.default.createElement(_Query.default, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container mx-auto py-10"
+  }, /*#__PURE__*/_react.default.createElement("h2", {
+    className: "section-heading font-bellota text-4xl text-white mb-3"
+  }, "Blog Posts", /*#__PURE__*/_react.default.createElement("a", {
+    href: "/blog",
+    className: "link-all font-roboto text-base text-yellow underline pl-3"
+  }, "All Posts")), /*#__PURE__*/_react.default.createElement(_Query.default, {
     query: _posts.default,
     limit: limit
   }, function (_ref2) {
@@ -56949,9 +56953,13 @@ var Home = function Home(_ref) {
   var pageBag = _ref.pageBag;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
     title: "Home"
-  }), _react.default.createElement(_Testimonials.default, null), _react.default.createElement(_Posts.default, {
+  }), _react.default.createElement("section", {
+    className: "w-full bg-none"
+  }, _react.default.createElement(_Testimonials.default, null)), _react.default.createElement("section", {
+    className: "w-full stf-bg-3"
+  }, _react.default.createElement(_Posts.default, {
     limit: pageBag.noOfPosts ? pageBag.noOfPosts : 0
-  }));
+  })));
 };
 
 exports.Home = Home;
@@ -66293,14 +66301,12 @@ var Post = function Post() {
       title: post.name
     }), _react.default.createElement("div", {
       className: ""
-    }, _react.default.createElement(_reactRouterDom.Link, {
-      to: "/post/".concat(post.id)
     }, _react.default.createElement("img", {
       src: imageUrl,
       alt: imageUrl,
       height: "100",
       className: "w-full"
-    }))), _react.default.createElement("div", {
+    })), _react.default.createElement("div", {
       className: ""
     }, _react.default.createElement("p", {
       id: "name",
@@ -66310,7 +66316,7 @@ var Post = function Post() {
     }, _react.default.createElement("p", {
       id: "",
       className: ""
-    }, "Category: ", post.category.name)), _react.default.createElement("p", null, _react.default.createElement(_reactMarkdown.default, {
+    }, "Category: ", post.category.name)), _react.default.createElement("p", null, "Content: ", _react.default.createElement(_reactMarkdown.default, {
       source: post.description
     })), _react.default.createElement("p", {
       id: "",
@@ -66534,7 +66540,9 @@ var svgContainer = {
 };
 
 var Header = function Header() {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("nav", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "container mx-auto"
+  }, _react.default.createElement("nav", {
     className: "flex items-center justify-between flex-wrap bg-white py-6 w-full z-10 top-0"
   }, _react.default.createElement("div", {
     className: "flex items-center flex-shrink-0 text-white mr-6"
@@ -66563,7 +66571,7 @@ var Header = function Header() {
     return _react.default.createElement(_main.MainNav, {
       links: topMenu.link
     });
-  })));
+  }))));
 };
 
 exports.Header = Header;
@@ -66604,9 +66612,10 @@ function App() {
   return _react.default.createElement(_react.Suspense, {
     fallback: "Loading..."
   }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    id: "wrapper",
-    className: "container mx-auto"
-  }, _react.default.createElement(_Header.Header, null), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+    id: "wrapper"
+  }, _react.default.createElement("section", {
+    className: "w-full"
+  }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/",
     component: _Pages.Pages
@@ -69741,12 +69750,32 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_colors.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./_settings.css":"assets/css/_settings.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_others.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_custom.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./_settings.css":"assets/css/_settings.css","./_colors.css":"assets/css/_colors.css","./_typography.css":"assets/css/_typography.css","./_others.css":"assets/css/_others.css","./_custom.css":"assets/css/_custom.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -69796,7 +69825,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60352" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60430" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

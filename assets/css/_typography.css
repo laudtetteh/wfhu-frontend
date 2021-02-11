@@ -1,0 +1,31 @@
+/*h1, .h1 {
+    font-size: 48px;
+}
+
+h2, .h2 {
+    font-size: 40px;
+}
+*/
+
+
+/* bellota-text-regular - latin */
+/*@font-face {
+  font-family: 'Bellota Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bellota-text-v2-latin-regular.eot'); */
+  /*src: local(''),*/
+       /*url('../fonts/bellota-text-v2-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/bellota-text-v2-latin-regular.woff2') format('woff2'),
+       url('../fonts/bellota-text-v2-latin-regular.woff') format('woff'),
+       url('../fonts/bellota-text-v2-latin-regular.ttf') format('truetype'),
+       url('../fonts/bellota-text-v2-latin-regular.svg#BellotaText') format('svg');*/
+/*}*/
+
+.font-roboto {
+    font-family: 'Roboto';
+}
+
+.font-bellotta {
+    font-family: 'Bellota', cursive;
+}

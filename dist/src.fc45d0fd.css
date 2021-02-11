@@ -557,6 +557,61 @@ a {
   text-decoration: underline;
 }
 
+.text-red {
+  color: #454F37;
+}
+
+.text-gray-light {
+  color: #707070;
+}
+
+/*h1, .h1 {
+    font-size: 48px;
+}
+
+h2, .h2 {
+    font-size: 40px;
+}
+*/
+
+/* bellota-text-regular - latin */
+
+/*@font-face {
+  font-family: 'Bellota Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bellota-text-v2-latin-regular.eot'); */
+
+/*src: local(''),*/
+
+/*url('../fonts/bellota-text-v2-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/bellota-text-v2-latin-regular.woff2') format('woff2'),
+       url('../fonts/bellota-text-v2-latin-regular.woff') format('woff'),
+       url('../fonts/bellota-text-v2-latin-regular.ttf') format('truetype'),
+       url('../fonts/bellota-text-v2-latin-regular.svg#BellotaText') format('svg');*/
+
+/*}*/
+
+.font-roboto {
+  font-family: 'Roboto';
+}
+
+.font-bellotta {
+  font-family: 'Bellota', cursive;
+}
+
+.stf-bg-1 {
+  background-image: url('/background-1.987eb1b6.png');
+}
+
+.stf-bg-2 {
+  background-image: url('/background-2.6e7bb98d.png');
+}
+
+.stf-bg-3 {
+  background-image: url('/background-3.873c18d8.png');
+}
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -4083,15 +4138,23 @@ a {
 }
 
 .font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  font-family: ui-sans-serif, system-ui
 }
 
 .font-serif {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+  font-family: ui-serif, Georgia
 }
 
 .font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+  font-family: ui-monospace, SFMono-Regular
+}
+
+.font-bellota {
+  font-family: bellota
+}
+
+.font-roboto {
+  font-family: roboto
 }
 
 .font-thin {
@@ -25086,15 +25149,23 @@ a {
   }
 
   .sm\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-family: ui-sans-serif, system-ui
   }
 
   .sm\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+    font-family: ui-serif, Georgia
   }
 
   .sm\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+    font-family: ui-monospace, SFMono-Regular
+  }
+
+  .sm\:font-bellota {
+    font-family: bellota
+  }
+
+  .sm\:font-roboto {
+    font-family: roboto
   }
 
   .sm\:font-thin {
@@ -46046,15 +46117,23 @@ a {
   }
 
   .md\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-family: ui-sans-serif, system-ui
   }
 
   .md\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+    font-family: ui-serif, Georgia
   }
 
   .md\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+    font-family: ui-monospace, SFMono-Regular
+  }
+
+  .md\:font-bellota {
+    font-family: bellota
+  }
+
+  .md\:font-roboto {
+    font-family: roboto
   }
 
   .md\:font-thin {
@@ -67006,15 +67085,23 @@ a {
   }
 
   .lg\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-family: ui-sans-serif, system-ui
   }
 
   .lg\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+    font-family: ui-serif, Georgia
   }
 
   .lg\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+    font-family: ui-monospace, SFMono-Regular
+  }
+
+  .lg\:font-bellota {
+    font-family: bellota
+  }
+
+  .lg\:font-roboto {
+    font-family: roboto
   }
 
   .lg\:font-thin {
@@ -87966,15 +88053,23 @@ a {
   }
 
   .xl\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-family: ui-sans-serif, system-ui
   }
 
   .xl\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+    font-family: ui-serif, Georgia
   }
 
   .xl\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+    font-family: ui-monospace, SFMono-Regular
+  }
+
+  .xl\:font-bellota {
+    font-family: bellota
+  }
+
+  .xl\:font-roboto {
+    font-family: roboto
   }
 
   .xl\:font-thin {
@@ -108926,15 +109021,23 @@ a {
   }
 
   .\32xl\:font-sans {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-family: ui-sans-serif, system-ui
   }
 
   .\32xl\:font-serif {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+    font-family: ui-serif, Georgia
   }
 
   .\32xl\:font-mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+    font-family: ui-monospace, SFMono-Regular
+  }
+
+  .\32xl\:font-bellota {
+    font-family: bellota
+  }
+
+  .\32xl\:font-roboto {
+    font-family: roboto
   }
 
   .\32xl\:font-thin {
