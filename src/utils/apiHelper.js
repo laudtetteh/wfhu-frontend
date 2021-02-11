@@ -1,3 +1,9 @@
+// Packages
+import React from 'react';
+// Queries
+// import SITEOPTIONS_QUERY from "../../queries/site-options";
+// import Query from "../../components/Query";
+
 export const getPageData = props => {
 
     let pageData = {};

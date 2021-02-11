@@ -19,14 +19,14 @@ const Card = ({ post }) => {
             </Link>
 
 
-            <Link to={`/post/${post.id}`} className="card-post--title no-underline">
-                <p id="name" className="font-roboto text-lg text-yellow">
+            <Link to={`/post/${post.id}`} className="card-post--title font-roboto no-underline">
+                <p id="name" className="font-roboto text-base text-yellow">
                     {post.name}
                 </p>
             </Link>
 
 
-            <p id="" className="card-post--date text-xs text-gray-light italic">
+            <p id="" className="card-post--date font-roboto text-xs text-gray-light italic">
                 <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
             </p>
 

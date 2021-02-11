@@ -5,16 +5,19 @@ import { About } from '../About';
 import { Blog } from '../Blog';
 import { Contact } from '../Contact';
 import { NotFound } from '../NotFound';
+// Queries
 import Query from "../../components/Query";
 import PAGES_QUERY from "../../queries/page/pages";
+import SITEOPTIONS_QUERY from "../../queries/site-options";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
-import { getPageData } from '../../utils/getPageData';
+import { getPageData } from '../../utils/apiHelper';
 
 export const Pages = (props) => {
     // Remove all slashes from path
     let path = props.location.pathname.replace(/^\/|\/$/g, '');
     let pageBag;
+
 
     if(path === '' ) {
         path='home';

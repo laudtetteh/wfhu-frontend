@@ -8,7 +8,7 @@ import { DocumentHead } from '../../utils/helpers';
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
 
 export const Home = ({pageBag}) => {
-
+// console.log(siteOptions);
     return (
         <React.Fragment>
 

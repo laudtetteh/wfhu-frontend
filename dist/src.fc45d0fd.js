@@ -53178,12 +53178,12 @@ var Card = function Card(_ref) {
   })), _react.default.createElement("div", {
     className: ""
   }, _react.default.createElement("p", {
-    className: "card-testimonial-description text-base mt-3 mb-3"
+    className: "card-testimonial-description text-base font-roboto font-medium mt-3 mb-3"
   }, _react.default.createElement(_helpers.TrimText, {
     text: testimonial.description,
     limit: "40"
   })), _react.default.createElement("p", {
-    className: "card-testimonial-name text-base italic"
+    className: "card-testimonial-name text-base font-roboto italic"
   }, "- ", testimonial.name))));
 };
 
@@ -56830,13 +56830,13 @@ var Card = function Card(_ref) {
     className: "w-full"
   })), _react.default.createElement(_reactRouterDom.Link, {
     to: "/post/".concat(post.id),
-    className: "card-post--title no-underline"
+    className: "card-post--title font-roboto no-underline"
   }, _react.default.createElement("p", {
     id: "name",
-    className: "font-roboto text-lg text-yellow"
+    className: "font-roboto text-base text-yellow"
   }, post.name)), _react.default.createElement("p", {
     id: "",
-    className: "card-post--date text-xs text-gray-light italic"
+    className: "card-post--date font-roboto text-xs text-gray-light italic"
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
@@ -56958,15 +56958,46 @@ var ConnectCTA = function ConnectCTA() {
     className: "section-heading font-bellota text-2xl text-white mb-3"
   }, "Content Heading"), _react.default.createElement("p", {
     className: "section-heading font-roboto text-base text-white mb-3"
-  }, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."), _react.default.createElement("button", {
-    class: "bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right  "
-  }, "Big Fat Button!")), _react.default.createElement("div", {
-    className: "mx-auto"
+  }, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."), _react.default.createElement("a", {
+    href: "#",
+    className: "bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline"
+  }, "BIG FAT BUTTON!")), _react.default.createElement("div", {
+    className: "float-right"
   }, _react.default.createElement("h3", {
-    className: "section-heading font-bellota text-2xl text-gray mb-3"
-  }, "Connect with me!"), _react.default.createElement("ul", null, _react.default.createElement("li", null, _react.default.createElement("i", {
-    className: "fa fa-facebook"
-  }))))));
+    className: "section-heading font-bellota text-2xl text-gray mb-3 float-right"
+  }, "Connect with me!"), _react.default.createElement("ul", {
+    className: "block float-right clear-both"
+  }, _react.default.createElement("li", {
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0"
+  }, _react.default.createElement("a", {
+    href: "https://www.youtube.com"
+  }, _react.default.createElement("i", {
+    className: "fab fa-youtube bg-none text-blue-light text-lg"
+  }))), _react.default.createElement("li", {
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
+  }, _react.default.createElement("a", {
+    href: "https://www.instagram.com"
+  }, _react.default.createElement("i", {
+    className: "fab fa-instagram bg-none text-blue-light text-lg"
+  }))), _react.default.createElement("li", {
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
+  }, _react.default.createElement("a", {
+    href: "https://www.facebook.com"
+  }, _react.default.createElement("i", {
+    className: "fab fa-facebook-f bg-none text-blue-light text-lg"
+  }))), _react.default.createElement("li", {
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
+  }, _react.default.createElement("a", {
+    href: "https://www.linkedin.com"
+  }, _react.default.createElement("i", {
+    className: "fab fa-linkedin bg-none text-blue-light text-lg"
+  }))), _react.default.createElement("li", {
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
+  }, _react.default.createElement("a", {
+    href: "https://www.twitter.com"
+  }, _react.default.createElement("i", {
+    className: "fab fa-twitter bg-none text-blue-light text-lg"
+  })))))));
 };
 
 exports.ConnectCTA = ConnectCTA;
@@ -56995,6 +57026,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 var Home = function Home(_ref) {
   var pageBag = _ref.pageBag;
+  // console.log(siteOptions);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
     title: "Home"
   }), _react.default.createElement("section", {
@@ -57200,7 +57232,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n                __typename\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n            published_at\n        }\n    }\n"])));
 var _default = PAGES_QUERY;
 exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/src/index.js"}],"src/utils/getPageData.js":[function(require,module,exports) {
+},{"graphql-tag":"node_modules/graphql-tag/src/index.js"}],"src/utils/apiHelper.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57208,6 +57240,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getPageData = void 0;
 
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Queries
+// import SITEOPTIONS_QUERY from "../../queries/site-options";
+// import Query from "../../components/Query";
 var getPageData = function getPageData(props) {
   var pageData = {};
 
@@ -57223,7 +57263,7 @@ var getPageData = function getPageData(props) {
 };
 
 exports.getPageData = getPageData;
-},{}],"src/containers/Pages/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/containers/Pages/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57249,11 +57289,12 @@ var _pages = _interopRequireDefault(require("../../queries/page/pages"));
 
 var _helpers = require("../../utils/helpers");
 
-var _getPageData = require("../../utils/getPageData");
+var _apiHelper = require("../../utils/apiHelper");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Page Containers
+// Queries
 // Utilities
 var Pages = function Pages(props) {
   // Remove all slashes from path
@@ -57269,7 +57310,7 @@ var Pages = function Pages(props) {
     slug: path
   }, function (_ref) {
     var pages = _ref.data.pages;
-    pageBag = (0, _getPageData.getPageData)(pages[0]); // Determine which page to query from the API
+    pageBag = (0, _apiHelper.getPageData)(pages[0]); // Determine which page to query from the API
 
     {
       switch (path) {
@@ -57311,7 +57352,7 @@ var Pages = function Pages(props) {
 };
 
 exports.Pages = Pages;
-},{"react":"node_modules/react/index.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../NotFound":"src/containers/NotFound/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx","../../utils/getPageData":"src/utils/getPageData.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../NotFound":"src/containers/NotFound/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -66534,13 +66575,13 @@ var MainNav = function MainNav(_ref) {
     className: "list-reset lg:flex justify-end flex-1 items-center"
   }, links.map(function (link, index) {
     return /*#__PURE__*/_react.default.createElement("li", {
-      className: "mr-3",
+      className: "stf-nav-list-item mr-3 last:mr-0",
       key: index
     }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
       exact: true,
       to: link.path,
       name: link.label,
-      className: "inline-block text-gray-600 no-underline hover:text-gray hover:text-underline py-2 px-4",
+      className: "stf-nav-list-item-link inline-block font-roboto text-gray-600 no-underline hover:text-gray hover:text-underline py-2 px-4",
       activeClassName: "current"
     }, link.label));
   }))));
@@ -66549,7 +66590,7 @@ var MainNav = function MainNav(_ref) {
 exports.MainNav = MainNav;
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"assets/images/logo.svg":[function(require,module,exports) {
 module.exports = "/logo.d714b74f.svg";
-},{}],"src/queries/top-menu/top-menu.js":[function(require,module,exports) {
+},{}],"src/queries/top-menu/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -66586,7 +66627,7 @@ var _main = require("../Nav/main");
 
 var _logo = _interopRequireDefault(require("../../../assets/images/logo.svg"));
 
-var _topMenu = _interopRequireDefault(require("../../queries/top-menu/top-menu"));
+var _topMenu = _interopRequireDefault(require("../../queries/top-menu"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66634,7 +66675,7 @@ var Header = function Header() {
 };
 
 exports.Header = Header;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu/top-menu":"src/queries/top-menu/top-menu.js"}],"src/containers/App/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/containers/App/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69804,27 +69845,27 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"assets/css/_settings.css":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/@fortawesome/fontawesome-free/css/all.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_colors.css":[function(require,module,exports) {
+},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_settings.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/@fortawesome/fontawesome-free/css/all.css":[function(require,module,exports) {
+},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_colors.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_others.css":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_others.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -69889,7 +69930,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60430" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49729" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

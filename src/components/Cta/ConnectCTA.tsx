@@ -15,15 +15,41 @@ export const ConnectCTA = () => {
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                     </p>
 
-                    <button class="bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right  ">
-                        Big Fat Button!
-                    </button>
+                    <a href="#" className="bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline">
+                        BIG FAT BUTTON!
+                    </a>
                 </div>
 
-                <div className="mx-auto">
-                    <h3 className="section-heading font-bellota text-2xl text-gray mb-3">Connect with me!</h3>
-                    <ul>
-                        <li><i className="fa fa-facebook"></i></li>
+                <div className="float-right">
+
+                    <h3 className="section-heading font-bellota text-2xl text-gray mb-3 float-right">Connect with me!</h3>
+
+                    <ul className="block float-right clear-both">
+                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0">
+                            <a href="https://www.youtube.com">
+                                <i className="fab fa-youtube bg-none text-blue-light text-lg"></i>
+                            </a>
+                        </li>
+                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
+                            <a href="https://www.instagram.com">
+                                <i className="fab fa-instagram bg-none text-blue-light text-lg"></i>
+                            </a>
+                        </li>
+                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
+                            <a href="https://www.facebook.com">
+                                <i className="fab fa-facebook-f bg-none text-blue-light text-lg"></i>
+                            </a>
+                        </li>
+                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
+                            <a href="https://www.linkedin.com">
+                                <i className="fab fa-linkedin bg-none text-blue-light text-lg"></i>
+                            </a>
+                        </li>
+                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
+                            <a href="https://www.twitter.com">
+                                <i className="fab fa-twitter bg-none text-blue-light text-lg"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 

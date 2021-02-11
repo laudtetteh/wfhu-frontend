@@ -12,11 +12,11 @@ const MainNav = ({links}) => {
                     {links.map((link, index) => {
 
                         return (
-                            <li className="mr-3" key={index}>
+                            <li className="stf-nav-list-item mr-3 last:mr-0" key={index}>
                                 <NavLink exact
                                     to={link.path}
                                     name={link.label}
-                                    className="inline-block text-gray-600 no-underline hover:text-gray hover:text-underline py-2 px-4"
+                                    className="stf-nav-list-item-link inline-block font-roboto text-gray-600 no-underline hover:text-gray hover:text-underline py-2 px-4"
                                     activeClassName="current">
 
                                   {link.label}

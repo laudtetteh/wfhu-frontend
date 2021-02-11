@@ -8,7 +8,7 @@ import { MainNav } from "../Nav/main";
 // Assets
 import logo from '../../../assets/images/logo.svg'
 // Queries
-import TOPMENU_QUERY from "../../queries/top-menu/top-menu";
+import TOPMENU_QUERY from "../../queries/top-menu";
 
 const svgContainer: CSS.Properties = {
     maxWidth: '400px'
