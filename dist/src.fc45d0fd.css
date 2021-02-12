@@ -5236,6 +5236,10 @@ h2, .h2 {
   background-image: url('/background-3.873c18d8.png');
 }
 
+.intro-section-image {
+  background-image: url('/intro-section-image.d39635c3.png');
+}
+
 .stf-nav-list-item:last-child .stf-nav-list-item-link {
   padding-right: 0;
 }

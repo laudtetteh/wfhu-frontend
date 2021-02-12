@@ -6,6 +6,7 @@ import Posts from '../Posts';
 import { DocumentHead } from '../../utils/helpers';
 // Components
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
+import { IntroCTA } from '../../components/Cta/IntroCTA';
 
 export const Home = ({pageBag}) => {
 // console.log(siteOptions);
@@ -14,6 +15,15 @@ export const Home = ({pageBag}) => {
 
             <DocumentHead title="Home"/>
 
+            <section className="w-full stf-bg-1 section-connect-cta">
+
+                <div className="container">
+
+                    <IntroCTA />
+
+                </div>
+
+            </section>
 
             <section className="w-full stf-bg-2 section-connect-cta">
 
@@ -24,7 +34,6 @@ export const Home = ({pageBag}) => {
                 </div>
 
             </section>
-
 
             <section className="w-full bg-none">
 

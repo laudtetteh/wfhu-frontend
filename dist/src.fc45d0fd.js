@@ -57001,6 +57001,33 @@ var ConnectCTA = function ConnectCTA() {
 };
 
 exports.ConnectCTA = ConnectCTA;
+},{"react":"node_modules/react/index.js"}],"src/components/Cta/IntroCTA.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.IntroCTA = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var IntroCTA = function IntroCTA() {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "grid grid-cols-1 gap-4 md:grid-cols-2"
+  }, _react.default.createElement("div", {
+    className: "mx-auto  mx-auto py-12"
+  }, _react.default.createElement("h3", {
+    className: "section-heading font-bellota text-2xl text-gray mb-3"
+  }, "Zoom like a pro!"), _react.default.createElement("p", {
+    className: "section-heading font-roboto text-base text-gray mb-3"
+  }, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."), _react.default.createElement("p", null, "Get notified when I publish something new")), _react.default.createElement("div", {
+    className: "float-right intro-section-image bg-cover bg-no-repeat"
+  })));
+};
+
+exports.IntroCTA = IntroCTA;
 },{"react":"node_modules/react/index.js"}],"src/containers/Home/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -57019,6 +57046,8 @@ var _helpers = require("../../utils/helpers");
 
 var _ConnectCTA = require("../../components/Cta/ConnectCTA");
 
+var _IntroCTA = require("../../components/Cta/IntroCTA");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
@@ -57030,6 +57059,10 @@ var Home = function Home(_ref) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
     title: "Home"
   }), _react.default.createElement("section", {
+    className: "w-full stf-bg-1 section-connect-cta"
+  }, _react.default.createElement("div", {
+    className: "container"
+  }, _react.default.createElement(_IntroCTA.IntroCTA, null))), _react.default.createElement("section", {
     className: "w-full stf-bg-2 section-connect-cta"
   }, _react.default.createElement("div", {
     className: "container mx-auto py-12"
@@ -57054,7 +57087,7 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69875,7 +69908,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
+},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/intro-section-image.png":[["intro-section-image.d39635c3.png","assets/images/intro-section-image.png"],"assets/images/intro-section-image.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -69930,7 +69963,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49729" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49790" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

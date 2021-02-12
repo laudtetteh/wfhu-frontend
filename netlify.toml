@@ -15,5 +15,5 @@
 [context.branch-deploy]
   publish = "/dist"
   command = "yarn build"
-  environment = { REACT_APP_API_URL = "https://wfhu-backend-prod.studiotenfour.biz", NODE_VERSION = "14.15.4", NPM_VERSION = "6.14.10" }
+  environment = { REACT_APP_API_URL = "https://wfhu-backend-staging.studiotenfour.biz", NODE_VERSION = "14.15.4", NPM_VERSION = "6.14.10" }
 
