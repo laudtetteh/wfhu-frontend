@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const TESTIMONIALS_QUERY = gql`
-    query Testimonials {
-        testimonials(limit: 4) {
+    query Testimonials($limit: Int!)  {
+        testimonials(limit: $limit) {
             id
             name
             description

@@ -11,7 +11,7 @@ const GetPosts = ({limit}) => {
 
             <Query query={POSTS_QUERY} limit={limit}>
                 {({ data: { posts } }) => {
-                  return <Posts posts={posts} />;
+                    return <Posts posts={posts} />;
                 }}
             </Query>
 

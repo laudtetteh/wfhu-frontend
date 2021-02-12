@@ -3,13 +3,13 @@ import Testimonials from "../../components/Testimonials";
 import Query from "../../components/Query";
 import TESTIMONIALS_QUERY from "../../queries/testimonial/testimonials";
 
-const Testimonial = () => {
+const Testimonial = ({limit}) => {
 
     return (
 
         <React.Fragment>
 
-            <Query query={TESTIMONIALS_QUERY}>
+            <Query query={TESTIMONIALS_QUERY} limit={limit}>
                 {({ data: { testimonials } }) => {
                     return <Testimonials testimonials={testimonials} />;
                 }}

@@ -41,7 +41,7 @@ export const Home = ({pageBag}) => {
 
                     <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Testimonials</h2>
 
-                    <Testimonials />
+                    <Testimonials limit={4} />
 
                 </div>
 
@@ -56,7 +56,7 @@ export const Home = ({pageBag}) => {
                         <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
                     </h2>
 
-                    <Posts limit={pageBag.noOfPosts ? pageBag.noOfPosts : 0}/>
+                    <Posts limit={3}/>
                 </div>
 
             </section>

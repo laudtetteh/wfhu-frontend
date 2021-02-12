@@ -3,6 +3,7 @@ module.exports = {
   purge: [
     './src/**/*.html',
     './src/**/*.tsx',
+    './src/**/*.js',
   ],
   darkMode: false,
   variants: {
