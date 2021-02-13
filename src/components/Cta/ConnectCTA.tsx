@@ -27,27 +27,27 @@ export const ConnectCTA = () => {
                     <ul className="block float-right clear-both">
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0">
                             <a href="https://www.youtube.com">
-                                <i className="fab fa-youtube bg-none text-blue-light text-lg"></i>
+                                <i className="fab fa-youtube bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
                             <a href="https://www.instagram.com">
-                                <i className="fab fa-instagram bg-none text-blue-light text-lg"></i>
+                                <i className="fab fa-instagram bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
                             <a href="https://www.facebook.com">
-                                <i className="fab fa-facebook-f bg-none text-blue-light text-lg"></i>
+                                <i className="fab fa-facebook-f bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
                             <a href="https://www.linkedin.com">
-                                <i className="fab fa-linkedin bg-none text-blue-light text-lg"></i>
+                                <i className="fab fa-linkedin bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
                             <a href="https://www.twitter.com">
-                                <i className="fab fa-twitter bg-none text-blue-light text-lg"></i>
+                                <i className="fab fa-twitter bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                     </ul>

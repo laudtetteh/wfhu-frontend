@@ -22,26 +22,31 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      current: 'currentColor',
-      yellow: {
-        // light: '#EDE784',
-        DEFAULT: '#EDE784',
-        // dark: '#EDE784',
-      },
+      black: '#000',
+      white: '#fff',
       red: {
-        // light: '#C9263D',
         DEFAULT: '#C9263D',
-        // dark: '#C9263D',
-      },
-      white: {
-        DEFAULT: '#FFFFFF',
-      },
-      black: {
-        DEFAULT: '#000000',
+        100: '#',
+        300: '#',
+        600: '#C9263D',
       },
       gray: {
-        light: '#90AFB6',
         DEFAULT: '#186070',
+        100: '#',
+        300: '#90AFB6',
+        600: '#186070',
+      },
+      yellow: {
+        DEFAULT: '#EDE784',
+        100: '#',
+        300: '#',
+        600: '#EDE784',
+      },
+      blue: {
+        DEFAULT: '#3AA9CB',
+        100: '#A9DDED',
+        300: '#8EC8DF',
+        600: '#3AA9CB',
       },
     },
     screens: {

@@ -73695,7 +73695,7 @@ var Card = function Card(_ref) {
     className: "font-roboto text-base text-yellow"
   }, post.name)), _react.default.createElement("p", {
     id: "",
-    className: "card-post--date font-roboto text-xs text-gray-light italic"
+    className: "card-post--date font-roboto text-xs text-blue-100 italic"
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
@@ -73831,31 +73831,31 @@ var ConnectCTA = function ConnectCTA() {
   }, _react.default.createElement("a", {
     href: "https://www.youtube.com"
   }, _react.default.createElement("i", {
-    className: "fab fa-youtube bg-none text-blue-light text-lg"
+    className: "fab fa-youtube bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
     href: "https://www.instagram.com"
   }, _react.default.createElement("i", {
-    className: "fab fa-instagram bg-none text-blue-light text-lg"
+    className: "fab fa-instagram bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
     href: "https://www.facebook.com"
   }, _react.default.createElement("i", {
-    className: "fab fa-facebook-f bg-none text-blue-light text-lg"
+    className: "fab fa-facebook-f bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
     href: "https://www.linkedin.com"
   }, _react.default.createElement("i", {
-    className: "fab fa-linkedin bg-none text-blue-light text-lg"
+    className: "fab fa-linkedin bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
     href: "https://www.twitter.com"
   }, _react.default.createElement("i", {
-    className: "fab fa-twitter bg-none text-blue-light text-lg"
+    className: "fab fa-twitter bg-none text-blue-100 text-lg"
   })))))));
 };
 
@@ -97956,12 +97956,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_colors.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
+},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -97986,7 +97981,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./_settings.css":"assets/css/_settings.css","./_colors.css":"assets/css/_colors.css","./_typography.css":"assets/css/_typography.css","./_others.css":"assets/css/_others.css","./_custom.css":"assets/css/_custom.css","./_responsive.css":"assets/css/_responsive.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
+},{"./_settings.css":"assets/css/_settings.css","./_typography.css":"assets/css/_typography.css","./_others.css":"assets/css/_others.css","./_custom.css":"assets/css/_custom.css","./_responsive.css":"assets/css/_responsive.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -98036,7 +98031,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51616" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52774" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

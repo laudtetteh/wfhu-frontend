@@ -26,7 +26,7 @@ const Card = ({ post }) => {
             </Link>
 
 
-            <p id="" className="card-post--date font-roboto text-xs text-gray-light italic">
+            <p id="" className="card-post--date font-roboto text-xs text-blue-100 italic">
                 <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
             </p>
 
