@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const ConnectCTA = () => {
-
+export const ConnectCTA = ({siteOptions}) => {
 
     return (
+
         <React.Fragment>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop">
@@ -26,27 +26,27 @@ export const ConnectCTA = () => {
 
                     <ul className="block float-right clear-both">
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0">
-                            <a href="https://www.youtube.com">
+                            <a href={siteOptions.social.youtube}>
                                 <i className="fab fa-youtube bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href="https://www.instagram.com">
+                            <a href={siteOptions.social.instagram}>
                                 <i className="fab fa-instagram bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href="https://www.facebook.com">
+                            <a href={siteOptions.social.facebook}>
                                 <i className="fab fa-facebook-f bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href="https://www.linkedin.com">
+                            <a href={siteOptions.social.linkedin}>
                                 <i className="fab fa-linkedin bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href="https://www.twitter.com">
+                            <a href={siteOptions.social.twitter}>
                                 <i className="fab fa-twitter bg-none text-blue-100 text-lg"></i>
                             </a>
                         </li>

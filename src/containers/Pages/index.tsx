@@ -8,16 +8,14 @@ import { NotFound } from '../NotFound';
 // Queries
 import Query from "../../components/Query";
 import PAGES_QUERY from "../../queries/page/pages";
-import SITEOPTIONS_QUERY from "../../queries/site-options";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
 
-export const Pages = (props) => {
+export const Pages = props => {
     // Remove all slashes from path
     let path = props.location.pathname.replace(/^\/|\/$/g, '');
     let pageBag;
-
 
     if(path === '' ) {
         path='home';
@@ -35,31 +33,34 @@ export const Pages = (props) => {
                 {switch (path) {
 
                     case 'home':
+
                         return (
+
                             <React.Fragment>
                                 <DocumentHead title="Home" />
-                                <Home pageBag={pageBag} />
+                                <Home pageBag={pageBag} siteOptions={props.siteOptions} />
                             </React.Fragment>
                         )
+
                     case 'about':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="About" />
-                                <About pageBag={pageBag} />
+                                <About pageBag={pageBag} siteOptions={props.siteOptions} />
                             </React.Fragment>
                         )
                     case 'blog':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="Blog" />
-                                <Blog pageBag={pageBag} />
+                                <Blog pageBag={pageBag} siteOptions={props.siteOptions} />
                             </React.Fragment>
                         )
                     case 'contact':
                         return (
                             <React.Fragment>
                                 <DocumentHead title="Contact" />
-                                <Contact pageBag={pageBag} />
+                                <Contact pageBag={pageBag} siteOptions={props.siteOptions} />
                             </React.Fragment>
                         )
 

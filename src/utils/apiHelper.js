@@ -20,3 +20,14 @@ export const getPageData = props => {
 
     return pageData;
 }
+
+export const getSiteOptions = props => {
+
+    let optionsData = {};
+
+    if( props.social !== undefined ) {
+        optionsData["social"] = props.social;
+    }
+
+    return optionsData;
+}

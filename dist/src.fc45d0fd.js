@@ -73808,7 +73808,8 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ConnectCTA = function ConnectCTA() {
+var ConnectCTA = function ConnectCTA(_ref) {
+  var siteOptions = _ref.siteOptions;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop"
   }, _react.default.createElement("div", {
@@ -73829,31 +73830,31 @@ var ConnectCTA = function ConnectCTA() {
   }, _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0"
   }, _react.default.createElement("a", {
-    href: "https://www.youtube.com"
+    href: siteOptions.social.youtube
   }, _react.default.createElement("i", {
     className: "fab fa-youtube bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
-    href: "https://www.instagram.com"
+    href: siteOptions.social.instagram
   }, _react.default.createElement("i", {
     className: "fab fa-instagram bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
-    href: "https://www.facebook.com"
+    href: siteOptions.social.facebook
   }, _react.default.createElement("i", {
     className: "fab fa-facebook-f bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
-    href: "https://www.linkedin.com"
+    href: siteOptions.social.linkedin
   }, _react.default.createElement("i", {
     className: "fab fa-linkedin bg-none text-blue-100 text-lg"
   }))), _react.default.createElement("li", {
     className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3"
   }, _react.default.createElement("a", {
-    href: "https://www.twitter.com"
+    href: siteOptions.social.twitter
   }, _react.default.createElement("i", {
     className: "fab fa-twitter bg-none text-blue-100 text-lg"
   })))))));
@@ -84989,8 +84990,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Containers
 // Components
 var Home = function Home(_ref) {
-  var pageBag = _ref.pageBag;
-  // console.log(siteOptions);
+  var pageBag = _ref.pageBag,
+      siteOptions = _ref.siteOptions;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
     title: "Home"
   }), _react.default.createElement("section", {
@@ -85001,7 +85002,9 @@ var Home = function Home(_ref) {
     className: "w-full stf-bg-2 section-connect-cta"
   }, _react.default.createElement("div", {
     className: "container mx-auto py-12"
-  }, _react.default.createElement(_ConnectCTA.ConnectCTA, null))), _react.default.createElement("section", {
+  }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
+    siteOptions: siteOptions
+  }))), _react.default.createElement("section", {
     className: "w-full bg-none"
   }, _react.default.createElement("div", {
     className: "container mx-auto py-12 section-testimonials"
@@ -85208,7 +85211,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPageData = void 0;
+exports.getSiteOptions = exports.getPageData = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -85233,6 +85236,18 @@ var getPageData = function getPageData(props) {
 };
 
 exports.getPageData = getPageData;
+
+var getSiteOptions = function getSiteOptions(props) {
+  var optionsData = {};
+
+  if (props.social !== undefined) {
+    optionsData["social"] = props.social;
+  }
+
+  return optionsData;
+};
+
+exports.getSiteOptions = getSiteOptions;
 },{"react":"node_modules/react/index.js"}],"src/containers/Pages/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -85288,28 +85303,32 @@ var Pages = function Pages(props) {
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "Home"
           }), _react.default.createElement(_Home.Home, {
-            pageBag: pageBag
+            pageBag: pageBag,
+            siteOptions: props.siteOptions
           }));
 
         case 'about':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "About"
           }), _react.default.createElement(_About.About, {
-            pageBag: pageBag
+            pageBag: pageBag,
+            siteOptions: props.siteOptions
           }));
 
         case 'blog':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "Blog"
           }), _react.default.createElement(_Blog.Blog, {
-            pageBag: pageBag
+            pageBag: pageBag,
+            siteOptions: props.siteOptions
           }));
 
         case 'contact':
           return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
             title: "Contact"
           }), _react.default.createElement(_Contact.Contact, {
-            pageBag: pageBag
+            pageBag: pageBag,
+            siteOptions: props.siteOptions
           }));
 
         default:
@@ -94641,7 +94660,26 @@ var Header = function Header() {
 };
 
 exports.Header = Header;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/containers/App/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var SITEOPTIONS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query SiteOptions {\n        siteOption {\n            id\n            social {\n                youtube\n                instagram\n                facebook\n                linkedin\n                twitter\n            }\n        }\n    }\n"])));
+var _default = SITEOPTIONS_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/App/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94665,6 +94703,12 @@ var _Header = require("../../components/Header");
 
 var _helpers = require("../../utils/helpers");
 
+var _apiHelper = require("../../utils/apiHelper");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _siteOptions = _interopRequireDefault(require("../../queries/site-options"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -94674,47 +94718,76 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // Packages
 // Pages Container
 // Components
+// Queries
 function App() {
-  return _react.default.createElement(_react.Suspense, {
-    fallback: "Loading..."
-  }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    id: "wrapper"
-  }, _react.default.createElement("section", {
-    className: "w-full"
-  }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/",
-    component: _Pages.Pages
-  }), _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/about",
-    component: _Pages.Pages
-  }), _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/blog",
-    component: _Pages.Pages
-  }), _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/contact",
-    component: _Pages.Pages
-  }), _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/post/:id",
-    component: _Post.default
-  }), _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/category/:id",
-    component: _Category.default
-  }), _react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/categories",
-    component: _Categories.default
-  }))), _react.default.createElement(_helpers.FooterScripts, null))));
+  var siteOptions;
+  return _react.default.createElement(_Query.default, {
+    query: _siteOptions.default
+  }, function (_ref) {
+    var siteOption = _ref.data.siteOption;
+    siteOptions = (0, _apiHelper.getSiteOptions)(siteOption);
+    return _react.default.createElement(_react.Suspense, {
+      fallback: "Loading..."
+    }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+      id: "wrapper"
+    }, _react.default.createElement("section", {
+      className: "w-full"
+    }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+      path: '/',
+      render: function render(props) {
+        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }), _react.default.createElement(_reactRouterDom.Route, {
+      path: '/about',
+      render: function render(props) {
+        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }), _react.default.createElement(_reactRouterDom.Route, {
+      path: '/blog',
+      render: function render(props) {
+        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }), _react.default.createElement(_reactRouterDom.Route, {
+      path: '/contact',
+      render: function render(props) {
+        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }), _react.default.createElement(_reactRouterDom.Route, {
+      path: '/post/:id',
+      render: function render(props) {
+        return _react.default.createElement(_Post.default, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }), _react.default.createElement(_reactRouterDom.Route, {
+      path: '/category/:id',
+      render: function render(props) {
+        return _react.default.createElement(_Category.default, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }), _react.default.createElement(_reactRouterDom.Route, {
+      path: '/categories',
+      render: function render(props) {
+        return _react.default.createElement(_Categories.default, Object.assign({}, props, {
+          siteOptions: siteOptions
+        }));
+      }
+    }))), _react.default.createElement(_helpers.FooterScripts, null))));
+  });
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Pages":"src/containers/Pages/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Pages":"src/containers/Pages/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98016,7 +98089,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53494" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56171" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

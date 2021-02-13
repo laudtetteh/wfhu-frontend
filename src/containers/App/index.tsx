@@ -13,43 +13,105 @@ import Categories from "../../containers/Categories";
 // Components
 import { Header } from '../../components/Header';
 import { FooterScripts } from '../../utils/helpers';
+import { getSiteOptions } from '../../utils/apiHelper';
+// Queries
+import Query from "../../components/Query";
+import SITEOPTIONS_QUERY from "../../queries/site-options";
 
 function App() {
 
-    return (
+    let siteOptions;
 
-        <Suspense fallback="Loading...">
+    return(
 
-            <Router>
+        <Query query={SITEOPTIONS_QUERY}>
 
-                <React.Fragment>
+            {({ data: { siteOption } }) => {
 
-                    <div id="wrapper">
+                siteOptions = getSiteOptions(siteOption);
 
-                        <section className="w-full">
-                            <Header />
-                        </section>
+                return (
 
-                        <Switch>
-                            <Route exact path="/" component={Pages} />
-                            <Route exact path="/about" component={Pages} />
-                            <Route exact path="/blog" component={Pages} />
-                            <Route exact path="/contact" component={Pages} />
-                            <Route exact path="/post/:id" component={Post} />
-                            <Route exact path="/category/:id" component={Category} />
-                            <Route exact path="/categories" component={Categories} />
-                        </Switch>
+                    <Suspense fallback="Loading...">
 
-                    </div>
+                        <Router>
 
-                    <FooterScripts />
+                            <React.Fragment>
 
-                </React.Fragment>
+                                <div id="wrapper">
 
-            </Router>
+                                    <section className="w-full">
+                                        <Header />
+                                    </section>
 
-        </Suspense>
-    );
+                                    <Switch>
+
+                                        <Route
+                                            path='/'
+                                            render={(props) => (
+                                                <Pages {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/about'
+                                            render={(props) => (
+                                                <Pages {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/blog'
+                                            render={(props) => (
+                                                <Pages {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/contact'
+                                            render={(props) => (
+                                                <Pages {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/post/:id'
+                                            render={(props) => (
+                                                <Post {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/category/:id'
+                                            render={(props) => (
+                                                <Category {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/categories'
+                                            render={(props) => (
+                                                <Categories {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                    </Switch>
+
+                                </div>
+
+                                <FooterScripts />
+
+                            </React.Fragment>
+
+                        </Router>
+
+                    </Suspense>
+                )
+            }}
+
+        </Query>
+
+    )
 }
 
 export default App;

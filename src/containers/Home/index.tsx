@@ -8,9 +8,10 @@ import { DocumentHead } from '../../utils/helpers';
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
 import { IntroCTA } from '../../components/Cta/IntroCTA';
 
-export const Home = ({pageBag}) => {
-// console.log(siteOptions);
+export const Home = ({pageBag, siteOptions}) => {
+
     return (
+
         <React.Fragment>
 
             <DocumentHead title="Home"/>
@@ -29,7 +30,7 @@ export const Home = ({pageBag}) => {
 
                 <div className="container mx-auto py-12">
 
-                    <ConnectCTA />
+                    <ConnectCTA siteOptions={siteOptions} />
 
                 </div>
 
