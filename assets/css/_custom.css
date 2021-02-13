@@ -17,3 +17,8 @@
 .stf-nav-list-item:last-child .stf-nav-list-item-link {
     padding-right: 0;
 }
+
+.site-logo-container {
+    max-width: 450px;
+    width: 100%;
+}

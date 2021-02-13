@@ -29,3 +29,11 @@ h2, .h2 {
 .font-bellotta {
     font-family: 'Bellota', cursive;
 }
+
+.stf-text-shadow-white-top-left {
+    text-shadow: -1px -1px 0px rgba(255, 255, 255);
+}
+
+.stf-text-shadow-gray-bottom-right {
+    text-shadow: 1px 1px 0px rgb(24, 96, 112);
+}

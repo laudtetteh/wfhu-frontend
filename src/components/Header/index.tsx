@@ -1,7 +1,6 @@
 // Packages
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
-import CSS from 'csstype';
 // Components
 import Query from "../../components/Query";
 import { MainNav } from "../Nav/main";
@@ -9,10 +8,6 @@ import { MainNav } from "../Nav/main";
 import logo from '../../../assets/images/logo.svg'
 // Queries
 import TOPMENU_QUERY from "../../queries/top-menu";
-
-const svgContainer: CSS.Properties = {
-    maxWidth: '400px'
-};
 
 export const Header = () => {
 
@@ -22,7 +17,7 @@ export const Header = () => {
             <div className="container mx-auto">
                 <nav className="flex items-center justify-between flex-wrap bg-white py-6 w-full z-10 top-0">
 
-                    <div className="flex items-center flex-shrink-0 text-white mr-6">
+                    <div className="flex items-center flex-shrink-0 text-white mr-6 site-logo-container">
                         <Link to="/" className="text-white no-underline hover:text-white hover:no-underline">
                                 <img src={logo} alt="" className="site-logo" />
                         </Link>

@@ -4618,6 +4618,8 @@ readers do not read off random characters that represent icons */
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
 
+/*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */
+
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
@@ -5059,6 +5061,7 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
+  opacity: 1;
   color: #a1a1aa;
 }
 
@@ -5224,6 +5227,14 @@ h2, .h2 {
   font-family: 'Bellota', cursive;
 }
 
+.stf-text-shadow-white-top-left {
+  text-shadow: -1px -1px 0px rgba(255, 255, 255);
+}
+
+.stf-text-shadow-gray-bottom-right {
+  text-shadow: 1px 1px 0px rgb(24, 96, 112);
+}
+
 .stf-bg-1 {
   background-image: url('/background-1.987eb1b6.png');
 }
@@ -5242,6 +5253,11 @@ h2, .h2 {
 
 .stf-nav-list-item:last-child .stf-nav-list-item-link {
   padding-right: 0;
+}
+
+.site-logo-container {
+  max-width: 450px;
+  width: 100%;
 }
 
 .container {
@@ -8343,6 +8359,10 @@ h2, .h2 {
 
 .cursor-move {
   cursor: move
+}
+
+.cursor-help {
+  cursor: help
 }
 
 .cursor-not-allowed {
@@ -29356,6 +29376,10 @@ h2, .h2 {
     cursor: move
   }
 
+  .sm\:cursor-help {
+    cursor: help
+  }
+
   .sm\:cursor-not-allowed {
     cursor: not-allowed
   }
@@ -50322,6 +50346,10 @@ h2, .h2 {
 
   .md\:cursor-move {
     cursor: move
+  }
+
+  .md\:cursor-help {
+    cursor: help
   }
 
   .md\:cursor-not-allowed {
@@ -71292,6 +71320,10 @@ h2, .h2 {
     cursor: move
   }
 
+  .lg\:cursor-help {
+    cursor: help
+  }
+
   .lg\:cursor-not-allowed {
     cursor: not-allowed
   }
@@ -92260,6 +92292,10 @@ h2, .h2 {
     cursor: move
   }
 
+  .xl\:cursor-help {
+    cursor: help
+  }
+
   .xl\:cursor-not-allowed {
     cursor: not-allowed
   }
@@ -113226,6 +113262,10 @@ h2, .h2 {
 
   .\32xl\:cursor-move {
     cursor: move
+  }
+
+  .\32xl\:cursor-help {
+    cursor: help
   }
 
   .\32xl\:cursor-not-allowed {

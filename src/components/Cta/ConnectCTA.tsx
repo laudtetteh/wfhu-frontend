@@ -9,7 +9,7 @@ export const ConnectCTA = () => {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop">
 
                 <div className="mx-auto">
-                    <h3 className="section-heading font-bellota text-2xl text-white mb-3">Content Heading</h3>
+                    <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-gray-bottom-right">Content Heading</h3>
 
                     <p className="section-heading font-roboto text-base text-white mb-3">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
@@ -22,7 +22,7 @@ export const ConnectCTA = () => {
 
                 <div className="float-right">
 
-                    <h3 className="section-heading font-bellota text-2xl text-gray mb-3 float-right">Connect with me!</h3>
+                    <h3 className="section-heading font-bellota text-2xl text-gray mb-3 float-right stf-text-shadow-white-top-left">Connect with me!</h3>
 
                     <ul className="block float-right clear-both">
                         <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0">
