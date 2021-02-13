@@ -1,18 +1,1 @@
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
-
-@tailwind base;
-
-@layer base {
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-  h3 {
-    @apply text-lg;
-  }
-  a {
-    @apply text-red underline;
-  }
-}

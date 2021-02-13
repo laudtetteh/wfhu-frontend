@@ -4,5 +4,6 @@
 @import './_others.css';
 @import './_custom.css';
 @import './_responsive.css';
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
