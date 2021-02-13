@@ -3,8 +3,12 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Assets
 import logo from '../../../assets/images/logo.svg';
-// Pages Container
-import { Pages } from '../Pages';
+// Page Containers
+import { Home } from '../Home';
+import { About } from '../About';
+import { Blog } from '../Blog';
+import { Contact } from '../Contact';
+import { NotFound } from '../NotFound';
 // Other Containers
 import Posts from "../../containers/Posts";
 import Post from "../../containers/Post";
@@ -14,12 +18,22 @@ import Categories from "../../containers/Categories";
 import { Header } from '../../components/Header';
 import { FooterScripts } from '../../utils/helpers';
 import { getSiteOptions } from '../../utils/apiHelper';
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
+import { getPageData } from '../../utils/apiHelper';
 // Queries
 import Query from "../../components/Query";
+import PAGES_QUERY from "../../queries/page/pages";
 import SITEOPTIONS_QUERY from "../../queries/site-options";
 
 function App() {
 
+    let path = window.location.pathname.replace(/^\/|\/$/g, '');
+
+    if(path === '' ) {
+        path='home';
+    }
+    let pageBag;
     let siteOptions;
 
     return(
@@ -44,58 +58,77 @@ function App() {
                                         <Header />
                                     </section>
 
-                                    <Switch>
+                                    <Query query={PAGES_QUERY} slug={path}>
 
-                                        <Route
-                                            path='/'
-                                            render={(props) => (
-                                                <Pages {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                        {({ data: { pages } }) => {
 
-                                        <Route
-                                            path='/about'
-                                            render={(props) => (
-                                                <Pages {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                            pageBag = getPageData(pages[0]);
 
-                                        <Route
-                                            path='/blog'
-                                            render={(props) => (
-                                                <Pages {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                            return (
 
-                                        <Route
-                                            path='/contact'
-                                            render={(props) => (
-                                                <Pages {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                                <Switch>
 
-                                        <Route
-                                            path='/post/:id'
-                                            render={(props) => (
-                                                <Post {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                                    <Route
+                                                        path='/'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="Home" />
+                                                            <Home {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
 
-                                        <Route
-                                            path='/category/:id'
-                                            render={(props) => (
-                                                <Category {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                                    <Route
+                                                        path='/about'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="About" />
+                                                            <Pages {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
 
-                                        <Route
-                                            path='/categories'
-                                            render={(props) => (
-                                                <Categories {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                                    <Route
+                                                        path='/blog'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="Blog" />
+                                                            <Pages {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
 
-                                    </Switch>
+                                                    <Route
+                                                        path='/contact'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="Contact" />
+                                                            <Pages {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
+
+                                                    <Route
+                                                        path='/post/:id'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="Blog" />
+                                                            <Post {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
+
+                                                    <Route
+                                                        path='/category/:id'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="Blog Categories" />
+                                                            <Category {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
+
+                                                    <Route
+                                                        path='/categories'
+                                                        render={(props) => (
+                                                            <DocumentHead {...props} title="Blog Category" />
+                                                            <Categories {...props} siteOptions={siteOptions} />
+                                                        )}
+                                                    />
+
+                                                </Switch>
+                                            )
+
+                                        }}
+                                    </Query>
 
                                 </div>
 

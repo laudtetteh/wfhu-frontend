@@ -85027,321 +85027,7 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.About = About;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function About(_ref) {
-  var pageBag = _ref.pageBag;
-  // console.log(pageBag);
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
-    className: "font-sans text-red text-4xl text-center pt-12"
-  }, pageBag.description, ". Styled with Tailwind"));
-}
-},{"react":"node_modules/react/index.js"}],"src/queries/category/categories.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
-var _default = CATEGORIES_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BlogNav = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Query = _interopRequireDefault(require("../Query"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _categories = _interopRequireDefault(require("../../queries/category/categories"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BlogNav = function BlogNav() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Query.default, {
-    query: _categories.default,
-    id: null
-  }, function (_ref) {
-    var categories = _ref.data.categories;
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
-      className: "uk-navbar-container",
-      "data-uk-navbar": true
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-left"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: "/"
-    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-right"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, categories.map(function (category, i) {
-      return /*#__PURE__*/_react.default.createElement("li", {
-        key: category.id
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/category/".concat(category.id),
-        className: "uk-link-reset"
-      }, category.name));
-    })))));
-  }));
-};
-
-exports.BlogNav = BlogNav;
-},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Blog = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _blog = require("../../components/Nav/blog");
-
-var _Posts = _interopRequireDefault(require("../Posts"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/*
-* Blog Container
-*
-*/
-// Packages
-// Components
-// Containers
-var Blog = function Blog(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "Blog"
-  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
-    limit: pageBag.noOfPosts ? pageBag.noOfPosts : 0
-  }))));
-};
-
-exports.Blog = Blog;
-},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Contact = Contact;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Contact(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
-    className: "font-sans text-red text-4xl text-center pt-12"
-  }, pageBag.description, ". Styled with Tailwind"));
-}
-},{"react":"node_modules/react/index.js"}],"src/containers/NotFound/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.NotFound = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var NotFound = function NotFound() {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
-    className: "font-sans text-red text-4xl text-center pt-12"
-  }, "The resource you requested could not be found. ", _react.default.createElement("a", {
-    href: "/"
-  }, "Return to the homepage"), "?"));
-};
-
-exports.NotFound = NotFound;
-},{"react":"node_modules/react/index.js"}],"src/queries/page/pages.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n                __typename\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n            published_at\n        }\n    }\n"])));
-var _default = PAGES_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/utils/apiHelper.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getSiteOptions = exports.getPageData = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Queries
-// import SITEOPTIONS_QUERY from "../../queries/site-options";
-// import Query from "../../components/Query";
-var getPageData = function getPageData(props) {
-  var pageData = {};
-
-  if (props.description !== undefined) {
-    pageData["description"] = props.description;
-  }
-
-  if (props.dynamic_fields !== undefined && props.dynamic_fields[0] !== undefined) {
-    pageData["noOfPosts"] = props.dynamic_fields[0].no_of_posts;
-  }
-
-  return pageData;
-};
-
-exports.getPageData = getPageData;
-
-var getSiteOptions = function getSiteOptions(props) {
-  var optionsData = {};
-
-  if (props.social !== undefined) {
-    optionsData["social"] = props.social;
-  }
-
-  return optionsData;
-};
-
-exports.getSiteOptions = getSiteOptions;
-},{"react":"node_modules/react/index.js"}],"src/containers/Pages/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Pages = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Home = require("../Home");
-
-var _About = require("../About");
-
-var _Blog = require("../Blog");
-
-var _Contact = require("../Contact");
-
-var _NotFound = require("../NotFound");
-
-var _Query = _interopRequireDefault(require("../../components/Query"));
-
-var _pages = _interopRequireDefault(require("../../queries/page/pages"));
-
-var _helpers = require("../../utils/helpers");
-
-var _apiHelper = require("../../utils/apiHelper");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Page Containers
-// Queries
-// Utilities
-var Pages = function Pages(props) {
-  // Remove all slashes from path
-  var path = props.location.pathname.replace(/^\/|\/$/g, '');
-  var pageBag;
-
-  if (path === '') {
-    path = 'home';
-  }
-
-  return _react.default.createElement(_Query.default, {
-    query: _pages.default,
-    slug: path
-  }, function (_ref) {
-    var pages = _ref.data.pages;
-    pageBag = (0, _apiHelper.getPageData)(pages[0]); // Determine which page to query from the API
-
-    {
-      switch (path) {
-        case 'home':
-          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-            title: "Home"
-          }), _react.default.createElement(_Home.Home, {
-            pageBag: pageBag,
-            siteOptions: props.siteOptions
-          }));
-
-        case 'about':
-          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-            title: "About"
-          }), _react.default.createElement(_About.About, {
-            pageBag: pageBag,
-            siteOptions: props.siteOptions
-          }));
-
-        case 'blog':
-          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-            title: "Blog"
-          }), _react.default.createElement(_Blog.Blog, {
-            pageBag: pageBag,
-            siteOptions: props.siteOptions
-          }));
-
-        case 'contact':
-          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-            title: "Contact"
-          }), _react.default.createElement(_Contact.Contact, {
-            pageBag: pageBag,
-            siteOptions: props.siteOptions
-          }));
-
-        default:
-          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-            title: "404 - Page Not Found"
-          }), _react.default.createElement(_NotFound.NotFound, null));
-      }
-    }
-  });
-};
-
-exports.Pages = Pages;
-},{"react":"node_modules/react/index.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../NotFound":"src/containers/NotFound/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -94485,7 +94171,26 @@ var Category = function Category() {
 
 var _default = Category;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Posts":"src/components/Posts/index.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Categories/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Posts":"src/components/Posts/index.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
+var _default = CATEGORIES_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Categories/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94660,7 +94365,69 @@ var Header = function Header() {
 };
 
 exports.Header = Header;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/utils/apiHelper.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSiteOptions = exports.getPageData = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Queries
+// import SITEOPTIONS_QUERY from "../../queries/site-options";
+// import Query from "../../components/Query";
+var getPageData = function getPageData(props) {
+  var pageData = {};
+
+  if (props.description !== undefined) {
+    pageData["description"] = props.description;
+  }
+
+  if (props.dynamic_fields !== undefined && props.dynamic_fields[0] !== undefined) {
+    pageData["noOfPosts"] = props.dynamic_fields[0].no_of_posts;
+  }
+
+  return pageData;
+};
+
+exports.getPageData = getPageData;
+
+var getSiteOptions = function getSiteOptions(props) {
+  var optionsData = {};
+
+  if (props.social !== undefined) {
+    optionsData["social"] = props.social;
+  }
+
+  return optionsData;
+};
+
+exports.getSiteOptions = getSiteOptions;
+},{"react":"node_modules/react/index.js"}],"src/queries/page/pages.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n                __typename\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n            published_at\n        }\n    }\n"])));
+var _default = PAGES_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94691,7 +94458,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Pages = require("../Pages");
+var _Home = require("../Home");
 
 var _Post = _interopRequireDefault(require("../../containers/Post"));
 
@@ -94707,6 +94474,8 @@ var _apiHelper = require("../../utils/apiHelper");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
+var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+
 var _siteOptions = _interopRequireDefault(require("../../queries/site-options"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -94716,10 +94485,18 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // Packages
-// Pages Container
+// Page Containers
 // Components
+// Utilities
 // Queries
 function App() {
+  var path = window.location.pathname.replace(/^\/|\/$/g, '');
+
+  if (path === '') {
+    path = 'home';
+  }
+
+  var pageBag;
   var siteOptions;
   return _react.default.createElement(_Query.default, {
     query: _siteOptions.default
@@ -94732,62 +94509,83 @@ function App() {
       id: "wrapper"
     }, _react.default.createElement("section", {
       className: "w-full"
-    }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
-      path: '/',
-      render: function render(props) {
-        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/about',
-      render: function render(props) {
-        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/blog',
-      render: function render(props) {
-        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/contact',
-      render: function render(props) {
-        return _react.default.createElement(_Pages.Pages, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/post/:id',
-      render: function render(props) {
-        return _react.default.createElement(_Post.default, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/category/:id',
-      render: function render(props) {
-        return _react.default.createElement(_Category.default, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/categories',
-      render: function render(props) {
-        return _react.default.createElement(_Categories.default, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }))), _react.default.createElement(_helpers.FooterScripts, null))));
+    }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_Query.default, {
+      query: _pages.default,
+      slug: path
+    }, function (_ref2) {
+      var pages = _ref2.data.pages;
+      pageBag = (0, _apiHelper.getPageData)(pages[0]);
+      return _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+        path: '/',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "Home"
+          })), _react.default.createElement(_Home.Home, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: '/about',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "About"
+          })), _react.default.createElement(Pages, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: '/blog',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "Blog"
+          })), _react.default.createElement(Pages, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: '/contact',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "Contact"
+          })), _react.default.createElement(Pages, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: '/post/:id',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "Blog"
+          })), _react.default.createElement(_Post.default, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: '/category/:id',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "Blog Categories"
+          })), _react.default.createElement(_Category.default, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: '/categories',
+        render: function render(props) {
+          return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
+            title: "Blog Category"
+          })), _react.default.createElement(_Categories.default, Object.assign({}, props, {
+            siteOptions: siteOptions
+          }));
+        }
+      }));
+    })), _react.default.createElement(_helpers.FooterScripts, null))));
   });
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Pages":"src/containers/Pages/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98089,7 +97887,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56171" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56931" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
