@@ -42,3 +42,7 @@
     color: #ffffff;
     background-color: #454F37;
 }
+
+.section-connect-cta i.fab {
+    line-height: 1.8rem;
+}

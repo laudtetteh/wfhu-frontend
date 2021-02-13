@@ -4618,35 +4618,6 @@ readers do not read off random characters that represent icons */
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
 
-
-
-/*h1, .h1 {
-    font-size: 48px;
-}
-
-h2, .h2 {
-    font-size: 40px;
-}
-*/
-
-/* bellota-text-regular - latin */
-
-/*@font-face {
-  font-family: 'Bellota Text';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/bellota-text-v2-latin-regular.eot'); */
-
-/*src: local(''),*/
-
-/*url('../fonts/bellota-text-v2-latin-regular.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/bellota-text-v2-latin-regular.woff2') format('woff2'),
-       url('../fonts/bellota-text-v2-latin-regular.woff') format('woff'),
-       url('../fonts/bellota-text-v2-latin-regular.ttf') format('truetype'),
-       url('../fonts/bellota-text-v2-latin-regular.svg#BellotaText') format('svg');*/
-
-/*}*/
-
 .font-roboto {
   font-family: 'Roboto';
 }
@@ -4661,10 +4632,6 @@ h2, .h2 {
 
 .stf-text-shadow-gray-bottom-right {
   text-shadow: 1px 1px 0px rgb(24, 96, 112);
-}
-
-.section-connect-cta i.fab {
-  line-height: 1.8rem;
 }
 
 .stf-bg-1 {
@@ -4710,6 +4677,10 @@ h2, .h2 {
 .mc-embedded-subscribe:hover {
   color: #ffffff;
   background-color: #454F37;
+}
+
+.section-connect-cta i.fab {
+  line-height: 1.8rem;
 }
 
 /*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */

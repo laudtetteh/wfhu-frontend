@@ -1,8 +1,7 @@
-@import './_settings.css';
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
 @import './_typography.css';
-@import './_others.css';
 @import './_custom.css';
-@import './_responsive.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
