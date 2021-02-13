@@ -5184,6 +5184,10 @@ a {
   color: #454F37;
 }
 
+.background-red {
+  background-color: #454F37;
+}
+
 .text-gray-light {
   color: #707070;
 }
@@ -5235,6 +5239,10 @@ h2, .h2 {
   text-shadow: 1px 1px 0px rgb(24, 96, 112);
 }
 
+.section-connect-cta i.fab {
+  line-height: 1.8rem;
+}
+
 .stf-bg-1 {
   background-image: url('/background-1.987eb1b6.png');
 }
@@ -5258,6 +5266,26 @@ h2, .h2 {
 .site-logo-container {
   max-width: 450px;
   width: 100%;
+}
+
+.mc-embedded-subscribe {
+  margin-left: -10%;
+  height: 35px;
+  width: 10%;
+  background-color: #2D5F6E;
+  color: white;
+  border: 0px none;
+  appearance: none;
+  font-family: roboto;
+  font-size: 13px;
+  border-radius: 0px 3px 3px 0px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.mc-embedded-subscribe:hover {
+  color: #ffffff;
+  background-color: #454F37;
 }
 
 .container {

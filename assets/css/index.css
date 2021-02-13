@@ -3,5 +3,6 @@
 @import './_typography.css';
 @import './_others.css';
 @import './_custom.css';
+@import './_responsive.css';
 @tailwind components;
 @tailwind utilities;

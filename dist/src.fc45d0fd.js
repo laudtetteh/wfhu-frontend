@@ -84779,13 +84779,16 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+// CSS for hidden fields
 var hiddenFields = {
   display: 'none'
-};
+}; // CSS for hidden honeypot field
+
 var honeyPot = {
   position: 'absolute',
   left: '-5000px'
-};
+}; // CSS for email field
+
 var emailField = {
   width: '100%',
   height: '35px',
@@ -84796,19 +84799,8 @@ var emailField = {
   fontFamily: 'roboto',
   fontSize: '16px',
   backgroundColor: 'transparent'
-};
-var submitButton = {
-  marginLeft: '-25%',
-  height: '35px',
-  width: '25%',
-  background: '#2D5F6E',
-  color: 'white',
-  border: '0',
-  WebkitAppearance: 'none',
-  fontFamily: 'roboto',
-  fontSize: '13px',
-  borderRadius: '0 3px 3px 0'
-};
+}; // CSS for field group
+
 var fieldGroup = {
   width: '100%'
 };
@@ -84869,7 +84861,7 @@ var SignupForm = /*#__PURE__*/function (_Component) {
           success: function success(data) {
             if (data.result != "success") {
               // Something went wrong, do something to notify the user. maybe alert(data.msg);
-              (0, _jquery.default)('#mce-error-response').text('Something went wrong.').show().delay(5000).fadeOut();
+              (0, _jquery.default)('#mce-error-response').text('Something went wrong. Please check your entry.').show().delay(5000).fadeOut();
             } else {
               // It worked, carry on...
               (0, _jquery.default)('#mce-success-response').text('Thank you for subscribing!').show().delay(5000).fadeOut();
@@ -84917,8 +84909,7 @@ var SignupForm = /*#__PURE__*/function (_Component) {
         value: "SUBSCRIBE",
         name: "subscribe",
         id: "mc-embedded-subscribe",
-        className: "button",
-        style: submitButton,
+        className: "mc-embedded-subscribe button",
         onClick: this._handleClick
       })), _react.default.createElement("div", {
         id: "mce-responses",
@@ -97985,12 +97976,17 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/intro-section-image.png":[["intro-section-image.d39635c3.png","assets/images/intro-section-image.png"],"assets/images/intro-section-image.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
+},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/intro-section-image.png":[["intro-section-image.d39635c3.png","assets/images/intro-section-image.png"],"assets/images/intro-section-image.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_responsive.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./_settings.css":"assets/css/_settings.css","./_colors.css":"assets/css/_colors.css","./_typography.css":"assets/css/_typography.css","./_others.css":"assets/css/_others.css","./_custom.css":"assets/css/_custom.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./_settings.css":"assets/css/_settings.css","./_colors.css":"assets/css/_colors.css","./_typography.css":"assets/css/_typography.css","./_others.css":"assets/css/_others.css","./_custom.css":"assets/css/_custom.css","./_responsive.css":"assets/css/_responsive.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -98040,7 +98036,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54215" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50462" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

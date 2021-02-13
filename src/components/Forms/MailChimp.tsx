@@ -1,18 +1,19 @@
 // Packages
 import React, { Component, setState } from 'react';
-import CSS from 'csstype';
+import * as CSS from 'csstype';
 // jQuery
 import $ from 'jquery';
 
+// CSS for hidden fields
 const hiddenFields: CSS.Properties = {
     display: 'none'
 };
-
+// CSS for hidden honeypot field
 const honeyPot: CSS.Properties = {
     position: 'absolute',
     left: '-5000px',
 };
-
+// CSS for email field
 const emailField: CSS.Properties = {
     width: '100%',
     height: '35px',
@@ -25,24 +26,12 @@ const emailField: CSS.Properties = {
     backgroundColor: 'transparent'
 };
 
-const submitButton: CSS.Properties = {
-    marginLeft: '-25%',
-    height: '35px',
-    width: '25%',
-    background: '#2D5F6E',
-    color: 'white',
-    border: '0',
-    WebkitAppearance: 'none',
-    fontFamily: 'roboto',
-    fontSize: '13px',
-    borderRadius: '0 3px 3px 0'
-};
-
+// CSS for field group
 const fieldGroup: CSS.Properties = {
     width: '100%',
 };
 
-export class SignupForm extends Component {
+class SignupForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -81,7 +70,7 @@ export class SignupForm extends Component {
                 success     : function(data) {
                     if (data.result != "success") {
                         // Something went wrong, do something to notify the user. maybe alert(data.msg);
-                        $('#mce-error-response').text('Something went wrong.').show().delay(5000).fadeOut();
+                        $('#mce-error-response').text('Something went wrong. Please check your entry.').show().delay(5000).fadeOut();
                     } else {
                         // It worked, carry on...
                         $('#mce-success-response').text('Thank you for subscribing!').show().delay(5000).fadeOut();
@@ -103,7 +92,6 @@ export class SignupForm extends Component {
                 noValidate>
 
                     <div id="mc_embed_signup_scroll">
-
                         <div className="mc-field-group" style={fieldGroup}>
 
                             <input type="email" onChange={this.changeHandler} name="EMAIL" className="required email" id="mce-EMAIL" placeholder="Enter your email" style={emailField} />
@@ -112,16 +100,13 @@ export class SignupForm extends Component {
                                 <input type="text" name="b_9ae21d5dd8d2f0f5acee71058_4a8e40d9cb" tabIndex="-1" value="" />
                             </div>
 
-                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="button" style={submitButton} onClick={this._handleClick} />
-
+                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button" onClick={this._handleClick} />
                         </div>
 
                         <div id="mce-responses" className="clear">
                             <div className="response" id="mce-error-response" style={hiddenFields}></div>
                             <div className="response" id="mce-success-response" style={hiddenFields}></div>
                         </div>
-
-
                     </div>
 
                 </form>
@@ -129,3 +114,5 @@ export class SignupForm extends Component {
         )
     }
 }
+
+export { SignupForm };
