@@ -20,7 +20,7 @@ export const Home = ({pageBag, siteOptions}) => {
 
                 <div className="container">
 
-                    <IntroCTA />
+                    <IntroCTA pageBag={pageBag}/>
 
                 </div>
 

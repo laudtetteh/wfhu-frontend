@@ -24,7 +24,7 @@ export const Blog = ({pageBag}) => {
                 <BlogNav />
 
                 <section>
-                    <Posts limit={pageBag.noOfPosts ? pageBag.noOfPosts : 0}/>
+                    <Posts limit={pageBag.no_of_posts ? pageBag.no_of_posts : 0}/>
                 </section>
 
             </div>

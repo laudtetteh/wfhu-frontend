@@ -10,10 +10,10 @@ import { Blog } from '../Blog';
 import { Contact } from '../Contact';
 import { NotFound } from '../NotFound';
 // Other Containers
-import Posts from "../../containers/Posts";
-import Post from "../../containers/Post";
-import Category from "../../containers/Category";
-import Categories from "../../containers/Categories";
+import { Posts } from "../../containers/Posts";
+import { Post } from "../../containers/Post";
+import { Category } from "../../containers/Category";
+import { Categories } from "../../containers/Categories";
 // Components
 import { Header } from '../../components/Header';
 import { FooterScripts } from '../../utils/helpers';
@@ -28,13 +28,13 @@ import SITEOPTIONS_QUERY from "../../queries/site-options";
 
 function App() {
 
+    let pageBag;
+    let siteOptions;
     let path = window.location.pathname.replace(/^\/|\/$/g, '');
 
     if(path === '' ) {
         path='home';
     }
-    let pageBag;
-    let siteOptions;
 
     return(
 
@@ -67,12 +67,14 @@ function App() {
                                             return (
 
                                                 <Switch>
-
                                                     <Route
                                                         path='/'
                                                         render={(props) => (
                                                             <DocumentHead {...props} title="Home" />
-                                                            <Home {...props} siteOptions={siteOptions} />
+                                                            <Home
+                                                                {...props}
+                                                                siteOptions={siteOptions}
+                                                                pageBag={pageBag} />
                                                         )}
                                                     />
 
@@ -80,7 +82,10 @@ function App() {
                                                         path='/about'
                                                         render={(props) => (
                                                             <DocumentHead {...props} title="About" />
-                                                            <Pages {...props} siteOptions={siteOptions} />
+                                                            <About
+                                                                {...props}
+                                                                siteOptions={siteOptions}
+                                                                pageBag={pageBag} />
                                                         )}
                                                     />
 
@@ -88,7 +93,10 @@ function App() {
                                                         path='/blog'
                                                         render={(props) => (
                                                             <DocumentHead {...props} title="Blog" />
-                                                            <Pages {...props} siteOptions={siteOptions} />
+                                                            <Blog
+                                                                {...props}
+                                                                siteOptions={siteOptions}
+                                                                pageBag={pageBag} />
                                                         )}
                                                     />
 
@@ -96,39 +104,53 @@ function App() {
                                                         path='/contact'
                                                         render={(props) => (
                                                             <DocumentHead {...props} title="Contact" />
-                                                            <Pages {...props} siteOptions={siteOptions} />
-                                                        )}
-                                                    />
-
-                                                    <Route
-                                                        path='/post/:id'
-                                                        render={(props) => (
-                                                            <DocumentHead {...props} title="Blog" />
-                                                            <Post {...props} siteOptions={siteOptions} />
-                                                        )}
-                                                    />
-
-                                                    <Route
-                                                        path='/category/:id'
-                                                        render={(props) => (
-                                                            <DocumentHead {...props} title="Blog Categories" />
-                                                            <Category {...props} siteOptions={siteOptions} />
-                                                        )}
-                                                    />
-
-                                                    <Route
-                                                        path='/categories'
-                                                        render={(props) => (
-                                                            <DocumentHead {...props} title="Blog Category" />
-                                                            <Categories {...props} siteOptions={siteOptions} />
+                                                            <Contact
+                                                                {...props}
+                                                                siteOptions={siteOptions}
+                                                                pageBag={pageBag} />
                                                         )}
                                                     />
 
                                                 </Switch>
                                             )
-
                                         }}
                                     </Query>
+
+
+
+
+
+                                    <Switch>
+
+                                        <Route
+                                            path='/post/:id'
+                                            render={(props) => (
+                                                <DocumentHead {...props} title="Blog" />
+                                                <Post {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/category/:id'
+                                            render={(props) => (
+                                                <DocumentHead {...props} title="Blog Category" />
+                                                <Category {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                        <Route
+                                            path='/categories'
+                                            render={(props) => (
+                                                <DocumentHead {...props} title="Blog Categories" />
+                                                <Categories {...props} siteOptions={siteOptions} />
+                                            )}
+                                        />
+
+                                    </Switch>
+
+
+
+
 
                                 </div>
 
