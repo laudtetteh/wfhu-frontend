@@ -29,7 +29,7 @@ export const IntroCTA = ({pageBag}) => {
                         {pageBag.intro_cta.intro_paragraph}
                     </p>
 
-                    <p className="section-paragraph font-roboto text-base text-gray mb-2 font-medium">
+                    <p className="section-paragraph font-roboto text-base text-gray mb-2 mt-10 font-medium">
                         Get notified when I publish something new
                     </p>
 

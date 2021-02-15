@@ -85049,7 +85049,7 @@ var IntroCTA = function IntroCTA(_ref) {
   }, pageBag.intro_cta.intro_heading), _react.default.createElement("p", {
     className: "section-paragraph font-roboto text-base text-gray mb-3"
   }, pageBag.intro_cta.intro_paragraph), _react.default.createElement("p", {
-    className: "section-paragraph font-roboto text-base text-gray mb-2 font-medium"
+    className: "section-paragraph font-roboto text-base text-gray mb-2 mt-10 font-medium"
   }, "Get notified when I publish something new"), _react.default.createElement("div", {
     className: "signup-form-container"
   }, _react.default.createElement(_MailChimp.SignupForm, null))), _react.default.createElement("div", {
@@ -98601,7 +98601,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55021" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55580" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
