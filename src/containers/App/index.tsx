@@ -68,9 +68,8 @@ function App() {
 
                                                 <Switch>
                                                     <Route
-                                                        path='/'
+                                                        path='/' exact
                                                         render={(props) => (
-                                                            <DocumentHead {...props} title="Home" />
                                                             <Home
                                                                 {...props}
                                                                 siteOptions={siteOptions}
@@ -79,9 +78,8 @@ function App() {
                                                     />
 
                                                     <Route
-                                                        path='/about'
+                                                        path='/about' exact
                                                         render={(props) => (
-                                                            <DocumentHead {...props} title="About" />
                                                             <About
                                                                 {...props}
                                                                 siteOptions={siteOptions}
@@ -90,9 +88,8 @@ function App() {
                                                     />
 
                                                     <Route
-                                                        path='/blog'
+                                                        path='/blog' exact
                                                         render={(props) => (
-                                                            <DocumentHead {...props} title="Blog" />
                                                             <Blog
                                                                 {...props}
                                                                 siteOptions={siteOptions}
@@ -101,9 +98,8 @@ function App() {
                                                     />
 
                                                     <Route
-                                                        path='/contact'
+                                                        path='/contact' exact
                                                         render={(props) => (
-                                                            <DocumentHead {...props} title="Contact" />
                                                             <Contact
                                                                 {...props}
                                                                 siteOptions={siteOptions}

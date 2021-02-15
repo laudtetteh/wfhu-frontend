@@ -1,5 +1,6 @@
 // Packages
 import React from 'react';
+import ReactMarkdown from "react-markdown"
 
 export const getPageData = props => {
     let pageData = {};
@@ -9,8 +10,9 @@ export const getPageData = props => {
     let connect_cta = {};
 
     if( props.description !== undefined ) {
-        pageData["description"] = props.description;
+        pageData["description"] = <ReactMarkdown source={props.description} />;
     }
+
 
     if( props.dynamic_fields !== undefined ) {
 
@@ -19,16 +21,20 @@ export const getPageData = props => {
             props.dynamic_fields.map((group) => {
 
                 if( group.__typename == "ComponentPageNoOfPostsToShow" ) {
-                    pageData['no_of_posts'] = group;
+                    no_of_posts = group;
                 }
 
                 if( group.__typename == "ComponentPageIntroCta" ) {
-                    pageData['intro_cta'] = group;
+                    intro_cta = group;
                 }
 
                 if( group.__typename == "ComponentPageConnectCta" ) {
-                    pageData['connect_cta'] = group;
+                    connect_cta = group;
                 }
+
+                pageData['no_of_posts'] = no_of_posts;
+                pageData['intro_cta'] = intro_cta;
+                pageData['connect_cta'] = connect_cta;
             })
         }
     }

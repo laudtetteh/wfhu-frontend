@@ -7,9 +7,6 @@ const PAGE_QUERY = gql`
             name
             slug
             description
-            image {
-                formats
-            }
             seo {
                 title
                 description
@@ -19,11 +16,29 @@ const PAGE_QUERY = gql`
                 }
             }
             dynamic_fields {
+
                 __typename
+
+                ... on ComponentPageIntroCta {
+                    intro_heading
+                    intro_paragraph
+                    intro_image {
+                      formats
+                    }
+                }
+
+                ... on ComponentPageConnectCta {
+                    heading
+                    paragraph
+                    button_link
+                    button_text
+                }
+
                 ... on ComponentPageNoOfPostsToShow {
                     no_of_posts
                 }
             }
+
             published_at
         }
     }

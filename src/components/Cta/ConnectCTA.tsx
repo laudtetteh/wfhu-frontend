@@ -1,6 +1,8 @@
 import React from 'react';
 
-export const ConnectCTA = ({pageBag, siteOptions}) => {
+import { Social } from '../Elements/Social';
+
+export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHvColor, headingColor, containerClass, headingClass}) => {
 
     return (
 
@@ -15,42 +17,23 @@ export const ConnectCTA = ({pageBag, siteOptions}) => {
                         {pageBag.connect_cta.paragraph}
                     </p>
 
-                    <a href="{pageBag.connect_cta.button_link}" className="bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline">
+                    <a href={pageBag.connect_cta.button_link} className="bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline">
                         {pageBag.connect_cta.button_text}
                     </a>
                 </div>
 
                 <div className="float-right">
 
-                    <h3 className="section-heading font-bellota text-2xl text-gray mb-3 float-right stf-text-shadow-white-top-left">Connect with me!</h3>
+                    <Social
+                        siteOptions={siteOptions}
+                        iconColor={iconColor}
+                        iconBgColor={iconBgColor}
+                        iconHvColor={iconHvColor}
+                        headingColor={headingColor}
+                        containerClass={containerClass}
+                        headingClass={headingClass}
+                    />
 
-                    <ul className="block float-right clear-both">
-                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3 first:ml-0">
-                            <a href={siteOptions.social.youtube}>
-                                <i className="fab fa-youtube bg-none text-blue-100 text-lg"></i>
-                            </a>
-                        </li>
-                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href={siteOptions.social.instagram}>
-                                <i className="fab fa-instagram bg-none text-blue-100 text-lg"></i>
-                            </a>
-                        </li>
-                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href={siteOptions.social.facebook}>
-                                <i className="fab fa-facebook-f bg-none text-blue-100 text-lg"></i>
-                            </a>
-                        </li>
-                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href={siteOptions.social.linkedin}>
-                                <i className="fab fa-linkedin bg-none text-blue-100 text-lg"></i>
-                            </a>
-                        </li>
-                        <li className="rounded-full h-8 w-8 flex items-center float-left justify-center bg-gray hover:bg-red inline-block ml-3">
-                            <a href={siteOptions.social.twitter}>
-                                <i className="fab fa-twitter bg-none text-blue-100 text-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
 
             </div>

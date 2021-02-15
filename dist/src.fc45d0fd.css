@@ -4684,6 +4684,41 @@ readers do not read off random characters that represent icons */
   line-height: 1.8rem;
 }
 
+.section-connect-cta .social-buttons h3,
+.section-connect-cta .social-buttons ul {
+  float: right;
+}
+
+.section-footer .social-buttons h3,
+.section-footer .social-buttons ul {
+  float: none;
+  clear: both;
+}
+
+.section-footer .social-buttons h3,
+.section-footer .social-buttons ul {
+  width: 210px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 33px;
+}
+
+.section-page-content .description h3 {
+  font-family: bellota;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-page-content .description ul {
+  list-style-type: square;
+  padding-left: 20px;
+  margin: 0;
+}
+
+
 /*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */

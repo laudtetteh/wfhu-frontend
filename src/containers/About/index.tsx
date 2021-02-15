@@ -1,13 +1,53 @@
-import React, {useEffect, useState} from "react";
+// Packages
+import React from 'react';
+// Containers
+import Testimonials from '../Testimonials';
+import { DocumentHead } from '../../utils/helpers';
+import { Footer } from '../../components/Footer';
 
-export function About({pageBag}) {
+export const About = ({pageBag, siteOptions}) => {
 
-// console.log(pageBag);
+    return (
 
-    return(
+        <React.Fragment>
 
-        <div>
-            <h1 className="font-sans text-red text-4xl text-center pt-12">{pageBag.description}. Styled with Tailwind</h1>
-        </div>
-    );
+            <DocumentHead title="About"/>
+
+            <section className="w-full bg-none section-page-content">
+
+                <div className="container mx-auto py-12 section-testimonials">
+
+                    <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">About</h1>
+
+                    <div className="description">
+                        {pageBag.description}
+                    </div>
+                </div>
+
+            </section>
+
+            <section className="w-full bg-none">
+
+                <div className="container mx-auto py-12 section-testimonials">
+
+                    <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
+
+                    <Testimonials limit={4} />
+
+                </div>
+
+            </section>
+
+            <Footer
+                siteOptions={siteOptions}
+                iconColor="gray-600"
+                iconBgColor="white"
+                iconHvColor="red"
+                headingColor="white"
+                containerClass="mx-auto"
+                headingClass="text-center"
+            />
+
+        </React.Fragment>
+    )
 }

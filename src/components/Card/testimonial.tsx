@@ -12,7 +12,6 @@ const Card = ({ testimonial }) => {
   //     : process.env.REACT_APP_BACKEND_URL + testimonial.image.url;
     // const imageUrl = testimonial.image.formats.testimonial_loop.url;
 
-
     const object = testimonial;
     const content_type = "testimonial";
     const image_size = "testimonial_loop";

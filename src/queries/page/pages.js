@@ -7,9 +7,6 @@ const PAGES_QUERY = gql`
             name
             slug
             description
-            image {
-                formats
-            }
             seo {
                 title
                 description

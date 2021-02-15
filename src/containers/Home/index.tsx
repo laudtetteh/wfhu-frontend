@@ -14,7 +14,7 @@ export const Home = ({pageBag, siteOptions}) => {
 
         <React.Fragment>
 
-            <DocumentHead title="Home"/>
+            <DocumentHead title="Home" />
 
             <section className="w-full stf-bg-1 section-connect-cta">
 
@@ -30,7 +30,16 @@ export const Home = ({pageBag, siteOptions}) => {
 
                 <div className="container mx-auto py-12">
 
-                    <ConnectCTA pageBag={pageBag} siteOptions={siteOptions} />
+                    <ConnectCTA
+                        pageBag={pageBag}
+                        siteOptions={siteOptions}
+                        iconColor="blue-100"
+                        iconBgColor="gray"
+                        iconHvColor="red"
+                        headingColor="gray"
+                        containerClass="float-right"
+                        headingClass="stf-text-shadow-white-top-left"
+                    />
 
                 </div>
 
@@ -57,7 +66,7 @@ export const Home = ({pageBag, siteOptions}) => {
                         <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
                     </h2>
 
-                    <Posts limit={3}/>
+                    <Posts limit={3} />
                 </div>
 
             </section>
