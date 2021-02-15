@@ -1,11 +1,9 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const dev = process.env.NODE_ENV !== 'production';
+const { REACT_APP_BACKEND_URL } = process.env;
 
-const BACKEND_URL = dev ? 'http://localhost:1337' : process.env.REACT_APP_BACKEND_UR;
-
-fetch(`${BACKEND_URL}/graphql`, {
+fetch(`${REACT_APP_BACKEND_URL}/graphql`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
