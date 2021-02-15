@@ -1,14 +1,12 @@
 // Packages
 import React from 'react';
-// Queries
-// import SITEOPTIONS_QUERY from "../../queries/site-options";
-// import Query from "../../components/Query";
 
 export const getPageData = props => {
+    let pageData = {};
 
     let no_of_posts = 0;
-    let pageData = {};
     let intro_cta = {};
+    let connect_cta = {};
 
     if( props.description !== undefined ) {
         pageData["description"] = props.description;
@@ -20,12 +18,16 @@ export const getPageData = props => {
 
             props.dynamic_fields.map((group) => {
 
-                if( group.__component == "page.no_of_posts" ) {
+                if( group.__typename == "ComponentPageNoOfPostsToShow" ) {
                     pageData['no_of_posts'] = group;
                 }
 
-                if( group.__component == "page.page.intro-cta" ) {
+                if( group.__typename == "ComponentPageIntroCta" ) {
                     pageData['intro_cta'] = group;
+                }
+
+                if( group.__typename == "ComponentPageConnectCta" ) {
+                    pageData['connect_cta'] = group;
                 }
             })
         }

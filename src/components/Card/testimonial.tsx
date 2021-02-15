@@ -1,6 +1,8 @@
+// Packages
 import React from "react";
 import { Link } from "react-router-dom";
-import { TrimText } from '../../utils/helpers';
+// Helpers
+import { TrimText, SmartImage } from '../../utils/helpers';
 
 const Card = ({ testimonial }) => {
 
@@ -8,8 +10,14 @@ const Card = ({ testimonial }) => {
   //   process.env.NODE_ENV !== "development"
   //     ? testimonial.image.url
   //     : process.env.REACT_APP_BACKEND_URL + testimonial.image.url;
+    // const imageUrl = testimonial.image.formats.testimonial_loop.url;
 
-    const imageUrl = testimonial.image.formats.testimonial_loop.url;
+
+    const object = testimonial;
+    const content_type = "testimonial";
+    const image_size = "testimonial_loop";
+
+    const imageUrl = SmartImage({object, content_type, image_size});
 
     return (
         <React.Fragment>

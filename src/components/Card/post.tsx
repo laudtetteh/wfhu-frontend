@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { STFDate } from '../../utils/helpers';
+import { STFDate, SmartImage } from '../../utils/helpers';
 
 const Card = ({ post }) => {
 
@@ -9,7 +9,12 @@ const Card = ({ post }) => {
     //     ? post.image.url
     //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
 
-    const imageUrl = post.image.formats.post_loop.url;
+
+    const object = post;
+    const content_type = "post";
+    const image_size = "post_loop";
+
+    const imageUrl = SmartImage({object, content_type, image_size});
 
     return (
         <React.Fragment>

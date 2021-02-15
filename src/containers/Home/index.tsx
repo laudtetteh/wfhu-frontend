@@ -20,7 +20,7 @@ export const Home = ({pageBag, siteOptions}) => {
 
                 <div className="container">
 
-                    <IntroCTA pageBag={pageBag}/>
+                    <IntroCTA pageBag={pageBag} />
 
                 </div>
 
@@ -30,7 +30,7 @@ export const Home = ({pageBag, siteOptions}) => {
 
                 <div className="container mx-auto py-12">
 
-                    <ConnectCTA siteOptions={siteOptions} />
+                    <ConnectCTA pageBag={pageBag} siteOptions={siteOptions} />
 
                 </div>
 

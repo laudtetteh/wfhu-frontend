@@ -52972,7 +52972,13 @@ exports.Helmet = HelmetExport;
 HelmetExport.renderStatic = HelmetExport.rewind;
 var _default = HelmetExport;
 exports.default = _default;
-},{"prop-types":"node_modules/prop-types/index.js","react-side-effect":"node_modules/react-side-effect/lib/index.js","react-fast-compare":"node_modules/react-fast-compare/index.js","react":"node_modules/react/index.js","object-assign":"node_modules/object-assign/index.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"prop-types":"node_modules/prop-types/index.js","react-side-effect":"node_modules/react-side-effect/lib/index.js","react-fast-compare":"node_modules/react-fast-compare/index.js","react":"node_modules/react/index.js","object-assign":"node_modules/object-assign/index.js"}],"assets/images/placeholder_testimonial_loop.jpg":[function(require,module,exports) {
+module.exports = "/placeholder_testimonial_loop.d70094e5.jpg";
+},{}],"assets/images/placeholder_post_loop.jpg":[function(require,module,exports) {
+module.exports = "/placeholder_post_loop.3137cd36.jpg";
+},{}],"assets/images/placeholder_split_section.jpg":[function(require,module,exports) {
+module.exports = "/placeholder_split_section.789ff46c.jpg";
+},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -53093,7 +53099,7 @@ LazyPromise.prototype.catch = function (onError) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TrimText = exports.DocumentHead = exports.FooterScripts = exports.STFDate = void 0;
+exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.FooterScripts = exports.STFDate = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53101,10 +53107,16 @@ var _reactMoment = _interopRequireDefault(require("react-moment"));
 
 var _reactHelmet = require("react-helmet");
 
+var _placeholder_testimonial_loop = _interopRequireDefault(require("../../assets/images/placeholder_testimonial_loop.jpg"));
+
+var _placeholder_post_loop = _interopRequireDefault(require("../../assets/images/placeholder_post_loop.jpg"));
+
+var _placeholder_split_section = _interopRequireDefault(require("../../assets/images/placeholder_split_section.jpg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
-// import {usePath} from 'hookrouter';
+// Assets
 var STFDate = function STFDate(_ref) {
   var _timestamp = _ref._timestamp,
       _format = _ref._format;
@@ -53145,7 +53157,54 @@ var TrimText = function TrimText(_ref3) {
 };
 
 exports.TrimText = TrimText;
-},{"react":"node_modules/react/index.js","react-moment":"node_modules/react-moment/dist/index.js","react-helmet":"node_modules/react-helmet/es/Helmet.js","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","/assets/js/footer-scripts.js":[["footer-scripts.491a479b.js","assets/js/footer-scripts.js"],"footer-scripts.491a479b.js.map","assets/js/footer-scripts.js"]}],"src/components/Card/testimonial.tsx":[function(require,module,exports) {
+
+var SmartImage = function SmartImage(_ref4) {
+  var object = _ref4.object,
+      content_type = _ref4.content_type,
+      image_size = _ref4.image_size;
+
+  var _imageUrl;
+
+  switch (content_type) {
+    case "testimonial":
+      if (object.image !== null && object.image.formats.testimonial_loop !== undefined) {
+        _imageUrl = object.image.formats.testimonial_loop.url;
+      } else {
+        _imageUrl = _placeholder_testimonial_loop.default;
+        console.log("Missing (correctly-sized) for one or more testimonials. Placeholder used");
+      }
+
+      break;
+
+    case "post":
+      if (object.image !== null && object.image.formats.post_loop !== undefined) {
+        _imageUrl = object.image.formats.post_loop.url;
+      } else {
+        _imageUrl = _placeholder_post_loop.default;
+        console.log("Missing (correctly-sized) for one or more posts. Placeholder used");
+      }
+
+      break;
+
+    case "split_section":
+      if (object.intro_image !== null && object.intro_image.formats.split_section !== undefined) {
+        _imageUrl = object.intro_image.formats.split_section.url;
+      } else {
+        _imageUrl = _placeholder_split_section.default;
+        console.log("Missing (correctly-sized) for split_section. Placeholder used");
+      }
+
+      break;
+
+    default:
+      console.log("No image found for one or more of `content_type`s. Placeholder used");
+  }
+
+  return _imageUrl;
+};
+
+exports.SmartImage = SmartImage;
+},{"react":"node_modules/react/index.js","react-moment":"node_modules/react-moment/dist/index.js","react-helmet":"node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_testimonial_loop.jpg":"assets/images/placeholder_testimonial_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_split_section.jpg":"assets/images/placeholder_split_section.jpg","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","/assets/js/footer-scripts.js":[["footer-scripts.491a479b.js","assets/js/footer-scripts.js"],"footer-scripts.491a479b.js.map","assets/js/footer-scripts.js"]}],"src/components/Card/testimonial.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53159,13 +53218,23 @@ var _helpers = require("../../utils/helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Packages
+// Helpers
 var Card = function Card(_ref) {
   var testimonial = _ref.testimonial;
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? testimonial.image.url
   //     : process.env.REACT_APP_BACKEND_URL + testimonial.image.url;
-  var imageUrl = testimonial.image.formats.testimonial_loop.url;
+  // const imageUrl = testimonial.image.formats.testimonial_loop.url;
+  var object = testimonial;
+  var content_type = "testimonial";
+  var image_size = "testimonial_loop";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "mx-auto"
   }, _react.default.createElement("div", {
@@ -73641,6 +73710,8 @@ var _testimonials = _interopRequireDefault(require("../../queries/testimonial/te
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Packages
+// Queries
 var Testimonial = function Testimonial(_ref) {
   var limit = _ref.limit;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Query.default, {
@@ -73678,7 +73749,14 @@ var Card = function Card(_ref) {
   //     process.env.NODE_ENV !== "development"
   //     ? post.image.url
   //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
-  var imageUrl = post.image.formats.post_loop.url;
+  var object = post;
+  var content_type = "post";
+  var image_size = "post_loop";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/post/".concat(post.id),
     className: "card-post--image"
@@ -73809,19 +73887,20 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ConnectCTA = function ConnectCTA(_ref) {
-  var siteOptions = _ref.siteOptions;
+  var pageBag = _ref.pageBag,
+      siteOptions = _ref.siteOptions;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop"
   }, _react.default.createElement("div", {
     className: "mx-auto"
   }, _react.default.createElement("h3", {
     className: "section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-gray-bottom-right"
-  }, "Content Heading"), _react.default.createElement("p", {
+  }, pageBag.connect_cta.heading), _react.default.createElement("p", {
     className: "section-heading font-roboto text-base text-white mb-3"
-  }, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."), _react.default.createElement("a", {
-    href: "#",
+  }, pageBag.connect_cta.paragraph), _react.default.createElement("a", {
+    href: "{pageBag.connect_cta.button_link}",
     className: "bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline"
-  }, "BIG FAT BUTTON!")), _react.default.createElement("div", {
+  }, pageBag.connect_cta.button_text)), _react.default.createElement("div", {
     className: "float-right"
   }, _react.default.createElement("h3", {
     className: "section-heading font-bellota text-2xl text-gray mb-3 float-right stf-text-shadow-white-top-left"
@@ -84943,28 +85022,44 @@ var _react = _interopRequireDefault(require("react"));
 
 var _MailChimp = require("../Forms/MailChimp");
 
+var _helpers = require("../../utils/helpers");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var IntroCTA = function IntroCTA() {
+var IntroCTA = function IntroCTA(_ref) {
+  var pageBag = _ref.pageBag;
+  var object = pageBag.intro_cta;
+  var content_type = "split_section";
+  var image_size = "split_section";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  }); // CSS for hidden fields
+
+  var introImage = {
+    "backgroundImage": "url(".concat(imageUrl, ")")
+  };
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-2"
   }, _react.default.createElement("div", {
     className: "mx-auto  mx-auto py-12 lg:mr-5"
   }, _react.default.createElement("h3", {
     className: "section-heading font-bellota text-2xl text-gray mb-3 stf-text-shadow-white-top-left"
-  }, "Zoom like a pro!"), _react.default.createElement("p", {
+  }, pageBag.intro_cta.intro_heading), _react.default.createElement("p", {
     className: "section-paragraph font-roboto text-base text-gray mb-3"
-  }, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."), _react.default.createElement("p", {
+  }, pageBag.intro_cta.intro_paragraph), _react.default.createElement("p", {
     className: "section-paragraph font-roboto text-base text-gray mb-2 font-medium"
   }, "Get notified when I publish something new"), _react.default.createElement("div", {
     className: "signup-form-container"
   }, _react.default.createElement(_MailChimp.SignupForm, null))), _react.default.createElement("div", {
-    className: "section-image intro-section-image float-right bg-auto bg-no-repeat"
+    className: "section-image intro-section-image float-right bg-contain bg-no-repeat",
+    style: introImage
   })));
 };
 
 exports.IntroCTA = IntroCTA;
-},{"react":"node_modules/react/index.js","../Forms/MailChimp":"src/components/Forms/MailChimp.tsx"}],"src/containers/Home/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Forms/MailChimp":"src/components/Forms/MailChimp.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Home/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85005,6 +85100,7 @@ var Home = function Home(_ref) {
   }, _react.default.createElement("div", {
     className: "container mx-auto py-12"
   }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
+    pageBag: pageBag,
     siteOptions: siteOptions
   }))), _react.default.createElement("section", {
     className: "w-full bg-none"
@@ -94396,7 +94492,7 @@ var MainNav = function MainNav(_ref) {
       exact: true,
       to: link.path,
       name: link.label,
-      className: "stf-nav-list-item-link inline-block font-roboto text-gray-600 no-underline hover:text-gray hover:text-underline py-2 px-4",
+      className: "stf-nav-list-item-link inline-block font-roboto text-red-600 no-underline hover:text-gray hover:text-underline py-2 px-4",
       activeClassName: "current"
     }, link.label));
   }))));
@@ -94499,13 +94595,11 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
-// Queries
-// import SITEOPTIONS_QUERY from "../../queries/site-options";
-// import Query from "../../components/Query";
 var getPageData = function getPageData(props) {
-  var no_of_posts = 0;
   var pageData = {};
+  var no_of_posts = 0;
   var intro_cta = {};
+  var connect_cta = {};
 
   if (props.description !== undefined) {
     pageData["description"] = props.description;
@@ -94514,12 +94608,16 @@ var getPageData = function getPageData(props) {
   if (props.dynamic_fields !== undefined) {
     if (Array.isArray(props.dynamic_fields)) {
       props.dynamic_fields.map(function (group) {
-        if (group.__component == "page.no_of_posts") {
+        if (group.__typename == "ComponentPageNoOfPostsToShow") {
           pageData['no_of_posts'] = group;
         }
 
-        if (group.__component == "page.page.intro-cta") {
+        if (group.__typename == "ComponentPageIntroCta") {
           pageData['intro_cta'] = group;
+        }
+
+        if (group.__typename == "ComponentPageConnectCta") {
+          pageData['connect_cta'] = group;
         }
       });
     }
@@ -98448,7 +98546,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/intro-section-image.png":[["intro-section-image.d39635c3.png","assets/images/intro-section-image.png"],"assets/images/intro-section-image.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
+},{"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-1.png":[["background-1.987eb1b6.png","assets/images/background-1.png"],"assets/images/background-1.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-2.png":[["background-2.6e7bb98d.png","assets/images/background-2.png"],"assets/images/background-2.png"],"/Users/laudtetteh/code/sites/wfhu-frontend/assets/images/background-3.png":[["background-3.873c18d8.png","assets/images/background-3.png"],"assets/images/background-3.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -98503,7 +98601,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59182" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55021" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

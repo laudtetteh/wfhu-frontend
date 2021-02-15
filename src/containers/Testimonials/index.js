@@ -1,5 +1,7 @@
+// Packages
 import React from "react";
 import Testimonials from "../../components/Testimonials";
+// Queries
 import Query from "../../components/Query";
 import TESTIMONIALS_QUERY from "../../queries/testimonial/testimonials";
 

@@ -4646,9 +4646,10 @@ readers do not read off random characters that represent icons */
   background-image: url('/background-3.873c18d8.png');
 }
 
+/*
 .intro-section-image {
-  background-image: url('/intro-section-image.d39635c3.png');
-}
+    background-image: url('/assets/images/intro-section-image.png');
+}*/
 
 .stf-nav-list-item:last-child .stf-nav-list-item-link {
   padding-right: 0;
