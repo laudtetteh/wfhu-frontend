@@ -85173,218 +85173,7 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Footer = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Social = require("../Elements/Social");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-var Footer = function Footer(_ref) {
-  var siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
-      headingColor = _ref.headingColor,
-      containerClass = _ref.containerClass,
-      headingClass = _ref.headingClass;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
-    className: "section-footer w-full bg-gray text-white py-16"
-  }, _react.default.createElement("div", {
-    className: "container"
-  }, _react.default.createElement(_Social.Social, {
-    siteOptions: siteOptions,
-    iconColor: iconColor,
-    iconBgColor: iconBgColor,
-    iconHvColor: iconHvColor,
-    headingColor: headingColor,
-    containerClass: containerClass,
-    headingClass: headingClass
-  }))));
-};
-
-exports.Footer = Footer;
-},{"react":"node_modules/react/index.js","../Elements/Social":"src/components/Elements/Social.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.About = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Testimonials = _interopRequireDefault(require("../Testimonials"));
-
-var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Containers
-var About = function About(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "About"
-  }), _react.default.createElement("section", {
-    className: "w-full bg-none section-page-content"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h1", {
-    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-  }, "About"), _react.default.createElement("div", {
-    className: "description"
-  }, pageBag.description))), _react.default.createElement("section", {
-    className: "w-full bg-none"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-  }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
-    limit: 4
-  }))), _react.default.createElement(_Footer.Footer, {
-    siteOptions: siteOptions,
-    iconColor: "gray-600",
-    iconBgColor: "white",
-    iconHvColor: "red",
-    headingColor: "white",
-    containerClass: "mx-auto",
-    headingClass: "text-center"
-  }));
-};
-
-exports.About = About;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
-var _default = CATEGORIES_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BlogNav = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Query = _interopRequireDefault(require("../Query"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _categories = _interopRequireDefault(require("../../queries/category/categories"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BlogNav = function BlogNav() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Query.default, {
-    query: _categories.default,
-    id: null
-  }, function (_ref) {
-    var categories = _ref.data.categories;
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
-      className: "uk-navbar-container",
-      "data-uk-navbar": true
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-left"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: "/"
-    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-right"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, categories.map(function (category, i) {
-      return /*#__PURE__*/_react.default.createElement("li", {
-        key: category.id
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/category/".concat(category.id),
-        className: "uk-link-reset"
-      }, category.name));
-    })))));
-  }));
-};
-
-exports.BlogNav = BlogNav;
-},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Blog = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _blog = require("../../components/Nav/blog");
-
-var _Posts = _interopRequireDefault(require("../Posts"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/*
-* Blog Container
-*
-*/
-// Packages
-// Components
-// Containers
-var Blog = function Blog(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "Blog"
-  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
-    limit: 12
-  }))));
-};
-
-exports.Blog = Blog;
-},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Contact = Contact;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Contact(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
-    className: "font-sans text-red text-4xl text-center pt-12"
-  }, pageBag.description, ". Styled with Tailwind"));
-}
-},{"react":"node_modules/react/index.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -94370,7 +94159,222 @@ ReactMarkdown.types = allTypes;
 ReactMarkdown.renderers = defaultRenderers;
 ReactMarkdown.uriTransformer = uriTransformer;
 module.exports = ReactMarkdown;
-},{"xtend":"node_modules/xtend/immutable.js","unified":"node_modules/unified/index.js","remark-parse":"node_modules/remark-parse/index.js","prop-types":"node_modules/prop-types/index.js","mdast-add-list-metadata":"node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"node_modules/react-markdown/lib/uri-transformer.js","./renderers":"node_modules/react-markdown/lib/renderers.js","./symbols":"node_modules/react-markdown/lib/symbols.js"}],"src/queries/post/post.js":[function(require,module,exports) {
+},{"xtend":"node_modules/xtend/immutable.js","unified":"node_modules/unified/index.js","remark-parse":"node_modules/remark-parse/index.js","prop-types":"node_modules/prop-types/index.js","mdast-add-list-metadata":"node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"node_modules/react-markdown/lib/uri-transformer.js","./renderers":"node_modules/react-markdown/lib/renderers.js","./symbols":"node_modules/react-markdown/lib/symbols.js"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Footer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Social = require("../Elements/Social");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+var Footer = function Footer(_ref) {
+  var siteOptions = _ref.siteOptions,
+      iconColor = _ref.iconColor,
+      iconBgColor = _ref.iconBgColor,
+      iconHvColor = _ref.iconHvColor,
+      headingColor = _ref.headingColor,
+      containerClass = _ref.containerClass,
+      headingClass = _ref.headingClass;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
+    className: "section-footer w-full bg-gray text-white py-16"
+  }, _react.default.createElement("div", {
+    className: "container"
+  }, _react.default.createElement(_Social.Social, {
+    siteOptions: siteOptions,
+    iconColor: iconColor,
+    iconBgColor: iconBgColor,
+    iconHvColor: iconHvColor,
+    headingColor: headingColor,
+    containerClass: containerClass,
+    headingClass: headingClass
+  }))));
+};
+
+exports.Footer = Footer;
+},{"react":"node_modules/react/index.js","../Elements/Social":"src/components/Elements/Social.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.About = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+
+var _Testimonials = _interopRequireDefault(require("../Testimonials"));
+
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Containers
+var About = function About(_ref) {
+  var pageBag = _ref.pageBag,
+      siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+    title: "About"
+  }), _react.default.createElement("section", {
+    className: "w-full bg-none section-page-content"
+  }, _react.default.createElement("div", {
+    className: "container mx-auto py-12 section-testimonials"
+  }, _react.default.createElement("h1", {
+    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+  }, "About"), _react.default.createElement("div", {
+    className: "description"
+  }, _react.default.createElement(_reactMarkdown.default, {
+    source: pageBag.description
+  })))), _react.default.createElement("section", {
+    className: "w-full bg-none"
+  }, _react.default.createElement("div", {
+    className: "container mx-auto py-12 section-testimonials"
+  }, _react.default.createElement("h2", {
+    className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+  }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
+    limit: 4
+  }))), _react.default.createElement(_Footer.Footer, {
+    siteOptions: siteOptions,
+    iconColor: "gray-600",
+    iconBgColor: "white",
+    iconHvColor: "red",
+    headingColor: "white",
+    containerClass: "mx-auto",
+    headingClass: "text-center"
+  }));
+};
+
+exports.About = About;
+},{"react":"node_modules/react/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
+var _default = CATEGORIES_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BlogNav = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Query = _interopRequireDefault(require("../Query"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _categories = _interopRequireDefault(require("../../queries/category/categories"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BlogNav = function BlogNav() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Query.default, {
+    query: _categories.default,
+    id: null
+  }, function (_ref) {
+    var categories = _ref.data.categories;
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
+      className: "uk-navbar-container",
+      "data-uk-navbar": true
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "uk-navbar-left"
+    }, /*#__PURE__*/_react.default.createElement("ul", {
+      className: "uk-navbar-nav"
+    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      to: "/"
+    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
+      className: "uk-navbar-right"
+    }, /*#__PURE__*/_react.default.createElement("ul", {
+      className: "uk-navbar-nav"
+    }, categories.map(function (category, i) {
+      return /*#__PURE__*/_react.default.createElement("li", {
+        key: category.id
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/category/".concat(category.id),
+        className: "uk-link-reset"
+      }, category.name));
+    })))));
+  }));
+};
+
+exports.BlogNav = BlogNav;
+},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Blog = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _blog = require("../../components/Nav/blog");
+
+var _Posts = _interopRequireDefault(require("../Posts"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+* Blog Container
+*
+*/
+// Packages
+// Components
+// Containers
+var Blog = function Blog(_ref) {
+  var pageBag = _ref.pageBag;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "Blog"
+  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
+    limit: 12
+  }))));
+};
+
+exports.Blog = Blog;
+},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Contact = Contact;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Contact(_ref) {
+  var pageBag = _ref.pageBag;
+  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+    className: "font-sans text-red text-4xl text-center pt-12"
+  }, pageBag.description, ". Styled with Tailwind"));
+}
+},{"react":"node_modules/react/index.js"}],"src/queries/post/post.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94713,8 +94717,6 @@ exports.getSiteOptions = exports.getPageData = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
@@ -94725,9 +94727,7 @@ var getPageData = function getPageData(props) {
   var connect_cta = {};
 
   if (props.description !== undefined) {
-    pageData["description"] = /*#__PURE__*/_react.default.createElement(_reactMarkdown.default, {
-      source: props.description
-    });
+    pageData["description"] = props.description;
   }
 
   if (props.dynamic_fields !== undefined) {
@@ -94768,7 +94768,7 @@ var getSiteOptions = function getSiteOptions(props) {
 };
 
 exports.getSiteOptions = getSiteOptions;
-},{"react":"node_modules/react/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js"}],"src/queries/page/pages.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/queries/page/pages.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98269,13 +98269,11 @@ module.exports = {
       }, {
         "name": "PageConnectionSlug"
       }, {
-        "name": "PageConnectionDescription"
-      }, {
-        "name": "PageConnectionImage"
-      }, {
         "name": "PageConnectionPublish_at"
       }, {
         "name": "PageConnectionSeo"
+      }, {
+        "name": "PageConnectionDescription"
       }, {
         "name": "PageConnectionPublished_at"
       }, {
@@ -98661,7 +98659,12 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
+},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_fonts.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./../fonts/roboto-v20-latin-100.eot":[["roboto-v20-latin-100.d626f64a.eot","assets/fonts/roboto-v20-latin-100.eot"],"assets/fonts/roboto-v20-latin-100.eot"],"./../fonts/roboto-v20-latin-100.woff2":[["roboto-v20-latin-100.52bf9221.woff2","assets/fonts/roboto-v20-latin-100.woff2"],"assets/fonts/roboto-v20-latin-100.woff2"],"./../fonts/roboto-v20-latin-100.woff":[["roboto-v20-latin-100.046e544b.woff","assets/fonts/roboto-v20-latin-100.woff"],"assets/fonts/roboto-v20-latin-100.woff"],"./../fonts/roboto-v20-latin-100.ttf":[["roboto-v20-latin-100.06d08f03.ttf","assets/fonts/roboto-v20-latin-100.ttf"],"assets/fonts/roboto-v20-latin-100.ttf"],"./../fonts/roboto-v20-latin-100.svg":[["roboto-v20-latin-100.1c7aecd6.svg","assets/fonts/roboto-v20-latin-100.svg"],"assets/fonts/roboto-v20-latin-100.svg"],"./../fonts/roboto-v20-latin-300.eot":[["roboto-v20-latin-300.dbf6beb4.eot","assets/fonts/roboto-v20-latin-300.eot"],"assets/fonts/roboto-v20-latin-300.eot"],"./../fonts/roboto-v20-latin-300.woff2":[["roboto-v20-latin-300.b70df813.woff2","assets/fonts/roboto-v20-latin-300.woff2"],"assets/fonts/roboto-v20-latin-300.woff2"],"./../fonts/roboto-v20-latin-300.woff":[["roboto-v20-latin-300.7521b406.woff","assets/fonts/roboto-v20-latin-300.woff"],"assets/fonts/roboto-v20-latin-300.woff"],"./../fonts/roboto-v20-latin-300.ttf":[["roboto-v20-latin-300.91c31d9f.ttf","assets/fonts/roboto-v20-latin-300.ttf"],"assets/fonts/roboto-v20-latin-300.ttf"],"./../fonts/roboto-v20-latin-300.svg":[["roboto-v20-latin-300.c043ec3c.svg","assets/fonts/roboto-v20-latin-300.svg"],"assets/fonts/roboto-v20-latin-300.svg"],"./../fonts/roboto-v20-latin-regular.eot":[["roboto-v20-latin-regular.29b186ce.eot","assets/fonts/roboto-v20-latin-regular.eot"],"assets/fonts/roboto-v20-latin-regular.eot"],"./../fonts/roboto-v20-latin-regular.woff2":[["roboto-v20-latin-regular.51f630ac.woff2","assets/fonts/roboto-v20-latin-regular.woff2"],"assets/fonts/roboto-v20-latin-regular.woff2"],"./../fonts/roboto-v20-latin-regular.woff":[["roboto-v20-latin-regular.03064b2f.woff","assets/fonts/roboto-v20-latin-regular.woff"],"assets/fonts/roboto-v20-latin-regular.woff"],"./../fonts/roboto-v20-latin-regular.ttf":[["roboto-v20-latin-regular.d369045c.ttf","assets/fonts/roboto-v20-latin-regular.ttf"],"assets/fonts/roboto-v20-latin-regular.ttf"],"./../fonts/roboto-v20-latin-regular.svg":[["roboto-v20-latin-regular.9676e5d0.svg","assets/fonts/roboto-v20-latin-regular.svg"],"assets/fonts/roboto-v20-latin-regular.svg"],"./../fonts/roboto-v20-latin-500.eot":[["roboto-v20-latin-500.53336a71.eot","assets/fonts/roboto-v20-latin-500.eot"],"assets/fonts/roboto-v20-latin-500.eot"],"./../fonts/roboto-v20-latin-500.woff2":[["roboto-v20-latin-500.93508537.woff2","assets/fonts/roboto-v20-latin-500.woff2"],"assets/fonts/roboto-v20-latin-500.woff2"],"./../fonts/roboto-v20-latin-500.woff":[["roboto-v20-latin-500.502dec24.woff","assets/fonts/roboto-v20-latin-500.woff"],"assets/fonts/roboto-v20-latin-500.woff"],"./../fonts/roboto-v20-latin-500.ttf":[["roboto-v20-latin-500.5c86b7b0.ttf","assets/fonts/roboto-v20-latin-500.ttf"],"assets/fonts/roboto-v20-latin-500.ttf"],"./../fonts/roboto-v20-latin-500.svg":[["roboto-v20-latin-500.74aa8d54.svg","assets/fonts/roboto-v20-latin-500.svg"],"assets/fonts/roboto-v20-latin-500.svg"],"./../fonts/bellota-v2-latin-300.eot":[["bellota-v2-latin-300.ed9544f4.eot","assets/fonts/bellota-v2-latin-300.eot"],"assets/fonts/bellota-v2-latin-300.eot"],"./../fonts/bellota-v2-latin-300.woff2":[["bellota-v2-latin-300.b99414e3.woff2","assets/fonts/bellota-v2-latin-300.woff2"],"assets/fonts/bellota-v2-latin-300.woff2"],"./../fonts/bellota-v2-latin-300.woff":[["bellota-v2-latin-300.78bb6714.woff","assets/fonts/bellota-v2-latin-300.woff"],"assets/fonts/bellota-v2-latin-300.woff"],"./../fonts/bellota-v2-latin-300.ttf":[["bellota-v2-latin-300.43226e65.ttf","assets/fonts/bellota-v2-latin-300.ttf"],"assets/fonts/bellota-v2-latin-300.ttf"],"./../fonts/bellota-v2-latin-300.svg":[["bellota-v2-latin-300.4e1b2c72.svg","assets/fonts/bellota-v2-latin-300.svg"],"assets/fonts/bellota-v2-latin-300.svg"],"./../fonts/bellota-v2-latin-regular.eot":[["bellota-v2-latin-regular.3155091d.eot","assets/fonts/bellota-v2-latin-regular.eot"],"assets/fonts/bellota-v2-latin-regular.eot"],"./../fonts/bellota-v2-latin-regular.woff2":[["bellota-v2-latin-regular.0b97a009.woff2","assets/fonts/bellota-v2-latin-regular.woff2"],"assets/fonts/bellota-v2-latin-regular.woff2"],"./../fonts/bellota-v2-latin-regular.woff":[["bellota-v2-latin-regular.9da7866e.woff","assets/fonts/bellota-v2-latin-regular.woff"],"assets/fonts/bellota-v2-latin-regular.woff"],"./../fonts/bellota-v2-latin-regular.ttf":[["bellota-v2-latin-regular.a7980fc8.ttf","assets/fonts/bellota-v2-latin-regular.ttf"],"assets/fonts/bellota-v2-latin-regular.ttf"],"./../fonts/bellota-v2-latin-regular.svg":[["bellota-v2-latin-regular.5f124b2a.svg","assets/fonts/bellota-v2-latin-regular.svg"],"assets/fonts/bellota-v2-latin-regular.svg"],"./../fonts/bellota-v2-latin-700.eot":[["bellota-v2-latin-700.ae812185.eot","assets/fonts/bellota-v2-latin-700.eot"],"assets/fonts/bellota-v2-latin-700.eot"],"./../fonts/bellota-v2-latin-700.woff2":[["bellota-v2-latin-700.3e8593c9.woff2","assets/fonts/bellota-v2-latin-700.woff2"],"assets/fonts/bellota-v2-latin-700.woff2"],"./../fonts/bellota-v2-latin-700.woff":[["bellota-v2-latin-700.fbb058ee.woff","assets/fonts/bellota-v2-latin-700.woff"],"assets/fonts/bellota-v2-latin-700.woff"],"./../fonts/bellota-v2-latin-700.ttf":[["bellota-v2-latin-700.42fd078b.ttf","assets/fonts/bellota-v2-latin-700.ttf"],"assets/fonts/bellota-v2-latin-700.ttf"],"./../fonts/bellota-v2-latin-700.svg":[["bellota-v2-latin-700.d0fb4018.svg","assets/fonts/bellota-v2-latin-700.svg"],"assets/fonts/bellota-v2-latin-700.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -98676,7 +98679,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","./_typography.css":"assets/css/_typography.css","./_custom.css":"assets/css/_custom.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
+},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","./_fonts.css":"assets/css/_fonts.css","./_typography.css":"assets/css/_typography.css","./_custom.css":"assets/css/_custom.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -98726,7 +98729,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52572" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55100" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

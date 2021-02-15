@@ -4618,6 +4618,139 @@ readers do not read off random characters that represent icons */
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
 
+/* roboto-100 - latin */
+
+@font-face {
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 100;
+
+  src: url('/roboto-v20-latin-100.d626f64a.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/roboto-v20-latin-100.d626f64a.eot?#iefix') format('embedded-opentype'), 
+       url('/roboto-v20-latin-100.52bf9221.woff2') format('woff2'), 
+       url('/roboto-v20-latin-100.046e544b.woff') format('woff'), 
+       url('/roboto-v20-latin-100.06d08f03.ttf') format('truetype'), 
+       url('/roboto-v20-latin-100.1c7aecd6.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* roboto-300 - latin */
+
+@font-face {
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  src: url('/roboto-v20-latin-300.dbf6beb4.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/roboto-v20-latin-300.dbf6beb4.eot?#iefix') format('embedded-opentype'), 
+       url('/roboto-v20-latin-300.b70df813.woff2') format('woff2'), 
+       url('/roboto-v20-latin-300.7521b406.woff') format('woff'), 
+       url('/roboto-v20-latin-300.91c31d9f.ttf') format('truetype'), 
+       url('/roboto-v20-latin-300.c043ec3c.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* roboto-regular - latin */
+
+@font-face {
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('/roboto-v20-latin-regular.29b186ce.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/roboto-v20-latin-regular.29b186ce.eot?#iefix') format('embedded-opentype'), 
+       url('/roboto-v20-latin-regular.51f630ac.woff2') format('woff2'), 
+       url('/roboto-v20-latin-regular.03064b2f.woff') format('woff'), 
+       url('/roboto-v20-latin-regular.d369045c.ttf') format('truetype'), 
+       url('/roboto-v20-latin-regular.9676e5d0.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* roboto-500 - latin */
+
+@font-face {
+  font-family: 'Roboto';
+
+  font-style: normal;
+
+  font-weight: 500;
+
+  src: url('/roboto-v20-latin-500.53336a71.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/roboto-v20-latin-500.53336a71.eot?#iefix') format('embedded-opentype'), 
+       url('/roboto-v20-latin-500.93508537.woff2') format('woff2'), 
+       url('/roboto-v20-latin-500.502dec24.woff') format('woff'), 
+       url('/roboto-v20-latin-500.5c86b7b0.ttf') format('truetype'), 
+       url('/roboto-v20-latin-500.74aa8d54.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* bellota-300 - latin */
+
+@font-face {
+  font-family: 'Bellota';
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  src: url('/bellota-v2-latin-300.ed9544f4.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/bellota-v2-latin-300.ed9544f4.eot?#iefix') format('embedded-opentype'), 
+       url('/bellota-v2-latin-300.b99414e3.woff2') format('woff2'), 
+       url('/bellota-v2-latin-300.78bb6714.woff') format('woff'), 
+       url('/bellota-v2-latin-300.43226e65.ttf') format('truetype'), 
+       url('/bellota-v2-latin-300.4e1b2c72.svg#Bellota') format('svg'); /* Legacy iOS */
+}
+
+/* bellota-regular - latin */
+
+@font-face {
+  font-family: 'Bellota';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('/bellota-v2-latin-regular.3155091d.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/bellota-v2-latin-regular.3155091d.eot?#iefix') format('embedded-opentype'), 
+       url('/bellota-v2-latin-regular.0b97a009.woff2') format('woff2'), 
+       url('/bellota-v2-latin-regular.9da7866e.woff') format('woff'), 
+       url('/bellota-v2-latin-regular.a7980fc8.ttf') format('truetype'), 
+       url('/bellota-v2-latin-regular.5f124b2a.svg#Bellota') format('svg'); /* Legacy iOS */
+}
+
+/* bellota-700 - latin */
+
+@font-face {
+  font-family: 'Bellota';
+
+  font-style: normal;
+
+  font-weight: 700;
+
+  src: url('/bellota-v2-latin-700.ae812185.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+       url('/bellota-v2-latin-700.ae812185.eot?#iefix') format('embedded-opentype'), 
+       url('/bellota-v2-latin-700.3e8593c9.woff2') format('woff2'), 
+       url('/bellota-v2-latin-700.fbb058ee.woff') format('woff'), 
+       url('/bellota-v2-latin-700.42fd078b.ttf') format('truetype'), 
+       url('/bellota-v2-latin-700.d0fb4018.svg#Bellota') format('svg'); /* Legacy iOS */
+}
+
 .font-roboto {
   font-family: 'Roboto';
 }

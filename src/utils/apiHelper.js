@@ -1,6 +1,5 @@
 // Packages
 import React from 'react';
-import ReactMarkdown from "react-markdown"
 
 export const getPageData = props => {
     let pageData = {};
@@ -10,7 +9,7 @@ export const getPageData = props => {
     let connect_cta = {};
 
     if( props.description !== undefined ) {
-        pageData["description"] = <ReactMarkdown source={props.description} />;
+        pageData["description"] = props.description;
     }
 
 
