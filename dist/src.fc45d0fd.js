@@ -94557,7 +94557,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
+var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
 var _default = PAGES_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
@@ -98503,7 +98503,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58138" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62792" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

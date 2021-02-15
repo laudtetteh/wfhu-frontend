@@ -21,6 +21,7 @@ const PAGES_QUERY = gql`
             dynamic_fields {
 
                 __typename
+
                 ... on ComponentPageIntroCta {
                     intro_heading
                     intro_paragraph
