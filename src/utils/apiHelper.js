@@ -1,15 +1,19 @@
 // Packages
 import React from 'react';
+import ReactMarkdown from "react-markdown";
 
 export const getPageData = props => {
+
     let pageData = {};
 
     let no_of_posts = 0;
+    let description = '';
     let intro_cta = {};
     let connect_cta = {};
 
     if( props.description !== undefined ) {
-        pageData["description"] = props.description;
+
+        description =  <ReactMarkdown source={props.description} />;
     }
 
     if( props.dynamic_fields !== undefined ) {
@@ -29,13 +33,14 @@ export const getPageData = props => {
                 if( group.__typename == "ComponentPageConnectCta" ) {
                     connect_cta = group;
                 }
-
-                pageData['no_of_posts'] = no_of_posts;
-                pageData['intro_cta'] = intro_cta;
-                pageData['connect_cta'] = connect_cta;
             })
         }
     }
+
+    pageData["description"] = description;
+    pageData['no_of_posts'] = no_of_posts;
+    pageData['intro_cta'] = intro_cta;
+    pageData['connect_cta'] = connect_cta;
 
     return pageData;
 }

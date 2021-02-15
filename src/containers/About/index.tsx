@@ -1,6 +1,5 @@
 // Packages
 import React from 'react';
-import ReactMarkdown from "react-markdown";
 // Containers
 import Testimonials from '../Testimonials';
 import { DocumentHead } from '../../utils/helpers';
@@ -20,8 +19,8 @@ export const About = ({pageBag, siteOptions}) => {
 
                     <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">About</h1>
 
-                    <div className="description">
-                        <ReactMarkdown source={pageBag.description} />
+                    <div className="description description font-roboto">
+                        {pageBag.description}
                     </div>
                 </div>
 
