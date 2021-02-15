@@ -85173,7 +85173,218 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Footer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Social = require("../Elements/Social");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+var Footer = function Footer(_ref) {
+  var siteOptions = _ref.siteOptions,
+      iconColor = _ref.iconColor,
+      iconBgColor = _ref.iconBgColor,
+      iconHvColor = _ref.iconHvColor,
+      headingColor = _ref.headingColor,
+      containerClass = _ref.containerClass,
+      headingClass = _ref.headingClass;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
+    className: "section-footer w-full bg-gray text-white py-16"
+  }, _react.default.createElement("div", {
+    className: "container"
+  }, _react.default.createElement(_Social.Social, {
+    siteOptions: siteOptions,
+    iconColor: iconColor,
+    iconBgColor: iconBgColor,
+    iconHvColor: iconHvColor,
+    headingColor: headingColor,
+    containerClass: containerClass,
+    headingClass: headingClass
+  }))));
+};
+
+exports.Footer = Footer;
+},{"react":"node_modules/react/index.js","../Elements/Social":"src/components/Elements/Social.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.About = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Testimonials = _interopRequireDefault(require("../Testimonials"));
+
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Containers
+var About = function About(_ref) {
+  var pageBag = _ref.pageBag,
+      siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+    title: "About"
+  }), _react.default.createElement("section", {
+    className: "w-full bg-none section-page-content"
+  }, _react.default.createElement("div", {
+    className: "container mx-auto py-12 section-testimonials"
+  }, _react.default.createElement("h1", {
+    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+  }, "About"), _react.default.createElement("div", {
+    className: "description"
+  }, pageBag.description))), _react.default.createElement("section", {
+    className: "w-full bg-none"
+  }, _react.default.createElement("div", {
+    className: "container mx-auto py-12 section-testimonials"
+  }, _react.default.createElement("h2", {
+    className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+  }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
+    limit: 4
+  }))), _react.default.createElement(_Footer.Footer, {
+    siteOptions: siteOptions,
+    iconColor: "gray-600",
+    iconBgColor: "white",
+    iconHvColor: "red",
+    headingColor: "white",
+    containerClass: "mx-auto",
+    headingClass: "text-center"
+  }));
+};
+
+exports.About = About;
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
+var _default = CATEGORIES_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BlogNav = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Query = _interopRequireDefault(require("../Query"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _categories = _interopRequireDefault(require("../../queries/category/categories"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BlogNav = function BlogNav() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Query.default, {
+    query: _categories.default,
+    id: null
+  }, function (_ref) {
+    var categories = _ref.data.categories;
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
+      className: "uk-navbar-container",
+      "data-uk-navbar": true
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "uk-navbar-left"
+    }, /*#__PURE__*/_react.default.createElement("ul", {
+      className: "uk-navbar-nav"
+    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      to: "/"
+    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
+      className: "uk-navbar-right"
+    }, /*#__PURE__*/_react.default.createElement("ul", {
+      className: "uk-navbar-nav"
+    }, categories.map(function (category, i) {
+      return /*#__PURE__*/_react.default.createElement("li", {
+        key: category.id
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/category/".concat(category.id),
+        className: "uk-link-reset"
+      }, category.name));
+    })))));
+  }));
+};
+
+exports.BlogNav = BlogNav;
+},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Blog = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _blog = require("../../components/Nav/blog");
+
+var _Posts = _interopRequireDefault(require("../Posts"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+* Blog Container
+*
+*/
+// Packages
+// Components
+// Containers
+var Blog = function Blog(_ref) {
+  var pageBag = _ref.pageBag;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "Blog"
+  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
+    limit: 12
+  }))));
+};
+
+exports.Blog = Blog;
+},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Contact = Contact;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Contact(_ref) {
+  var pageBag = _ref.pageBag;
+  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+    className: "font-sans text-red text-4xl text-center pt-12"
+  }, pageBag.description, ". Styled with Tailwind"));
+}
+},{"react":"node_modules/react/index.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -94159,222 +94370,7 @@ ReactMarkdown.types = allTypes;
 ReactMarkdown.renderers = defaultRenderers;
 ReactMarkdown.uriTransformer = uriTransformer;
 module.exports = ReactMarkdown;
-},{"xtend":"node_modules/xtend/immutable.js","unified":"node_modules/unified/index.js","remark-parse":"node_modules/remark-parse/index.js","prop-types":"node_modules/prop-types/index.js","mdast-add-list-metadata":"node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"node_modules/react-markdown/lib/uri-transformer.js","./renderers":"node_modules/react-markdown/lib/renderers.js","./symbols":"node_modules/react-markdown/lib/symbols.js"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Footer = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Social = require("../Elements/Social");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-var Footer = function Footer(_ref) {
-  var siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
-      headingColor = _ref.headingColor,
-      containerClass = _ref.containerClass,
-      headingClass = _ref.headingClass;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
-    className: "section-footer w-full bg-gray text-white py-16"
-  }, _react.default.createElement("div", {
-    className: "container"
-  }, _react.default.createElement(_Social.Social, {
-    siteOptions: siteOptions,
-    iconColor: iconColor,
-    iconBgColor: iconBgColor,
-    iconHvColor: iconHvColor,
-    headingColor: headingColor,
-    containerClass: containerClass,
-    headingClass: headingClass
-  }))));
-};
-
-exports.Footer = Footer;
-},{"react":"node_modules/react/index.js","../Elements/Social":"src/components/Elements/Social.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.About = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
-
-var _Testimonials = _interopRequireDefault(require("../Testimonials"));
-
-var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Containers
-var About = function About(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "About"
-  }), _react.default.createElement("section", {
-    className: "w-full bg-none section-page-content"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h1", {
-    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-  }, "About"), _react.default.createElement("div", {
-    className: "description"
-  }, _react.default.createElement(_reactMarkdown.default, {
-    source: pageBag.description
-  })))), _react.default.createElement("section", {
-    className: "w-full bg-none"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-  }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
-    limit: 4
-  }))), _react.default.createElement(_Footer.Footer, {
-    siteOptions: siteOptions,
-    iconColor: "gray-600",
-    iconBgColor: "white",
-    iconHvColor: "red",
-    headingColor: "white",
-    containerClass: "mx-auto",
-    headingClass: "text-center"
-  }));
-};
-
-exports.About = About;
-},{"react":"node_modules/react/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
-var _default = CATEGORIES_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BlogNav = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Query = _interopRequireDefault(require("../Query"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _categories = _interopRequireDefault(require("../../queries/category/categories"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BlogNav = function BlogNav() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Query.default, {
-    query: _categories.default,
-    id: null
-  }, function (_ref) {
-    var categories = _ref.data.categories;
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
-      className: "uk-navbar-container",
-      "data-uk-navbar": true
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-left"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: "/"
-    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-right"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, categories.map(function (category, i) {
-      return /*#__PURE__*/_react.default.createElement("li", {
-        key: category.id
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/category/".concat(category.id),
-        className: "uk-link-reset"
-      }, category.name));
-    })))));
-  }));
-};
-
-exports.BlogNav = BlogNav;
-},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Blog = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _blog = require("../../components/Nav/blog");
-
-var _Posts = _interopRequireDefault(require("../Posts"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/*
-* Blog Container
-*
-*/
-// Packages
-// Components
-// Containers
-var Blog = function Blog(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "Blog"
-  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
-    limit: 12
-  }))));
-};
-
-exports.Blog = Blog;
-},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Contact = Contact;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Contact(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
-    className: "font-sans text-red text-4xl text-center pt-12"
-  }, pageBag.description, ". Styled with Tailwind"));
-}
-},{"react":"node_modules/react/index.js"}],"src/queries/post/post.js":[function(require,module,exports) {
+},{"xtend":"node_modules/xtend/immutable.js","unified":"node_modules/unified/index.js","remark-parse":"node_modules/remark-parse/index.js","prop-types":"node_modules/prop-types/index.js","mdast-add-list-metadata":"node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"node_modules/react-markdown/lib/uri-transformer.js","./renderers":"node_modules/react-markdown/lib/renderers.js","./symbols":"node_modules/react-markdown/lib/symbols.js"}],"src/queries/post/post.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98729,7 +98725,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55100" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55210" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

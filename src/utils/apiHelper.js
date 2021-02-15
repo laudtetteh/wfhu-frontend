@@ -12,7 +12,6 @@ export const getPageData = props => {
         pageData["description"] = props.description;
     }
 
-
     if( props.dynamic_fields !== undefined ) {
 
         if( Array.isArray( props.dynamic_fields) ) {
