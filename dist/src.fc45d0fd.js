@@ -33344,7 +33344,7 @@ exports.ApolloLink = ApolloLink;
 function execute(link, operation) {
   return link.request(createOperation(operation.context, transformOperation(validateOperation(operation)))) || _zenObservableTs.default.of();
 }
-},{"zen-observable-ts":"node_modules/zen-observable-ts/lib/bundle.esm.js","ts-invariant":"node_modules/ts-invariant/lib/invariant.esm.js","tslib":"node_modules/tslib/tslib.es6.js","apollo-utilities":"node_modules/apollo-utilities/lib/bundle.esm.js"}],"node_modules/apollo-client/node_modules/symbol-observable/es/ponyfill.js":[function(require,module,exports) {
+},{"zen-observable-ts":"node_modules/zen-observable-ts/lib/bundle.esm.js","ts-invariant":"node_modules/ts-invariant/lib/invariant.esm.js","tslib":"node_modules/tslib/tslib.es6.js","apollo-utilities":"node_modules/apollo-utilities/lib/bundle.esm.js"}],"node_modules/symbol-observable/es/ponyfill.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33371,7 +33371,7 @@ function symbolObservablePonyfill(root) {
 }
 
 ;
-},{}],"node_modules/apollo-client/node_modules/symbol-observable/es/index.js":[function(require,module,exports) {
+},{}],"node_modules/symbol-observable/es/index.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -33402,7 +33402,7 @@ if (typeof self !== 'undefined') {
 var result = (0, _ponyfill.default)(root);
 var _default = result;
 exports.default = _default;
-},{"./ponyfill.js":"node_modules/apollo-client/node_modules/symbol-observable/es/ponyfill.js"}],"node_modules/apollo-client/bundle.esm.js":[function(require,module,exports) {
+},{"./ponyfill.js":"node_modules/symbol-observable/es/ponyfill.js"}],"node_modules/apollo-client/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36135,7 +36135,7 @@ var ApolloClient = function () {
 exports.ApolloClient = ApolloClient;
 var _default = ApolloClient;
 exports.default = _default;
-},{"tslib":"node_modules/tslib/tslib.es6.js","apollo-utilities":"node_modules/apollo-utilities/lib/bundle.esm.js","apollo-link":"node_modules/apollo-link/lib/bundle.esm.js","symbol-observable":"node_modules/apollo-client/node_modules/symbol-observable/es/index.js","ts-invariant":"node_modules/ts-invariant/lib/invariant.esm.js","graphql/language/visitor":"node_modules/graphql/language/visitor.js"}],"node_modules/@apollo/react-hooks/lib/react-hooks.esm.js":[function(require,module,exports) {
+},{"tslib":"node_modules/tslib/tslib.es6.js","apollo-utilities":"node_modules/apollo-utilities/lib/bundle.esm.js","apollo-link":"node_modules/apollo-link/lib/bundle.esm.js","symbol-observable":"node_modules/symbol-observable/es/index.js","ts-invariant":"node_modules/ts-invariant/lib/invariant.esm.js","graphql/language/visitor":"node_modules/graphql/language/visitor.js"}],"node_modules/@apollo/react-hooks/lib/react-hooks.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85144,7 +85144,7 @@ var Blog = function Blog(_ref) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "Blog"
   }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
-    limit: pageBag.no_of_posts ? pageBag.no_of_posts : 0
+    limit: 12
   }))));
 };
 
@@ -94503,14 +94503,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import SITEOPTIONS_QUERY from "../../queries/site-options";
 // import Query from "../../components/Query";
 var getPageData = function getPageData(props) {
+  var no_of_posts = 0;
   var pageData = {};
+  var intro_cta = {};
 
   if (props.description !== undefined) {
     pageData["description"] = props.description;
   }
 
-  if (props.dynamic_fields !== undefined && props.dynamic_fields[0] !== undefined) {
-    pageData["noOfPosts"] = props.dynamic_fields[0].no_of_posts;
+  if (props.dynamic_fields !== undefined) {
+    if (Array.isArray(props.dynamic_fields)) {
+      props.dynamic_fields.map(function (group) {
+        if (group.__component == "page.no_of_posts") {
+          pageData['no_of_posts'] = group;
+        }
+
+        if (group.__component == "page.page.intro-cta") {
+          pageData['intro_cta'] = group;
+        }
+      });
+    }
   }
 
   return pageData;
@@ -94545,7 +94557,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n                __typename\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n            published_at\n        }\n    }\n"])));
+var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
 var _default = PAGES_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
@@ -97889,7 +97901,471 @@ var HttpLink = function (_super) {
 }(_apolloLink.ApolloLink);
 
 exports.HttpLink = HttpLink;
-},{"tslib":"node_modules/tslib/tslib.es6.js","apollo-link":"node_modules/apollo-link/lib/bundle.esm.js","apollo-link-http-common":"node_modules/apollo-link-http-common/lib/bundle.esm.js"}],"src/utils/apolloClient.js":[function(require,module,exports) {
+},{"tslib":"node_modules/tslib/tslib.es6.js","apollo-link":"node_modules/apollo-link/lib/bundle.esm.js","apollo-link-http-common":"node_modules/apollo-link-http-common/lib/bundle.esm.js"}],"src/utils/fragmentTypes.json":[function(require,module,exports) {
+module.exports = {
+  "__schema": {
+    "types": [{
+      "kind": "UNION",
+      "name": "PageDynamicFieldsDynamicZone",
+      "possibleTypes": [{
+        "name": "ComponentPageNoOfPostsToShow"
+      }, {
+        "name": "ComponentPageIntroCta"
+      }, {
+        "name": "ComponentPageConnectCta"
+      }]
+    }, {
+      "kind": "UNION",
+      "name": "UniversalSlicesDynamicZone",
+      "possibleTypes": [{
+        "name": "ComponentUniversalsParagraph"
+      }]
+    }, {
+      "kind": "UNION",
+      "name": "Morph",
+      "possibleTypes": [{
+        "name": "PageNote"
+      }, {
+        "name": "PostNote"
+      }, {
+        "name": "TestimonialNote"
+      }, {
+        "name": "UsersPermissionsMe"
+      }, {
+        "name": "UsersPermissionsMeRole"
+      }, {
+        "name": "UsersPermissionsLoginPayload"
+      }, {
+        "name": "UserPermissionsPasswordPayload"
+      }, {
+        "name": "Category"
+      }, {
+        "name": "CategoryConnection"
+      }, {
+        "name": "CategoryAggregator"
+      }, {
+        "name": "CategoryGroupBy"
+      }, {
+        "name": "CategoryConnectionId"
+      }, {
+        "name": "CategoryConnection_id"
+      }, {
+        "name": "CategoryConnectionCreatedAt"
+      }, {
+        "name": "CategoryConnectionUpdatedAt"
+      }, {
+        "name": "CategoryConnectionName"
+      }, {
+        "name": "createCategoryPayload"
+      }, {
+        "name": "updateCategoryPayload"
+      }, {
+        "name": "deleteCategoryPayload"
+      }, {
+        "name": "Footer"
+      }, {
+        "name": "updateFooterPayload"
+      }, {
+        "name": "deleteFooterPayload"
+      }, {
+        "name": "History"
+      }, {
+        "name": "HistoryConnection"
+      }, {
+        "name": "HistoryAggregator"
+      }, {
+        "name": "HistoryGroupBy"
+      }, {
+        "name": "HistoryConnectionId"
+      }, {
+        "name": "HistoryConnection_id"
+      }, {
+        "name": "HistoryConnectionCreatedAt"
+      }, {
+        "name": "HistoryConnectionUpdatedAt"
+      }, {
+        "name": "HistoryConnectionAction"
+      }, {
+        "name": "HistoryConnectionContenttype"
+      }, {
+        "name": "HistoryConnectionAuthor"
+      }, {
+        "name": "HistoryConnectionBefore"
+      }, {
+        "name": "HistoryConnectionAfter"
+      }, {
+        "name": "createHistoryPayload"
+      }, {
+        "name": "updateHistoryPayload"
+      }, {
+        "name": "deleteHistoryPayload"
+      }, {
+        "name": "Like"
+      }, {
+        "name": "LikeConnection"
+      }, {
+        "name": "LikeAggregator"
+      }, {
+        "name": "LikeGroupBy"
+      }, {
+        "name": "LikeConnectionId"
+      }, {
+        "name": "LikeConnection_id"
+      }, {
+        "name": "LikeConnectionCreatedAt"
+      }, {
+        "name": "LikeConnectionUpdatedAt"
+      }, {
+        "name": "LikeConnectionAuthor"
+      }, {
+        "name": "LikeConnectionReview"
+      }, {
+        "name": "createLikePayload"
+      }, {
+        "name": "updateLikePayload"
+      }, {
+        "name": "deleteLikePayload"
+      }, {
+        "name": "Page"
+      }, {
+        "name": "PageConnection"
+      }, {
+        "name": "PageAggregator"
+      }, {
+        "name": "PageGroupBy"
+      }, {
+        "name": "PageConnectionId"
+      }, {
+        "name": "PageConnection_id"
+      }, {
+        "name": "PageConnectionCreated_at"
+      }, {
+        "name": "PageConnectionUpdated_at"
+      }, {
+        "name": "PageConnectionName"
+      }, {
+        "name": "PageConnectionSlug"
+      }, {
+        "name": "PageConnectionDescription"
+      }, {
+        "name": "PageConnectionImage"
+      }, {
+        "name": "PageConnectionPublish_at"
+      }, {
+        "name": "PageConnectionSeo"
+      }, {
+        "name": "PageConnectionPublished_at"
+      }, {
+        "name": "createPagePayload"
+      }, {
+        "name": "updatePagePayload"
+      }, {
+        "name": "deletePagePayload"
+      }, {
+        "name": "Post"
+      }, {
+        "name": "PostConnection"
+      }, {
+        "name": "PostAggregator"
+      }, {
+        "name": "PostGroupBy"
+      }, {
+        "name": "PostConnectionId"
+      }, {
+        "name": "PostConnection_id"
+      }, {
+        "name": "PostConnectionCreated_at"
+      }, {
+        "name": "PostConnectionUpdated_at"
+      }, {
+        "name": "PostConnectionName"
+      }, {
+        "name": "PostConnectionSlug"
+      }, {
+        "name": "PostConnectionDescription"
+      }, {
+        "name": "PostConnectionImage"
+      }, {
+        "name": "PostConnectionPublish_at"
+      }, {
+        "name": "PostConnectionCategory"
+      }, {
+        "name": "PostConnectionSeo"
+      }, {
+        "name": "PostConnectionPublished_at"
+      }, {
+        "name": "createPostPayload"
+      }, {
+        "name": "updatePostPayload"
+      }, {
+        "name": "deletePostPayload"
+      }, {
+        "name": "Review"
+      }, {
+        "name": "ReviewConnection"
+      }, {
+        "name": "ReviewAggregator"
+      }, {
+        "name": "ReviewAggregatorSum"
+      }, {
+        "name": "ReviewAggregatorAvg"
+      }, {
+        "name": "ReviewAggregatorMin"
+      }, {
+        "name": "ReviewAggregatorMax"
+      }, {
+        "name": "ReviewGroupBy"
+      }, {
+        "name": "ReviewConnectionId"
+      }, {
+        "name": "ReviewConnection_id"
+      }, {
+        "name": "ReviewConnectionCreatedAt"
+      }, {
+        "name": "ReviewConnectionUpdatedAt"
+      }, {
+        "name": "ReviewConnectionContent"
+      }, {
+        "name": "ReviewConnectionNote"
+      }, {
+        "name": "ReviewConnectionAuthor"
+      }, {
+        "name": "ReviewConnectionPost"
+      }, {
+        "name": "createReviewPayload"
+      }, {
+        "name": "updateReviewPayload"
+      }, {
+        "name": "deleteReviewPayload"
+      }, {
+        "name": "SiteOptions"
+      }, {
+        "name": "updateSiteOptionPayload"
+      }, {
+        "name": "deleteSiteOptionPayload"
+      }, {
+        "name": "Testimonial"
+      }, {
+        "name": "TestimonialConnection"
+      }, {
+        "name": "TestimonialAggregator"
+      }, {
+        "name": "TestimonialGroupBy"
+      }, {
+        "name": "TestimonialConnectionId"
+      }, {
+        "name": "TestimonialConnection_id"
+      }, {
+        "name": "TestimonialConnectionCreated_at"
+      }, {
+        "name": "TestimonialConnectionUpdated_at"
+      }, {
+        "name": "TestimonialConnectionImage"
+      }, {
+        "name": "TestimonialConnectionName"
+      }, {
+        "name": "TestimonialConnectionDescription"
+      }, {
+        "name": "TestimonialConnectionPublish_at"
+      }, {
+        "name": "TestimonialConnectionPublished_at"
+      }, {
+        "name": "createTestimonialPayload"
+      }, {
+        "name": "updateTestimonialPayload"
+      }, {
+        "name": "deleteTestimonialPayload"
+      }, {
+        "name": "TopMenu"
+      }, {
+        "name": "updateTopMenuPayload"
+      }, {
+        "name": "deleteTopMenuPayload"
+      }, {
+        "name": "Universal"
+      }, {
+        "name": "UniversalConnection"
+      }, {
+        "name": "UniversalAggregator"
+      }, {
+        "name": "UniversalGroupBy"
+      }, {
+        "name": "UniversalConnectionId"
+      }, {
+        "name": "UniversalConnection_id"
+      }, {
+        "name": "UniversalConnectionCreatedAt"
+      }, {
+        "name": "UniversalConnectionUpdatedAt"
+      }, {
+        "name": "UniversalConnectionTitle"
+      }, {
+        "name": "UniversalConnectionSlug"
+      }, {
+        "name": "UniversalConnectionSeo"
+      }, {
+        "name": "UniversalConnectionPublished_at"
+      }, {
+        "name": "createUniversalPayload"
+      }, {
+        "name": "updateUniversalPayload"
+      }, {
+        "name": "deleteUniversalPayload"
+      }, {
+        "name": "UploadFile"
+      }, {
+        "name": "UploadFileConnection"
+      }, {
+        "name": "UploadFileAggregator"
+      }, {
+        "name": "UploadFileAggregatorSum"
+      }, {
+        "name": "UploadFileAggregatorAvg"
+      }, {
+        "name": "UploadFileAggregatorMin"
+      }, {
+        "name": "UploadFileAggregatorMax"
+      }, {
+        "name": "UploadFileGroupBy"
+      }, {
+        "name": "UploadFileConnectionId"
+      }, {
+        "name": "UploadFileConnection_id"
+      }, {
+        "name": "UploadFileConnectionCreatedAt"
+      }, {
+        "name": "UploadFileConnectionUpdatedAt"
+      }, {
+        "name": "UploadFileConnectionName"
+      }, {
+        "name": "UploadFileConnectionAlternativeText"
+      }, {
+        "name": "UploadFileConnectionCaption"
+      }, {
+        "name": "UploadFileConnectionWidth"
+      }, {
+        "name": "UploadFileConnectionHeight"
+      }, {
+        "name": "UploadFileConnectionFormats"
+      }, {
+        "name": "UploadFileConnectionHash"
+      }, {
+        "name": "UploadFileConnectionExt"
+      }, {
+        "name": "UploadFileConnectionMime"
+      }, {
+        "name": "UploadFileConnectionSize"
+      }, {
+        "name": "UploadFileConnectionUrl"
+      }, {
+        "name": "UploadFileConnectionPreviewUrl"
+      }, {
+        "name": "UploadFileConnectionProvider"
+      }, {
+        "name": "UploadFileConnectionProvider_metadata"
+      }, {
+        "name": "deleteFilePayload"
+      }, {
+        "name": "UsersPermissionsPermission"
+      }, {
+        "name": "UsersPermissionsRole"
+      }, {
+        "name": "UsersPermissionsRoleConnection"
+      }, {
+        "name": "UsersPermissionsRoleAggregator"
+      }, {
+        "name": "UsersPermissionsRoleGroupBy"
+      }, {
+        "name": "UsersPermissionsRoleConnectionId"
+      }, {
+        "name": "UsersPermissionsRoleConnection_id"
+      }, {
+        "name": "UsersPermissionsRoleConnectionName"
+      }, {
+        "name": "UsersPermissionsRoleConnectionDescription"
+      }, {
+        "name": "UsersPermissionsRoleConnectionType"
+      }, {
+        "name": "createRolePayload"
+      }, {
+        "name": "updateRolePayload"
+      }, {
+        "name": "deleteRolePayload"
+      }, {
+        "name": "UsersPermissionsUser"
+      }, {
+        "name": "UsersPermissionsUserConnection"
+      }, {
+        "name": "UsersPermissionsUserAggregator"
+      }, {
+        "name": "UsersPermissionsUserGroupBy"
+      }, {
+        "name": "UsersPermissionsUserConnectionId"
+      }, {
+        "name": "UsersPermissionsUserConnection_id"
+      }, {
+        "name": "UsersPermissionsUserConnectionCreatedAt"
+      }, {
+        "name": "UsersPermissionsUserConnectionUpdatedAt"
+      }, {
+        "name": "UsersPermissionsUserConnectionUsername"
+      }, {
+        "name": "UsersPermissionsUserConnectionEmail"
+      }, {
+        "name": "UsersPermissionsUserConnectionProvider"
+      }, {
+        "name": "UsersPermissionsUserConnectionConfirmed"
+      }, {
+        "name": "UsersPermissionsUserConnectionBlocked"
+      }, {
+        "name": "UsersPermissionsUserConnectionRole"
+      }, {
+        "name": "UsersPermissionsUserConnectionPicture"
+      }, {
+        "name": "createUserPayload"
+      }, {
+        "name": "updateUserPayload"
+      }, {
+        "name": "deleteUserPayload"
+      }, {
+        "name": "ComponentFooterLink"
+      }, {
+        "name": "ComponentPageConnectCta"
+      }, {
+        "name": "ComponentPageIntroCta"
+      }, {
+        "name": "ComponentPageMeta"
+      }, {
+        "name": "ComponentPageNoOfPostsToShow"
+      }, {
+        "name": "ComponentPageNumberOfPostsToShow"
+      }, {
+        "name": "ComponentPageOpeningHours"
+      }, {
+        "name": "ComponentPageSeo"
+      }, {
+        "name": "ComponentPostMeta"
+      }, {
+        "name": "ComponentPostOpeningHours"
+      }, {
+        "name": "ComponentPostSeo"
+      }, {
+        "name": "ComponentTestimonialMeta"
+      }, {
+        "name": "ComponentTestimonialOpeningHours"
+      }, {
+        "name": "ComponentTestimonialSeo"
+      }, {
+        "name": "ComponentUniversalsLink"
+      }, {
+        "name": "ComponentUniversalsParagraph"
+      }, {
+        "name": "ComponentUniversalsSocial"
+      }]
+    }]
+  }
+};
+},{}],"src/utils/apolloClient.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -97897,23 +98373,32 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _apolloClient = require("apollo-client");
+var _apolloClient = _interopRequireDefault(require("apollo-client"));
 
 var _apolloCacheInmemory = require("apollo-cache-inmemory");
 
 var _apolloLinkHttp = require("apollo-link-http");
 
-var cache = new _apolloCacheInmemory.InMemoryCache();
+var _fragmentTypes = _interopRequireDefault(require("./fragmentTypes.json"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var fragmentMatcher = new _apolloCacheInmemory.IntrospectionFragmentMatcher({
+  introspectionQueryResultData: _fragmentTypes.default
+});
+var cache = new _apolloCacheInmemory.InMemoryCache({
+  fragmentMatcher: fragmentMatcher
+});
 var link = new _apolloLinkHttp.HttpLink({
   uri: "".concat("http://localhost:1337", "/graphql")
 });
-var client = new _apolloClient.ApolloClient({
+var client = new _apolloClient.default({
   cache: cache,
   link: link
 });
 var _default = client;
 exports.default = _default;
-},{"apollo-client":"node_modules/apollo-client/bundle.esm.js","apollo-cache-inmemory":"node_modules/apollo-cache-inmemory/lib/bundle.esm.js","apollo-link-http":"node_modules/apollo-link-http/lib/bundle.esm.js"}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{"apollo-client":"node_modules/apollo-client/bundle.esm.js","apollo-cache-inmemory":"node_modules/apollo-cache-inmemory/lib/bundle.esm.js","apollo-link-http":"node_modules/apollo-link-http/lib/bundle.esm.js","./fragmentTypes.json":"src/utils/fragmentTypes.json"}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -98018,7 +98503,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49592" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58138" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
