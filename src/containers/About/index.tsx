@@ -45,7 +45,7 @@ export const About = ({pageBag, siteOptions}) => {
                 iconHvColor="red"
                 headingColor="white"
                 containerClass="mx-auto"
-                headingClass="text-center"
+                headingClass="text-center font-bold"
             />
 
         </React.Fragment>

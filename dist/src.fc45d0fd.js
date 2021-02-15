@@ -85208,7 +85208,9 @@ var Footer = function Footer(_ref) {
     headingColor: headingColor,
     containerClass: containerClass,
     headingClass: headingClass
-  }))));
+  }), _react.default.createElement("p", {
+    className: "font-roboto mx-auto block text-center mt-3"
+  }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
 };
 
 exports.Footer = Footer;
@@ -85260,7 +85262,7 @@ var About = function About(_ref) {
     iconHvColor: "red",
     headingColor: "white",
     containerClass: "mx-auto",
-    headingClass: "text-center"
+    headingClass: "text-center font-bold"
   }));
 };
 
@@ -85408,7 +85410,7 @@ var Contact = function Contact(_ref) {
     iconHvColor: "red",
     headingColor: "white",
     containerClass: "mx-auto",
-    headingClass: "text-center"
+    headingClass: "text-center font-bold"
   }));
 };
 

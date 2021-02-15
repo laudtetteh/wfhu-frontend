@@ -22,6 +22,7 @@ export const Footer = ({siteOptions, iconColor, iconBgColor, iconHvColor, headin
                         headingClass={headingClass}
                     />
 
+                    <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University</p>
                 </div>
 
             </section>

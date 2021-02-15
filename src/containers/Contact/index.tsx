@@ -41,7 +41,7 @@ export const Contact = ({pageBag, siteOptions}) => {
                 iconHvColor="red"
                 headingColor="white"
                 containerClass="mx-auto"
-                headingClass="text-center"
+                headingClass="text-center font-bold"
             />
 
         </React.Fragment>
