@@ -73744,7 +73744,8 @@ var _helpers = require("../../utils/helpers");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Card = function Card(_ref) {
-  var post = _ref.post;
+  var post = _ref.post,
+      orientation = _ref.orientation;
   // const imageUrl =
   //     process.env.NODE_ENV !== "development"
   //     ? post.image.url
@@ -73811,14 +73812,16 @@ var Posts = function Posts(_ref) {
         key: index
       }, " ", _react.default.createElement(_post.default, {
         post: post,
-        key: "post__".concat(post.id)
+        key: "post-".concat(post.id),
+        orientation: "vertical"
       }));
     }), rightPosts.map(function (post, index) {
       return _react.default.createElement("div", {
         key: index
       }, " ", _react.default.createElement(_post.default, {
         post: post,
-        key: "post__".concat(post.id)
+        key: "post-".concat(post.id),
+        orientation: "vertical"
       }));
     })));
   }
@@ -73830,14 +73833,16 @@ var Posts = function Posts(_ref) {
       key: index
     }, " ", _react.default.createElement(_post.default, {
       post: post,
-      key: "post__".concat(post.id)
+      key: "post-".concat(post.id),
+      orientation: "horizontal"
     }));
   }), rightPosts.map(function (post, index) {
     return _react.default.createElement("div", {
       key: index
     }, " ", _react.default.createElement(_post.default, {
       post: post,
-      key: "post__".concat(post.id)
+      key: "post-".concat(post.id),
+      orientation: "horizontal"
     }));
   })));
 };

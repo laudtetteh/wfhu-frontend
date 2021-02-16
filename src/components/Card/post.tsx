@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { STFDate, SmartImage } from '../../utils/helpers';
 
-const Card = ({ post }) => {
+const Card = ({ post, orientation }) => {
 
     // const imageUrl =
     //     process.env.NODE_ENV !== "development"

@@ -11,11 +11,11 @@ const Posts = ({ posts, orientation }) => {
             <React.Fragment>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop">
                     {leftPosts.map((post, index) => {
-                        return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
+                        return <div key={index}> <PostCard post={post} key={`post-${post.id}`} orientation="vertical" /></div>
                     })}
 
                     {rightPosts.map((post, index) => {
-                        return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
+                        return <div key={index}> <PostCard post={post} key={`post-${post.id}`} orientation="vertical" /></div>
                     })}
                 </div>
             </React.Fragment>
@@ -26,11 +26,11 @@ const Posts = ({ posts, orientation }) => {
         <React.Fragment>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop">
                 {leftPosts.map((post, index) => {
-                    return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
+                    return <div key={index}> <PostCard post={post} key={`post-${post.id}`} orientation="horizontal" /></div>
                 })}
 
                 {rightPosts.map((post, index) => {
-                    return <div key={index}> <PostCard post={post} key={`post__${post.id}`} /></div>
+                    return <div key={index}> <PostCard post={post} key={`post-${post.id}`} orientation="horizontal" /></div>
                 })}
             </div>
         </React.Fragment>
