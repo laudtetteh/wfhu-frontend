@@ -73852,14 +73852,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Posts = function Posts(_ref) {
   var posts = _ref.posts,
-      orientation = _ref.orientation;
+      orientation = _ref.orientation,
+      heading = _ref.heading;
 
   if (orientation == 'vertical') {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
       className: "col-span-5 space-y-6"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Posts"), posts.map(function (post, index) {
+    }, heading), posts.map(function (post, index) {
       var _React$createElement;
 
       return _react.default.createElement(_post.default, (_React$createElement = {
@@ -73922,7 +73923,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var GetPosts = function GetPosts(_ref) {
   var limit = _ref.limit,
-      orientation = _ref.orientation;
+      orientation = _ref.orientation,
+      heading = _ref.heading;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _posts.default,
     limit: limit
@@ -73930,7 +73932,8 @@ var GetPosts = function GetPosts(_ref) {
     var posts = _ref2.data.posts;
     return _react.default.createElement(_Posts.default, {
       posts: posts,
-      orientation: orientation
+      orientation: orientation,
+      heading: heading
     });
   }));
 };
@@ -94465,7 +94468,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories($slug: String!) {\n    categories(where: {slug: $slug}) {\n      id\n      name\n      slug\n      posts {\n        id\n        name\n        slug\n        description\n        image {\n          formats\n        }\n        category {\n          id\n          name\n        }\n      }\n    }\n}\n"])));
+var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Categories($slug: String!) {\n        categories(where: {slug: $slug}) {\n            id\n            name\n            slug\n            posts {\n                id\n                name\n                slug\n                description\n                image {\n                    formats\n                }\n                category {\n                    id\n                    name\n                    slug\n                }\n            }\n        }\n    }\n"])));
 var _default = CATEGORY_POSTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/queries/category/categories.tsx":[function(require,module,exports) {
@@ -94611,7 +94614,8 @@ var Blog = function Blog(_ref) {
       className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
-      orientation: "vertical"
+      orientation: "vertical",
+      heading: "Posts"
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
       iconColor: "gray",
@@ -94673,9 +94677,7 @@ var Contact = function Contact(_ref) {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-contact-form"
-    }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Testimonials"))), _react.default.createElement(_Footer.Footer, {
+    })), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
       iconColor: "gray",
       iconBgColor: "white",
@@ -94844,45 +94846,67 @@ exports.PostSingle = PostSingle;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Category = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactRouter = require("react-router");
 
+var _Posts = _interopRequireDefault(require("../../components/Posts"));
+
+var _Sidebar = require("../Sidebar");
+
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
 var _posts = _interopRequireDefault(require("../../queries/category/posts"));
 
-var _helpers = require("../../utils/helpers");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
+// Containers
 // Queries
-// Utilities
-var Category = function Category() {
+var Category = function Category(_ref) {
+  var siteOptions = _ref.siteOptions;
+
   var _useParams = (0, _reactRouter.useParams)(),
       slug = _useParams.slug;
 
   return _react.default.createElement(_Query.default, {
     query: _posts.default,
     slug: slug
-  }, function (_ref) {
-    var category = _ref.data.category;
+  }, function (_ref2) {
+    var categories = _ref2.data.categories;
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-      title: category.name
-    }), _react.default.createElement("div", {
-      className: ""
-    }, _react.default.createElement("h1", null, category.name), _react.default.createElement(PostsVertical, {
-      posts: category.posts
-    })));
+      title: categories[0].name
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-posts"
+    }, _react.default.createElement("div", {
+      className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
+    }, _react.default.createElement(_Posts.default, {
+      limit: 12,
+      posts: categories[0].posts,
+      orientation: "vertical",
+      heading: categories[0].name
+    }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
+      siteOptions: siteOptions,
+      iconColor: "gray",
+      iconBgColor: "white",
+      iconHvColor: "red",
+      headingColor: "white",
+      containerClass: "mx-auto",
+      headingClass: "text-center font-bold"
+    }));
   });
 };
 
-var _default = Category;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Nav/main.js":[function(require,module,exports) {
+exports.Category = Category;
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Posts":"src/components/Posts/index.tsx","../Sidebar":"src/containers/Sidebar/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.tsx"}],"src/components/Nav/main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

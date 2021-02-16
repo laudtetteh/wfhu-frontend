@@ -35,7 +35,7 @@ export const Blog = ({siteOptions}) => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4">
 
-                                    <Posts limit={12} orientation="vertical"/>
+                                    <Posts limit={12} orientation="vertical" heading="Posts" />
 
                                     <Sidebar />
 

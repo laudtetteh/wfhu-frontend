@@ -9,7 +9,6 @@ const Card = ({ post, orientation }) => {
     //     ? post.image.url
     //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
 
-
     const object = post;
     const content_type = "post";
     const image_size = "post_loop";

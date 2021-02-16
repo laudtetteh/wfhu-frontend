@@ -3,7 +3,7 @@ import Posts from "../../components/Posts";
 import Query from "../../components/Query";
 import POSTS_QUERY from "../../queries/post/posts";
 
-const GetPosts = ({limit, orientation}) => {
+const GetPosts = ({limit, orientation, heading}) => {
 
     return (
 
@@ -11,7 +11,7 @@ const GetPosts = ({limit, orientation}) => {
 
             <Query query={POSTS_QUERY} limit={limit}>
                 {({ data: { posts } }) => {
-                    return <Posts posts={posts} orientation={orientation}/>;
+                    return <Posts posts={posts} orientation={orientation} heading={heading} />;
                 }}
             </Query>
 

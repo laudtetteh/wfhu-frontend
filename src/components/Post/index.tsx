@@ -19,7 +19,6 @@ export const Post = ({post}) => {
 
     const imageUrl = SmartImage({object, content_type, image_size});
 
-
     return (
 
         <React.Fragment>

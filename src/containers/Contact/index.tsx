@@ -50,7 +50,7 @@ export const Contact = ({siteOptions}) => {
 
                             <div className="container mx-auto py-12 section-contact-form">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
+
 
 
 
