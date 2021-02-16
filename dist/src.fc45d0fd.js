@@ -53099,7 +53099,7 @@ LazyPromise.prototype.catch = function (onError) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getObjectCount = exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.FooterScripts = exports.STFDate = void 0;
+exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.FooterScripts = exports.STFDate = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53214,32 +53214,6 @@ var SmartImage = function SmartImage(_ref4) {
 };
 
 exports.SmartImage = SmartImage;
-
-var getObjectCount = function getObjectCount(_ref5) {
-  var object = _ref5.object;
-  var objectCount = 0;
-
-  function ObjectLength_Modern(object) {
-    return Object.keys(object).length;
-  }
-
-  function ObjectLength_Legacy(object) {
-    var length = 0;
-
-    for (var key in object) {
-      if (object.hasOwnProperty(key)) {
-        ++length;
-      }
-    }
-
-    return length;
-  }
-
-  objectCount = Object.keys ? ObjectLength_Modern : ObjectLength_Legacy;
-  return objectCount;
-};
-
-exports.getObjectCount = getObjectCount;
 },{"react":"node_modules/react/index.js","react-moment":"node_modules/react-moment/dist/index.js","react-helmet":"node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_testimonial_loop.jpg":"assets/images/placeholder_testimonial_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_split_section.jpg":"assets/images/placeholder_split_section.jpg","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","/assets/js/footer-scripts.js":[["footer-scripts.491a479b.js","assets/js/footer-scripts.js"],"footer-scripts.491a479b.js.map","assets/js/footer-scripts.js"]}],"src/components/Card/testimonial.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -94558,10 +94532,9 @@ var BlogNav = function BlogNav() {
         slug: category.slug
       }, function (_ref2) {
         var categories = _ref2.data.categories;
-        var postCount = (0, _helpers.getObjectCount)(categories);
         return /*#__PURE__*/_react.default.createElement("p", {
-          className: ""
-        }, postCount);
+          className: "post-category-postcount font-roboto text-xs text-black font-thin italic"
+        }, categories[0].posts.length, " Posts");
       }));
     })));
   });

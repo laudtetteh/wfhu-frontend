@@ -107,25 +107,3 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
     return _imageUrl;
 }
-
-export const getObjectCount = ({object}) => {
-    let objectCount = 0;
-
-    function ObjectLength_Modern( object ) {
-        return Object.keys(object).length;
-    }
-
-    function ObjectLength_Legacy( object ) {
-        var length = 0;
-        for( var key in object ) {
-            if( object.hasOwnProperty(key) ) {
-                ++length;
-            }
-        }
-        return length;
-    }
-
-    objectCount = Object.keys ? ObjectLength_Modern : ObjectLength_Legacy;
-
-    return objectCount;
-}

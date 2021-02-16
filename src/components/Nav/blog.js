@@ -1,11 +1,10 @@
+// Packages
 import React from "react";
 import Query from "../Query";
 import { Link } from "react-router-dom";
 // Queries
 import CATEGORY_POSTS_QUERY from "../../queries/category/posts";
 import CATEGORIES_QUERY from "../../queries/category/categories";
-// Uitilities
-import { getObjectCount } from '../../utils/helpers';
 
 export const BlogNav = () => {
 
@@ -42,10 +41,8 @@ export const BlogNav = () => {
 
                                                 {({ data: { categories } }) => {
 
-                                                    const postCount = getObjectCount(categories);
-
                                                     return (
-                                                        <p className="">{postCount}</p>
+                                                        <p className="post-category-postcount font-roboto text-xs text-black font-thin italic">{categories[0].posts.length} Posts</p>
                                                     );
                                                 }}
                                             </Query>
