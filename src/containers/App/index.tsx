@@ -69,11 +69,11 @@ function App() {
                                             <Contact siteOptions={siteOptions} />
                                         </Route>
 
-                                        <Route path="/post/:id">
+                                        <Route path="/post/:slug">
                                             <Post siteOptions={siteOptions} />
                                         </Route>
 
-                                        <Route path="/category/:id">
+                                        <Route path="/category/:slug">
                                             <Category siteOptions={siteOptions} />
                                         </Route>
 

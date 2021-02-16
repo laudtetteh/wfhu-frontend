@@ -53258,7 +53258,7 @@ var Card = function Card(_ref) {
 
 var _default = Card;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Testimonials/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Testimonials/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53277,15 +53277,15 @@ var Testimonials = function Testimonials(_ref) {
   var leftTestimonialsCount = Math.ceil(testimonials.length / 5);
   var leftTestimonials = testimonials.slice(0, leftTestimonialsCount);
   var rightTestimonials = testimonials.slice(leftTestimonialsCount, testimonials.length);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-4"
   }, leftTestimonials.map(function (testimonial, i) {
-    return /*#__PURE__*/_react.default.createElement(_testimonial.default, {
+    return _react.default.createElement(_testimonial.default, {
       testimonial: testimonial,
       key: "testimonial__".concat(testimonial.id)
     });
   }), rightTestimonials.map(function (testimonial, i) {
-    return /*#__PURE__*/_react.default.createElement(_testimonial.default, {
+    return _react.default.createElement(_testimonial.default, {
       testimonial: testimonial,
       key: "testimonial__".concat(testimonial.id)
     });
@@ -73673,7 +73673,7 @@ var _default = Object.assign(gql, {
 });
 
 exports.default = _default;
-},{"tslib":"node_modules/tslib/tslib.es6.js","graphql":"node_modules/graphql/index.mjs"}],"src/queries/testimonial/testimonials.js":[function(require,module,exports) {
+},{"tslib":"node_modules/tslib/tslib.es6.js","graphql":"node_modules/graphql/index.mjs"}],"src/queries/testimonial/testimonials.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73692,7 +73692,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var TESTIMONIALS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Testimonials($limit: Int!)  {\n        testimonials(limit: $limit) {\n            id\n            name\n            description\n            image {\n                formats\n            }\n        }\n    }\n"])));
 var _default = TESTIMONIALS_QUERY;
 exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Testimonials/index.js":[function(require,module,exports) {
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Testimonials/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73714,12 +73714,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Queries
 var Testimonial = function Testimonial(_ref) {
   var limit = _ref.limit;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Query.default, {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _testimonials.default,
     limit: limit
   }, function (_ref2) {
     var testimonials = _ref2.data.testimonials;
-    return /*#__PURE__*/_react.default.createElement(_Testimonials.default, {
+    return _react.default.createElement(_Testimonials.default, {
       testimonials: testimonials
     });
   }));
@@ -73727,7 +73727,7 @@ var Testimonial = function Testimonial(_ref) {
 
 var _default = Testimonial;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../components/Testimonials":"src/components/Testimonials/index.js","../../components/Query":"src/components/Query/index.js","../../queries/testimonial/testimonials":"src/queries/testimonial/testimonials.js"}],"src/components/Card/post.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../components/Testimonials":"src/components/Testimonials/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/testimonial/testimonials":"src/queries/testimonial/testimonials.tsx"}],"src/components/Card/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73758,16 +73758,22 @@ var Card = function Card(_ref) {
     content_type: content_type,
     image_size: image_size
   });
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/post/".concat(post.id),
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "post-".concat(post.id)
+  }, _react.default.createElement("div", {
+    className: "card-post--image"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/post/".concat(post.slug),
     className: "card-post--image"
   }, _react.default.createElement("img", {
     src: imageUrl,
     alt: imageUrl,
     height: "100",
     className: "w-full"
-  })), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/post/".concat(post.id),
+  }))), _react.default.createElement("div", {
+    className: "card-post--details"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/post/".concat(post.slug),
     className: "card-post--title font-roboto no-underline"
   }, _react.default.createElement("p", {
     id: "name",
@@ -73778,7 +73784,7 @@ var Card = function Card(_ref) {
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
-  })));
+  })))));
 };
 
 var _default = Card;
@@ -73797,59 +73803,40 @@ var _post = _interopRequireDefault(require("../Card/post"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Posts = function Posts(_ref) {
   var posts = _ref.posts,
       orientation = _ref.orientation;
-  var leftPostsCount = Math.ceil(posts.length / 5);
-  var leftPosts = posts.slice(0, leftPostsCount);
-  var rightPosts = posts.slice(leftPostsCount, posts.length);
 
   if (orientation == 'vertical') {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
-    }, leftPosts.map(function (post, index) {
-      return _react.default.createElement("div", {
-        key: index
-      }, " ", _react.default.createElement(_post.default, {
-        post: post,
-        key: "post-".concat(post.id),
-        orientation: "vertical"
-      }));
-    }), rightPosts.map(function (post, index) {
-      return _react.default.createElement("div", {
-        key: index
-      }, " ", _react.default.createElement(_post.default, {
-        post: post,
-        key: "post-".concat(post.id),
-        orientation: "vertical"
-      }));
+      className: "grid-cols-1 md:grid-cols-3"
+    }, posts.map(function (post, index) {
+      var _React$createElement;
+
+      return _react.default.createElement(_post.default, (_React$createElement = {
+        key: index,
+        post: post
+      }, _defineProperty(_React$createElement, "key", "post-".concat(post.id)), _defineProperty(_React$createElement, "orientation", "vertical"), _React$createElement));
     })));
   }
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
-  }, leftPosts.map(function (post, index) {
-    return _react.default.createElement("div", {
-      key: index
-    }, " ", _react.default.createElement(_post.default, {
-      post: post,
-      key: "post-".concat(post.id),
-      orientation: "horizontal"
-    }));
-  }), rightPosts.map(function (post, index) {
-    return _react.default.createElement("div", {
-      key: index
-    }, " ", _react.default.createElement(_post.default, {
-      post: post,
-      key: "post-".concat(post.id),
-      orientation: "horizontal"
-    }));
+  }, posts.map(function (post, index) {
+    var _React$createElement2;
+
+    return _react.default.createElement(_post.default, (_React$createElement2 = {
+      key: index,
+      post: post
+    }, _defineProperty(_React$createElement2, "key", "post-".concat(post.id)), _defineProperty(_React$createElement2, "orientation", "horizontal"), _React$createElement2));
   })));
 };
 
 var _default = Posts;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Card/post":"src/components/Card/post.tsx"}],"src/queries/post/posts.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Card/post":"src/components/Card/post.tsx"}],"src/queries/post/posts.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73865,10 +73852,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int!)  {\n        posts(limit: $limit) {\n            id\n            name\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n            }\n            published_at\n        }\n    }\n"])));
+var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int!)  {\n        posts(limit: $limit) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n            }\n            published_at\n        }\n    }\n"])));
 var _default = POSTS_QUERY;
 exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Posts/index.js":[function(require,module,exports) {
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Posts/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73889,12 +73876,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var GetPosts = function GetPosts(_ref) {
   var limit = _ref.limit,
       orientation = _ref.orientation;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Query.default, {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _posts.default,
     limit: limit
   }, function (_ref2) {
     var posts = _ref2.data.posts;
-    return /*#__PURE__*/_react.default.createElement(_Posts.default, {
+    return _react.default.createElement(_Posts.default, {
       posts: posts,
       orientation: orientation
     });
@@ -73903,7 +73890,7 @@ var GetPosts = function GetPosts(_ref) {
 
 var _default = GetPosts;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../components/Posts":"src/components/Posts/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/post/posts":"src/queries/post/posts.js"}],"src/components/Elements/Social.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../components/Posts":"src/components/Posts/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/post/posts":"src/queries/post/posts.tsx"}],"src/components/Elements/Social.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85130,7 +85117,7 @@ var IntroCTA = function IntroCTA(_ref) {
 };
 
 exports.IntroCTA = IntroCTA;
-},{"react":"node_modules/react/index.js","../Forms/MailChimp":"src/components/Forms/MailChimp.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/page/pages.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Forms/MailChimp":"src/components/Forms/MailChimp.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/page/page.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85146,8 +85133,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
-var _default = PAGES_QUERY;
+var PAGE_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
+var _default = PAGE_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
@@ -94221,7 +94208,7 @@ var _IntroCTA = require("../../components/Cta/IntroCTA");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
-var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+var _page = _interopRequireDefault(require("../../queries/page/page"));
 
 var _helpers = require("../../utils/helpers");
 
@@ -94237,7 +94224,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Home = function Home(_ref) {
   var siteOptions = _ref.siteOptions;
   return _react.default.createElement(_Query.default, {
-    query: _pages.default,
+    query: _page.default,
     slug: "home"
   }, function (_ref2) {
     var pages = _ref2.data.pages;
@@ -94288,7 +94275,7 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.tsx","../Posts":"src/containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94347,7 +94334,7 @@ var _Footer = require("../../components/Footer");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
-var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+var _page = _interopRequireDefault(require("../../queries/page/page"));
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -94359,7 +94346,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var About = function About(_ref) {
   var siteOptions = _ref.siteOptions;
   return _react.default.createElement(_Query.default, {
-    query: _pages.default,
+    query: _page.default,
     slug: "about"
   }, function (_ref2) {
     var pages = _ref2.data.pages;
@@ -94397,7 +94384,89 @@ var About = function About(_ref) {
 };
 
 exports.About = About;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/category/categories.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n      slug\n    }\n  }\n"])));
+var _default = CATEGORIES_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BlogNav = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Query = _interopRequireDefault(require("../Query"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _categories = _interopRequireDefault(require("../../queries/category/categories"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BlogNav = function BlogNav() {
+  return /*#__PURE__*/_react.default.createElement(_Query.default, {
+    query: _categories.default,
+    id: null
+  }, function (_ref) {
+    var categories = _ref.data.categories;
+    return /*#__PURE__*/_react.default.createElement("nav", {
+      className: "nav-sidebar"
+    }, /*#__PURE__*/_react.default.createElement("h2", {
+      class: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Series"), /*#__PURE__*/_react.default.createElement("ul", {
+      className: "loop-categories"
+    }, categories.map(function (category, i) {
+      return /*#__PURE__*/_react.default.createElement("li", {
+        key: category.id
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/category/".concat(category.slug),
+        className: "link-category"
+      }, category.name));
+    })));
+  });
+};
+
+exports.BlogNav = BlogNav;
+},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.tsx"}],"src/containers/Sidebar/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Sidebar = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _blog = require("../../components/Nav/blog");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Sidebar = function Sidebar() {
+  return _react.default.createElement("div", {
+    className: "row-span-2 col-span-2"
+  }, _react.default.createElement(_blog.BlogNav, null));
+};
+
+exports.Sidebar = Sidebar;
+},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94409,13 +94478,15 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Posts = _interopRequireDefault(require("../Posts"));
 
+var _Sidebar = require("../Sidebar");
+
 var _helpers = require("../../utils/helpers");
 
 var _Footer = require("../../components/Footer");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
-var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+var _page = _interopRequireDefault(require("../../queries/page/page"));
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -94427,7 +94498,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Blog = function Blog(_ref) {
   var siteOptions = _ref.siteOptions;
   return _react.default.createElement(_Query.default, {
-    query: _pages.default,
+    query: _page.default,
     slug: "blog"
   }, function (_ref2) {
     var pages = _ref2.data.pages;
@@ -94450,10 +94521,12 @@ var Blog = function Blog(_ref) {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Posts"), _react.default.createElement(_Posts.default, {
+    }, "Posts"), _react.default.createElement("div", {
+      className: "grid grid grid-rows-3 grid-flow-col"
+    }, _react.default.createElement(_Posts.default, {
       limit: 12,
       orientation: "vertical"
-    }))), _react.default.createElement(_Footer.Footer, {
+    }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
       iconColor: "gray",
       iconBgColor: "white",
@@ -94466,7 +94539,7 @@ var Blog = function Blog(_ref) {
 };
 
 exports.Blog = Blog;
-},{"react":"node_modules/react/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Posts":"src/containers/Posts/index.tsx","../Sidebar":"src/containers/Sidebar/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94482,7 +94555,7 @@ var _Footer = require("../../components/Footer");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
-var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+var _page = _interopRequireDefault(require("../../queries/page/page"));
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -94493,7 +94566,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Contact = function Contact(_ref) {
   var siteOptions = _ref.siteOptions;
   return _react.default.createElement(_Query.default, {
-    query: _pages.default,
+    query: _page.default,
     slug: "contact"
   }, function (_ref2) {
     var pages = _ref2.data.pages;
@@ -94529,7 +94602,7 @@ var Contact = function Contact(_ref) {
 };
 
 exports.Contact = Contact;
-},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/post/post.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/post/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94545,7 +94618,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var POST_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($id: ID!) {\n        post(id: $id) {\n            id\n            name\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n            }\n            published_at\n        }\n    }\n"])));
+var POST_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n            }\n            published_at\n        }\n    }\n"])));
 var _default = POST_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Post/index.tsx":[function(require,module,exports) {
@@ -94624,7 +94697,7 @@ var Post = function Post(_ref) {
 
 var _default = Post;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"src/utils/helpers.tsx","../../queries/post/post":"src/queries/post/post.js"}],"src/queries/category/posts.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"src/utils/helpers.tsx","../../queries/post/post":"src/queries/post/post.tsx"}],"src/queries/category/posts.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94640,10 +94713,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Category($id: ID!) {\n    category(id: $id) {\n      id\n      name\n      posts {\n        id\n        name\n        description\n        image {\n          formats\n        }\n        category {\n          id\n          name\n        }\n      }\n    }\n  }\n"])));
+var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Category($slug: String!) {\n    category(id: $slug) {\n      id\n      name\n      posts {\n        id\n        name\n        slug\n        description\n        image {\n          formats\n        }\n        category {\n          id\n          name\n        }\n      }\n    }\n  }\n"])));
 var _default = CATEGORY_POSTS_QUERY;
 exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Category/index.js":[function(require,module,exports) {
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Category/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94655,8 +94728,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouter = require("react-router");
 
-var _Posts = _interopRequireDefault(require("../../components/Posts"));
-
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
 var _posts = _interopRequireDefault(require("../../queries/category/posts"));
@@ -94666,23 +94737,22 @@ var _helpers = require("../../utils/helpers");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
-// Components
 // Queries
 // Utilities
 var Category = function Category() {
   var _useParams = (0, _reactRouter.useParams)(),
-      id = _useParams.id;
+      slug = _useParams.slug;
 
-  return /*#__PURE__*/_react.default.createElement(_Query.default, {
+  return _react.default.createElement(_Query.default, {
     query: _posts.default,
-    id: id
+    slug: slug
   }, function (_ref) {
     var category = _ref.data.category;
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_helpers.DocumentHead, {
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: category.name
-    }), /*#__PURE__*/_react.default.createElement("div", {
+    }), _react.default.createElement("div", {
       className: ""
-    }, /*#__PURE__*/_react.default.createElement("h1", null, category.name), /*#__PURE__*/_react.default.createElement(PostsVertical, {
+    }, _react.default.createElement("h1", null, category.name), _react.default.createElement(PostsVertical, {
       posts: category.posts
     })));
   });
@@ -94690,26 +94760,7 @@ var Category = function Category() {
 
 var _default = Category;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Posts":"src/components/Posts/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
-var _default = CATEGORIES_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Categories/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Categories/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94733,39 +94784,35 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Queries
 // Utilities
 var Categories = function Categories() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_helpers.DocumentHead, {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
     title: "Blog Categories"
-  }), /*#__PURE__*/_react.default.createElement(_Query.default, {
+  }), _react.default.createElement(_Query.default, {
     query: _categories.default,
     id: null
   }, function (_ref) {
     var categories = _ref.data.categories;
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
-      className: ""
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: ""
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: ""
-    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: "/"
-    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
-      className: ""
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: ""
-    }, categories.map(function (category, i) {
-      return /*#__PURE__*/_react.default.createElement("li", {
+    return _react.default.createElement("div", {
+      className: "grid-cols-1 md:grid-cols-2"
+    }, _react.default.createElement("h2", {
+      class: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Series"), _react.default.createElement("nav", {
+      className: "nav-categories"
+    }, _react.default.createElement("ul", {
+      className: "loop-categories"
+    }, categories.map(function (category) {
+      return _react.default.createElement("li", {
         key: category.id
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/category/".concat(category.id),
+      }, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/category/".concat(category.slug),
         className: ""
       }, category.name));
-    })))));
+    }))));
   }));
 };
 
 var _default = Categories;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../components/Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Nav/main.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../components/Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Nav/main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94803,7 +94850,7 @@ var MainNav = function MainNav(_ref) {
 exports.MainNav = MainNav;
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"assets/images/logo.svg":[function(require,module,exports) {
 module.exports = "/logo.d714b74f.svg";
-},{}],"src/queries/top-menu/index.js":[function(require,module,exports) {
+},{}],"src/queries/top-menu/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94884,7 +94931,7 @@ var Header = function Header() {
 };
 
 exports.Header = Header;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.tsx"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94981,11 +95028,11 @@ function App() {
     }, _react.default.createElement(_Contact.Contact, {
       siteOptions: siteOptions
     })), _react.default.createElement(_reactRouterDom.Route, {
-      path: "/post/:id"
+      path: "/post/:slug"
     }, _react.default.createElement(_Post.Post, {
       siteOptions: siteOptions
     })), _react.default.createElement(_reactRouterDom.Route, {
-      path: "/category/:id"
+      path: "/category/:slug"
     }, _react.default.createElement(_Category.Category, {
       siteOptions: siteOptions
     })), _react.default.createElement(_reactRouterDom.Route, {
@@ -94998,7 +95045,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.tsx","../../containers/Categories":"src/containers/Categories/index.tsx","../../components/Header":"src/components/Header/index.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98226,6 +98273,8 @@ module.exports = {
       }, {
         "name": "CategoryConnectionName"
       }, {
+        "name": "CategoryConnectionSlug"
+      }, {
         "name": "createCategoryPayload"
       }, {
         "name": "updateCategoryPayload"
@@ -98791,7 +98840,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57159" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60746" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

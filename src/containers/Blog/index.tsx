@@ -2,11 +2,12 @@
 import React from 'react';
 // Containers
 import Posts from '../Posts';
+import { Sidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
 import { Footer } from '../../components/Footer';
 // Queries
 import Query from "../../components/Query";
-import PAGES_QUERY from "../../queries/page/pages";
+import PAGE_QUERY from "../../queries/page/page";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -15,7 +16,7 @@ export const Blog = ({siteOptions}) => {
 
     return (
 
-        <Query query={PAGES_QUERY} slug="blog">
+        <Query query={PAGE_QUERY} slug="blog">
 
             {({ data: { pages } }) => {
 
@@ -27,7 +28,6 @@ export const Blog = ({siteOptions}) => {
 
 
                         <DocumentHead title="Blog"/>
-
 
                         <section className="w-full bg-none section-page-content">
 
@@ -52,7 +52,13 @@ export const Blog = ({siteOptions}) => {
 
                                 <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Posts</h2>
 
-                                <Posts limit={12} orientation="vertical"/>
+                                <div className="grid grid grid-rows-3 grid-flow-col">
+
+                                    <Posts limit={12} orientation="vertical"/>
+
+                                    <Sidebar />
+
+                                </div>
 
                             </div>
 

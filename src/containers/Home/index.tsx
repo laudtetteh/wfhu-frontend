@@ -8,7 +8,7 @@ import { ConnectCTA } from '../../components/Cta/ConnectCTA';
 import { IntroCTA } from '../../components/Cta/IntroCTA';
 // Queries
 import Query from "../../components/Query";
-import PAGES_QUERY from "../../queries/page/pages";
+import PAGE_QUERY from "../../queries/page/page";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -17,7 +17,7 @@ export const Home = ({siteOptions}) => {
 
     return (
 
-        <Query query={PAGES_QUERY} slug="home">
+        <Query query={PAGE_QUERY} slug="home">
 
             {({ data: { pages } }) => {
 

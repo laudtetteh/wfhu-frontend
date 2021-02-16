@@ -6,7 +6,7 @@ import { DocumentHead } from '../../utils/helpers';
 import { Footer } from '../../components/Footer';
 // Queries
 import Query from "../../components/Query";
-import PAGES_QUERY from "../../queries/page/pages";
+import PAGE_QUERY from "../../queries/page/page";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -15,7 +15,7 @@ export const About = ({siteOptions}) => {
 
     return (
 
-        <Query query={PAGES_QUERY} slug="about">
+        <Query query={PAGE_QUERY} slug="about">
 
             {({ data: { pages } }) => {
 

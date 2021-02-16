@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 
 import CATEGORIES_QUERY from "../../queries/category/categories";
 
-const BlogNav = () => {
+export const BlogNav = () => {
 
     return (
 
-        <div>
 
             <Query query={CATEGORIES_QUERY} id={null}>
 
@@ -16,40 +15,30 @@ const BlogNav = () => {
 
                     return (
 
-                        <div>
-                            <nav className="uk-navbar-container" data-uk-navbar>
-                                <div className="uk-navbar-left">
-                                    <ul className="uk-navbar-nav">
-                                        <li>
-                                            <Link to="/">Blog Categories</Link>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <nav className="nav-sidebar">
 
-                                <div className="uk-navbar-right">
-                                    <ul className="uk-navbar-nav">
-                                        {categories.map((category, i) => {
-                                            return (
-                                            <li key={category.id}>
+                            <h2 class="section-heading font-bellota text-4xl text-red text-left mb-8">Series</h2>
 
-                                                <Link
-                                                    to={`/category/${category.id}`}
-                                                    className="uk-link-reset">
-                                                    {category.name}
+                            <ul className="loop-categories">
+                                {categories.map((category, i) => {
+                                    return (
+                                    <li key={category.id}>
 
-                                                </Link>
-                                            </li>
-                                        );
-                                        })}
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
+                                        <Link
+                                            to={`/category/${category.slug}`}
+                                            className="link-category">
+
+                                            {category.name}
+
+                                        </Link>
+                                    </li>
+                                );
+                                })}
+                            </ul>
+
+                        </nav>
                     );
                 }}
             </Query>
-        </div>
     );
 };
-
-export { BlogNav };
