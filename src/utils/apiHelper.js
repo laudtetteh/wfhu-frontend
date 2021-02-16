@@ -7,13 +7,27 @@ export const getPageData = props => {
     let pageData = {};
 
     let no_of_posts = 0;
+    let name = '';
     let description = '';
+    let category = {};
+    let image = {};
     let intro_cta = {};
     let connect_cta = {};
 
-    if( props.description !== undefined ) {
+    if( props.name !== undefined ) {
+        name = props.name;
+    }
 
-        description =  <ReactMarkdown source={props.description} />;
+    if( props.description !== undefined ) {
+        description = <ReactMarkdown source={props.description} />;
+    }
+
+    if( props.category !== undefined ) {
+        category = props.category;
+    }
+
+    if( props.image !== undefined ) {
+        image = props.image;
     }
 
     if( props.dynamic_fields !== undefined ) {
@@ -37,7 +51,10 @@ export const getPageData = props => {
         }
     }
 
+    pageData["name"] = name;
     pageData["description"] = description;
+    pageData["category"] = category;
+    pageData["image"] = image;
     pageData['no_of_posts'] = no_of_posts;
     pageData['intro_cta'] = intro_cta;
     pageData['connect_cta'] = connect_cta;

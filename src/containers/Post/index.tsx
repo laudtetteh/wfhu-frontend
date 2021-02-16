@@ -1,64 +1,63 @@
+// Packages
 import React from "react";
 import { useParams } from "react-router";
-import Query from "../../components/Query";
-import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-import { STFDate } from '../../utils/helpers';
-
+// Containers
+import { Sidebar } from '../Sidebar';
+// Components
+import { Post } from "../../components/Post";
+import { Footer } from '../../components/Footer';
+// Queries
+import Query from "../../components/Query";
 import POST_QUERY from "../../queries/post/post";
-
 // Utilities
-import { DocumentHead } from '../../utils/helpers';
+import { STFDate, DocumentHead } from '../../utils/helpers';
+import { getPageData } from '../../utils/apiHelper';
 
-const Post = ({siteOptions}) => {
-    console.log(siteOptions);
-    let { id } = useParams();
+export const PostSingle = ({siteOptions}) => {
+
+
+    let { slug } = useParams();
+
         return (
-            <Query query={POST_QUERY} id={id}>
-                {({ data: { post } }) => {
 
-                // const imageUrl =
-                //   process.env.NODE_ENV !== "development"
-                //     ? post.image.url
-                //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
+            <Query query={POST_QUERY} slug={slug}>
 
-                // const imageUrl = post.image.url;
-                const imageUrl = post.image.formats.post_loop.url;
+                {({ data: { posts } }) => {
 
-                return (
-                    <React.Fragment>
+                    return (
 
-                        <DocumentHead title={post.name} />
+                        <React.Fragment>
 
-                        <div className="">
-                            <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
-                        </div>
+                            <DocumentHead title={posts[0].name} />
 
-                        <div className="">
-                            <p id="name" className="">
-                                Title: {post.name}
-                            </p>
-                        </div>
+                            <section className="w-full bg-none">
 
-                        <Link to={`/category/${post.category.id}`}>
-                            <p id="" className="">
-                                Category: {post.category.name}
-                            </p>
-                        </Link>
+                                <div className="container mx-auto py-12 section-posts">
 
-                        <p>
-                            Content: <ReactMarkdown source={post.description} />
-                        </p>
+                                    <div className="grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4">
 
-                        <p id="" className="">
-                            <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
-                        </p>
+                                        <Post post={posts[0]} />
 
-                    </React.Fragment>
-                );
+                                        <Sidebar />
+
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <Footer
+                                siteOptions={siteOptions}
+                                iconColor="gray"
+                                iconBgColor="white"
+                                iconHvColor="red"
+                                headingColor="white"
+                                containerClass="mx-auto"
+                                headingClass="text-center font-bold"
+                            />
+                        </React.Fragment>
+                    );
             }}
         </Query>
     );
 };
-
-export default Post;

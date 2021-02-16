@@ -74,6 +74,20 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
             break;
 
+        case "post_single":
+
+            if( object.image !== null && object.image.formats.post_single !== undefined ) {
+                _imageUrl = object.image.formats.post_single.url;
+
+            } else {
+
+                _imageUrl = plchld_post_single;
+                console.log("Missing (correctly-sized) for this post. Placeholder used");
+            }
+
+            break;
+
+
         case "split_section":
 
             if( object.intro_image !== null && object.intro_image.formats.split_section !== undefined ) {

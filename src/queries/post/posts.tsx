@@ -13,6 +13,7 @@ const POSTS_QUERY = gql`
             category {
                 id
                 name
+                slug
             }
             published_at
         }

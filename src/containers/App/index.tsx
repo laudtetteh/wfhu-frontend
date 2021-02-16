@@ -11,7 +11,7 @@ import { Contact } from '../Contact';
 import { NotFound } from '../NotFound';
 // Other Containers
 import { Posts } from "../../containers/Posts";
-import { Post } from "../../containers/Post";
+import { PostSingle } from "../../containers/Post";
 import { Category } from "../../containers/Category";
 import { Categories } from "../../containers/Categories";
 // Components
@@ -70,15 +70,11 @@ function App() {
                                         </Route>
 
                                         <Route path="/post/:slug">
-                                            <Post siteOptions={siteOptions} />
+                                            <PostSingle siteOptions={siteOptions} />
                                         </Route>
 
                                         <Route path="/category/:slug">
                                             <Category siteOptions={siteOptions} />
-                                        </Route>
-
-                                        <Route path="/categories">
-                                            <Categories siteOptions={siteOptions} />
                                         </Route>
 
                                     </Switch>

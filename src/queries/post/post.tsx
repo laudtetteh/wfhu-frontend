@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const POST_QUERY = gql`
     query Posts($slug: String!) {
-        pages(where: {slug: $slug}) {
+        posts(where: {slug: $slug}) {
             id
             name
             slug
@@ -13,6 +13,7 @@ const POST_QUERY = gql`
             category {
                 id
                 name
+                slug
             }
             published_at
         }

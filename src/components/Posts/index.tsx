@@ -3,7 +3,6 @@ import PostCard from "../Card/post";
 
 const Posts = ({ posts, orientation }) => {
 
-
     if(orientation == 'vertical') {
         return (
             <React.Fragment>

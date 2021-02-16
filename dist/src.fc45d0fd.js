@@ -53186,6 +53186,16 @@ var SmartImage = function SmartImage(_ref4) {
 
       break;
 
+    case "post_single":
+      if (object.image !== null && object.image.formats.post_single !== undefined) {
+        _imageUrl = object.image.formats.post_single.url;
+      } else {
+        _imageUrl = plchld_post_single;
+        console.log("Missing (correctly-sized) for this post. Placeholder used");
+      }
+
+      break;
+
     case "split_section":
       if (object.intro_image !== null && object.intro_image.formats.split_section !== undefined) {
         _imageUrl = object.intro_image.formats.split_section.url;
@@ -73885,7 +73895,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int!)  {\n        posts(limit: $limit) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n            }\n            published_at\n        }\n    }\n"])));
+var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int!)  {\n        posts(limit: $limit) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
 var _default = POSTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Posts/index.tsx":[function(require,module,exports) {
@@ -94173,14 +94183,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var getPageData = function getPageData(props) {
   var pageData = {};
   var no_of_posts = 0;
+  var name = '';
   var description = '';
+  var category = {};
+  var image = {};
   var intro_cta = {};
   var connect_cta = {};
+
+  if (props.name !== undefined) {
+    name = props.name;
+  }
 
   if (props.description !== undefined) {
     description = /*#__PURE__*/_react.default.createElement(_reactMarkdown.default, {
       source: props.description
     });
+  }
+
+  if (props.category !== undefined) {
+    category = props.category;
+  }
+
+  if (props.image !== undefined) {
+    image = props.image;
   }
 
   if (props.dynamic_fields !== undefined) {
@@ -94201,7 +94226,10 @@ var getPageData = function getPageData(props) {
     }
   }
 
+  pageData["name"] = name;
   pageData["description"] = description;
+  pageData["category"] = category;
+  pageData["image"] = image;
   pageData['no_of_posts'] = no_of_posts;
   pageData['intro_cta'] = intro_cta;
   pageData['connect_cta'] = connect_cta;
@@ -94623,7 +94651,69 @@ var Contact = function Contact(_ref) {
 };
 
 exports.Contact = Contact;
-},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/post/post.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/components/Post/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Post = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _helpers = require("../../utils/helpers");
+
+var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Post = function Post(_ref) {
+  var post = _ref.post;
+  // const imageUrl =
+  //   process.env.NODE_ENV !== "development"
+  //     ? post.image.url
+  //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
+  // const imageUrl = post.image.url;
+  var object = post;
+  var content_type = "post_single";
+  var image_size = "post_single";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "col-span-5 space-y-6"
+  }, _react.default.createElement("div", {
+    className: "w-full"
+  }, _react.default.createElement("img", {
+    src: imageUrl,
+    alt: imageUrl,
+    className: "w-full"
+  })), _react.default.createElement("div", {
+    className: "byline"
+  }, _react.default.createElement("h3", {
+    className: "card-post-name font-bellota text-2xl text-gray mb-3"
+  }, post.name), _react.default.createElement("h4", {
+    className: "card-post-name font-bellota text-2xl text-gray mb-3"
+  }, _react.default.createElement(_helpers.STFDate, {
+    _timestamp: post.published_at,
+    _format: "MMMM D, YYYY"
+  })), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/category/".concat(post.category.slug)
+  }, _react.default.createElement("p", {
+    className: "card-post-category text-base text-yellow font-roboto font-normal mt-3 mb-3"
+  }, post.category.name))), _react.default.createElement("p", {
+    className: "card-post-description text-base font-roboto font-normal mt-3 mb-3"
+  }, _react.default.createElement(_reactMarkdown.default, {
+    source: post.description
+  }))));
+};
+
+exports.Post = Post;
+},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","react-markdown":"node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/queries/post/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94639,7 +94729,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var POST_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n            }\n            published_at\n        }\n    }\n"])));
+var POST_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($slug: String!) {\n        posts(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
 var _default = POST_QUERY;
 exports.default = _default;
 },{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Post/index.tsx":[function(require,module,exports) {
@@ -94648,77 +94738,66 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.PostSingle = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactRouter = require("react-router");
 
+var _Sidebar = require("../Sidebar");
+
+var _Post = require("../../components/Post");
+
+var _Footer = require("../../components/Footer");
+
 var _Query = _interopRequireDefault(require("../../components/Query"));
-
-var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _helpers = require("../../utils/helpers");
 
 var _post = _interopRequireDefault(require("../../queries/post/post"));
 
+var _helpers = require("../../utils/helpers");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Packages
+// Containers
+// Components
+// Queries
 // Utilities
-var Post = function Post(_ref) {
+var PostSingle = function PostSingle(_ref) {
   var siteOptions = _ref.siteOptions;
-  console.log(siteOptions);
 
   var _useParams = (0, _reactRouter.useParams)(),
-      id = _useParams.id;
+      slug = _useParams.slug;
 
   return _react.default.createElement(_Query.default, {
     query: _post.default,
-    id: id
+    slug: slug
   }, function (_ref2) {
-    var post = _ref2.data.post;
-    // const imageUrl =
-    //   process.env.NODE_ENV !== "development"
-    //     ? post.image.url
-    //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
-    // const imageUrl = post.image.url;
-    var imageUrl = post.image.formats.post_loop.url;
+    var posts = _ref2.data.posts;
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-      title: post.name
-    }), _react.default.createElement("div", {
-      className: ""
-    }, _react.default.createElement("img", {
-      src: imageUrl,
-      alt: imageUrl,
-      height: "100",
-      className: "w-full"
-    })), _react.default.createElement("div", {
-      className: ""
-    }, _react.default.createElement("p", {
-      id: "name",
-      className: ""
-    }, "Title: ", post.name)), _react.default.createElement(_reactRouterDom.Link, {
-      to: "/category/".concat(post.category.id)
-    }, _react.default.createElement("p", {
-      id: "",
-      className: ""
-    }, "Category: ", post.category.name)), _react.default.createElement("p", null, "Content: ", _react.default.createElement(_reactMarkdown.default, {
-      source: post.description
-    })), _react.default.createElement("p", {
-      id: "",
-      className: ""
-    }, _react.default.createElement(_helpers.STFDate, {
-      _timestamp: post.published_at,
-      _format: "MMMM D, YYYY"
-    })));
+      title: posts[0].name
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-posts"
+    }, _react.default.createElement("div", {
+      className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
+    }, _react.default.createElement(_Post.Post, {
+      post: posts[0]
+    }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
+      siteOptions: siteOptions,
+      iconColor: "gray",
+      iconBgColor: "white",
+      iconHvColor: "red",
+      headingColor: "white",
+      containerClass: "mx-auto",
+      headingClass: "text-center font-bold"
+    }));
   });
 };
 
-var _default = Post;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"src/utils/helpers.tsx","../../queries/post/post":"src/queries/post/post.tsx"}],"src/queries/category/posts.tsx":[function(require,module,exports) {
+exports.PostSingle = PostSingle;
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../Sidebar":"src/containers/Sidebar/index.tsx","../../components/Post":"src/components/Post/index.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/post/post":"src/queries/post/post.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/category/posts.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94781,59 +94860,7 @@ var Category = function Category() {
 
 var _default = Category;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Categories/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Query = _interopRequireDefault(require("../../components/Query"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _categories = _interopRequireDefault(require("../../queries/category/categories"));
-
-var _helpers = require("../../utils/helpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Queries
-// Utilities
-var Categories = function Categories() {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "Blog Categories"
-  }), _react.default.createElement(_Query.default, {
-    query: _categories.default,
-    id: null
-  }, function (_ref) {
-    var categories = _ref.data.categories;
-    return _react.default.createElement("div", {
-      className: "grid-cols-1 md:grid-cols-2"
-    }, _react.default.createElement("h2", {
-      class: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Series"), _react.default.createElement("nav", {
-      className: "nav-categories"
-    }, _react.default.createElement("ul", {
-      className: "loop-categories"
-    }, categories.map(function (category) {
-      return _react.default.createElement("li", {
-        key: category.id
-      }, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/category/".concat(category.slug),
-        className: ""
-      }, category.name));
-    }))));
-  }));
-};
-
-var _default = Categories;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../../components/Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Nav/main.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Nav/main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94995,8 +95022,6 @@ var _Post = require("../../containers/Post");
 
 var _Category = require("../../containers/Category");
 
-var _Categories = require("../../containers/Categories");
-
 var _Header = require("../../components/Header");
 
 var _apiHelper = require("../../utils/apiHelper");
@@ -95050,15 +95075,11 @@ function App() {
       siteOptions: siteOptions
     })), _react.default.createElement(_reactRouterDom.Route, {
       path: "/post/:slug"
-    }, _react.default.createElement(_Post.Post, {
+    }, _react.default.createElement(_Post.PostSingle, {
       siteOptions: siteOptions
     })), _react.default.createElement(_reactRouterDom.Route, {
       path: "/category/:slug"
     }, _react.default.createElement(_Category.Category, {
-      siteOptions: siteOptions
-    })), _react.default.createElement(_reactRouterDom.Route, {
-      path: "/categories"
-    }, _react.default.createElement(_Categories.Categories, {
       siteOptions: siteOptions
     })))))));
   });
@@ -95066,7 +95087,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.tsx","../../containers/Categories":"src/containers/Categories/index.tsx","../../components/Header":"src/components/Header/index.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.tsx","../../components/Header":"src/components/Header/index.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98861,7 +98882,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60746" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49259" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
