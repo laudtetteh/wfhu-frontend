@@ -94501,12 +94501,10 @@ var _posts = _interopRequireDefault(require("../../queries/category/posts"));
 
 var _categories = _interopRequireDefault(require("../../queries/category/categories"));
 
-var _helpers = require("../../utils/helpers");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Packages
 // Queries
-// Uitilities
 var BlogNav = function BlogNav() {
   return /*#__PURE__*/_react.default.createElement(_Query.default, {
     query: _categories.default,
@@ -94541,7 +94539,7 @@ var BlogNav = function BlogNav() {
 };
 
 exports.BlogNav = BlogNav;
-},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../queries/category/categories":"src/queries/category/categories.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Sidebar/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../queries/category/categories":"src/queries/category/categories.tsx"}],"src/containers/Sidebar/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
