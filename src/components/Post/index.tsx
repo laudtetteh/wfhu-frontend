@@ -35,11 +35,10 @@ export const Post = ({post}) => {
 
                         {post.name}
 
-                        <span className="font-thin"> | </span>
+                    </h3>
 
-                        <span className="card-post-name font-roboto text-base text-gray mb-3">
-                            <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
-                        </span>
+                    <p className="card-post-name font-roboto text-base text-gray mb-3">
+                        <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
 
                         <span className="font-thin"> | </span>
 
@@ -49,8 +48,7 @@ export const Post = ({post}) => {
                                 {post.category.name}
                             </span>
                         </Link>
-
-                    </h3>
+                    </p>
 
                 </div>
 

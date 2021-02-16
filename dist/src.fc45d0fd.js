@@ -94733,14 +94733,12 @@ var Post = function Post(_ref) {
     className: "byline"
   }, _react.default.createElement("h3", {
     className: "card-post-name font-roboto text-2xl text-black mb-3"
-  }, post.name, _react.default.createElement("span", {
-    className: "font-thin"
-  }, " | "), _react.default.createElement("span", {
+  }, post.name), _react.default.createElement("p", {
     className: "card-post-name font-roboto text-base text-gray mb-3"
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
-  })), _react.default.createElement("span", {
+  }), _react.default.createElement("span", {
     className: "font-thin"
   }, " | "), _react.default.createElement(_reactRouterDom.Link, {
     to: "/category/".concat(post.category.slug)
@@ -98906,7 +98904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49388" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50213" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
