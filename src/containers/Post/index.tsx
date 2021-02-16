@@ -10,7 +10,8 @@ import POST_QUERY from "../../queries/post/post";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 
-const Post = () => {
+const Post = ({siteOptions}) => {
+    console.log(siteOptions);
     let { id } = useParams();
         return (
             <Query query={POST_QUERY} id={id}>

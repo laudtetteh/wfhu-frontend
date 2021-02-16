@@ -1,34 +1,59 @@
-/*
-* Blog Container
-*
-*/
 // Packages
-import React, {useEffect, useState} from "react";
-import { Switch, Route } from "react-router-dom";
+import React from 'react';
 // Components
 import { BlogNav } from "../../components/Nav/blog";
 // Containers
 import Posts from "../Posts";
-// Queries
-import Query from "../../components/Query";
-import PAGES_QUERY from "../../queries/page/pages";
+import Testimonials from '../Testimonials';
+import { DocumentHead } from '../../utils/helpers';
+import { Footer } from '../../components/Footer';
 
-export const Blog = ({pageBag}) => {
+export const Blog = ({pageBag, siteOptions}) => {
 
     return (
 
         <React.Fragment>
 
-            <div className="Blog">
+            <DocumentHead title="About"/>
 
-                <BlogNav />
+            <section className="w-full bg-none section-page-content">
 
-                <section>
+                <div className="container mx-auto py-12">
+
+                    <BlogNav />
+
+                    <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Blog</h1>
+
+                    <div className="description description font-roboto">
+                        {pageBag.description}
+                    </div>
+                </div>
+
+            </section>
+
+            <section className="w-full bg-none">
+
+                <div className="container mx-auto py-12 section-posts">
+
+
                     <Posts limit={12}/>
-                </section>
 
-            </div>
+                </div>
+
+            </section>
+
+
+            <Footer
+                siteOptions={siteOptions}
+                iconColor="gray-600"
+                iconBgColor="white"
+                iconHvColor="red"
+                headingColor="white"
+                containerClass="mx-auto"
+                headingClass="text-center font-bold"
+            />
 
         </React.Fragment>
-    );
+    )
 }
+

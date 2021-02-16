@@ -85349,26 +85349,47 @@ var _blog = require("../../components/Nav/blog");
 
 var _Posts = _interopRequireDefault(require("../Posts"));
 
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-* Blog Container
-*
-*/
 // Packages
 // Components
 // Containers
 var Blog = function Blog(_ref) {
-  var pageBag = _ref.pageBag;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "Blog"
-  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("section", null, _react.default.createElement(_Posts.default, {
+  var pageBag = _ref.pageBag,
+      siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+    title: "About"
+  }), _react.default.createElement("section", {
+    className: "w-full bg-none section-page-content"
+  }, _react.default.createElement("div", {
+    className: "container mx-auto py-12"
+  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("h1", {
+    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+  }, "Blog"), _react.default.createElement("div", {
+    className: "description description font-roboto"
+  }, pageBag.description))), _react.default.createElement("section", {
+    className: "w-full bg-none"
+  }, _react.default.createElement("div", {
+    className: "container mx-auto py-12 section-posts"
+  }, _react.default.createElement(_Posts.default, {
     limit: 12
-  }))));
+  }))), _react.default.createElement(_Footer.Footer, {
+    siteOptions: siteOptions,
+    iconColor: "gray-600",
+    iconBgColor: "white",
+    iconHvColor: "red",
+    headingColor: "white",
+    containerClass: "mx-auto",
+    headingClass: "text-center font-bold"
+  }));
 };
 
 exports.Blog = Blog;
-},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94445,15 +94466,18 @@ var _post = _interopRequireDefault(require("../../queries/post/post"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Utilities
-var Post = function Post() {
+var Post = function Post(_ref) {
+  var siteOptions = _ref.siteOptions;
+  console.log(siteOptions);
+
   var _useParams = (0, _reactRouter.useParams)(),
       id = _useParams.id;
 
   return _react.default.createElement(_Query.default, {
     query: _post.default,
     id: id
-  }, function (_ref) {
-    var post = _ref.data.post;
+  }, function (_ref2) {
+    var post = _ref2.data.post;
     // const imageUrl =
     //   process.env.NODE_ENV !== "development"
     //     ? post.image.url
@@ -94885,7 +94909,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // Packages
 // Page Containers
 // Components
-// Utilities
 // Queries
 function App() {
   var pageBag;
@@ -94953,27 +94976,21 @@ function App() {
     }), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
       path: '/post/:id',
       render: function render(props) {
-        return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
-          title: "Blog"
-        })), _react.default.createElement(_Post.Post, Object.assign({}, props, {
+        return _react.default.createElement(_Post.Post, Object.assign({}, props, {
           siteOptions: siteOptions
         }));
       }
     }), _react.default.createElement(_reactRouterDom.Route, {
       path: '/category/:id',
       render: function render(props) {
-        return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
-          title: "Blog Category"
-        })), _react.default.createElement(_Category.Category, Object.assign({}, props, {
+        return _react.default.createElement(_Category.Category, Object.assign({}, props, {
           siteOptions: siteOptions
         }));
       }
     }), _react.default.createElement(_reactRouterDom.Route, {
       path: '/categories',
       render: function render(props) {
-        return _react.default.createElement(_helpers.DocumentHead, Object.assign({}, props, {
-          title: "Blog Categories"
-        })), _react.default.createElement(_Categories.Categories, Object.assign({}, props, {
+        return _react.default.createElement(_Categories.Categories, Object.assign({}, props, {
           siteOptions: siteOptions
         }));
       }
@@ -98686,22 +98703,37 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/@fortawesome/fontawesome-free/css/all.css":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/@fortawesome/fontawesome-free/scss/brands.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_fonts.css":[function(require,module,exports) {
+},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/@fortawesome/fontawesome-free/scss/regular.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../fonts/roboto-v20-latin-100.eot":[["roboto-v20-latin-100.d626f64a.eot","assets/fonts/roboto-v20-latin-100.eot"],"assets/fonts/roboto-v20-latin-100.eot"],"./../fonts/roboto-v20-latin-100.woff2":[["roboto-v20-latin-100.52bf9221.woff2","assets/fonts/roboto-v20-latin-100.woff2"],"assets/fonts/roboto-v20-latin-100.woff2"],"./../fonts/roboto-v20-latin-100.woff":[["roboto-v20-latin-100.046e544b.woff","assets/fonts/roboto-v20-latin-100.woff"],"assets/fonts/roboto-v20-latin-100.woff"],"./../fonts/roboto-v20-latin-100.ttf":[["roboto-v20-latin-100.06d08f03.ttf","assets/fonts/roboto-v20-latin-100.ttf"],"assets/fonts/roboto-v20-latin-100.ttf"],"./../fonts/roboto-v20-latin-100.svg":[["roboto-v20-latin-100.1c7aecd6.svg","assets/fonts/roboto-v20-latin-100.svg"],"assets/fonts/roboto-v20-latin-100.svg"],"./../fonts/roboto-v20-latin-300.eot":[["roboto-v20-latin-300.dbf6beb4.eot","assets/fonts/roboto-v20-latin-300.eot"],"assets/fonts/roboto-v20-latin-300.eot"],"./../fonts/roboto-v20-latin-300.woff2":[["roboto-v20-latin-300.b70df813.woff2","assets/fonts/roboto-v20-latin-300.woff2"],"assets/fonts/roboto-v20-latin-300.woff2"],"./../fonts/roboto-v20-latin-300.woff":[["roboto-v20-latin-300.7521b406.woff","assets/fonts/roboto-v20-latin-300.woff"],"assets/fonts/roboto-v20-latin-300.woff"],"./../fonts/roboto-v20-latin-300.ttf":[["roboto-v20-latin-300.91c31d9f.ttf","assets/fonts/roboto-v20-latin-300.ttf"],"assets/fonts/roboto-v20-latin-300.ttf"],"./../fonts/roboto-v20-latin-300.svg":[["roboto-v20-latin-300.c043ec3c.svg","assets/fonts/roboto-v20-latin-300.svg"],"assets/fonts/roboto-v20-latin-300.svg"],"./../fonts/roboto-v20-latin-regular.eot":[["roboto-v20-latin-regular.29b186ce.eot","assets/fonts/roboto-v20-latin-regular.eot"],"assets/fonts/roboto-v20-latin-regular.eot"],"./../fonts/roboto-v20-latin-regular.woff2":[["roboto-v20-latin-regular.51f630ac.woff2","assets/fonts/roboto-v20-latin-regular.woff2"],"assets/fonts/roboto-v20-latin-regular.woff2"],"./../fonts/roboto-v20-latin-regular.woff":[["roboto-v20-latin-regular.03064b2f.woff","assets/fonts/roboto-v20-latin-regular.woff"],"assets/fonts/roboto-v20-latin-regular.woff"],"./../fonts/roboto-v20-latin-regular.ttf":[["roboto-v20-latin-regular.d369045c.ttf","assets/fonts/roboto-v20-latin-regular.ttf"],"assets/fonts/roboto-v20-latin-regular.ttf"],"./../fonts/roboto-v20-latin-regular.svg":[["roboto-v20-latin-regular.9676e5d0.svg","assets/fonts/roboto-v20-latin-regular.svg"],"assets/fonts/roboto-v20-latin-regular.svg"],"./../fonts/roboto-v20-latin-500.eot":[["roboto-v20-latin-500.53336a71.eot","assets/fonts/roboto-v20-latin-500.eot"],"assets/fonts/roboto-v20-latin-500.eot"],"./../fonts/roboto-v20-latin-500.woff2":[["roboto-v20-latin-500.93508537.woff2","assets/fonts/roboto-v20-latin-500.woff2"],"assets/fonts/roboto-v20-latin-500.woff2"],"./../fonts/roboto-v20-latin-500.woff":[["roboto-v20-latin-500.502dec24.woff","assets/fonts/roboto-v20-latin-500.woff"],"assets/fonts/roboto-v20-latin-500.woff"],"./../fonts/roboto-v20-latin-500.ttf":[["roboto-v20-latin-500.5c86b7b0.ttf","assets/fonts/roboto-v20-latin-500.ttf"],"assets/fonts/roboto-v20-latin-500.ttf"],"./../fonts/roboto-v20-latin-500.svg":[["roboto-v20-latin-500.74aa8d54.svg","assets/fonts/roboto-v20-latin-500.svg"],"assets/fonts/roboto-v20-latin-500.svg"],"./../fonts/bellota-v2-latin-300.eot":[["bellota-v2-latin-300.ed9544f4.eot","assets/fonts/bellota-v2-latin-300.eot"],"assets/fonts/bellota-v2-latin-300.eot"],"./../fonts/bellota-v2-latin-300.woff2":[["bellota-v2-latin-300.b99414e3.woff2","assets/fonts/bellota-v2-latin-300.woff2"],"assets/fonts/bellota-v2-latin-300.woff2"],"./../fonts/bellota-v2-latin-300.woff":[["bellota-v2-latin-300.78bb6714.woff","assets/fonts/bellota-v2-latin-300.woff"],"assets/fonts/bellota-v2-latin-300.woff"],"./../fonts/bellota-v2-latin-300.ttf":[["bellota-v2-latin-300.43226e65.ttf","assets/fonts/bellota-v2-latin-300.ttf"],"assets/fonts/bellota-v2-latin-300.ttf"],"./../fonts/bellota-v2-latin-300.svg":[["bellota-v2-latin-300.4e1b2c72.svg","assets/fonts/bellota-v2-latin-300.svg"],"assets/fonts/bellota-v2-latin-300.svg"],"./../fonts/bellota-v2-latin-regular.eot":[["bellota-v2-latin-regular.3155091d.eot","assets/fonts/bellota-v2-latin-regular.eot"],"assets/fonts/bellota-v2-latin-regular.eot"],"./../fonts/bellota-v2-latin-regular.woff2":[["bellota-v2-latin-regular.0b97a009.woff2","assets/fonts/bellota-v2-latin-regular.woff2"],"assets/fonts/bellota-v2-latin-regular.woff2"],"./../fonts/bellota-v2-latin-regular.woff":[["bellota-v2-latin-regular.9da7866e.woff","assets/fonts/bellota-v2-latin-regular.woff"],"assets/fonts/bellota-v2-latin-regular.woff"],"./../fonts/bellota-v2-latin-regular.ttf":[["bellota-v2-latin-regular.a7980fc8.ttf","assets/fonts/bellota-v2-latin-regular.ttf"],"assets/fonts/bellota-v2-latin-regular.ttf"],"./../fonts/bellota-v2-latin-regular.svg":[["bellota-v2-latin-regular.5f124b2a.svg","assets/fonts/bellota-v2-latin-regular.svg"],"assets/fonts/bellota-v2-latin-regular.svg"],"./../fonts/bellota-v2-latin-700.eot":[["bellota-v2-latin-700.ae812185.eot","assets/fonts/bellota-v2-latin-700.eot"],"assets/fonts/bellota-v2-latin-700.eot"],"./../fonts/bellota-v2-latin-700.woff2":[["bellota-v2-latin-700.3e8593c9.woff2","assets/fonts/bellota-v2-latin-700.woff2"],"assets/fonts/bellota-v2-latin-700.woff2"],"./../fonts/bellota-v2-latin-700.woff":[["bellota-v2-latin-700.fbb058ee.woff","assets/fonts/bellota-v2-latin-700.woff"],"assets/fonts/bellota-v2-latin-700.woff"],"./../fonts/bellota-v2-latin-700.ttf":[["bellota-v2-latin-700.42fd078b.ttf","assets/fonts/bellota-v2-latin-700.ttf"],"assets/fonts/bellota-v2-latin-700.ttf"],"./../fonts/bellota-v2-latin-700.svg":[["bellota-v2-latin-700.d0fb4018.svg","assets/fonts/bellota-v2-latin-700.svg"],"assets/fonts/bellota-v2-latin-700.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.css":[function(require,module,exports) {
+},{"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/@fortawesome/fontawesome-free/scss/solid.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_custom.css":[function(require,module,exports) {
+},{"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_fonts.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./../fonts/roboto-v20-latin-100.eot":[["roboto-v20-latin-100.d626f64a.eot","assets/fonts/roboto-v20-latin-100.eot"],"assets/fonts/roboto-v20-latin-100.eot"],"./../fonts/roboto-v20-latin-100.woff2":[["roboto-v20-latin-100.52bf9221.woff2","assets/fonts/roboto-v20-latin-100.woff2"],"assets/fonts/roboto-v20-latin-100.woff2"],"./../fonts/roboto-v20-latin-100.woff":[["roboto-v20-latin-100.046e544b.woff","assets/fonts/roboto-v20-latin-100.woff"],"assets/fonts/roboto-v20-latin-100.woff"],"./../fonts/roboto-v20-latin-100.ttf":[["roboto-v20-latin-100.06d08f03.ttf","assets/fonts/roboto-v20-latin-100.ttf"],"assets/fonts/roboto-v20-latin-100.ttf"],"./../fonts/roboto-v20-latin-100.svg":[["roboto-v20-latin-100.1c7aecd6.svg","assets/fonts/roboto-v20-latin-100.svg"],"assets/fonts/roboto-v20-latin-100.svg"],"./../fonts/roboto-v20-latin-300.eot":[["roboto-v20-latin-300.dbf6beb4.eot","assets/fonts/roboto-v20-latin-300.eot"],"assets/fonts/roboto-v20-latin-300.eot"],"./../fonts/roboto-v20-latin-300.woff2":[["roboto-v20-latin-300.b70df813.woff2","assets/fonts/roboto-v20-latin-300.woff2"],"assets/fonts/roboto-v20-latin-300.woff2"],"./../fonts/roboto-v20-latin-300.woff":[["roboto-v20-latin-300.7521b406.woff","assets/fonts/roboto-v20-latin-300.woff"],"assets/fonts/roboto-v20-latin-300.woff"],"./../fonts/roboto-v20-latin-300.ttf":[["roboto-v20-latin-300.91c31d9f.ttf","assets/fonts/roboto-v20-latin-300.ttf"],"assets/fonts/roboto-v20-latin-300.ttf"],"./../fonts/roboto-v20-latin-300.svg":[["roboto-v20-latin-300.c043ec3c.svg","assets/fonts/roboto-v20-latin-300.svg"],"assets/fonts/roboto-v20-latin-300.svg"],"./../fonts/roboto-v20-latin-regular.eot":[["roboto-v20-latin-regular.29b186ce.eot","assets/fonts/roboto-v20-latin-regular.eot"],"assets/fonts/roboto-v20-latin-regular.eot"],"./../fonts/roboto-v20-latin-regular.woff2":[["roboto-v20-latin-regular.51f630ac.woff2","assets/fonts/roboto-v20-latin-regular.woff2"],"assets/fonts/roboto-v20-latin-regular.woff2"],"./../fonts/roboto-v20-latin-regular.woff":[["roboto-v20-latin-regular.03064b2f.woff","assets/fonts/roboto-v20-latin-regular.woff"],"assets/fonts/roboto-v20-latin-regular.woff"],"./../fonts/roboto-v20-latin-regular.ttf":[["roboto-v20-latin-regular.d369045c.ttf","assets/fonts/roboto-v20-latin-regular.ttf"],"assets/fonts/roboto-v20-latin-regular.ttf"],"./../fonts/roboto-v20-latin-regular.svg":[["roboto-v20-latin-regular.9676e5d0.svg","assets/fonts/roboto-v20-latin-regular.svg"],"assets/fonts/roboto-v20-latin-regular.svg"],"./../fonts/roboto-v20-latin-500.eot":[["roboto-v20-latin-500.53336a71.eot","assets/fonts/roboto-v20-latin-500.eot"],"assets/fonts/roboto-v20-latin-500.eot"],"./../fonts/roboto-v20-latin-500.woff2":[["roboto-v20-latin-500.93508537.woff2","assets/fonts/roboto-v20-latin-500.woff2"],"assets/fonts/roboto-v20-latin-500.woff2"],"./../fonts/roboto-v20-latin-500.woff":[["roboto-v20-latin-500.502dec24.woff","assets/fonts/roboto-v20-latin-500.woff"],"assets/fonts/roboto-v20-latin-500.woff"],"./../fonts/roboto-v20-latin-500.ttf":[["roboto-v20-latin-500.5c86b7b0.ttf","assets/fonts/roboto-v20-latin-500.ttf"],"assets/fonts/roboto-v20-latin-500.ttf"],"./../fonts/roboto-v20-latin-500.svg":[["roboto-v20-latin-500.74aa8d54.svg","assets/fonts/roboto-v20-latin-500.svg"],"assets/fonts/roboto-v20-latin-500.svg"],"./../fonts/bellota-v2-latin-300.eot":[["bellota-v2-latin-300.ed9544f4.eot","assets/fonts/bellota-v2-latin-300.eot"],"assets/fonts/bellota-v2-latin-300.eot"],"./../fonts/bellota-v2-latin-300.woff2":[["bellota-v2-latin-300.b99414e3.woff2","assets/fonts/bellota-v2-latin-300.woff2"],"assets/fonts/bellota-v2-latin-300.woff2"],"./../fonts/bellota-v2-latin-300.woff":[["bellota-v2-latin-300.78bb6714.woff","assets/fonts/bellota-v2-latin-300.woff"],"assets/fonts/bellota-v2-latin-300.woff"],"./../fonts/bellota-v2-latin-300.ttf":[["bellota-v2-latin-300.43226e65.ttf","assets/fonts/bellota-v2-latin-300.ttf"],"assets/fonts/bellota-v2-latin-300.ttf"],"./../fonts/bellota-v2-latin-300.svg":[["bellota-v2-latin-300.4e1b2c72.svg","assets/fonts/bellota-v2-latin-300.svg"],"assets/fonts/bellota-v2-latin-300.svg"],"./../fonts/bellota-v2-latin-regular.eot":[["bellota-v2-latin-regular.3155091d.eot","assets/fonts/bellota-v2-latin-regular.eot"],"assets/fonts/bellota-v2-latin-regular.eot"],"./../fonts/bellota-v2-latin-regular.woff2":[["bellota-v2-latin-regular.0b97a009.woff2","assets/fonts/bellota-v2-latin-regular.woff2"],"assets/fonts/bellota-v2-latin-regular.woff2"],"./../fonts/bellota-v2-latin-regular.woff":[["bellota-v2-latin-regular.9da7866e.woff","assets/fonts/bellota-v2-latin-regular.woff"],"assets/fonts/bellota-v2-latin-regular.woff"],"./../fonts/bellota-v2-latin-regular.ttf":[["bellota-v2-latin-regular.a7980fc8.ttf","assets/fonts/bellota-v2-latin-regular.ttf"],"assets/fonts/bellota-v2-latin-regular.ttf"],"./../fonts/bellota-v2-latin-regular.svg":[["bellota-v2-latin-regular.5f124b2a.svg","assets/fonts/bellota-v2-latin-regular.svg"],"assets/fonts/bellota-v2-latin-regular.svg"],"./../fonts/bellota-v2-latin-700.eot":[["bellota-v2-latin-700.ae812185.eot","assets/fonts/bellota-v2-latin-700.eot"],"assets/fonts/bellota-v2-latin-700.eot"],"./../fonts/bellota-v2-latin-700.woff2":[["bellota-v2-latin-700.3e8593c9.woff2","assets/fonts/bellota-v2-latin-700.woff2"],"assets/fonts/bellota-v2-latin-700.woff2"],"./../fonts/bellota-v2-latin-700.woff":[["bellota-v2-latin-700.fbb058ee.woff","assets/fonts/bellota-v2-latin-700.woff"],"assets/fonts/bellota-v2-latin-700.woff"],"./../fonts/bellota-v2-latin-700.ttf":[["bellota-v2-latin-700.42fd078b.ttf","assets/fonts/bellota-v2-latin-700.ttf"],"assets/fonts/bellota-v2-latin-700.ttf"],"./../fonts/bellota-v2-latin-700.svg":[["bellota-v2-latin-700.d0fb4018.svg","assets/fonts/bellota-v2-latin-700.svg"],"assets/fonts/bellota-v2-latin-700.svg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_typography.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/css/_custom.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -98711,7 +98743,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"../../node_modules/@fortawesome/fontawesome-free/css/all.css":"node_modules/@fortawesome/fontawesome-free/css/all.css","./_fonts.css":"assets/css/_fonts.css","./_typography.css":"assets/css/_typography.css","./_custom.css":"assets/css/_custom.css","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/scss/brands":"node_modules/@fortawesome/fontawesome-free/scss/brands.scss","@fortawesome/fontawesome-free/scss/regular":"node_modules/@fortawesome/fontawesome-free/scss/regular.scss","@fortawesome/fontawesome-free/scss/solid":"node_modules/@fortawesome/fontawesome-free/scss/solid.scss","@fortawesome/fontawesome-free/scss/fontawesome":"node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss","./_fonts":"assets/css/_fonts.scss","./_typography":"assets/css/_typography.scss","./_custom":"assets/css/_custom.scss","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -98761,7 +98793,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56187" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59185" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -58,6 +58,7 @@ function App() {
                                         <Header />
                                     </section>
 
+
                                     <Query query={PAGES_QUERY} slug={path}>
 
                                         {({ data: { pages } }) => {
@@ -121,7 +122,6 @@ function App() {
                                         <Route
                                             path='/post/:id'
                                             render={(props) => (
-                                                <DocumentHead {...props} title="Blog" />
                                                 <Post {...props} siteOptions={siteOptions} />
                                             )}
                                         />
@@ -129,7 +129,6 @@ function App() {
                                         <Route
                                             path='/category/:id'
                                             render={(props) => (
-                                                <DocumentHead {...props} title="Blog Category" />
                                                 <Category {...props} siteOptions={siteOptions} />
                                             )}
                                         />
@@ -137,7 +136,6 @@ function App() {
                                         <Route
                                             path='/categories'
                                             render={(props) => (
-                                                <DocumentHead {...props} title="Blog Categories" />
                                                 <Categories {...props} siteOptions={siteOptions} />
                                             )}
                                         />
