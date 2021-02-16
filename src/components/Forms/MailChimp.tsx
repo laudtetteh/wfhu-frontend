@@ -84,7 +84,7 @@ class SignupForm extends Component {
 
         return (
             <div id="mc_embed_signup">
-                <form action="https://gmail.us1.list-manage.com/subscribe/post-json?u=9ae21d5dd8d2f0f5acee71058&amp;id=4a8e40d9cb&amp;c=?"
+                <form action="https://wfhuniv.us7.list-manage.com/subscribe/post-json?u=2e577538acb7a1d57ae508252&amp;id=732582d038&amp;c=?"
                 method="post" id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form"
                 className="validate"

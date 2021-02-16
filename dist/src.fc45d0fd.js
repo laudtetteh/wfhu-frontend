@@ -85047,7 +85047,7 @@ var SignupForm = /*#__PURE__*/function (_Component) {
       return _react.default.createElement("div", {
         id: "mc_embed_signup"
       }, _react.default.createElement("form", {
-        action: "https://gmail.us1.list-manage.com/subscribe/post-json?u=9ae21d5dd8d2f0f5acee71058&id=4a8e40d9cb&c=?",
+        action: "https://wfhuniv.us7.list-manage.com/subscribe/post-json?u=2e577538acb7a1d57ae508252&id=732582d038&c=?",
         method: "post",
         id: "mc-embedded-subscribe-form",
         name: "mc-embedded-subscribe-form",
@@ -94465,7 +94465,7 @@ var BlogNav = function BlogNav() {
     }, /*#__PURE__*/_react.default.createElement("h2", {
       class: "section-heading font-bellota text-4xl text-red text-left mb-8"
     }, "Series"), /*#__PURE__*/_react.default.createElement("ul", {
-      className: "loop-categories"
+      className: "loop-categories font-roboto text-base text-black font-medium"
     }, categories.map(function (category, i) {
       return /*#__PURE__*/_react.default.createElement("li", {
         key: category.id

@@ -19,7 +19,7 @@ export const BlogNav = () => {
 
                             <h2 class="section-heading font-bellota text-4xl text-red text-left mb-8">Series</h2>
 
-                            <ul className="loop-categories">
+                            <ul className="loop-categories font-roboto text-base text-black font-medium">
                                 {categories.map((category, i) => {
                                     return (
                                     <li key={category.id}>
