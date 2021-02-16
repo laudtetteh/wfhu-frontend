@@ -53099,7 +53099,7 @@ LazyPromise.prototype.catch = function (onError) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.FooterScripts = exports.STFDate = void 0;
+exports.getObjectCount = exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.FooterScripts = exports.STFDate = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53214,6 +53214,32 @@ var SmartImage = function SmartImage(_ref4) {
 };
 
 exports.SmartImage = SmartImage;
+
+var getObjectCount = function getObjectCount(_ref5) {
+  var object = _ref5.object;
+  var objectCount = 0;
+
+  function ObjectLength_Modern(object) {
+    return Object.keys(object).length;
+  }
+
+  function ObjectLength_Legacy(object) {
+    var length = 0;
+
+    for (var key in object) {
+      if (object.hasOwnProperty(key)) {
+        ++length;
+      }
+    }
+
+    return length;
+  }
+
+  objectCount = Object.keys ? ObjectLength_Modern : ObjectLength_Legacy;
+  return objectCount;
+};
+
+exports.getObjectCount = getObjectCount;
 },{"react":"node_modules/react/index.js","react-moment":"node_modules/react-moment/dist/index.js","react-helmet":"node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_testimonial_loop.jpg":"assets/images/placeholder_testimonial_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_split_section.jpg":"assets/images/placeholder_split_section.jpg","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","/assets/js/footer-scripts.js":[["footer-scripts.491a479b.js","assets/js/footer-scripts.js"],"footer-scripts.491a479b.js.map","assets/js/footer-scripts.js"]}],"src/components/Card/testimonial.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -94445,7 +94471,26 @@ var About = function About(_ref) {
 };
 
 exports.About = About;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/category/categories.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/page":"src/queries/page/page.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/category/posts.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories($slug: String!) {\n    categories(where: {slug: $slug}) {\n      id\n      name\n      slug\n      posts {\n        id\n        name\n        slug\n        description\n        image {\n          formats\n        }\n        category {\n          id\n          name\n        }\n      }\n    }\n}\n"])));
+var _default = CATEGORY_POSTS_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/queries/category/categories.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94478,10 +94523,16 @@ var _Query = _interopRequireDefault(require("../Query"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _posts = _interopRequireDefault(require("../../queries/category/posts"));
+
 var _categories = _interopRequireDefault(require("../../queries/category/categories"));
+
+var _helpers = require("../../utils/helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Queries
+// Uitilities
 var BlogNav = function BlogNav() {
   return /*#__PURE__*/_react.default.createElement(_Query.default, {
     query: _categories.default,
@@ -94491,7 +94542,7 @@ var BlogNav = function BlogNav() {
     return /*#__PURE__*/_react.default.createElement("nav", {
       className: "nav-sidebar"
     }, /*#__PURE__*/_react.default.createElement("h2", {
-      class: "section-heading font-bellota text-4xl text-red text-left mb-8"
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
     }, "Series"), /*#__PURE__*/_react.default.createElement("ul", {
       className: "loop-categories font-roboto text-base text-black font-medium"
     }, categories.map(function (category, i) {
@@ -94500,13 +94551,24 @@ var BlogNav = function BlogNav() {
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/category/".concat(category.slug),
         className: "link-category"
-      }, category.name));
+      }, /*#__PURE__*/_react.default.createElement("p", {
+        className: ""
+      }, category.name)), /*#__PURE__*/_react.default.createElement(_Query.default, {
+        query: _posts.default,
+        slug: category.slug
+      }, function (_ref2) {
+        var categories = _ref2.data.categories;
+        var postCount = (0, _helpers.getObjectCount)(categories);
+        return /*#__PURE__*/_react.default.createElement("p", {
+          className: ""
+        }, postCount);
+      }));
     })));
   });
 };
 
 exports.BlogNav = BlogNav;
-},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.tsx"}],"src/containers/Sidebar/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/posts":"src/queries/category/posts.tsx","../../queries/category/categories":"src/queries/category/categories.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Sidebar/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94695,17 +94757,23 @@ var Post = function Post(_ref) {
   })), _react.default.createElement("div", {
     className: "byline"
   }, _react.default.createElement("h3", {
-    className: "card-post-name font-bellota text-2xl text-gray mb-3"
-  }, post.name), _react.default.createElement("h4", {
-    className: "card-post-name font-bellota text-2xl text-gray mb-3"
+    className: "card-post-name font-roboto text-2xl text-black mb-3"
+  }, post.name, _react.default.createElement("span", {
+    className: "font-thin"
+  }, " | "), _react.default.createElement("span", {
+    className: "card-post-name font-roboto text-base text-gray mb-3"
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
-  })), _react.default.createElement(_reactRouterDom.Link, {
+  })), _react.default.createElement("span", {
+    className: "font-thin"
+  }, " | "), _react.default.createElement(_reactRouterDom.Link, {
     to: "/category/".concat(post.category.slug)
-  }, _react.default.createElement("p", {
-    className: "card-post-category text-base text-yellow font-roboto font-normal mt-3 mb-3"
-  }, post.category.name))), _react.default.createElement("p", {
+  }, _react.default.createElement("span", {
+    className: "card-post-category text-base text-gray font-roboto font-normal mt-3 mb-3"
+  }, _react.default.createElement("i", {
+    className: "fa fa-tags bg-none text-gray text-sm mr-1"
+  }), post.category.name)))), _react.default.createElement("p", {
     className: "card-post-description text-base font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement(_reactMarkdown.default, {
     source: post.description
@@ -94797,26 +94865,7 @@ var PostSingle = function PostSingle(_ref) {
 };
 
 exports.PostSingle = PostSingle;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../Sidebar":"src/containers/Sidebar/index.tsx","../../components/Post":"src/components/Post/index.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/post/post":"src/queries/post/post.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/category/posts.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Category($slug: String!) {\n    category(id: $slug) {\n      id\n      name\n      posts {\n        id\n        name\n        slug\n        description\n        image {\n          formats\n        }\n        category {\n          id\n          name\n        }\n      }\n    }\n  }\n"])));
-var _default = CATEGORY_POSTS_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Category/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../Sidebar":"src/containers/Sidebar/index.tsx","../../components/Post":"src/components/Post/index.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/post/post":"src/queries/post/post.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Category/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

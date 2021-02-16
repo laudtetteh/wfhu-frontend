@@ -1,10 +1,11 @@
 import gql from "graphql-tag";
 
 const CATEGORY_POSTS_QUERY = gql`
-  query Category($slug: String!) {
-    category(id: $slug) {
+  query Categories($slug: String!) {
+    categories(where: {slug: $slug}) {
       id
       name
+      slug
       posts {
         id
         name
@@ -19,7 +20,7 @@ const CATEGORY_POSTS_QUERY = gql`
         }
       }
     }
-  }
+}
 `;
 
 export default CATEGORY_POSTS_QUERY;
