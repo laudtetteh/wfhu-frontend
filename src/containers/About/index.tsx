@@ -40,7 +40,7 @@ export const About = ({pageBag, siteOptions}) => {
 
             <Footer
                 siteOptions={siteOptions}
-                iconColor="gray-600"
+                iconColor="gray"
                 iconBgColor="white"
                 iconHvColor="red"
                 headingColor="white"

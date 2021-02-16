@@ -85257,7 +85257,7 @@ var About = function About(_ref) {
     limit: 4
   }))), _react.default.createElement(_Footer.Footer, {
     siteOptions: siteOptions,
-    iconColor: "gray-600",
+    iconColor: "gray",
     iconBgColor: "white",
     iconHvColor: "red",
     headingColor: "white",
