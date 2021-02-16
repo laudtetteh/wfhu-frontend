@@ -52976,6 +52976,8 @@ exports.default = _default;
 module.exports = "/placeholder_testimonial_loop.d70094e5.jpg";
 },{}],"assets/images/placeholder_post_loop.jpg":[function(require,module,exports) {
 module.exports = "/placeholder_post_loop.3137cd36.jpg";
+},{}],"assets/images/placeholder_post_single.jpg":[function(require,module,exports) {
+module.exports = "/placeholder_post_single.07c99063.jpg";
 },{}],"assets/images/placeholder_split_section.jpg":[function(require,module,exports) {
 module.exports = "/placeholder_split_section.789ff46c.jpg";
 },{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
@@ -53111,6 +53113,8 @@ var _placeholder_testimonial_loop = _interopRequireDefault(require("../../assets
 
 var _placeholder_post_loop = _interopRequireDefault(require("../../assets/images/placeholder_post_loop.jpg"));
 
+var _placeholder_post_single = _interopRequireDefault(require("../../assets/images/placeholder_post_single.jpg"));
+
 var _placeholder_split_section = _interopRequireDefault(require("../../assets/images/placeholder_split_section.jpg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -53190,7 +53194,7 @@ var SmartImage = function SmartImage(_ref4) {
       if (object.image !== null && object.image.formats.post_single !== undefined) {
         _imageUrl = object.image.formats.post_single.url;
       } else {
-        _imageUrl = plchld_post_single;
+        _imageUrl = _placeholder_post_single.default;
         console.log("Missing (correctly-sized) for this post. Placeholder used");
       }
 
@@ -53214,7 +53218,7 @@ var SmartImage = function SmartImage(_ref4) {
 };
 
 exports.SmartImage = SmartImage;
-},{"react":"node_modules/react/index.js","react-moment":"node_modules/react-moment/dist/index.js","react-helmet":"node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_testimonial_loop.jpg":"assets/images/placeholder_testimonial_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_split_section.jpg":"assets/images/placeholder_split_section.jpg","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","/assets/js/footer-scripts.js":[["footer-scripts.491a479b.js","assets/js/footer-scripts.js"],"footer-scripts.491a479b.js.map","assets/js/footer-scripts.js"]}],"src/components/Card/testimonial.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-moment":"node_modules/react-moment/dist/index.js","react-helmet":"node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_testimonial_loop.jpg":"assets/images/placeholder_testimonial_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_post_single.jpg":"assets/images/placeholder_post_single.jpg","../../assets/images/placeholder_split_section.jpg":"assets/images/placeholder_split_section.jpg","_bundle_loader":"node_modules/parcel-bundler/src/builtins/bundle-loader.js","/assets/js/footer-scripts.js":[["footer-scripts.491a479b.js","assets/js/footer-scripts.js"],"footer-scripts.491a479b.js.map","assets/js/footer-scripts.js"]}],"src/components/Card/testimonial.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98902,7 +98906,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49259" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49388" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -5,6 +5,7 @@ import {Helmet} from "react-helmet";
 // Assets
 import plchld_testimonial from '../../assets/images/placeholder_testimonial_loop.jpg';
 import plchld_post from '../../assets/images/placeholder_post_loop.jpg';
+import plchld_post_single from '../../assets/images/placeholder_post_single.jpg';
 import plchld_split_section from '../../assets/images/placeholder_split_section.jpg';
 
 export const STFDate = ({_timestamp, _format}) => {
