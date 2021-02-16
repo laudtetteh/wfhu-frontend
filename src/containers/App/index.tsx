@@ -23,20 +23,13 @@ import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
 // Queries
 import Query from "../../components/Query";
-import PAGES_QUERY from "../../queries/page/pages";
 import SITEOPTIONS_QUERY from "../../queries/site-options";
 
 function App() {
 
-    let pageBag;
     let siteOptions;
-    let path = window.location.pathname.replace(/^\/|\/$/g, '');
 
-    if(path === '' ) {
-        path='home';
-    }
-
-    return(
+    return  (
 
         <Query query={SITEOPTIONS_QUERY}>
 
@@ -58,108 +51,45 @@ function App() {
                                         <Header />
                                     </section>
 
-
-                                    <Query query={PAGES_QUERY} slug={path}>
-
-                                        {({ data: { pages } }) => {
-
-                                            pageBag = getPageData(pages[0]);
-
-                                            return (
-
-                                                <Switch>
-                                                    <Route
-                                                        path='/' exact
-                                                        render={(props) => (
-                                                            <Home
-                                                                {...props}
-                                                                siteOptions={siteOptions}
-                                                                pageBag={pageBag} />
-                                                        )}
-                                                    />
-
-                                                    <Route
-                                                        path='/about' exact
-                                                        render={(props) => (
-                                                            <About
-                                                                {...props}
-                                                                siteOptions={siteOptions}
-                                                                pageBag={pageBag} />
-                                                        )}
-                                                    />
-
-                                                    <Route
-                                                        path='/blog' exact
-                                                        render={(props) => (
-                                                            <Blog
-                                                                {...props}
-                                                                siteOptions={siteOptions}
-                                                                pageBag={pageBag} />
-                                                        )}
-                                                    />
-
-                                                    <Route
-                                                        path='/contact' exact
-                                                        render={(props) => (
-                                                            <Contact
-                                                                {...props}
-                                                                siteOptions={siteOptions}
-                                                                pageBag={pageBag} />
-                                                        )}
-                                                    />
-
-                                                </Switch>
-                                            )
-                                        }}
-                                    </Query>
-
-
-
-
-
                                     <Switch>
 
-                                        <Route
-                                            path='/post/:id'
-                                            render={(props) => (
-                                                <Post {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                        <Route path="/" exact>
+                                            <Home siteOptions={siteOptions} />
+                                        </Route>
 
-                                        <Route
-                                            path='/category/:id'
-                                            render={(props) => (
-                                                <Category {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                        <Route path="/about" exact>
+                                            <About siteOptions={siteOptions} />
+                                        </Route>
 
-                                        <Route
-                                            path='/categories'
-                                            render={(props) => (
-                                                <Categories {...props} siteOptions={siteOptions} />
-                                            )}
-                                        />
+                                        <Route path="/blog" exact>
+                                            <Blog siteOptions={siteOptions} />
+                                        </Route>
+
+                                        <Route path="/contact" exact>
+                                            <Contact siteOptions={siteOptions} />
+                                        </Route>
+
+                                        <Route path="/post/:id">
+                                            <Post siteOptions={siteOptions} />
+                                        </Route>
+
+                                        <Route path="/category/:id">
+                                            <Category siteOptions={siteOptions} />
+                                        </Route>
+
+                                        <Route path="/categories">
+                                            <Categories siteOptions={siteOptions} />
+                                        </Route>
 
                                     </Switch>
-
-
-
-
-
                                 </div>
-
-                                <FooterScripts />
-
                             </React.Fragment>
-
                         </Router>
-
                     </Suspense>
                 )
             }}
 
         </Query>
-
     )
 }
 

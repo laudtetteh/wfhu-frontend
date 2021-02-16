@@ -1,49 +1,76 @@
 // Packages
 import React from 'react';
 // Containers
+import Testimonials from '../Testimonials';
 import { DocumentHead } from '../../utils/helpers';
 import { Footer } from '../../components/Footer';
+// Queries
+import Query from "../../components/Query";
+import PAGES_QUERY from "../../queries/page/pages";
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
+import { getPageData } from '../../utils/apiHelper';
 
-export const Contact = ({pageBag, siteOptions}) => {
+export const Contact = ({siteOptions}) => {
 
     return (
 
-        <React.Fragment>
+        <Query query={PAGES_QUERY} slug="contact">
 
-            <DocumentHead title="Contact"/>
+            {({ data: { pages } }) => {
 
-            <section className="w-full bg-none section-page-content">
+                const pageBag = getPageData(pages[0]);
 
-                <div className="container mx-auto py-12 section-testimonials">
+                return (
 
-                    <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Contact</h1>
-
-                    <div className="description description font-roboto">
-                        {pageBag.description}
-                    </div>
-                </div>
-
-            </section>
-
-            <section className="w-full bg-none">
-
-                <div className="container mx-auto py-12 section-testimonials">
+                    <React.Fragment>
 
 
-                </div>
+                        <DocumentHead title="Contact"/>
 
-            </section>
 
-            <Footer
-                siteOptions={siteOptions}
-                iconColor="gray-600"
-                iconBgColor="white"
-                iconHvColor="red"
-                headingColor="white"
-                containerClass="mx-auto"
-                headingClass="text-center font-bold"
-            />
+                        <section className="w-full bg-none section-page-content">
 
-        </React.Fragment>
+                            <div className="container mx-auto py-12 section-testimonials">
+
+                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Contact</h1>
+
+                                <div className="description description font-roboto">
+
+                                     <div className="description description font-roboto">
+                                        {pageBag.description}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <section className="w-full bg-none">
+
+                            <div className="container mx-auto py-12 section-contact-form">
+
+                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
+
+
+
+                            </div>
+
+                        </section>
+
+                        <Footer
+                            siteOptions={siteOptions}
+                            iconColor="gray"
+                            iconBgColor="white"
+                            iconHvColor="red"
+                            headingColor="white"
+                            containerClass="mx-auto"
+                            headingClass="text-center font-bold"
+                        />
+
+                    </React.Fragment>
+                )
+            }}
+        </Query>
     )
 }

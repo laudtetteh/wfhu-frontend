@@ -27,7 +27,7 @@ const Category = () => {
 
                         <div className="">
                             <h1>{category.name}</h1>
-                            <Posts posts={category.posts} />
+                            <PostsVertical posts={category.posts} />
                         </div>
 
                     </React.Fragment>

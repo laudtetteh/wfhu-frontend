@@ -93,4 +93,3 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
     return _imageUrl;
 }
-

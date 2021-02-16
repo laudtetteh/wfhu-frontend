@@ -73782,7 +73782,7 @@ var Card = function Card(_ref) {
 
 var _default = Card;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Posts/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/components/Posts/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73797,23 +73797,45 @@ var _post = _interopRequireDefault(require("../Card/post"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Posts = function Posts(_ref) {
-  var posts = _ref.posts;
+  var posts = _ref.posts,
+      orientation = _ref.orientation;
   var leftPostsCount = Math.ceil(posts.length / 5);
   var leftPosts = posts.slice(0, leftPostsCount);
   var rightPosts = posts.slice(leftPostsCount, posts.length);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+
+  if (orientation == 'vertical') {
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+      className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
+    }, leftPosts.map(function (post, index) {
+      return _react.default.createElement("div", {
+        key: index
+      }, " ", _react.default.createElement(_post.default, {
+        post: post,
+        key: "post__".concat(post.id)
+      }));
+    }), rightPosts.map(function (post, index) {
+      return _react.default.createElement("div", {
+        key: index
+      }, " ", _react.default.createElement(_post.default, {
+        post: post,
+        key: "post__".concat(post.id)
+      }));
+    })));
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
   }, leftPosts.map(function (post, index) {
-    return /*#__PURE__*/_react.default.createElement("div", {
+    return _react.default.createElement("div", {
       key: index
-    }, " ", /*#__PURE__*/_react.default.createElement(_post.default, {
+    }, " ", _react.default.createElement(_post.default, {
       post: post,
       key: "post__".concat(post.id)
     }));
   }), rightPosts.map(function (post, index) {
-    return /*#__PURE__*/_react.default.createElement("div", {
+    return _react.default.createElement("div", {
       key: index
-    }, " ", /*#__PURE__*/_react.default.createElement(_post.default, {
+    }, " ", _react.default.createElement(_post.default, {
       post: post,
       key: "post__".concat(post.id)
     }));
@@ -73860,21 +73882,23 @@ var _posts = _interopRequireDefault(require("../../queries/post/posts"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var GetPosts = function GetPosts(_ref) {
-  var limit = _ref.limit;
+  var limit = _ref.limit,
+      orientation = _ref.orientation;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Query.default, {
     query: _posts.default,
     limit: limit
   }, function (_ref2) {
     var posts = _ref2.data.posts;
     return /*#__PURE__*/_react.default.createElement(_Posts.default, {
-      posts: posts
+      posts: posts,
+      orientation: orientation
     });
   }));
 };
 
 var _default = GetPosts;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../components/Posts":"src/components/Posts/index.js","../../components/Query":"src/components/Query/index.js","../../queries/post/posts":"src/queries/post/posts.js"}],"src/components/Elements/Social.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../components/Posts":"src/components/Posts/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/post/posts":"src/queries/post/posts.js"}],"src/components/Elements/Social.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85101,173 +85125,7 @@ var IntroCTA = function IntroCTA(_ref) {
 };
 
 exports.IntroCTA = IntroCTA;
-},{"react":"node_modules/react/index.js","../Forms/MailChimp":"src/components/Forms/MailChimp.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Home/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Home = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Testimonials = _interopRequireDefault(require("../Testimonials"));
-
-var _Posts = _interopRequireDefault(require("../Posts"));
-
-var _helpers = require("../../utils/helpers");
-
-var _ConnectCTA = require("../../components/Cta/ConnectCTA");
-
-var _IntroCTA = require("../../components/Cta/IntroCTA");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Containers
-// Components
-var Home = function Home(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "Home"
-  }), _react.default.createElement("section", {
-    className: "w-full stf-bg-1 section-connect-cta"
-  }, _react.default.createElement("div", {
-    className: "container"
-  }, _react.default.createElement(_IntroCTA.IntroCTA, {
-    pageBag: pageBag
-  }))), _react.default.createElement("section", {
-    className: "w-full stf-bg-2 section-connect-cta"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12"
-  }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
-    pageBag: pageBag,
-    siteOptions: siteOptions,
-    iconColor: "blue-100",
-    iconBgColor: "gray",
-    iconHvColor: "red",
-    headingColor: "gray",
-    containerClass: "float-right",
-    headingClass: "stf-text-shadow-white-top-left"
-  }))), _react.default.createElement("section", {
-    className: "w-full bg-none"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl text-red text-center mb-8"
-  }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
-    limit: 4
-  }))), _react.default.createElement("section", {
-    className: "w-full stf-bg-3 section-posts--loop"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12"
-  }, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl text-white mb-3"
-  }, "Blog Posts", _react.default.createElement("a", {
-    href: "/blog",
-    className: "link-all font-roboto text-base text-yellow underline pl-3"
-  }, "All Posts")), _react.default.createElement(_Posts.default, {
-    limit: 3
-  }))));
-};
-
-exports.Home = Home;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Footer = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Social = require("../Elements/Social");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-var Footer = function Footer(_ref) {
-  var siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
-      headingColor = _ref.headingColor,
-      containerClass = _ref.containerClass,
-      headingClass = _ref.headingClass;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
-    className: "section-footer w-full bg-gray text-white py-16"
-  }, _react.default.createElement("div", {
-    className: "container"
-  }, _react.default.createElement(_Social.Social, {
-    siteOptions: siteOptions,
-    iconColor: iconColor,
-    iconBgColor: iconBgColor,
-    iconHvColor: iconHvColor,
-    headingColor: headingColor,
-    containerClass: containerClass,
-    headingClass: headingClass
-  }), _react.default.createElement("p", {
-    className: "font-roboto mx-auto block text-center mt-3"
-  }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
-};
-
-exports.Footer = Footer;
-},{"react":"node_modules/react/index.js","../Elements/Social":"src/components/Elements/Social.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.About = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Testimonials = _interopRequireDefault(require("../Testimonials"));
-
-var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Containers
-var About = function About(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "About"
-  }), _react.default.createElement("section", {
-    className: "w-full bg-none section-page-content"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h1", {
-    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-  }, "About"), _react.default.createElement("div", {
-    className: "description description font-roboto"
-  }, pageBag.description))), _react.default.createElement("section", {
-    className: "w-full bg-none"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-  }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
-    limit: 4
-  }))), _react.default.createElement(_Footer.Footer, {
-    siteOptions: siteOptions,
-    iconColor: "gray",
-    iconBgColor: "white",
-    iconHvColor: "red",
-    headingColor: "white",
-    containerClass: "mx-auto",
-    headingClass: "text-center font-bold"
-  }));
-};
-
-exports.About = About;
-},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Forms/MailChimp":"src/components/Forms/MailChimp.tsx","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/page/pages.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85283,160 +85141,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
-var _default = CATEGORIES_QUERY;
+var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
+var _default = PAGES_QUERY;
 exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/components/Nav/blog.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.BlogNav = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Query = _interopRequireDefault(require("../Query"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _categories = _interopRequireDefault(require("../../queries/category/categories"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BlogNav = function BlogNav() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Query.default, {
-    query: _categories.default,
-    id: null
-  }, function (_ref) {
-    var categories = _ref.data.categories;
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("nav", {
-      className: "uk-navbar-container",
-      "data-uk-navbar": true
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-left"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: "/"
-    }, "Blog Categories")))), /*#__PURE__*/_react.default.createElement("div", {
-      className: "uk-navbar-right"
-    }, /*#__PURE__*/_react.default.createElement("ul", {
-      className: "uk-navbar-nav"
-    }, categories.map(function (category, i) {
-      return /*#__PURE__*/_react.default.createElement("li", {
-        key: category.id
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/category/".concat(category.id),
-        className: "uk-link-reset"
-      }, category.name));
-    })))));
-  }));
-};
-
-exports.BlogNav = BlogNav;
-},{"react":"node_modules/react/index.js","../Query":"src/components/Query/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/categories":"src/queries/category/categories.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Blog = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _blog = require("../../components/Nav/blog");
-
-var _Posts = _interopRequireDefault(require("../Posts"));
-
-var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Components
-// Containers
-var Blog = function Blog(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "About"
-  }), _react.default.createElement("section", {
-    className: "w-full bg-none section-page-content"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12"
-  }, _react.default.createElement(_blog.BlogNav, null), _react.default.createElement("h1", {
-    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-  }, "Blog"), _react.default.createElement("div", {
-    className: "description description font-roboto"
-  }, pageBag.description))), _react.default.createElement("section", {
-    className: "w-full bg-none"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-posts"
-  }, _react.default.createElement(_Posts.default, {
-    limit: 12
-  }))), _react.default.createElement(_Footer.Footer, {
-    siteOptions: siteOptions,
-    iconColor: "gray-600",
-    iconBgColor: "white",
-    iconHvColor: "red",
-    headingColor: "white",
-    containerClass: "mx-auto",
-    headingClass: "text-center font-bold"
-  }));
-};
-
-exports.Blog = Blog;
-},{"react":"node_modules/react/index.js","../../components/Nav/blog":"src/components/Nav/blog.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Contact = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-// Containers
-var Contact = function Contact(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-    title: "Contact"
-  }), _react.default.createElement("section", {
-    className: "w-full bg-none section-page-content"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  }, _react.default.createElement("h1", {
-    className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-  }, "Contact"), _react.default.createElement("div", {
-    className: "description description font-roboto"
-  }, pageBag.description))), _react.default.createElement("section", {
-    className: "w-full bg-none"
-  }, _react.default.createElement("div", {
-    className: "container mx-auto py-12 section-testimonials"
-  })), _react.default.createElement(_Footer.Footer, {
-    siteOptions: siteOptions,
-    iconColor: "gray-600",
-    iconBgColor: "white",
-    iconHvColor: "red",
-    headingColor: "white",
-    containerClass: "mx-auto",
-    headingClass: "text-center font-bold"
-  }));
-};
-
-exports.Contact = Contact;
-},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -94422,7 +94130,401 @@ ReactMarkdown.types = allTypes;
 ReactMarkdown.renderers = defaultRenderers;
 ReactMarkdown.uriTransformer = uriTransformer;
 module.exports = ReactMarkdown;
-},{"xtend":"node_modules/xtend/immutable.js","unified":"node_modules/unified/index.js","remark-parse":"node_modules/remark-parse/index.js","prop-types":"node_modules/prop-types/index.js","mdast-add-list-metadata":"node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"node_modules/react-markdown/lib/uri-transformer.js","./renderers":"node_modules/react-markdown/lib/renderers.js","./symbols":"node_modules/react-markdown/lib/symbols.js"}],"src/queries/post/post.js":[function(require,module,exports) {
+},{"xtend":"node_modules/xtend/immutable.js","unified":"node_modules/unified/index.js","remark-parse":"node_modules/remark-parse/index.js","prop-types":"node_modules/prop-types/index.js","mdast-add-list-metadata":"node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"node_modules/react-markdown/lib/uri-transformer.js","./renderers":"node_modules/react-markdown/lib/renderers.js","./symbols":"node_modules/react-markdown/lib/symbols.js"}],"src/utils/apiHelper.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getSiteOptions = exports.getPageData = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+var getPageData = function getPageData(props) {
+  var pageData = {};
+  var no_of_posts = 0;
+  var description = '';
+  var intro_cta = {};
+  var connect_cta = {};
+
+  if (props.description !== undefined) {
+    description = /*#__PURE__*/_react.default.createElement(_reactMarkdown.default, {
+      source: props.description
+    });
+  }
+
+  if (props.dynamic_fields !== undefined) {
+    if (Array.isArray(props.dynamic_fields)) {
+      props.dynamic_fields.map(function (group) {
+        if (group.__typename == "ComponentPageNoOfPostsToShow") {
+          no_of_posts = group;
+        }
+
+        if (group.__typename == "ComponentPageIntroCta") {
+          intro_cta = group;
+        }
+
+        if (group.__typename == "ComponentPageConnectCta") {
+          connect_cta = group;
+        }
+      });
+    }
+  }
+
+  pageData["description"] = description;
+  pageData['no_of_posts'] = no_of_posts;
+  pageData['intro_cta'] = intro_cta;
+  pageData['connect_cta'] = connect_cta;
+  return pageData;
+};
+
+exports.getPageData = getPageData;
+
+var getSiteOptions = function getSiteOptions(props) {
+  var optionsData = {};
+
+  if (props.social !== undefined) {
+    optionsData["social"] = props.social;
+  }
+
+  return optionsData;
+};
+
+exports.getSiteOptions = getSiteOptions;
+},{"react":"node_modules/react/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js"}],"src/containers/Home/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Home = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Testimonials = _interopRequireDefault(require("../Testimonials"));
+
+var _Posts = _interopRequireDefault(require("../Posts"));
+
+var _ConnectCTA = require("../../components/Cta/ConnectCTA");
+
+var _IntroCTA = require("../../components/Cta/IntroCTA");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+
+var _helpers = require("../../utils/helpers");
+
+var _apiHelper = require("../../utils/apiHelper");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Containers
+// Components
+// Queries
+// Utilities
+var Home = function Home(_ref) {
+  var siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_Query.default, {
+    query: _pages.default,
+    slug: "home"
+  }, function (_ref2) {
+    var pages = _ref2.data.pages;
+    var pageBag = (0, _apiHelper.getPageData)(pages[0]);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+      title: "Home"
+    }), _react.default.createElement("section", {
+      className: "w-full stf-bg-1 section-connect-cta"
+    }, _react.default.createElement("div", {
+      className: "container"
+    }, _react.default.createElement(_IntroCTA.IntroCTA, {
+      pageBag: pageBag
+    }))), _react.default.createElement("section", {
+      className: "w-full stf-bg-2 section-connect-cta"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12"
+    }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
+      pageBag: pageBag,
+      siteOptions: siteOptions,
+      iconColor: "blue-100",
+      iconBgColor: "gray",
+      iconHvColor: "red",
+      headingColor: "gray",
+      containerClass: "float-right",
+      headingClass: "stf-text-shadow-white-top-left"
+    }))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-center mb-8"
+    }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
+      limit: 4
+    }))), _react.default.createElement("section", {
+      className: "w-full stf-bg-3 section-posts--loop"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-white mb-3"
+    }, "Blog Posts", _react.default.createElement("a", {
+      href: "/blog",
+      className: "link-all font-roboto text-base text-yellow underline pl-3"
+    }, "All Posts")), _react.default.createElement(_Posts.default, {
+      limit: 3,
+      orientation: "horizontal"
+    }))));
+  });
+};
+
+exports.Home = Home;
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../Posts":"src/containers/Posts/index.js","../../components/Cta/ConnectCTA":"src/components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"src/components/Cta/IntroCTA.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/components/Footer/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Footer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Social = require("../Elements/Social");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+var Footer = function Footer(_ref) {
+  var siteOptions = _ref.siteOptions,
+      iconColor = _ref.iconColor,
+      iconBgColor = _ref.iconBgColor,
+      iconHvColor = _ref.iconHvColor,
+      headingColor = _ref.headingColor,
+      containerClass = _ref.containerClass,
+      headingClass = _ref.headingClass;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
+    className: "section-footer w-full bg-gray text-white py-16"
+  }, _react.default.createElement("div", {
+    className: "container"
+  }, _react.default.createElement(_Social.Social, {
+    siteOptions: siteOptions,
+    iconColor: iconColor,
+    iconBgColor: iconBgColor,
+    iconHvColor: iconHvColor,
+    headingColor: headingColor,
+    containerClass: containerClass,
+    headingClass: headingClass
+  }), _react.default.createElement("p", {
+    className: "font-roboto mx-auto block text-center mt-3"
+  }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
+};
+
+exports.Footer = Footer;
+},{"react":"node_modules/react/index.js","../Elements/Social":"src/components/Elements/Social.tsx"}],"src/containers/About/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.About = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Testimonials = _interopRequireDefault(require("../Testimonials"));
+
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+
+var _apiHelper = require("../../utils/apiHelper");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Containers
+// Queries
+var About = function About(_ref) {
+  var siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_Query.default, {
+    query: _pages.default,
+    slug: "about"
+  }, function (_ref2) {
+    var pages = _ref2.data.pages;
+    var pageBag = (0, _apiHelper.getPageData)(pages[0]);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+      title: "About"
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none section-page-content"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement("h1", {
+      className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+    }, "About"), _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, pageBag.description)))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
+      limit: 4
+    }))), _react.default.createElement(_Footer.Footer, {
+      siteOptions: siteOptions,
+      iconColor: "gray",
+      iconBgColor: "white",
+      iconHvColor: "red",
+      headingColor: "white",
+      containerClass: "mx-auto",
+      headingClass: "text-center font-bold"
+    }));
+  });
+};
+
+exports.About = About;
+},{"react":"node_modules/react/index.js","../Testimonials":"src/containers/Testimonials/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/containers/Blog/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Blog = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Posts = _interopRequireDefault(require("../Posts"));
+
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+
+var _apiHelper = require("../../utils/apiHelper");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Containers
+// Queries
+var Blog = function Blog(_ref) {
+  var siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_Query.default, {
+    query: _pages.default,
+    slug: "blog"
+  }, function (_ref2) {
+    var pages = _ref2.data.pages;
+    var pageBag = (0, _apiHelper.getPageData)(pages[0]);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+      title: "Blog"
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none section-page-content"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement("h1", {
+      className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+    }, "Blog"), _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, pageBag.description)))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-posts"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Posts"), _react.default.createElement(_Posts.default, {
+      limit: 12,
+      orientation: "vertical"
+    }))), _react.default.createElement(_Footer.Footer, {
+      siteOptions: siteOptions,
+      iconColor: "gray",
+      iconBgColor: "white",
+      iconHvColor: "red",
+      headingColor: "white",
+      containerClass: "mx-auto",
+      headingClass: "text-center font-bold"
+    }));
+  });
+};
+
+exports.Blog = Blog;
+},{"react":"node_modules/react/index.js","../Posts":"src/containers/Posts/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/containers/Contact/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Contact = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _helpers = require("../../utils/helpers");
+
+var _Footer = require("../../components/Footer");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _pages = _interopRequireDefault(require("../../queries/page/pages"));
+
+var _apiHelper = require("../../utils/apiHelper");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Queries
+var Contact = function Contact(_ref) {
+  var siteOptions = _ref.siteOptions;
+  return _react.default.createElement(_Query.default, {
+    query: _pages.default,
+    slug: "contact"
+  }, function (_ref2) {
+    var pages = _ref2.data.pages;
+    var pageBag = (0, _apiHelper.getPageData)(pages[0]);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+      title: "Contact"
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none section-page-content"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement("h1", {
+      className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+    }, "Contact"), _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, pageBag.description)))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-contact-form"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Testimonials"))), _react.default.createElement(_Footer.Footer, {
+      siteOptions: siteOptions,
+      iconColor: "gray",
+      iconBgColor: "white",
+      iconHvColor: "red",
+      headingColor: "white",
+      containerClass: "mx-auto",
+      headingClass: "text-center font-bold"
+    }));
+  });
+};
+
+exports.Contact = Contact;
+},{"react":"node_modules/react/index.js","../../utils/helpers":"src/utils/helpers.tsx","../../components/Footer":"src/components/Footer/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../utils/apiHelper":"src/utils/apiHelper.js"}],"src/queries/post/post.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94575,7 +94677,7 @@ var Category = function Category() {
       title: category.name
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: ""
-    }, /*#__PURE__*/_react.default.createElement("h1", null, category.name), /*#__PURE__*/_react.default.createElement(_Posts.default, {
+    }, /*#__PURE__*/_react.default.createElement("h1", null, category.name), /*#__PURE__*/_react.default.createElement(PostsVertical, {
       posts: category.posts
     })));
   });
@@ -94583,7 +94685,26 @@ var Category = function Category() {
 
 var _default = Category;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Posts":"src/components/Posts/index.js","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/containers/Categories/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router":"node_modules/react-router/esm/react-router.js","../../components/Posts":"src/components/Posts/index.tsx","../../components/Query":"src/components/Query/index.js","../../queries/category/posts":"src/queries/category/posts.js","../../utils/helpers":"src/utils/helpers.tsx"}],"src/queries/category/categories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n    }\n  }\n"])));
+var _default = CATEGORIES_QUERY;
+exports.default = _default;
+},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/containers/Categories/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94758,92 +94879,7 @@ var Header = function Header() {
 };
 
 exports.Header = Header;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/utils/apiHelper.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getSiteOptions = exports.getPageData = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-var getPageData = function getPageData(props) {
-  var pageData = {};
-  var no_of_posts = 0;
-  var description = '';
-  var intro_cta = {};
-  var connect_cta = {};
-
-  if (props.description !== undefined) {
-    description = /*#__PURE__*/_react.default.createElement(_reactMarkdown.default, {
-      source: props.description
-    });
-  }
-
-  if (props.dynamic_fields !== undefined) {
-    if (Array.isArray(props.dynamic_fields)) {
-      props.dynamic_fields.map(function (group) {
-        if (group.__typename == "ComponentPageNoOfPostsToShow") {
-          no_of_posts = group;
-        }
-
-        if (group.__typename == "ComponentPageIntroCta") {
-          intro_cta = group;
-        }
-
-        if (group.__typename == "ComponentPageConnectCta") {
-          connect_cta = group;
-        }
-      });
-    }
-  }
-
-  pageData["description"] = description;
-  pageData['no_of_posts'] = no_of_posts;
-  pageData['intro_cta'] = intro_cta;
-  pageData['connect_cta'] = connect_cta;
-  return pageData;
-};
-
-exports.getPageData = getPageData;
-
-var getSiteOptions = function getSiteOptions(props) {
-  var optionsData = {};
-
-  if (props.social !== undefined) {
-    optionsData["social"] = props.social;
-  }
-
-  return optionsData;
-};
-
-exports.getSiteOptions = getSiteOptions;
-},{"react":"node_modules/react/index.js","react-markdown":"node_modules/react-markdown/lib/react-markdown.js"}],"src/queries/page/pages.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
-var _default = PAGES_QUERY;
-exports.default = _default;
-},{"graphql-tag":"node_modules/graphql-tag/lib/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"src/components/Query/index.js","../Nav/main":"src/components/Nav/main.js","../../../assets/images/logo.svg":"assets/images/logo.svg","../../queries/top-menu":"src/queries/top-menu/index.js"}],"src/queries/site-options/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94890,13 +94926,9 @@ var _Categories = require("../../containers/Categories");
 
 var _Header = require("../../components/Header");
 
-var _helpers = require("../../utils/helpers");
-
 var _apiHelper = require("../../utils/apiHelper");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
-
-var _pages = _interopRequireDefault(require("../../queries/page/pages"));
 
 var _siteOptions = _interopRequireDefault(require("../../queries/site-options"));
 
@@ -94911,14 +94943,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // Components
 // Queries
 function App() {
-  var pageBag;
   var siteOptions;
-  var path = window.location.pathname.replace(/^\/|\/$/g, '');
-
-  if (path === '') {
-    path = 'home';
-  }
-
   return _react.default.createElement(_Query.default, {
     query: _siteOptions.default
   }, function (_ref) {
@@ -94930,77 +94955,45 @@ function App() {
       id: "wrapper"
     }, _react.default.createElement("section", {
       className: "w-full"
-    }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_Query.default, {
-      query: _pages.default,
-      slug: path
-    }, function (_ref2) {
-      var pages = _ref2.data.pages;
-      pageBag = (0, _apiHelper.getPageData)(pages[0]);
-      return _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
-        path: '/',
-        exact: true,
-        render: function render(props) {
-          return _react.default.createElement(_Home.Home, Object.assign({}, props, {
-            siteOptions: siteOptions,
-            pageBag: pageBag
-          }));
-        }
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        path: '/about',
-        exact: true,
-        render: function render(props) {
-          return _react.default.createElement(_About.About, Object.assign({}, props, {
-            siteOptions: siteOptions,
-            pageBag: pageBag
-          }));
-        }
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        path: '/blog',
-        exact: true,
-        render: function render(props) {
-          return _react.default.createElement(_Blog.Blog, Object.assign({}, props, {
-            siteOptions: siteOptions,
-            pageBag: pageBag
-          }));
-        }
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        path: '/contact',
-        exact: true,
-        render: function render(props) {
-          return _react.default.createElement(_Contact.Contact, Object.assign({}, props, {
-            siteOptions: siteOptions,
-            pageBag: pageBag
-          }));
-        }
-      }));
-    }), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
-      path: '/post/:id',
-      render: function render(props) {
-        return _react.default.createElement(_Post.Post, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/category/:id',
-      render: function render(props) {
-        return _react.default.createElement(_Category.Category, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }), _react.default.createElement(_reactRouterDom.Route, {
-      path: '/categories',
-      render: function render(props) {
-        return _react.default.createElement(_Categories.Categories, Object.assign({}, props, {
-          siteOptions: siteOptions
-        }));
-      }
-    }))), _react.default.createElement(_helpers.FooterScripts, null))));
+    }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+      path: "/",
+      exact: true
+    }, _react.default.createElement(_Home.Home, {
+      siteOptions: siteOptions
+    })), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/about",
+      exact: true
+    }, _react.default.createElement(_About.About, {
+      siteOptions: siteOptions
+    })), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/blog",
+      exact: true
+    }, _react.default.createElement(_Blog.Blog, {
+      siteOptions: siteOptions
+    })), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/contact",
+      exact: true
+    }, _react.default.createElement(_Contact.Contact, {
+      siteOptions: siteOptions
+    })), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/post/:id"
+    }, _react.default.createElement(_Post.Post, {
+      siteOptions: siteOptions
+    })), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/category/:id"
+    }, _react.default.createElement(_Category.Category, {
+      siteOptions: siteOptions
+    })), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/categories"
+    }, _react.default.createElement(_Categories.Categories, {
+      siteOptions: siteOptions
+    })))))));
   });
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/helpers":"src/utils/helpers.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/page/pages":"src/queries/page/pages.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Home":"src/containers/Home/index.tsx","../About":"src/containers/About/index.tsx","../Blog":"src/containers/Blog/index.tsx","../Contact":"src/containers/Contact/index.tsx","../../containers/Post":"src/containers/Post/index.tsx","../../containers/Category":"src/containers/Category/index.js","../../containers/Categories":"src/containers/Categories/index.js","../../components/Header":"src/components/Header/index.tsx","../../utils/apiHelper":"src/utils/apiHelper.js","../../components/Query":"src/components/Query/index.js","../../queries/site-options":"src/queries/site-options/index.tsx"}],"node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98793,7 +98786,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52742" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57159" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

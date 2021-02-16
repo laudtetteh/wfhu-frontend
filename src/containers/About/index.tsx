@@ -4,50 +4,73 @@ import React from 'react';
 import Testimonials from '../Testimonials';
 import { DocumentHead } from '../../utils/helpers';
 import { Footer } from '../../components/Footer';
+// Queries
+import Query from "../../components/Query";
+import PAGES_QUERY from "../../queries/page/pages";
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
+import { getPageData } from '../../utils/apiHelper';
 
-export const About = ({pageBag, siteOptions}) => {
+export const About = ({siteOptions}) => {
 
     return (
 
-        <React.Fragment>
+        <Query query={PAGES_QUERY} slug="about">
 
-            <DocumentHead title="About"/>
+            {({ data: { pages } }) => {
 
-            <section className="w-full bg-none section-page-content">
+                const pageBag = getPageData(pages[0]);
 
-                <div className="container mx-auto py-12 section-testimonials">
+                return (
 
-                    <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">About</h1>
+                    <React.Fragment>
 
-                    <div className="description description font-roboto">
-                        {pageBag.description}
-                    </div>
-                </div>
 
-            </section>
+                        <DocumentHead title="About"/>
 
-            <section className="w-full bg-none">
 
-                <div className="container mx-auto py-12 section-testimonials">
+                        <section className="w-full bg-none section-page-content">
 
-                    <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
+                            <div className="container mx-auto py-12 section-testimonials">
 
-                    <Testimonials limit={4} />
+                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">About</h1>
 
-                </div>
+                                <div className="description description font-roboto">
 
-            </section>
+                                     <div className="description description font-roboto">
+                                        {pageBag.description}
+                                    </div>
 
-            <Footer
-                siteOptions={siteOptions}
-                iconColor="gray"
-                iconBgColor="white"
-                iconHvColor="red"
-                headingColor="white"
-                containerClass="mx-auto"
-                headingClass="text-center font-bold"
-            />
+                                </div>
+                            </div>
 
-        </React.Fragment>
+                        </section>
+
+                        <section className="w-full bg-none">
+
+                            <div className="container mx-auto py-12 section-testimonials">
+
+                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
+
+                                <Testimonials limit={4} />
+
+                            </div>
+
+                        </section>
+
+                        <Footer
+                            siteOptions={siteOptions}
+                            iconColor="gray"
+                            iconBgColor="white"
+                            iconHvColor="red"
+                            headingColor="white"
+                            containerClass="mx-auto"
+                            headingClass="text-center font-bold"
+                        />
+
+                    </React.Fragment>
+                )
+            }}
+        </Query>
     )
 }

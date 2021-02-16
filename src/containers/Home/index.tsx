@@ -3,74 +3,90 @@ import React from 'react';
 // Containers
 import Testimonials from '../Testimonials';
 import Posts from '../Posts';
-import { DocumentHead } from '../../utils/helpers';
 // Components
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
 import { IntroCTA } from '../../components/Cta/IntroCTA';
+// Queries
+import Query from "../../components/Query";
+import PAGES_QUERY from "../../queries/page/pages";
+// Utilities
+import { DocumentHead } from '../../utils/helpers';
+import { getPageData } from '../../utils/apiHelper';
 
-export const Home = ({pageBag, siteOptions}) => {
+export const Home = ({siteOptions}) => {
 
     return (
 
-        <React.Fragment>
+        <Query query={PAGES_QUERY} slug="home">
 
-            <DocumentHead title="Home" />
+            {({ data: { pages } }) => {
 
-            <section className="w-full stf-bg-1 section-connect-cta">
+                const pageBag = getPageData(pages[0]);
 
-                <div className="container">
+                return (
 
-                    <IntroCTA pageBag={pageBag} />
+                    <React.Fragment>
 
-                </div>
+                        <DocumentHead title="Home" />
 
-            </section>
+                        <section className="w-full stf-bg-1 section-connect-cta">
 
-            <section className="w-full stf-bg-2 section-connect-cta">
+                            <div className="container">
 
-                <div className="container mx-auto py-12">
+                                <IntroCTA pageBag={pageBag} />
 
-                    <ConnectCTA
-                        pageBag={pageBag}
-                        siteOptions={siteOptions}
-                        iconColor="blue-100"
-                        iconBgColor="gray"
-                        iconHvColor="red"
-                        headingColor="gray"
-                        containerClass="float-right"
-                        headingClass="stf-text-shadow-white-top-left"
-                    />
+                            </div>
 
-                </div>
+                        </section>
 
-            </section>
+                        <section className="w-full stf-bg-2 section-connect-cta">
 
-            <section className="w-full bg-none">
+                            <div className="container mx-auto py-12">
 
-                <div className="container mx-auto py-12 section-testimonials">
+                                <ConnectCTA
+                                    pageBag={pageBag}
+                                    siteOptions={siteOptions}
+                                    iconColor="blue-100"
+                                    iconBgColor="gray"
+                                    iconHvColor="red"
+                                    headingColor="gray"
+                                    containerClass="float-right"
+                                    headingClass="stf-text-shadow-white-top-left"
+                                />
 
-                    <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Testimonials</h2>
+                            </div>
 
-                    <Testimonials limit={4} />
+                        </section>
 
-                </div>
+                        <section className="w-full bg-none">
 
-            </section>
+                            <div className="container mx-auto py-12 section-testimonials">
 
-            <section className="w-full stf-bg-3 section-posts--loop">
+                                <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Testimonials</h2>
 
-                <div className="container mx-auto py-12">
+                                <Testimonials limit={4} />
 
-                    <h2 className="section-heading font-bellota text-4xl text-white mb-3">
-                        Blog Posts
-                        <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
-                    </h2>
+                            </div>
 
-                    <Posts limit={3} />
-                </div>
+                        </section>
 
-            </section>
+                        <section className="w-full stf-bg-3 section-posts--loop">
 
-        </React.Fragment>
+                            <div className="container mx-auto py-12">
+
+                                <h2 className="section-heading font-bellota text-4xl text-white mb-3">
+                                    Blog Posts
+                                    <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
+                                </h2>
+
+                                <Posts limit={3} orientation="horizontal"/>
+                            </div>
+
+                        </section>
+
+                    </React.Fragment>
+                )
+            }}
+        </Query>
     )
 }
