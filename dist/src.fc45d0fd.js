@@ -73758,6 +73758,37 @@ var Card = function Card(_ref) {
     content_type: content_type,
     image_size: image_size
   });
+
+  if (orientation == 'vertical') {
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+      className: "grid grid-cols-1 md:grid-cols-3 grid-flow-col gap-4 post-".concat(post.id)
+    }, _react.default.createElement("div", {
+      className: "card-post--image col-span-1"
+    }, _react.default.createElement(_reactRouterDom.Link, {
+      to: "/post/".concat(post.slug),
+      className: "card-post--image"
+    }, _react.default.createElement("img", {
+      src: imageUrl,
+      alt: imageUrl,
+      height: "100",
+      className: "w-full"
+    }))), _react.default.createElement("div", {
+      className: "card-post--details col-span-2"
+    }, _react.default.createElement(_reactRouterDom.Link, {
+      to: "/post/".concat(post.slug),
+      className: "card-post--title font-roboto no-underline"
+    }, _react.default.createElement("p", {
+      id: "name",
+      className: "font-roboto text-base text-black font-medium"
+    }, post.name)), _react.default.createElement("p", {
+      id: "",
+      className: "card-post--date font-roboto text-xs text-black font-thin italic"
+    }, _react.default.createElement(_helpers.STFDate, {
+      _timestamp: post.published_at,
+      _format: "MMMM D, YYYY"
+    })))));
+  }
+
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "post-".concat(post.id)
   }, _react.default.createElement("div", {
@@ -73811,8 +73842,10 @@ var Posts = function Posts(_ref) {
 
   if (orientation == 'vertical') {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: "grid-cols-1 md:grid-cols-3"
-    }, posts.map(function (post, index) {
+      className: "col-span-5 space-y-6"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Posts"), posts.map(function (post, index) {
       var _React$createElement;
 
       return _react.default.createElement(_post.default, (_React$createElement = {
@@ -94461,7 +94494,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Sidebar = function Sidebar() {
   return _react.default.createElement("div", {
-    className: "row-span-2 col-span-2"
+    className: "col-span-2"
   }, _react.default.createElement(_blog.BlogNav, null));
 };
 
@@ -94506,23 +94539,11 @@ var Blog = function Blog(_ref) {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: "Blog"
     }), _react.default.createElement("section", {
-      className: "w-full bg-none section-page-content"
-    }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
-    }, _react.default.createElement("h1", {
-      className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-    }, "Blog"), _react.default.createElement("div", {
-      className: "description description font-roboto"
-    }, _react.default.createElement("div", {
-      className: "description description font-roboto"
-    }, pageBag.description)))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
-    }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Posts"), _react.default.createElement("div", {
-      className: "grid grid grid-rows-3 grid-flow-col"
+    }, _react.default.createElement("div", {
+      className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       orientation: "vertical"

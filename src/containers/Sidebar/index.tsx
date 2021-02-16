@@ -8,7 +8,7 @@ export const Sidebar = () => {
 
     return (
 
-        <div className="row-span-2 col-span-2">
+        <div className="col-span-2">
 
             <BlogNav />
 
