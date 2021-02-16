@@ -6338,6 +6338,8 @@ readers do not read off random characters that represent icons */
 }
 /* fontawesome. */
 
+$fa-font-path: "../webfonts";
+
 /* end fontawesome. */
 
 /* ! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */
