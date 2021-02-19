@@ -45,7 +45,7 @@ function App() {
 
                             <React.Fragment>
 
-                                <div id="wrapper">
+                                <div id="wrapper" className="flex-grow">
 
                                     <section className="w-full">
                                         <Header />

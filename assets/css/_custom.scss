@@ -1,3 +1,13 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#wrapper {
+  flex: 1; /* Or flex-grow: 1;*/
+}
+
 .stf-bg-1 {
     background-image: url('/assets/images/background-1.png');
 }

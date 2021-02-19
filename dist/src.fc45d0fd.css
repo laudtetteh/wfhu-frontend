@@ -6253,6 +6253,17 @@ readers do not read off random characters that represent icons */
 .stf-text-shadow-darkblue-bottom-right {
   text-shadow: 1px 1px 0px #366878;
 }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#wrapper {
+  flex: 1;
+  /* Or flex-grow: 1;*/
+}
+
 .stf-bg-1 {
   background-image: url("/background-1.987eb1b6.png");
 }

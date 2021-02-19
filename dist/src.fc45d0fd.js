@@ -94874,7 +94874,7 @@ var Category = function Category(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       posts: categories[0].posts,
@@ -95080,7 +95080,8 @@ function App() {
     return _react.default.createElement(_react.Suspense, {
       fallback: "Loading..."
     }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      id: "wrapper"
+      id: "wrapper",
+      className: "flex-grow"
     }, _react.default.createElement("section", {
       className: "w-full"
     }, _react.default.createElement(_Header.Header, null)), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
@@ -98912,7 +98913,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52306" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54532" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
