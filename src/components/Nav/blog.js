@@ -19,7 +19,7 @@ export const BlogNav = () => {
 
                         <nav className="nav-sidebar">
 
-                            <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Series</h2>
+                            <h2 className="section-heading font-bellota text-4xl text-red text-left mb-3">Series</h2>
 
                             <ul className="loop-categories font-roboto text-base text-black font-medium">
 

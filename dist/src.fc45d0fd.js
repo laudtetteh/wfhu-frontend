@@ -73772,7 +73772,7 @@ var Card = function Card(_ref) {
 
   if (orientation == 'vertical') {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: "grid grid-cols-1 md:grid-cols-3 grid-flow-col gap-4 post-".concat(post.id)
+      className: "md:grid md:grid-cols-1 md:grid-cols-3 md:grid-flow-col md:gap-4 w-full md:w-auto post-".concat(post.id)
     }, _react.default.createElement("div", {
       className: "card-post--image col-span-1"
     }, _react.default.createElement(_reactRouterDom.Link, {
@@ -73784,7 +73784,7 @@ var Card = function Card(_ref) {
       height: "100",
       className: "w-full"
     }))), _react.default.createElement("div", {
-      className: "card-post--details col-span-2"
+      className: "card-post--details col-span-2 mt-3 md:mt-0"
     }, _react.default.createElement(_reactRouterDom.Link, {
       to: "/post/".concat(post.slug),
       className: "card-post--title font-roboto no-underline"
@@ -73862,7 +73862,7 @@ var Posts = function Posts(_ref) {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
       className: "col-span-5 space-y-6"
     }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
     }, heading), posts.map(function (post, index) {
       var _React$createElement;
 
@@ -94516,7 +94516,7 @@ var BlogNav = function BlogNav() {
     return /*#__PURE__*/_react.default.createElement("nav", {
       className: "nav-sidebar"
     }, /*#__PURE__*/_react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
     }, "Series"), /*#__PURE__*/_react.default.createElement("ul", {
       className: "loop-categories font-roboto text-base text-black font-medium"
     }, categories.map(function (category, i) {
@@ -94558,7 +94558,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Sidebar = function Sidebar() {
   return _react.default.createElement("div", {
-    className: "col-span-2"
+    className: "col-span-2 mt-10 md:mt-0"
   }, _react.default.createElement(_blog.BlogNav, null));
 };
 
@@ -94607,7 +94607,7 @@ var Blog = function Blog(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       orientation: "vertical",
@@ -94814,7 +94814,7 @@ var PostSingle = function PostSingle(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
     }, _react.default.createElement(_Post.Post, {
       post: posts[0]
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {

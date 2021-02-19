@@ -28,12 +28,11 @@ export const Blog = ({siteOptions}) => {
 
                         <DocumentHead title="Blog"/>
 
-
                         <section className="w-full bg-none">
 
                             <div className="container mx-auto py-12 section-posts">
 
-                                <div className="grid grid-cols-1 md:grid-cols-7 grid-flow-col gap-4">
+                                <div className="md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto">
 
                                     <Posts limit={12} orientation="vertical" heading="Posts" />
 
