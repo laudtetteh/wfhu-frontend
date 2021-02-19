@@ -59,7 +59,7 @@ const Card = ({ post, orientation }) => {
 
         <React.Fragment>
 
-            <div className={`post-${post.id}`}>
+            <div className={`md:mt-0 mt-5 first:mt-0 post-${post.id}`}>
 
                 <div className="card-post--image">
                     <Link to={`/post/${post.slug}`} className="card-post--image">
@@ -68,7 +68,7 @@ const Card = ({ post, orientation }) => {
                 </div>
 
 
-                <div className="card-post--details">
+                <div className="card-post--details mt-3">
                     <Link to={`/post/${post.slug}`} className="card-post--title font-roboto no-underline">
                         <p id="name" className="font-roboto text-base text-yellow">
                             {post.name}

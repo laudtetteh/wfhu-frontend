@@ -53250,7 +53250,7 @@ var Card = function Card(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "mx-auto"
+    className: "mx-auto md:mt-0 mt-5 first:mt-0"
   }, _react.default.createElement("div", {
     className: ""
   }, _react.default.createElement("img", {
@@ -73807,7 +73807,7 @@ var Card = function Card(_ref) {
   }
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "post-".concat(post.id)
+    className: "md:mt-0 mt-5 first:mt-0 post-".concat(post.id)
   }, _react.default.createElement("div", {
     className: "card-post--image"
   }, _react.default.createElement(_reactRouterDom.Link, {
@@ -73819,7 +73819,7 @@ var Card = function Card(_ref) {
     height: "100",
     className: "w-full"
   }))), _react.default.createElement("div", {
-    className: "card-post--details"
+    className: "card-post--details mt-3"
   }, _react.default.createElement(_reactRouterDom.Link, {
     to: "/post/".concat(post.slug),
     className: "card-post--title font-roboto no-underline"
@@ -74033,9 +74033,9 @@ var ConnectCTA = function ConnectCTA(_ref) {
     className: "section-heading font-roboto text-base text-white mb-3"
   }, pageBag.connect_cta.paragraph), _react.default.createElement("a", {
     href: pageBag.connect_cta.button_link,
-    className: "bg-yellow hover:bg-darkblue hover:text-white text-darkblue font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline"
+    className: "bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline"
   }, pageBag.connect_cta.button_text)), _react.default.createElement("div", {
-    className: "float-right"
+    className: "float-right mx-auto md:mx-0"
   }, _react.default.createElement(_Social.Social, {
     siteOptions: siteOptions,
     iconColor: iconColor,
@@ -94314,7 +94314,7 @@ var Home = function Home(_ref) {
       pageBag: pageBag,
       siteOptions: siteOptions,
       headingColor: "darkblue",
-      containerClass: "float-right",
+      containerClass: "md:float-right mx-auto",
       headingClass: "stf-text-shadow-white-top-left"
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
@@ -98912,7 +98912,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63414" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52306" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

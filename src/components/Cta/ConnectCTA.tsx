@@ -17,12 +17,12 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
                         {pageBag.connect_cta.paragraph}
                     </p>
 
-                    <a href={pageBag.connect_cta.button_link} className="bg-yellow hover:bg-darkblue hover:text-white text-darkblue font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline">
+                    <a href={pageBag.connect_cta.button_link} className="bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline">
                         {pageBag.connect_cta.button_text}
                     </a>
                 </div>
 
-                <div className="float-right">
+                <div className="float-right mx-auto md:mx-0">
 
                     <Social
                         siteOptions={siteOptions}
