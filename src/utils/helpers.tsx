@@ -15,6 +15,7 @@ export const STFDate = ({_timestamp, _format}) => {
 }
 
 export const FooterScripts = () => {
+
     import('/assets/js/footer-scripts.js');
     return true;
 }
