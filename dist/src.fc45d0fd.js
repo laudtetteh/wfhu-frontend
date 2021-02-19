@@ -73957,9 +73957,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Social = function Social(_ref) {
   var siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
       headingColor = _ref.headingColor,
       containerClass = _ref.containerClass,
       headingClass = _ref.headingClass;
@@ -73970,35 +73967,35 @@ var Social = function Social(_ref) {
   }, "Connect with me!"), _react.default.createElement("ul", {
     className: "block clear-both"
   }, _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-".concat(iconBgColor, " hover:bg-").concat(iconHvColor, " inline-block ml-3 first:ml-0")
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
   }, _react.default.createElement("a", {
     href: siteOptions.social.youtube
   }, _react.default.createElement("i", {
-    className: "fab fa-youtube bg-none text-".concat(iconColor, " text-lg")
+    className: "fab fa-youtube bg-none text-lg"
   }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-".concat(iconBgColor, " hover:bg-").concat(iconHvColor, " inline-block ml-3 first:ml-0")
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
   }, _react.default.createElement("a", {
     href: siteOptions.social.instagram
   }, _react.default.createElement("i", {
-    className: "fab fa-instagram bg-none text-".concat(iconColor, " text-lg")
+    className: "fab fa-instagram bg-none text-lg"
   }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-".concat(iconBgColor, " hover:bg-").concat(iconHvColor, " inline-block ml-3 first:ml-0")
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
   }, _react.default.createElement("a", {
     href: siteOptions.social.facebook
   }, _react.default.createElement("i", {
-    className: "fab fa-facebook-f bg-none text-".concat(iconColor, " text-lg")
+    className: "fab fa-facebook-f bg-none text-lg"
   }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-".concat(iconBgColor, " hover:bg-").concat(iconHvColor, " inline-block ml-3 first:ml-0")
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
   }, _react.default.createElement("a", {
     href: siteOptions.social.linkedin
   }, _react.default.createElement("i", {
-    className: "fab fa-linkedin bg-none text-".concat(iconColor, " text-lg")
+    className: "fab fa-linkedin bg-none text-lg"
   }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center bg-".concat(iconBgColor, " hover:bg-").concat(iconHvColor, " inline-block ml-3 first:ml-0")
+    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
   }, _react.default.createElement("a", {
     href: siteOptions.social.twitter
   }, _react.default.createElement("i", {
-    className: "fab fa-twitter bg-none text-".concat(iconColor, " text-lg")
+    className: "fab fa-twitter bg-none text-lg"
   }))))));
 };
 
@@ -85101,7 +85098,7 @@ var SignupForm = /*#__PURE__*/function (_Component) {
         value: "SUBSCRIBE",
         name: "subscribe",
         id: "mc-embedded-subscribe",
-        className: "mc-embedded-subscribe button hover:bg-red",
+        className: "mc-embedded-subscribe button hover:bg-red hover:text-white",
         onClick: this._handleClick
       })), _react.default.createElement("div", {
         id: "mce-responses",
@@ -94316,9 +94313,6 @@ var Home = function Home(_ref) {
     }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
       pageBag: pageBag,
       siteOptions: siteOptions,
-      iconColor: "blue-100",
-      iconBgColor: "darkblue",
-      iconHvColor: "red",
       headingColor: "darkblue",
       containerClass: "float-right",
       headingClass: "stf-text-shadow-white-top-left"
@@ -94428,7 +94422,7 @@ var About = function About(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto px-60 py-12 section-testimonials"
+      className: "container mx-auto md:px-60 py-12 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "About"), _react.default.createElement("div", {
@@ -94445,9 +94439,6 @@ var About = function About(_ref) {
       limit: 4
     }))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "darkblue",
-      iconBgColor: "white",
-      iconHvColor: "red",
       headingColor: "white",
       containerClass: "mx-auto",
       headingClass: "text-center font-bold"
@@ -94623,9 +94614,6 @@ var Blog = function Blog(_ref) {
       heading: "Posts"
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "darkblue",
-      iconBgColor: "white",
-      iconHvColor: "red",
       headingColor: "white",
       containerClass: "mx-auto",
       headingClass: "text-center font-bold"
@@ -94671,7 +94659,7 @@ var Contact = function Contact(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 px-60 section-testimonials"
+      className: "container mx-auto py-12 md:px-60 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "Contact"), _react.default.createElement("div", {
@@ -94684,9 +94672,6 @@ var Contact = function Contact(_ref) {
       className: "container mx-auto py-12 section-contact-form"
     })), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "darkblue",
-      iconBgColor: "white",
-      iconHvColor: "red",
       headingColor: "white",
       containerClass: "mx-auto",
       headingClass: "text-center font-bold"
@@ -94834,9 +94819,6 @@ var PostSingle = function PostSingle(_ref) {
       post: posts[0]
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "darkblue",
-      iconBgColor: "white",
-      iconHvColor: "red",
       headingColor: "white",
       containerClass: "mx-auto",
       headingClass: "text-center font-bold"
@@ -94900,9 +94882,6 @@ var Category = function Category(_ref) {
       heading: categories[0].name
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "darkblue",
-      iconBgColor: "white",
-      iconHvColor: "red",
       headingColor: "white",
       containerClass: "mx-auto",
       headingClass: "text-center font-bold"

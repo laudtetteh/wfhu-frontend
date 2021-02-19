@@ -31,7 +31,7 @@ export const Contact = ({siteOptions}) => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto py-12 px-60 section-testimonials">
+                            <div className="container mx-auto py-12 md:px-60 section-testimonials">
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Contact</h1>
 
@@ -51,18 +51,12 @@ export const Contact = ({siteOptions}) => {
                             <div className="container mx-auto py-12 section-contact-form">
 
 
-
-
-
                             </div>
 
                         </section>
 
                         <Footer
                             siteOptions={siteOptions}
-                            iconColor="darkblue"
-                            iconBgColor="white"
-                            iconHvColor="red"
                             headingColor="white"
                             containerClass="mx-auto"
                             headingClass="text-center font-bold"

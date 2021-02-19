@@ -46,9 +46,6 @@ export const Home = ({siteOptions}) => {
                                 <ConnectCTA
                                     pageBag={pageBag}
                                     siteOptions={siteOptions}
-                                    iconColor="blue-100"
-                                    iconBgColor="darkblue"
-                                    iconHvColor="red"
                                     headingColor="darkblue"
                                     containerClass="float-right"
                                     headingClass="stf-text-shadow-white-top-left"

@@ -6250,8 +6250,8 @@ readers do not read off random characters that represent icons */
   text-shadow: -1px -1px 0px white;
 }
 
-.stf-text-shadow-gray-bottom-right {
-  text-shadow: 1px 1px 0px #186070;
+.stf-text-shadow-darkblue-bottom-right {
+  text-shadow: 1px 1px 0px #366878;
 }
 .stf-bg-1 {
   background-image: url("/background-1.987eb1b6.png");
@@ -6294,11 +6294,6 @@ readers do not read off random characters that represent icons */
   position: absolute;
 }
 
-.mc-embedded-subscribe:hover {
-  color: #ffffff;
-  background-color: #454F37;
-}
-
 .section-connect-cta i.fab {
   line-height: 1.8rem;
 }
@@ -6306,6 +6301,38 @@ readers do not read off random characters that represent icons */
 .section-connect-cta .social-buttons h3,
 .section-connect-cta .social-buttons ul {
   float: right;
+}
+
+.section-connect-cta .social-buttons li {
+  background-color: #366878;
+}
+
+.section-connect-cta .social-buttons li > a {
+  color: #A9DDED;
+}
+
+.section-connect-cta .social-buttons li:hover {
+  background-color: #C9273E;
+}
+
+.section-connect-cta .social-buttons li:hover > a {
+  color: #A9DDED;
+}
+
+.section-footer .social-buttons li {
+  background-color: #FFFFFF;
+}
+
+.section-footer .social-buttons li > a {
+  color: #366878;
+}
+
+.section-footer .social-buttons li:hover {
+  background-color: #C9273E;
+}
+
+.section-footer .social-buttons li:hover > a {
+  color: #A9DDED;
 }
 
 .section-footer .social-buttons h3,

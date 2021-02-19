@@ -101,7 +101,7 @@ class SignupForm extends Component {
                                 <input type="text" name="b_9ae21d5dd8d2f0f5acee71058_4a8e40d9cb" tabIndex="-1" value="" />
                             </div>
 
-                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button hover:bg-red" onClick={this._handleClick} />
+                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button hover:bg-red hover:text-white" onClick={this._handleClick} />
                         </div>
 
                         <div id="mce-responses" className="clear">

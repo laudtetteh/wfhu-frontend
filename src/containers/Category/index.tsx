@@ -49,9 +49,6 @@ export const Category = ({siteOptions}) => {
 
                         <Footer
                             siteOptions={siteOptions}
-                            iconColor="darkblue"
-                            iconBgColor="white"
-                            iconHvColor="red"
                             headingColor="white"
                             containerClass="mx-auto"
                             headingClass="text-center font-bold"

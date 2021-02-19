@@ -23,12 +23,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       black: '#000',
-      white: {
-        DEFAULT: '#FFFFFF',
-        100: '#',
-        300: '#',
-        600: '#FFFFFF',
-      },
+      white: '#FFFFFF',
       red: {
         DEFAULT: '#C9273E',
         100: '#',

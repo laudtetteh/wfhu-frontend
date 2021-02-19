@@ -38,11 +38,6 @@
     position: absolute;
 }
 
-.mc-embedded-subscribe:hover {
-    color: #ffffff;
-    background-color: #454F37;
-}
-
 .section-connect-cta i.fab {
     line-height: 1.8rem;
 }
@@ -51,6 +46,50 @@
 .section-connect-cta .social-buttons ul {
     float: right;
 }
+
+
+
+.section-connect-cta .social-buttons li {
+    background-color: #366878;
+}
+
+.section-connect-cta .social-buttons li > a {
+    color: #A9DDED;
+}
+
+.section-connect-cta .social-buttons li:hover {
+    background-color: #C9273E;
+}
+
+.section-connect-cta .social-buttons li:hover > a {
+    color: #A9DDED;
+}
+
+
+
+
+
+
+
+
+.section-footer .social-buttons li {
+    background-color: #FFFFFF;
+}
+
+.section-footer .social-buttons li > a {
+    color: #366878;
+}
+
+.section-footer .social-buttons li:hover {
+    background-color: #C9273E;
+}
+
+.section-footer .social-buttons li:hover > a {
+    color: #A9DDED;
+}
+
+
+
 
 .section-footer .social-buttons h3,
 .section-footer .social-buttons ul {

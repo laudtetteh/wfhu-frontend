@@ -31,7 +31,7 @@ export const About = ({siteOptions}) => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto px-60 py-12 section-testimonials">
+                            <div className="container mx-auto md:px-60 py-12 section-testimonials">
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">About</h1>
 
@@ -60,9 +60,6 @@ export const About = ({siteOptions}) => {
 
                         <Footer
                             siteOptions={siteOptions}
-                            iconColor="darkblue"
-                            iconBgColor="white"
-                            iconHvColor="red"
                             headingColor="white"
                             containerClass="mx-auto"
                             headingClass="text-center font-bold"
