@@ -8,7 +8,7 @@
     "run:dev": "parcel index.html",
     "build": "yarn generate:fragments && yarn run:build && yarn redirects:copy",
     "run:build": "parcel build index.html -d ./dist --public-url ./",
-    "redirects:copy": "cp ./_redirects dist/",
+    "redirects:copy": "cp ./_redirects ./dist/",
     "generate:fragments": "node -r dotenv/config src/utils/schemaQuery.js"
   },
   "ts-standard": {
