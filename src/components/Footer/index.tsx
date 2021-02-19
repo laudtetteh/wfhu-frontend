@@ -8,7 +8,7 @@ export const Footer = ({siteOptions, iconColor, iconBgColor, iconHvColor, headin
 
         <React.Fragment>
 
-            <section className="section-footer w-full bg-gray text-white py-16">
+            <section className="section-footer w-full bg-darkblue text-white py-16">
 
                 <div className="container">
 

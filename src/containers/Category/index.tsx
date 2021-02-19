@@ -49,7 +49,7 @@ export const Category = ({siteOptions}) => {
 
                         <Footer
                             siteOptions={siteOptions}
-                            iconColor="gray"
+                            iconColor="darkblue"
                             iconBgColor="white"
                             iconHvColor="red"
                             headingColor="white"

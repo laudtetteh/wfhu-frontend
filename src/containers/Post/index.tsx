@@ -48,7 +48,7 @@ export const PostSingle = ({siteOptions}) => {
 
                             <Footer
                                 siteOptions={siteOptions}
-                                iconColor="gray"
+                                iconColor="darkblue"
                                 iconBgColor="white"
                                 iconHvColor="red"
                                 headingColor="white"

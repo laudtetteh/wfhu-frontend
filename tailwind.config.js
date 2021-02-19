@@ -23,18 +23,17 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       black: '#000',
-      white: '#fff',
-      red: {
-        DEFAULT: '#C9263D',
+      white: {
+        DEFAULT: '#FFFFFF',
         100: '#',
         300: '#',
-        600: '#C9263D',
+        600: '#FFFFFF',
       },
-      gray: {
-        DEFAULT: '#186070',
+      red: {
+        DEFAULT: '#C9273E',
         100: '#',
-        300: '#90AFB6',
-        600: '#186070',
+        300: '#',
+        600: '#C9273E',
       },
       yellow: {
         DEFAULT: '#EDE784',
@@ -47,6 +46,12 @@ module.exports = {
         100: '#A9DDED',
         300: '#8EC8DF',
         600: '#3AA9CB',
+      },
+      darkblue: {
+        DEFAULT: '#366878',
+        100: '#',
+        300: '#',
+        600: '#366878',
       },
     },
     screens: {

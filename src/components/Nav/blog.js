@@ -27,7 +27,7 @@ export const BlogNav = () => {
 
                                     return (
 
-                                        <li key={category.id}>
+                                        <li key={category.id} className="mb-3">
 
                                             <Link
                                                 to={`/category/${category.slug}`}

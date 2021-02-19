@@ -36,14 +36,14 @@ export const Post = ({post}) => {
 
                     </h3>
 
-                    <p className="card-post-name font-roboto text-base text-gray mb-3">
+                    <p className="card-post-name font-roboto text-base text-darkblue mb-3">
                         <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
 
                         <span className="font-thin"> | </span>
 
                         <Link to={`/category/${post.category.slug}`}>
-                            <span className="card-post-category text-base text-gray font-roboto font-normal mt-3 mb-3">
-                                <i className="fa fa-tags bg-none text-gray text-sm mr-1"></i>
+                            <span className="card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3">
+                                <i className="fa fa-tags bg-none text-darkblue text-sm mr-1"></i>
                                 {post.category.name}
                             </span>
                         </Link>

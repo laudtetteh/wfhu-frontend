@@ -11,13 +11,13 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop">
 
                 <div className="mx-auto">
-                    <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-gray-bottom-right">{pageBag.connect_cta.heading}</h3>
+                    <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right">{pageBag.connect_cta.heading}</h3>
 
                     <p className="section-heading font-roboto text-base text-white mb-3">
                         {pageBag.connect_cta.paragraph}
                     </p>
 
-                    <a href={pageBag.connect_cta.button_link} className="bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline">
+                    <a href={pageBag.connect_cta.button_link} className="bg-yellow hover:bg-darkblue hover:text-white text-darkblue font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline">
                         {pageBag.connect_cta.button_text}
                     </a>
                 </div>

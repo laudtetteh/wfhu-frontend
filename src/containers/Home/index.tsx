@@ -29,7 +29,7 @@ export const Home = ({siteOptions}) => {
 
                         <DocumentHead title="Home" />
 
-                        <section className="w-full stf-bg-1 section-connect-cta">
+                        <section className="w-full bg-darkblue section-connect-cta">
 
                             <div className="container">
 
@@ -47,9 +47,9 @@ export const Home = ({siteOptions}) => {
                                     pageBag={pageBag}
                                     siteOptions={siteOptions}
                                     iconColor="blue-100"
-                                    iconBgColor="gray"
+                                    iconBgColor="darkblue"
                                     iconHvColor="red"
-                                    headingColor="gray"
+                                    headingColor="darkblue"
                                     containerClass="float-right"
                                     headingClass="stf-text-shadow-white-top-left"
                                 />

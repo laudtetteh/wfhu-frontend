@@ -18,12 +18,13 @@ const emailField: CSS.Properties = {
     width: '100%',
     height: '35px',
     paddingRight: '50px',
-    border: '1px solid #2D5F6E',
+    border: '1px solid rgba(255, 255, 255, .6)',
     borderRadius: '3px',
     paddingLeft: '15px',
     fontFamily: 'roboto',
     fontSize: '16px',
-    backgroundColor: 'transparent'
+    color: '#ffffff',
+    backgroundColor: 'rgba(255, 255, 255, .3)'
 };
 
 // CSS for field group
@@ -100,7 +101,7 @@ class SignupForm extends Component {
                                 <input type="text" name="b_9ae21d5dd8d2f0f5acee71058_4a8e40d9cb" tabIndex="-1" value="" />
                             </div>
 
-                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button" onClick={this._handleClick} />
+                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button hover:bg-red" onClick={this._handleClick} />
                         </div>
 
                         <div id="mce-responses" className="clear">

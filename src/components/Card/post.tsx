@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { STFDate, SmartImage } from '../../utils/helpers';
+import { STFDate, SmartImage, TrimText } from '../../utils/helpers';
 
 const Card = ({ post, orientation }) => {
 
@@ -24,23 +24,29 @@ const Card = ({ post, orientation }) => {
                 <div className={`grid grid-cols-1 md:grid-cols-3 grid-flow-col gap-4 post-${post.id}`}>
 
                     <div className="card-post--image col-span-1">
+
                         <Link to={`/post/${post.slug}`} className="card-post--image">
                             <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
                         </Link>
+
                     </div>
 
-
                     <div className="card-post--details col-span-2">
+
                         <Link to={`/post/${post.slug}`} className="card-post--title font-roboto no-underline">
                             <p id="name" className="font-roboto text-base text-black font-medium">
                                 {post.name}
                             </p>
                         </Link>
 
-
                         <p id="" className="card-post--date font-roboto text-xs text-black font-thin italic">
                             <STFDate _timestamp={post.published_at} _format="MMMM D, YYYY" />
                         </p>
+
+                        <p id="name" className="font-roboto text-base text-black font-normal mt-5">
+                            <TrimText text={post.description} limit={200}/>
+                        </p>
+
                     </div>
 
                 </div>

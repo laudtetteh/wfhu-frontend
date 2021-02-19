@@ -53262,10 +53262,7 @@ var Card = function Card(_ref) {
     className: ""
   }, _react.default.createElement("p", {
     className: "card-testimonial-description text-base font-roboto font-medium mt-3 mb-3"
-  }, _react.default.createElement(_helpers.TrimText, {
-    text: testimonial.description,
-    limit: "40"
-  })), _react.default.createElement("p", {
+  }, testimonial.description), _react.default.createElement("p", {
     className: "card-testimonial-name text-base font-roboto italic"
   }, "- ", testimonial.name))));
 };
@@ -73800,6 +73797,12 @@ var Card = function Card(_ref) {
     }, _react.default.createElement(_helpers.STFDate, {
       _timestamp: post.published_at,
       _format: "MMMM D, YYYY"
+    })), _react.default.createElement("p", {
+      id: "name",
+      className: "font-roboto text-base text-black font-normal mt-5"
+    }, _react.default.createElement(_helpers.TrimText, {
+      text: post.description,
+      limit: 200
     })))));
   }
 
@@ -74028,12 +74031,12 @@ var ConnectCTA = function ConnectCTA(_ref) {
   }, _react.default.createElement("div", {
     className: "mx-auto"
   }, _react.default.createElement("h3", {
-    className: "section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-gray-bottom-right"
+    className: "section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right"
   }, pageBag.connect_cta.heading), _react.default.createElement("p", {
     className: "section-heading font-roboto text-base text-white mb-3"
   }, pageBag.connect_cta.paragraph), _react.default.createElement("a", {
     href: pageBag.connect_cta.button_link,
-    className: "bg-yellow hover:bg-gray hover:text-white text-gray font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline"
+    className: "bg-yellow hover:bg-darkblue hover:text-white text-darkblue font-roboto font-semibold py-2 px-4 border border-white rounded shadow float-right no-underline"
   }, pageBag.connect_cta.button_text)), _react.default.createElement("div", {
     className: "float-right"
   }, _react.default.createElement(_Social.Social, {
@@ -84981,12 +84984,13 @@ var emailField = {
   width: '100%',
   height: '35px',
   paddingRight: '50px',
-  border: '1px solid #2D5F6E',
+  border: '1px solid rgba(255, 255, 255, .6)',
   borderRadius: '3px',
   paddingLeft: '15px',
   fontFamily: 'roboto',
   fontSize: '16px',
-  backgroundColor: 'transparent'
+  color: '#ffffff',
+  backgroundColor: 'rgba(255, 255, 255, .3)'
 }; // CSS for field group
 
 var fieldGroup = {
@@ -85097,7 +85101,7 @@ var SignupForm = /*#__PURE__*/function (_Component) {
         value: "SUBSCRIBE",
         name: "subscribe",
         id: "mc-embedded-subscribe",
-        className: "mc-embedded-subscribe button",
+        className: "mc-embedded-subscribe button hover:bg-red",
         onClick: this._handleClick
       })), _react.default.createElement("div", {
         id: "mce-responses",
@@ -85153,15 +85157,15 @@ var IntroCTA = function IntroCTA(_ref) {
   }, _react.default.createElement("div", {
     className: "mx-auto  mx-auto py-12 lg:mr-5"
   }, _react.default.createElement("h3", {
-    className: "section-heading font-bellota text-2xl text-gray mb-3 stf-text-shadow-white-top-left"
+    className: "section-heading font-bellota text-2xl text-white mb-3"
   }, pageBag.intro_cta.intro_heading), _react.default.createElement("p", {
-    className: "section-paragraph font-roboto text-base text-gray mb-3"
+    className: "section-paragraph font-roboto text-base text-white mb-3"
   }, pageBag.intro_cta.intro_paragraph), _react.default.createElement("p", {
-    className: "section-paragraph font-roboto text-base text-gray mb-2 mt-10 font-medium"
+    className: "section-paragraph font-roboto text-base text-white mb-2 mt-10 font-medium"
   }, "Get notified when I publish something new"), _react.default.createElement("div", {
     className: "signup-form-container"
   }, _react.default.createElement(_MailChimp.SignupForm, null))), _react.default.createElement("div", {
-    className: "section-image intro-section-image float-right bg-contain bg-no-repeat",
+    className: "section-image intro-section-image float-right bg-cover bg-no-repeat",
     style: introImage
   })));
 };
@@ -94300,7 +94304,7 @@ var Home = function Home(_ref) {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: "Home"
     }), _react.default.createElement("section", {
-      className: "w-full stf-bg-1 section-connect-cta"
+      className: "w-full bg-darkblue section-connect-cta"
     }, _react.default.createElement("div", {
       className: "container"
     }, _react.default.createElement(_IntroCTA.IntroCTA, {
@@ -94313,9 +94317,9 @@ var Home = function Home(_ref) {
       pageBag: pageBag,
       siteOptions: siteOptions,
       iconColor: "blue-100",
-      iconBgColor: "gray",
+      iconBgColor: "darkblue",
       iconHvColor: "red",
-      headingColor: "gray",
+      headingColor: "darkblue",
       containerClass: "float-right",
       headingClass: "stf-text-shadow-white-top-left"
     }))), _react.default.createElement("section", {
@@ -94367,7 +94371,7 @@ var Footer = function Footer(_ref) {
       containerClass = _ref.containerClass,
       headingClass = _ref.headingClass;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
-    className: "section-footer w-full bg-gray text-white py-16"
+    className: "section-footer w-full bg-darkblue text-white py-16"
   }, _react.default.createElement("div", {
     className: "container"
   }, _react.default.createElement(_Social.Social, {
@@ -94424,7 +94428,7 @@ var About = function About(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto px-60 py-12 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "About"), _react.default.createElement("div", {
@@ -94441,7 +94445,7 @@ var About = function About(_ref) {
       limit: 4
     }))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "gray",
+      iconColor: "darkblue",
       iconBgColor: "white",
       iconHvColor: "red",
       headingColor: "white",
@@ -94526,7 +94530,8 @@ var BlogNav = function BlogNav() {
       className: "loop-categories font-roboto text-base text-black font-medium"
     }, categories.map(function (category, i) {
       return /*#__PURE__*/_react.default.createElement("li", {
-        key: category.id
+        key: category.id,
+        className: "mb-3"
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/category/".concat(category.slug),
         className: "link-category"
@@ -94618,7 +94623,7 @@ var Blog = function Blog(_ref) {
       heading: "Posts"
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "gray",
+      iconColor: "darkblue",
       iconBgColor: "white",
       iconHvColor: "red",
       headingColor: "white",
@@ -94666,7 +94671,7 @@ var Contact = function Contact(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto py-12 px-60 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "Contact"), _react.default.createElement("div", {
@@ -94679,7 +94684,7 @@ var Contact = function Contact(_ref) {
       className: "container mx-auto py-12 section-contact-form"
     })), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "gray",
+      iconColor: "darkblue",
       iconBgColor: "white",
       iconHvColor: "red",
       headingColor: "white",
@@ -94736,7 +94741,7 @@ var Post = function Post(_ref) {
   }, _react.default.createElement("h3", {
     className: "card-post-name font-roboto text-2xl text-black mb-3"
   }, post.name), _react.default.createElement("p", {
-    className: "card-post-name font-roboto text-base text-gray mb-3"
+    className: "card-post-name font-roboto text-base text-darkblue mb-3"
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: post.published_at,
     _format: "MMMM D, YYYY"
@@ -94745,9 +94750,9 @@ var Post = function Post(_ref) {
   }, " | "), _react.default.createElement(_reactRouterDom.Link, {
     to: "/category/".concat(post.category.slug)
   }, _react.default.createElement("span", {
-    className: "card-post-category text-base text-gray font-roboto font-normal mt-3 mb-3"
+    className: "card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement("i", {
-    className: "fa fa-tags bg-none text-gray text-sm mr-1"
+    className: "fa fa-tags bg-none text-darkblue text-sm mr-1"
   }), post.category.name)))), _react.default.createElement("p", {
     className: "card-post-description text-base font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement(_reactMarkdown.default, {
@@ -94829,7 +94834,7 @@ var PostSingle = function PostSingle(_ref) {
       post: posts[0]
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "gray",
+      iconColor: "darkblue",
       iconBgColor: "white",
       iconHvColor: "red",
       headingColor: "white",
@@ -94895,7 +94900,7 @@ var Category = function Category(_ref) {
       heading: categories[0].name
     }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
-      iconColor: "gray",
+      iconColor: "darkblue",
       iconBgColor: "white",
       iconHvColor: "red",
       headingColor: "white",
@@ -94935,7 +94940,7 @@ var MainNav = function MainNav(_ref) {
       exact: true,
       to: link.path,
       name: link.label,
-      className: "stf-nav-list-item-link inline-block font-roboto text-red-600 no-underline hover:text-gray hover:text-underline py-2 px-4",
+      className: "stf-nav-list-item-link inline-block font-roboto text-red-600 no-underline hover:text-darkblue hover:text-underline py-2 px-4",
       activeClassName: "current"
     }, link.label));
   }))));
@@ -95007,7 +95012,7 @@ var Header = function Header() {
     className: "block lg:hidden"
   }, _react.default.createElement("button", {
     id: "nav-toggle",
-    className: "flex items-center px-3 py-2 border rounded text-gray border-gray-600 hover:text-white hover:border-white"
+    className: "flex items-center px-3 py-2 border rounded text-darkblue border-darkblue hover:text-white hover:border-white"
   }, _react.default.createElement("svg", {
     className: "fill-current h-3 w-3",
     viewBox: "0 0 20 20",
@@ -98928,7 +98933,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50213" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63414" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

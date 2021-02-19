@@ -29,7 +29,7 @@ const Card = ({ testimonial }) => {
             <div className="">
 
                 <p className="card-testimonial-description text-base font-roboto font-medium mt-3 mb-3">
-                    <TrimText text={testimonial.description} limit="40" />
+                    {testimonial.description}
                 </p>
 
                 <p className="card-testimonial-name text-base font-roboto italic">
