@@ -4,7 +4,7 @@
   "main": "index.html",
   "license": "MIT",
   "scripts": {
-    "start": "yarn generate:fragments && yarn run:dev",
+    "start": "yarn generate:fragments && yarn run:dev && yarn redirects:copy",
     "run:dev": "parcel index.html",
     "build": "yarn generate:fragments && yarn run:build && yarn redirects:copy",
     "run:build": "parcel build index.html -d ./dist --public-url ./",
