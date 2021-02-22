@@ -58,7 +58,7 @@ export const SmartImage = ({object, content_type, image_size}) => {
             } else {
 
                 _imageUrl = plchld_testimonial;
-                console.log("Missing (correctly-sized) for one or more testimonials. Placeholder used");
+                console.log("Missing (correctly-sized) image for one or more testimonials. Placeholder used");
             }
 
             break;
@@ -71,7 +71,7 @@ export const SmartImage = ({object, content_type, image_size}) => {
             } else {
 
                 _imageUrl = plchld_post;
-                console.log("Missing (correctly-sized) for one or more posts. Placeholder used");
+                console.log("Missing (correctly-sized) image for one or more posts. Placeholder used");
             }
 
             break;
@@ -84,7 +84,7 @@ export const SmartImage = ({object, content_type, image_size}) => {
             } else {
 
                 _imageUrl = plchld_post_single;
-                console.log("Missing (correctly-sized) for this post. Placeholder used");
+                console.log("Missing (correctly-sized) image for this post. Placeholder used");
             }
 
             break;
@@ -97,7 +97,7 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
             } else {
                 _imageUrl = plchld_split_section;
-                console.log("Missing (correctly-sized) for split_section. Placeholder used");
+                console.log("Missing (correctly-sized) image for split_section. Placeholder used");
             }
 
             break;
