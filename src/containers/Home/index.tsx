@@ -47,8 +47,8 @@ export const Home = ({siteOptions}) => {
                                     pageBag={pageBag}
                                     siteOptions={siteOptions}
                                     headingColor="darkblue"
-                                    containerClass="md:float-right mx-auto"
-                                    headingClass="stf-text-shadow-white-top-left"
+                                    containerClass="float-none md:float-right mx-auto"
+                                    headingClass="stf-text-shadow-white-top-left text-center md:text-right"
                                 />
 
                             </div>

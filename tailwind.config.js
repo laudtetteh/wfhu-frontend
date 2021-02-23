@@ -8,9 +8,9 @@ module.exports = {
   darkMode: false,
   variants: {
     margin: ['first', 'last'],
-    backgroundColor: ['visited', 'active', 'hover', 'group-hover'],
+    backgroundColor: ['responsive', 'focus', 'visited', 'active', 'hover', 'group-hover'],
     borderColor: ['focus-visible', 'first'],
-    textColor: ['visited', 'active', 'hover', 'group-hover'],
+    textColor: ['responsive', 'focus', 'visited', 'active', 'hover', 'group-hover'],
   },
   plugins: [],
   theme: {

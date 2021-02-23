@@ -10,7 +10,7 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop">
 
-                <div className="mx-auto">
+                <div className="section-connect--left">
                     <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right">{pageBag.connect_cta.heading}</h3>
 
                     <p className="section-heading font-roboto text-base text-white mb-3">
@@ -22,8 +22,7 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
                     </a>
                 </div>
 
-                <div className="float-right mx-auto md:mx-0">
-
+                <div className="section-connect--right float-right md:float-none md:mx-auto md:mx-0">
                     <Social
                         siteOptions={siteOptions}
                         iconColor={iconColor}
@@ -33,7 +32,6 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
                         containerClass={containerClass}
                         headingClass={headingClass}
                     />
-
                 </div>
 
             </div>

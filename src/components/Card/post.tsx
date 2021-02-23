@@ -59,7 +59,7 @@ const Card = ({ post, orientation }) => {
 
         <React.Fragment>
 
-            <div className={`md:mt-0 mt-5 first:mt-0 post-${post.id}`}>
+            <div className={`md:mt-0 mt-5 md:first:mt-0 post-${post.id}`}>
 
                 <div className="card-post--image">
                     <Link to={`/post/${post.slug}`} className="card-post--image">
