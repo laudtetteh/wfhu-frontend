@@ -94855,7 +94855,7 @@ var MainNav = function MainNav(_ref) {
       exact: true,
       to: link.path,
       name: link.label,
-      className: "stf-nav-list-item-link font-roboto text-red-600 no-underline hover:text-darkblue hover:text-underline py-2 px-4 ".concat(linkClasses),
+      className: "font-roboto text-red-600 no-underline py-2 px-4 ".concat(linkClasses),
       activeClassName: "current"
     }, link.label));
   }))));
@@ -94944,7 +94944,7 @@ var Header = function Header() {
       containerId: "",
       listClasses: "",
       listItemClasses: "mr-4",
-      linkClasses: "inline-block"
+      linkClasses: "inline-block stf-nav-list-item-link hover:text-darkblue hover:underline"
     });
   }))), _react.default.createElement(_Query.default, {
     query: _topMenu.default
@@ -94956,7 +94956,7 @@ var Header = function Header() {
       containerId: "nav-content",
       listClasses: "",
       listItemClasses: "",
-      linkClasses: "block"
+      linkClasses: "block hover:bg-blue-100 hover:text-white"
     });
   }));
 };

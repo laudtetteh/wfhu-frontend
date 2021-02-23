@@ -18,7 +18,7 @@ const MainNav = ({links, containerClasses, containerId, listClasses, listItemCla
                                 <NavLink exact
                                     to={link.path}
                                     name={link.label}
-                                    className={`stf-nav-list-item-link font-roboto text-red-600 no-underline hover:text-darkblue hover:text-underline py-2 px-4 ${linkClasses}`}
+                                    className={`font-roboto text-red-600 no-underline py-2 px-4 ${linkClasses}`}
                                     activeClassName="current">
 
                                   {link.label}

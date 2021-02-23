@@ -39,7 +39,7 @@ export const Header = () => {
                                 containerId=""
                                 listClasses=""
                                 listItemClasses="mr-4"
-                                linkClasses="inline-block" />;
+                                linkClasses="inline-block stf-nav-list-item-link hover:text-darkblue hover:underline" />;
                         }}
                     </Query>
 
@@ -55,7 +55,7 @@ export const Header = () => {
                         containerId="nav-content"
                         listClasses=""
                         listItemClasses=""
-                        linkClasses="block" />;
+                        linkClasses="block hover:bg-blue-100 hover:text-white" />;
                 }}
             </Query>
 
