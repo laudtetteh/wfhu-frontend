@@ -28,11 +28,6 @@ body {
     padding-right: 0;
 }
 
-.site-logo-container {
-    max-width: 450px;
-    width: 100%;
-}
-
 .mc-embedded-subscribe {
     margin-left: -10%;
     height: 35px;
@@ -128,5 +123,15 @@ body {
     list-style-type: square;
     padding-left: 20px;
     margin: 0;
+}
+
+
+
+
+/****** Media Queries********/
+@media screen and (max-width: 768px) {
+    .site-logo-container {
+        max-width: 12rem;
+    }
 }
 

@@ -17,7 +17,7 @@ export const Header = () => {
             <div className="container mx-auto">
                 <nav className="flex items-center justify-between flex-wrap bg-white py-6 w-full z-10 top-0">
 
-                    <div className="flex items-center flex-shrink-0 text-white mr-6 site-logo-container">
+                    <div className="mr-6 site-logo-container md:max-w-md">
                         <Link to="/" className="text-white no-underline hover:text-white hover:no-underline">
                                 <img src={logo} alt="" className="site-logo" />
                         </Link>

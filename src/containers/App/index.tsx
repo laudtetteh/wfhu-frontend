@@ -78,6 +78,9 @@ function App() {
                                         </Route>
 
                                     </Switch>
+
+                                    <FooterScripts />
+
                                 </div>
                             </React.Fragment>
                         </Router>

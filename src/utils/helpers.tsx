@@ -1,7 +1,8 @@
 // Packages
-import React from 'react';
+import React, { Component } from 'react';
 import Moment from 'react-moment';
 import {Helmet} from "react-helmet";
+import $ from 'jquery';
 // Assets
 import plchld_testimonial from '../../assets/images/placeholder_testimonial_loop.jpg';
 import plchld_post from '../../assets/images/placeholder_post_loop.jpg';
@@ -14,10 +15,21 @@ export const STFDate = ({_timestamp, _format}) => {
     )
 }
 
-export const FooterScripts = () => {
+export class FooterScripts extends Component {
 
-    import('../../assets/js/footer-scripts.js');
-    return true;
+    constructor() {
+        super();
+    }
+
+    componentDidMount() {
+        document.getElementById('nav-toggle').onclick = function(){
+            document.getElementById("nav-content").classList.toggle("hidden");
+        }
+    }
+
+    render() {
+        return null
+    }
 }
 
 export const DocumentHead = ({title}) => {
