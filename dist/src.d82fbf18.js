@@ -707,7 +707,7 @@ module.exports={__schema:{types:[{kind:"UNION",name:"PageDynamicFieldsDynamicZon
 
 },{"./../images/background-1.png":[["background-1.4d90078a.png","WgHt"],"WgHt"],"./../images/background-2.png":[["background-2.25f82afd.png","QkXv"],"QkXv"],"./../images/background-3.png":[["background-3.ce096bd2.png","YMB3"],"YMB3"]}],"S6pq":[function(require,module,exports) {
 
-},{"@fortawesome/fontawesome-free/scss/brands":"HT8Z","@fortawesome/fontawesome-free/scss/regular":"qeS1","@fortawesome/fontawesome-free/scss/solid":"lulb","@fortawesome/fontawesome-free/scss/fontawesome":"JC3R","./_fonts":"ZrI9","./_typography":"JC3R","./_custom":"D4b0"}],"zo2T":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/scss/brands":"HT8Z","@fortawesome/fontawesome-free/scss/regular":"qeS1","@fortawesome/fontawesome-free/scss/solid":"lulb","@fortawesome/fontawesome-free/scss/fontawesome":"JC3R","./_fonts":"ZrI9","./_typography":"JC3R","./_custom":"D4b0","./_responsive":"JC3R"}],"zo2T":[function(require,module,exports) {
 "use strict";var e=o(require("react")),r=o(require("react-dom")),t=require("react-apollo"),l=o(require("./containers/App")),u=o(require("./utils/apolloClient")),a=require("react-router-dom");function o(e){return e&&e.__esModule?e:{default:e}}require("../assets/css/index.css"),r.default.render(e.default.createElement(a.BrowserRouter,null,e.default.createElement(t.ApolloProvider,{client:u.default},e.default.createElement(l.default,null))),document.getElementById("root"));
 },{"react":"n8MK","react-dom":"NKHc","react-apollo":"nPwf","./containers/App":"WGDx","./utils/apolloClient":"QQtV","react-router-dom":"uc19","../assets/css/index.css":"S6pq"}]},{},["zo2T"], null)
-//# sourceMappingURL=/src.6773478c.js.map
+//# sourceMappingURL=/src.d82fbf18.js.map

@@ -1,0 +1,27 @@
+/****** Media Queries********/
+@media screen and (max-width: 301px) {
+    .mc-embedded-subscribe {
+        margin-left: -30%;
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 301px) and (max-width: 639px) {
+    .mc-embedded-subscribe {
+        margin-left: -25%;
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 767px) {
+    .mc-embedded-subscribe {
+        margin-left: -20%;
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .site-logo-container {
+        max-width: 12rem;
+    }
+}
