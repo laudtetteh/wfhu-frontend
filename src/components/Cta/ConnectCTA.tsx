@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Social } from '../Elements/Social';
 
-export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHvColor, headingColor, containerClass, headingClass}) => {
+export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHvColor, headingColor, containerClasses, headingClasses, listClasses}) => {
 
     return (
 
@@ -29,8 +29,9 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
                         iconBgColor={iconBgColor}
                         iconHvColor={iconHvColor}
                         headingColor={headingColor}
-                        containerClass={containerClass}
-                        headingClass={headingClass}
+                        containerClasses={containerClasses}
+                        headingClasses={headingClasses}
+                        listClasses={listClasses}
                     />
                 </div>
 

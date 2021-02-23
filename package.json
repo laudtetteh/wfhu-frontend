@@ -4,10 +4,11 @@
   "main": "src/index.html",
   "license": "MIT",
   "scripts": {
-    "start": "yarn generate:fragments && yarn run:dev && yarn redirects:copy",
+    "start": "yarn clean && yarn generate:fragments && yarn run:dev && yarn redirects:copy",
     "run:dev": "parcel src/index.html",
-    "build": "yarn generate:fragments && yarn run:build && yarn redirects:copy",
+    "build": "yarn clean && yarn generate:fragments && yarn run:build && yarn redirects:copy",
     "run:build": "parcel build src/index.html -d ./dist",
+    "clean": "rm -rf .cache",
     "redirects:copy": "cp ./_redirects ./dist/",
     "generate:fragments": "node -r dotenv/config src/utils/schemaQuery.tsx"
   },

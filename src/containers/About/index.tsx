@@ -61,8 +61,8 @@ export const About = ({siteOptions}) => {
                         <Footer
                             siteOptions={siteOptions}
                             headingColor="white"
-                            containerClass="mx-auto"
-                            headingClass="text-center font-bold"
+                            containerClasses="mx-auto"
+                            headingClasses="text-center font-bold"
                         />
 
                     </React.Fragment>
