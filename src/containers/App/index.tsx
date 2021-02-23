@@ -1,5 +1,5 @@
 // Packages
-import React, { Suspense } from 'react';
+import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Assets
 import logo from '../../../assets/images/logo.svg';
@@ -25,71 +25,85 @@ import { getPageData } from '../../utils/apiHelper';
 import Query from "../../components/Query";
 import SITEOPTIONS_QUERY from "../../queries/site-options";
 
-function App() {
+export class App extends Component {
 
-    let siteOptions;
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuVisibility: false
+        };
 
-    return  (
+        this.toggleVisibility = this.toggleVisibility.bind(this);
+    }
 
-        <Query query={SITEOPTIONS_QUERY}>
+    toggleVisibility = () => {
+        this.setState({menuVisibility: !this.state.menuVisibility});
+    }
 
-            {({ data: { siteOption } }) => {
+    hideMenu = () => {
+        this.setState({menuVisibility: false });
+    }
 
-                siteOptions = getSiteOptions(siteOption);
+    render() {
 
-                return (
+        return  (
 
-                    <Suspense fallback="Loading...">
+            <Query query={SITEOPTIONS_QUERY}>
 
-                        <Router>
+                {({ data: { siteOption } }) => {
 
-                            <React.Fragment>
+                    const siteOptions = getSiteOptions(siteOption);
 
-                                <div id="wrapper" className="flex-grow">
+                    return (
 
-                                    <section className="w-full">
-                                        <Header />
-                                    </section>
+                        <Suspense fallback="Loading...">
 
-                                    <Switch>
+                            <Router>
 
-                                        <Route path="/" exact>
-                                            <Home siteOptions={siteOptions} />
-                                        </Route>
+                                <React.Fragment>
 
-                                        <Route path="/about" exact>
-                                            <About siteOptions={siteOptions} />
-                                        </Route>
+                                    <div id="wrapper" className="flex-grow">
 
-                                        <Route path="/blog" exact>
-                                            <Blog siteOptions={siteOptions} />
-                                        </Route>
+                                        <section className="w-full">
+                                            <Header toggleFunction={this.toggleVisibility} menuVisibility={this.state.menuVisibility} hideMenu={this.hideMenu} />
+                                        </section>
 
-                                        <Route path="/contact" exact>
-                                            <Contact siteOptions={siteOptions} />
-                                        </Route>
+                                        <Switch>
 
-                                        <Route path="/post/:slug">
-                                            <PostSingle siteOptions={siteOptions} />
-                                        </Route>
+                                            <Route path="/" exact>
+                                                <Home siteOptions={siteOptions} />
+                                            </Route>
 
-                                        <Route path="/category/:slug">
-                                            <Category siteOptions={siteOptions} />
-                                        </Route>
+                                            <Route path="/about" exact>
+                                                <About siteOptions={siteOptions} />
+                                            </Route>
 
-                                    </Switch>
+                                            <Route path="/blog" exact>
+                                                <Blog siteOptions={siteOptions} />
+                                            </Route>
 
-                                    <FooterScripts />
+                                            <Route path="/contact" exact>
+                                                <Contact siteOptions={siteOptions} />
+                                            </Route>
 
-                                </div>
-                            </React.Fragment>
-                        </Router>
-                    </Suspense>
-                )
-            }}
+                                            <Route path="/post/:slug">
+                                                <PostSingle siteOptions={siteOptions} />
+                                            </Route>
 
-        </Query>
-    )
+                                            <Route path="/category/:slug">
+                                                <Category siteOptions={siteOptions} />
+                                            </Route>
+
+                                        </Switch>
+
+                                    </div>
+                                </React.Fragment>
+                            </Router>
+                        </Suspense>
+                    )
+                }}
+
+            </Query>
+        )
+    }
 }
-
-export default App;
