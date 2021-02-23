@@ -7,9 +7,10 @@ module.exports = {
   ],
   darkMode: false,
   variants: {
-    extend: {
-      margin: ['first', 'last'],
-    }
+    margin: ['first', 'last'],
+    backgroundColor: ['visited', 'active', 'hover', 'group-hover'],
+    borderColor: ['focus-visible', 'first'],
+    textColor: ['visited', 'active', 'hover', 'group-hover'],
   },
   plugins: [],
   theme: {

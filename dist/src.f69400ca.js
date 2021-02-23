@@ -94836,21 +94836,26 @@ var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MainNav = function MainNav(_ref) {
-  var links = _ref.links;
+  var links = _ref.links,
+      containerClasses = _ref.containerClasses,
+      containerId = _ref.containerId,
+      listClasses = _ref.listClasses,
+      listItemClasses = _ref.listItemClasses,
+      linkClasses = _ref.linkClasses;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0",
-    id: "nav-content"
+    className: "w-full block flex-grow lg:items-center lg:w-auto hidden ".concat(containerClasses),
+    id: containerId
   }, /*#__PURE__*/_react.default.createElement("ul", {
-    className: "list-reset lg:flex justify-end flex-1 items-center"
+    className: "text-sm lg:flex-grow  text-center lg:text-right ".concat(listClasses)
   }, links.map(function (link, index) {
     return /*#__PURE__*/_react.default.createElement("li", {
-      className: "stf-nav-list-item mr-3 last:mr-0",
+      className: "stf-nav-list-item block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white text-lg ".concat(listItemClasses),
       key: index
     }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
       exact: true,
       to: link.path,
       name: link.label,
-      className: "stf-nav-list-item-link inline-block font-roboto text-red-600 no-underline hover:text-darkblue hover:text-underline py-2 px-4",
+      className: "stf-nav-list-item-link font-roboto text-red-600 no-underline hover:text-darkblue hover:text-underline py-2 px-4 ".concat(linkClasses),
       activeClassName: "current"
     }, link.label));
   }))));
@@ -94934,9 +94939,26 @@ var Header = function Header() {
   }, function (_ref) {
     var topMenu = _ref.data.topMenu;
     return _react.default.createElement(_main.MainNav, {
-      links: topMenu.link
+      links: topMenu.link,
+      containerClasses: "lg:flex",
+      containerId: "",
+      listClasses: "",
+      listItemClasses: "mr-4",
+      linkClasses: "inline-block"
     });
-  }))));
+  }))), _react.default.createElement(_Query.default, {
+    query: _topMenu.default
+  }, function (_ref2) {
+    var topMenu = _ref2.data.topMenu;
+    return _react.default.createElement(_main.MainNav, {
+      links: topMenu.link,
+      containerClasses: "lg:hidden",
+      containerId: "nav-content",
+      listClasses: "",
+      listItemClasses: "",
+      linkClasses: "block"
+    });
+  }));
 };
 
 exports.Header = Header;
@@ -98878,7 +98900,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58076" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50411" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

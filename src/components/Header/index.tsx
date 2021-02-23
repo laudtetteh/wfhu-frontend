@@ -14,7 +14,9 @@ export const Header = () => {
     return (
 
         <React.Fragment>
+
             <div className="container mx-auto">
+
                 <nav className="flex items-center justify-between flex-wrap bg-white py-6 w-full z-10 top-0">
 
                     <div className="mr-6 site-logo-container md:max-w-md">
@@ -31,12 +33,31 @@ export const Header = () => {
 
                     <Query query={TOPMENU_QUERY}>
                         {({ data: { topMenu } }) => {
-                          return <MainNav links={topMenu.link} />;
+                            return <MainNav
+                                links={topMenu.link}
+                                containerClasses="lg:flex"
+                                containerId=""
+                                listClasses=""
+                                listItemClasses="mr-4"
+                                linkClasses="inline-block" />;
                         }}
                     </Query>
 
                 </nav>
+
             </div>
+
+            <Query query={TOPMENU_QUERY}>
+                {({ data: { topMenu } }) => {
+                    return <MainNav
+                        links={topMenu.link}
+                        containerClasses="lg:hidden"
+                        containerId="nav-content"
+                        listClasses=""
+                        listItemClasses=""
+                        linkClasses="block" />;
+                }}
+            </Query>
 
         </React.Fragment>
     );
