@@ -97,6 +97,7 @@ export class App extends Component {
                                         </Switch>
 
                                     </div>
+
                                 </React.Fragment>
                             </Router>
                         </Suspense>

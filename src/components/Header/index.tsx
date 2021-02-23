@@ -10,7 +10,7 @@ import logo from '../../../assets/images/logo.svg'
 import TOPMENU_QUERY from "../../queries/top-menu";
 
 export const Header = (props) => {
-    // console.log('props', props)
+
     return (
 
         <React.Fragment>
@@ -37,6 +37,8 @@ export const Header = (props) => {
                                 links={topMenu.link}
                                 containerClasses="lg:flex"
                                 containerId=""
+                                menuVisibility={false}
+                                hideMenu={props.hideMenu}
                                 listClasses=""
                                 listItemClasses="mr-4"
                                 linkClasses="inline-block stf-nav-list-item-link hover:text-darkblue hover:underline" />;

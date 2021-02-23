@@ -17,7 +17,7 @@ const MainNav = (props) => {
 
         <React.Fragment>
 
-            <div className={`w-full block flex-grow lg:items-center lg:w-auto ${props.menuVisibility ? 'show' : 'hidden'} ${props.containerClasses}`} id={props.containerId} >
+            <div className={`w-full block flex-grow lg:items-center lg:w-auto ${props.menuVisibility ? '' : 'hidden'} ${props.containerClasses}`} id={props.containerId} >
 
                 <ul className={`text-sm lg:flex-grow  text-center lg:text-right ${props.listClasses}`}>
 

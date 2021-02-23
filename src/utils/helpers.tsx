@@ -15,23 +15,6 @@ export const STFDate = ({_timestamp, _format}) => {
     )
 }
 
-export class FooterScripts extends Component {
-
-    constructor() {
-        super();
-    }
-
-    componentDidMount() {
-        $('#nav-toggle').on('click', function() {
-            $('#nav-content').toggleClass('hidden');
-        })
-    }
-
-    render() {
-        return null
-    }
-}
-
 export const DocumentHead = ({title}) => {
     return (
         <Helmet>
