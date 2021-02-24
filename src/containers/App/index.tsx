@@ -1,6 +1,7 @@
 // Packages
-import React, { Component, Suspense } from 'react';
+import React, { Component, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar'
 // Assets
 import logo from '../../../assets/images/logo.svg';
 // Page Containers
@@ -16,95 +17,87 @@ import { Category } from "../../containers/Category";
 import { Categories } from "../../containers/Categories";
 // Components
 import { Header } from '../../components/Header';
-import { FooterScripts } from '../../utils/helpers';
 import { getSiteOptions } from '../../utils/apiHelper';
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
-import { getPageData } from '../../utils/apiHelper';
 // Queries
 import Query from "../../components/Query";
 import SITEOPTIONS_QUERY from "../../queries/site-options";
 
-export class App extends Component {
+export const App = () => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            menuVisibility: false
-        };
+    const [menuVisibility, setMenuVisibility] = useState(false);
+    const [progress,setProgress] = useState(0);
 
-        this.toggleVisibility = this.toggleVisibility.bind(this);
+    const toggleVisibility = () => {
+        setMenuVisibility(!menuVisibility);
     }
 
-    toggleVisibility = () => {
-        this.setState({menuVisibility: !this.state.menuVisibility});
+    const hideMenu = () => {
+        setMenuVisibility(false);
     }
 
-    hideMenu = () => {
-        this.setState({menuVisibility: false });
-    }
+    return  (
 
-    render() {
+        <Query query={SITEOPTIONS_QUERY}>
 
-        return  (
+            {({ data: { siteOption } }) => {
 
-            <Query query={SITEOPTIONS_QUERY}>
+                const siteOptions = getSiteOptions(siteOption);
 
-                {({ data: { siteOption } }) => {
+                return (
 
-                    const siteOptions = getSiteOptions(siteOption);
+                    <Router>
 
-                    return (
+                        <React.Fragment>
 
-                        <Suspense fallback="Loading...">
+                            <LoadingBar
+                                color='#f11946'
+                                progress={progress}
+                                onLoaderFinished={() => setProgress(0)} />
 
-                            <Router>
+                            <div id="wrapper" className="flex-grow">
 
-                                <React.Fragment>
+                                <section className="w-full">
+                                    <Header toggleFunction={toggleVisibility} menuVisibility={menuVisibility} hideMenu={hideMenu} />
+                                </section>
 
-                                    <div id="wrapper" className="flex-grow">
+                                <Switch>
 
-                                        <section className="w-full">
-                                            <Header toggleFunction={this.toggleVisibility} menuVisibility={this.state.menuVisibility} hideMenu={this.hideMenu} />
-                                        </section>
+                                    <Route path="/" exact>
+                                        <Home siteOptions={siteOptions} />
+                                    </Route>
 
-                                        <Switch>
+                                    <Route path="/about" exact>
+                                        <About siteOptions={siteOptions} />
+                                    </Route>
 
-                                            <Route path="/" exact>
-                                                <Home siteOptions={siteOptions} />
-                                            </Route>
+                                    <Route path="/blog" exact>
+                                        <Blog siteOptions={siteOptions} />
+                                    </Route>
 
-                                            <Route path="/about" exact>
-                                                <About siteOptions={siteOptions} />
-                                            </Route>
+                                    <Route path="/contact" exact>
+                                        <Contact siteOptions={siteOptions} />
+                                    </Route>
 
-                                            <Route path="/blog" exact>
-                                                <Blog siteOptions={siteOptions} />
-                                            </Route>
+                                    <Route path="/post/:slug">
+                                        <PostSingle siteOptions={siteOptions} />
+                                    </Route>
 
-                                            <Route path="/contact" exact>
-                                                <Contact siteOptions={siteOptions} />
-                                            </Route>
+                                    <Route path="/category/:slug">
+                                        <Category siteOptions={siteOptions} />
+                                    </Route>
 
-                                            <Route path="/post/:slug">
-                                                <PostSingle siteOptions={siteOptions} />
-                                            </Route>
+                                </Switch>
 
-                                            <Route path="/category/:slug">
-                                                <Category siteOptions={siteOptions} />
-                                            </Route>
+                            </div>
 
-                                        </Switch>
+                        </React.Fragment>
+                    </Router>
+                )
+            }}
 
-                                    </div>
+        </Query>
+    )
 
-                                </React.Fragment>
-                            </Router>
-                        </Suspense>
-                    )
-                }}
-
-            </Query>
-        )
-    }
 }
