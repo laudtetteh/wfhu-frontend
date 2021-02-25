@@ -22,7 +22,7 @@ export const ConnectCTA = (props) => {
                     </a>
                 </div>
 
-                <div className="section-connect--right md:float-right float-none mx-auto md:mx-0">
+                <div className="section-connect--right md:float-right float-none sm:mx-auto md:mx-0">
                     <Social
                         siteOptions={props.siteOptions}
                         iconColor={props.iconColor}

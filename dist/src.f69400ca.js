@@ -73918,7 +73918,7 @@ var ConnectCTA = function ConnectCTA(props) {
     href: props.pageBag.connect_cta.button_link,
     className: "bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline"
   }, props.pageBag.connect_cta.button_text)), _react.default.createElement("div", {
-    className: "section-connect--right md:float-right float-none mx-auto md:mx-0"
+    className: "section-connect--right md:float-right float-none sm:mx-auto md:mx-0"
   }, _react.default.createElement(_Social.Social, {
     siteOptions: props.siteOptions,
     iconColor: props.iconColor,
@@ -98883,7 +98883,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59737" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60155" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
