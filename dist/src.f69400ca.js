@@ -46119,201 +46119,7 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/react-top-loading-bar/dist/index.modern.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = require("react");
-
-function i() {
-  return (i = Object.assign || function (t) {
-    for (var o = 1; o < arguments.length; o++) {
-      var e = arguments[o];
-
-      for (var n in e) {
-        Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
-      }
-    }
-
-    return t;
-  }).apply(this, arguments);
-}
-
-var l = function l() {};
-
-function c(t, o) {
-  return Math.floor(Math.random() * (o - t + 1) + t);
-}
-
-var s = (0, _react.forwardRef)(function (e, s) {
-  var u = e.progress,
-      d = e.height,
-      f = void 0 === d ? 2 : d,
-      v = e.className,
-      p = void 0 === v ? "" : v,
-      h = e.color,
-      b = void 0 === h ? "red" : h,
-      g = e.background,
-      m = void 0 === g ? "transparent" : g,
-      w = e.onLoaderFinished,
-      y = e.transitionTime,
-      x = void 0 === y ? 300 : y,
-      S = e.loaderSpeed,
-      k = void 0 === S ? 500 : S,
-      R = e.waitingTime,
-      T = void 0 === R ? 1e3 : R,
-      Y = e.shadow,
-      I = void 0 === Y || Y,
-      O = (0, _react.useState)(0),
-      j = O[0],
-      M = O[1],
-      N = (0, _react.useState)({
-    active: !1,
-    startingValue: 20,
-    refreshRate: 1e3
-  }),
-      P = N[0],
-      V = N[1],
-      z = (0, _react.useState)(!1),
-      F = z[0],
-      L = z[1],
-      q = (0, _react.useState)({
-    active: !1,
-    value: 20
-  }),
-      A = q[0],
-      B = q[1],
-      C = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    height: f,
-    background: m,
-    zIndex: 99999999999,
-    width: "100%"
-  },
-      D = {
-    boxShadow: "0 0 10px " + b + ", 0 0 10px " + b,
-    width: "5%",
-    opacity: 1,
-    position: "absolute",
-    height: "100%",
-    transition: "all " + k + "ms ease",
-    transform: "rotate(3deg) translate(0px, -4px)",
-    left: "-10rem"
-  },
-      E = (0, _react.useState)({
-    height: "100%",
-    background: b,
-    transition: "all " + k + "ms ease",
-    width: "0%"
-  }),
-      G = E[0],
-      H = E[1],
-      J = (0, _react.useState)(D),
-      K = J[0],
-      Q = J[1];
-  (0, _react.useImperativeHandle)(s, function () {
-    return {
-      continuousStart: function continuousStart(t, o) {
-        if (void 0 === o && (o = 1e3), !A.active) if (F) console.warn("react-top-loading-bar: You can't use both controlling by props and ref methods to control the bar!");else {
-          var e = t || c(10, 20);
-          V({
-            active: !0,
-            refreshRate: o,
-            startingValue: t
-          }), M(e), Z(e);
-        }
-      },
-      staticStart: function staticStart(t) {
-        if (!P.active) if (F) console.warn("react-top-loading-bar: You can't use both controlling by props and ref methods to control the bar!");else {
-          var o = t || c(30, 50);
-          B({
-            active: !0,
-            value: o
-          }), M(o), Z(o);
-        }
-      },
-      complete: function complete() {
-        F ? console.warn("react-top-loading-bar: You can't use both controlling by props and ref methods to control the bar!") : (M(100), Z(100));
-      }
-    };
-  }), (0, _react.useEffect)(function () {
-    H(i({}, G, {
-      background: b
-    })), Q(i({}, K, {
-      boxShadow: "0 0 10px " + b + ", 0 0 5px " + b
-    }));
-  }, [b]), (0, _react.useEffect)(function () {
-    if (s) {
-      if (s && void 0 !== u) return void console.warn('react-top-loading-bar: You can\'t use both controlling by props and ref methods to control the bar! Please use only props or only ref methods! Ref methods will override props if "ref" property is available.');
-      Z(j), L(!1);
-    } else u && Z(u), L(!0);
-  }, [u]);
-
-  var U,
-      W,
-      X,
-      Z = function t(o) {
-    o >= 100 ? (H(i({}, G, {
-      width: "100%"
-    })), I && Q(i({}, K, {
-      left: o - 10 + "%"
-    })), setTimeout(function () {
-      H(i({}, G, {
-        opacity: 0,
-        width: "100%",
-        transition: "all " + x + "ms ease-out",
-        color: b
-      })), setTimeout(function () {
-        P.active && (V(i({}, P, {
-          active: !1
-        })), M(0), t(0)), A.active && (B(i({}, A, {
-          active: !1
-        })), M(0), t(0)), w && w(), M(0), t(0);
-      }, x);
-    }, T)) : (H(function (t) {
-      return i({}, t, {
-        width: o + "%",
-        opacity: 1,
-        transition: o > 0 ? "all " + k + "ms ease" : ""
-      });
-    }), I && Q(i({}, K, {
-      left: o - 5.5 + "%",
-      transition: o > 0 ? "all " + k + "ms ease" : ""
-    })));
-  };
-
-  return U = function U() {
-    var t = c(10, 20);
-    j + t < 90 && (M(j + t), Z(j + t));
-  }, W = P.active ? P.refreshRate : null, X = (0, _react.useRef)(l), (0, _react.useEffect)(function () {
-    X.current = U;
-  }), (0, _react.useEffect)(function () {}, [void 0]), (0, _react.useEffect)(function () {
-    if (null !== W && !1 !== W) {
-      var t = setInterval(function () {
-        return X.current();
-      }, W);
-      return function () {
-        return clearInterval(t);
-      };
-    }
-  }, [W]), (0, _react.createElement)("div", {
-    className: p,
-    style: C
-  }, (0, _react.createElement)("div", {
-    style: G
-  }, I ? (0, _react.createElement)("div", {
-    style: K
-  }) : null));
-});
-var _default = s;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
+},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -53376,7 +53182,9 @@ var Testimonials = function Testimonials(_ref) {
 
 var _default = Testimonials;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Card/testimonial":"components/Card/testimonial.tsx"}],"components/Query/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Card/testimonial":"components/Card/testimonial.tsx"}],"../assets/images/spinner.svg":[function(require,module,exports) {
+module.exports = "/spinner.dddba45b.svg";
+},{}],"components/Query/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53388,8 +53196,11 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactHooks = require("@apollo/react-hooks");
 
+var _spinner = _interopRequireDefault(require("../../../assets/images/spinner.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Assets
 var Query = function Query(_ref) {
   var children = _ref.children,
       query = _ref.query,
@@ -53408,7 +53219,15 @@ var Query = function Query(_ref) {
       loading = _useQuery.loading,
       error = _useQuery.error;
 
-  if (loading) return '';
+  var spinnerStyles = {
+    width: "30px",
+    marginLeft: "auto",
+    marginRight: "auto"
+  };
+  if (loading) return _react.default.createElement("img", {
+    src: _spinner.default,
+    style: spinnerStyles
+  });
   if (error) return _react.default.createElement("p", null, "Error: ", JSON.stringify(error));
   return children({
     data: data
@@ -53417,7 +53236,7 @@ var Query = function Query(_ref) {
 
 var _default = Query;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@apollo/react-hooks":"../node_modules/@apollo/react-hooks/lib/react-hooks.esm.js"}],"../node_modules/graphql/version.mjs":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@apollo/react-hooks":"../node_modules/@apollo/react-hooks/lib/react-hooks.esm.js","../../../assets/images/spinner.svg":"../assets/images/spinner.svg"}],"../node_modules/graphql/version.mjs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85054,7 +84873,7 @@ var honeyPot = {
 var emailField = {
   width: '100%',
   height: '35px',
-  paddingRight: '25%',
+  paddingRight: '30%',
   border: '1px solid rgba(255, 255, 255, .6)',
   borderRadius: '3px',
   paddingLeft: '15px',
@@ -95092,7 +94911,7 @@ var Header = function Header(props) {
       hideMenu: props.hideMenu,
       listClasses: "",
       listItemClasses: "mr-4",
-      linkClasses: "inline-block stf-nav-list-item-link hover:text-darkblue hover:underline"
+      linkClasses: "inline-block stf-nav-list-item-link hover:text-darkblue"
     });
   }))), _react.default.createElement(_Query.default, {
     query: _topMenu.default
@@ -95143,8 +94962,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _reactTopLoadingBar = _interopRequireDefault(require("react-top-loading-bar"));
-
 var _Home = require("../Home");
 
 var _About = require("../About");
@@ -95189,11 +95006,6 @@ var App = function App() {
       menuVisibility = _useState2[0],
       setMenuVisibility = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      progress = _useState4[0],
-      setProgress = _useState4[1];
-
   var toggleVisibility = function toggleVisibility() {
     setMenuVisibility(!menuVisibility);
   };
@@ -95207,13 +95019,7 @@ var App = function App() {
   }, function (_ref) {
     var siteOption = _ref.data.siteOption;
     var siteOptions = (0, _apiHelper.getSiteOptions)(siteOption);
-    return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactTopLoadingBar.default, {
-      color: '#f11946',
-      progress: progress,
-      onLoaderFinished: function onLoaderFinished() {
-        return setProgress(0);
-      }
-    }), _react.default.createElement("div", {
+    return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
       id: "wrapper",
       className: "flex-grow"
     }, _react.default.createElement("section", {
@@ -95255,7 +95061,7 @@ var App = function App() {
 };
 
 exports.App = App;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-top-loading-bar":"../node_modules/react-top-loading-bar/dist/index.modern.js","../Home":"containers/Home/index.tsx","../About":"containers/About/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../About":"containers/About/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99087,7 +98893,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49575" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58466" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

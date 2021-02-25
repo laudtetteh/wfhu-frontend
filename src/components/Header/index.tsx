@@ -41,7 +41,7 @@ export const Header = (props) => {
                                 hideMenu={props.hideMenu}
                                 listClasses=""
                                 listItemClasses="mr-4"
-                                linkClasses="inline-block stf-nav-list-item-link hover:text-darkblue hover:underline" />;
+                                linkClasses="inline-block stf-nav-list-item-link hover:text-darkblue" />;
                         }}
                     </Query>
 

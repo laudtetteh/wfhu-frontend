@@ -1,7 +1,6 @@
 // Packages
 import React, { Component, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LoadingBar from 'react-top-loading-bar'
 // Assets
 import logo from '../../../assets/images/logo.svg';
 // Page Containers
@@ -27,7 +26,6 @@ import SITEOPTIONS_QUERY from "../../queries/site-options";
 export const App = () => {
 
     const [menuVisibility, setMenuVisibility] = useState(false);
-    const [progress,setProgress] = useState(0);
 
     const toggleVisibility = () => {
         setMenuVisibility(!menuVisibility);
@@ -50,11 +48,6 @@ export const App = () => {
                     <Router>
 
                         <React.Fragment>
-
-                            <LoadingBar
-                                color='#f11946'
-                                progress={progress}
-                                onLoaderFinished={() => setProgress(0)} />
 
                             <div id="wrapper" className="flex-grow">
 

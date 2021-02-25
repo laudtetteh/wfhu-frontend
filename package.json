@@ -65,7 +65,6 @@
     "react-moment": "^1.1.1",
     "react-router-dom": "^5.2.0",
     "react-script-tag": "^1.1.2",
-    "react-top-loading-bar": "^2.0.1",
     "reactstrap": "^8.9.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "variables": "^1.0.1"
