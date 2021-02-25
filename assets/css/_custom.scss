@@ -24,16 +24,16 @@ body {
     background-image: url('../images/intro-section-image.png');
 }*/
 
-.stf-nav-list-item:last-child .stf-nav-list-item-link {
+.stf-main-nav-list-item:last-child a {
     padding-right: 0;
 }
 
 
-li.stf-nav-list-item {
+li.stf-main-nav-list-item {
     margin-bottom: 10px;
 }
 
-li.stf-nav-list-item a::after {
+li.stf-main-nav-list-item a::after {
     content: '';
     display: block;
     width: 0;
@@ -42,7 +42,7 @@ li.stf-nav-list-item a::after {
     transition: width .3s;
 }
 
-li.stf-nav-list-item a:hover::after {
+li.stf-main-nav-list-item a:hover::after {
     width: 100%;
     transition: width .3s;
 }

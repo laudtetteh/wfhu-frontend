@@ -40,8 +40,8 @@ export const Header = (props) => {
                                 menuVisibility={false}
                                 hideMenu={props.hideMenu}
                                 listClasses=""
-                                listItemClasses="mr-4"
-                                linkClasses="inline-block stf-nav-list-item-link hover:text-darkblue" />;
+                                listItemClasses="stf-main-nav-list-item mr-4"
+                                linkClasses="stf-main-nav-link inline-block stf-nav-list-item-link hover:text-darkblue" />;
                         }}
                     </Query>
 

@@ -24,11 +24,11 @@ const MainNav = (props) => {
                     {props.links.map((link, index) => {
 
                         return (
-                            <li className={`stf-nav-list-item block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white text-lg ${props.listItemClasses}`} key={index}>
+                            <li className={`block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white text-lg ${props.listItemClasses}`} key={index}>
                                 <NavLink exact
                                     to={link.path}
                                     name={link.label}
-                                    className={`stf-nav-link font-roboto text-red-600 no-underline py-2 px-4 ${props.linkClasses}`}
+                                    className={`font-roboto text-red-600 no-underline py-2 px-4 ${props.linkClasses}`}
                                     activeClassName="current">
 
                                   {link.label}
