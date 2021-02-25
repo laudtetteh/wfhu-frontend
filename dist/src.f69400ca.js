@@ -73905,38 +73905,29 @@ var _Social = require("../Elements/Social");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ConnectCTA = function ConnectCTA(_ref) {
-  var pageBag = _ref.pageBag,
-      siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
-      headingColor = _ref.headingColor,
-      containerClasses = _ref.containerClasses,
-      headingClasses = _ref.headingClasses,
-      listClasses = _ref.listClasses;
+var ConnectCTA = function ConnectCTA(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop"
   }, _react.default.createElement("div", {
     className: "section-connect--left"
   }, _react.default.createElement("h3", {
     className: "section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right"
-  }, pageBag.connect_cta.heading), _react.default.createElement("p", {
+  }, props.pageBag.connect_cta.heading), _react.default.createElement("p", {
     className: "section-heading font-roboto text-base text-white mb-3"
-  }, pageBag.connect_cta.paragraph), _react.default.createElement("a", {
-    href: pageBag.connect_cta.button_link,
+  }, props.pageBag.connect_cta.paragraph), _react.default.createElement("a", {
+    href: props.pageBag.connect_cta.button_link,
     className: "bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline"
-  }, pageBag.connect_cta.button_text)), _react.default.createElement("div", {
-    className: "section-connect--right float-right md:float-none md:mx-auto md:mx-0"
+  }, props.pageBag.connect_cta.button_text)), _react.default.createElement("div", {
+    className: "section-connect--right md:float-right float-none mx-auto md:mx-0"
   }, _react.default.createElement(_Social.Social, {
-    siteOptions: siteOptions,
-    iconColor: iconColor,
-    iconBgColor: iconBgColor,
-    iconHvColor: iconHvColor,
-    headingColor: headingColor,
-    containerClasses: containerClasses,
-    headingClasses: headingClasses,
-    listClasses: listClasses
+    siteOptions: props.siteOptions,
+    iconColor: props.iconColor,
+    iconBgColor: props.iconBgColor,
+    iconHvColor: props.iconHvColor,
+    headingColor: props.headingColor,
+    containerClasses: props.containerClasses,
+    headingClasses: props.headingClasses,
+    listClasses: props.listClasses
   }))));
 };
 
@@ -85028,9 +85019,8 @@ var _helpers = require("../../utils/helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var IntroCTA = function IntroCTA(_ref) {
-  var pageBag = _ref.pageBag;
-  var object = pageBag.intro_cta;
+var IntroCTA = function IntroCTA(props) {
+  var object = props.pageBag.intro_cta;
   var content_type = "split_section";
   var image_size = "split_section";
   var imageUrl = (0, _helpers.SmartImage)({
@@ -85048,9 +85038,9 @@ var IntroCTA = function IntroCTA(_ref) {
     className: "mx-auto  mx-auto py-12 lg:mr-5"
   }, _react.default.createElement("h3", {
     className: "section-heading font-bellota text-2xl text-white mb-3"
-  }, pageBag.intro_cta.intro_heading), _react.default.createElement("p", {
+  }, props.pageBag.intro_cta.intro_heading), _react.default.createElement("p", {
     className: "section-paragraph font-roboto text-base text-white mb-3"
-  }, pageBag.intro_cta.intro_paragraph), _react.default.createElement("p", {
+  }, props.pageBag.intro_cta.intro_paragraph), _react.default.createElement("p", {
     className: "section-paragraph font-roboto text-base text-white mb-2 mt-10 font-medium"
   }, "Get notified when I publish something new"), _react.default.createElement("div", {
     className: "signup-form-container"
@@ -94206,8 +94196,8 @@ var Home = function Home(_ref) {
     }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
       pageBag: pageBag,
       siteOptions: siteOptions,
-      headingColor: "darkblue",
       containerClasses: "float-none md:float-right mx-auto",
+      headingColor: "darkblue",
       headingClasses: "stf-text-shadow-white-top-left text-center md:text-right",
       listClasses: "flex justify-center"
     }))), _react.default.createElement("section", {
@@ -98893,7 +98883,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58466" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59737" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Social } from '../Elements/Social';
 
-export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHvColor, headingColor, containerClasses, headingClasses, listClasses}) => {
+export const ConnectCTA = (props) => {
 
     return (
 
@@ -11,27 +11,27 @@ export const ConnectCTA = ({pageBag, siteOptions, iconColor, iconBgColor, iconHv
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 posts-loop">
 
                 <div className="section-connect--left">
-                    <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right">{pageBag.connect_cta.heading}</h3>
+                    <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right">{props.pageBag.connect_cta.heading}</h3>
 
                     <p className="section-heading font-roboto text-base text-white mb-3">
-                        {pageBag.connect_cta.paragraph}
+                        {props.pageBag.connect_cta.paragraph}
                     </p>
 
-                    <a href={pageBag.connect_cta.button_link} className="bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline">
-                        {pageBag.connect_cta.button_text}
+                    <a href={props.pageBag.connect_cta.button_link} className="bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline">
+                        {props.pageBag.connect_cta.button_text}
                     </a>
                 </div>
 
-                <div className="section-connect--right float-right md:float-none md:mx-auto md:mx-0">
+                <div className="section-connect--right md:float-right float-none mx-auto md:mx-0">
                     <Social
-                        siteOptions={siteOptions}
-                        iconColor={iconColor}
-                        iconBgColor={iconBgColor}
-                        iconHvColor={iconHvColor}
-                        headingColor={headingColor}
-                        containerClasses={containerClasses}
-                        headingClasses={headingClasses}
-                        listClasses={listClasses}
+                        siteOptions={props.siteOptions}
+                        iconColor={props.iconColor}
+                        iconBgColor={props.iconBgColor}
+                        iconHvColor={props.iconHvColor}
+                        headingColor={props.headingColor}
+                        containerClasses={props.containerClasses}
+                        headingClasses={props.headingClasses}
+                        listClasses={props.listClasses}
                     />
                 </div>
 

@@ -46,8 +46,8 @@ export const Home = ({siteOptions}) => {
                                 <ConnectCTA
                                     pageBag={pageBag}
                                     siteOptions={siteOptions}
-                                    headingColor="darkblue"
                                     containerClasses="float-none md:float-right mx-auto"
+                                    headingColor="darkblue"
                                     headingClasses="stf-text-shadow-white-top-left text-center md:text-right"
                                     listClasses="flex justify-center"
                                 />

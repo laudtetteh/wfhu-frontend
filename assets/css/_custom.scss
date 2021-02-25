@@ -28,6 +28,25 @@ body {
     padding-right: 0;
 }
 
+
+li.stf-nav-list-item {
+    margin-bottom: 10px;
+}
+
+li.stf-nav-list-item a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #376979;
+    transition: width .3s;
+}
+
+li.stf-nav-list-item a:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
 .mc-embedded-subscribe {
     margin-left: -10%;
     height: 35px;
