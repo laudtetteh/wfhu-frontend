@@ -8,6 +8,24 @@ import $ from 'jquery';
 const hiddenFields: CSS.Properties = {
     display: 'none'
 };
+// CSS for success response fields
+const successFields: CSS.Properties = {
+    display: 'none',
+    fontFamily: 'roboto',
+    color: '#ffffff',
+    backgroundColor: '#a1a1aa',
+    marginTop: '.5em',
+    padding: '.5em',
+};
+// CSS for success response fields
+const errorFields: CSS.Properties = {
+    display: 'none',
+    fontFamily: 'roboto',
+    color: '#ffffff',
+    backgroundColor: '#dd5569',
+    marginTop: '.5em',
+    padding: '.5em',
+};
 // CSS for hidden honeypot field
 const honeyPot: CSS.Properties = {
     position: 'absolute',
@@ -69,12 +87,16 @@ class SignupForm extends Component {
                 contentType: "application/json; charset=utf-8",
                 error       : function(err) { alert("Could not connect to the registration server. Please try again later."); },
                 success     : function(data) {
+                    // Format response message
+                    var _message = data.msg.replace("0 - ", '');
+                    _message = _message.split("to list")[0];
+                    // console.log(data);
                     if (data.result != "success") {
                         // Something went wrong, do something to notify the user. maybe alert(data.msg);
-                        $('#mce-error-response').text('Something went wrong. Please check your entry.').show().delay(5000).fadeOut();
+                        $('#mce-error-response').text(_message).show().delay(5000).fadeOut();
                     } else {
                         // It worked, carry on...
-                        $('#mce-success-response').text('Thank you for subscribing!').show().delay(5000).fadeOut();
+                        $('#mce-success-response').text(_message).show().delay(5000).fadeOut();
                     }
                 }
             });
@@ -105,8 +127,8 @@ class SignupForm extends Component {
                         </div>
 
                         <div id="mce-responses" className="clear">
-                            <div className="response" id="mce-error-response" style={hiddenFields}></div>
-                            <div className="response" id="mce-success-response" style={hiddenFields}></div>
+                            <div className="response" id="mce-error-response" style={errorFields}></div>
+                            <div className="response" id="mce-success-response" style={successFields}></div>
                         </div>
                     </div>
 

@@ -84854,6 +84854,24 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 // CSS for hidden fields
 var hiddenFields = {
   display: 'none'
+}; // CSS for success response fields
+
+var successFields = {
+  display: 'none',
+  fontFamily: 'roboto',
+  color: '#ffffff',
+  backgroundColor: '#a1a1aa',
+  marginTop: '.5em',
+  padding: '.5em'
+}; // CSS for success response fields
+
+var errorFields = {
+  display: 'none',
+  fontFamily: 'roboto',
+  color: '#ffffff',
+  backgroundColor: '#dd5569',
+  marginTop: '.5em',
+  padding: '.5em'
 }; // CSS for hidden honeypot field
 
 var honeyPot = {
@@ -84932,12 +84950,17 @@ var SignupForm = /*#__PURE__*/function (_Component) {
             alert("Could not connect to the registration server. Please try again later.");
           },
           success: function success(data) {
+            // Format response message
+            var _message = data.msg.replace("0 - ", '');
+
+            _message = _message.split("to list")[0]; // console.log(data);
+
             if (data.result != "success") {
               // Something went wrong, do something to notify the user. maybe alert(data.msg);
-              (0, _jquery.default)('#mce-error-response').text('Something went wrong. Please check your entry.').show().delay(5000).fadeOut();
+              (0, _jquery.default)('#mce-error-response').text(_message).show().delay(5000).fadeOut();
             } else {
               // It worked, carry on...
-              (0, _jquery.default)('#mce-success-response').text('Thank you for subscribing!').show().delay(5000).fadeOut();
+              (0, _jquery.default)('#mce-success-response').text(_message).show().delay(5000).fadeOut();
             }
           }
         });
@@ -84990,11 +85013,11 @@ var SignupForm = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement("div", {
         className: "response",
         id: "mce-error-response",
-        style: hiddenFields
+        style: errorFields
       }), _react.default.createElement("div", {
         className: "response",
         id: "mce-success-response",
-        style: hiddenFields
+        style: successFields
       })))));
     }
   }]);

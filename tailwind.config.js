@@ -27,13 +27,13 @@ module.exports = {
       white: '#FFFFFF',
       red: {
         DEFAULT: '#C9273E',
-        100: '#',
+        100: '#dd5569',
         300: '#',
         600: '#C9273E',
       },
       yellow: {
         DEFAULT: '#EDE784',
-        100: '#',
+        100: '#f8f6d3',
         300: '#',
         600: '#EDE784',
       },
