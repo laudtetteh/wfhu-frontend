@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Sidebar } from '../Sidebar';
 // Components
 import { Post } from "../../components/Post";
-import { Footer } from '../../components/Footer';
 // Queries
 import Query from "../../components/Query";
 import POST_QUERY from "../../queries/post/post";
@@ -46,12 +45,6 @@ export const PostSingle = ({siteOptions}) => {
 
                             </section>
 
-                            <Footer
-                                siteOptions={siteOptions}
-                                headingColor="white"
-                                containerClass="mx-auto"
-                                headingClass="text-center font-bold"
-                            />
                         </React.Fragment>
                     );
             }}

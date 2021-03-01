@@ -85097,12 +85097,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Helpers
 var Card = function Card(_ref) {
   var gif = _ref.gif;
-  console.log(gif); // const imageUrl =
+  // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? gif.image.url
   //     : process.env.REACT_APP_BACKEND_URL + gif.image.url;
   // const imageUrl = gif.image.formats.gif_loop.url;
-
   var object = gif;
   var content_type = "gif";
   var image_size = "gif_loop";
@@ -94348,47 +94347,7 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Footer/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Footer = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Social = require("../Elements/Social");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Packages
-var Footer = function Footer(_ref) {
-  var siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
-      headingColor = _ref.headingColor,
-      containerClasses = _ref.containerClasses,
-      headingClasses = _ref.headingClasses,
-      listClasses = _ref.listClasses;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
-    className: "section-footer w-full bg-darkblue text-white py-16"
-  }, _react.default.createElement("div", {
-    className: "container"
-  }, _react.default.createElement(_Social.Social, {
-    siteOptions: siteOptions,
-    headingColor: headingColor,
-    containerClasses: containerClasses,
-    headingClasses: headingClasses,
-    listClasses: listClasses
-  }), _react.default.createElement("p", {
-    className: "font-roboto mx-auto block text-center mt-3"
-  }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
-};
-
-exports.Footer = Footer;
-},{"react":"../node_modules/react/index.js","../Elements/Social":"components/Elements/Social.tsx"}],"containers/About/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/About/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94402,8 +94361,6 @@ var _Testimonials = _interopRequireDefault(require("../Testimonials"));
 
 var _helpers = require("../../utils/helpers");
 
-var _Footer = require("../../components/Footer");
-
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
 var _page = _interopRequireDefault(require("../../queries/page/page"));
@@ -94415,13 +94372,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Packages
 // Containers
 // Queries
-var About = function About(_ref) {
-  var siteOptions = _ref.siteOptions;
+var About = function About() {
   return _react.default.createElement(_Query.default, {
     query: _page.default,
     slug: "about"
-  }, function (_ref2) {
-    var pages = _ref2.data.pages;
+  }, function (_ref) {
+    var pages = _ref.data.pages;
     var pageBag = (0, _apiHelper.getPageData)(pages[0]);
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: "About"
@@ -94443,17 +94399,12 @@ var About = function About(_ref) {
       className: "section-heading font-bellota text-4xl text-red text-left mb-8"
     }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
       limit: 4
-    }))), _react.default.createElement(_Footer.Footer, {
-      siteOptions: siteOptions,
-      headingColor: "white",
-      containerClasses: "mx-auto",
-      headingClasses: "text-center font-bold"
-    }));
+    }))));
   });
 };
 
 exports.About = About;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"queries/category/posts.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"queries/category/posts.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94585,8 +94536,6 @@ var _Sidebar = require("../Sidebar");
 
 var _helpers = require("../../utils/helpers");
 
-var _Footer = require("../../components/Footer");
-
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
 var _page = _interopRequireDefault(require("../../queries/page/page"));
@@ -94618,17 +94567,12 @@ var Blog = function Blog(_ref) {
       limit: 12,
       orientation: "vertical",
       heading: "Posts"
-    }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
-      siteOptions: siteOptions,
-      headingColor: "white",
-      containerClass: "mx-auto",
-      headingClass: "text-center font-bold"
-    }));
+    }), _react.default.createElement(_Sidebar.Sidebar, null)))));
   });
 };
 
 exports.Blog = Blog;
-},{"react":"../node_modules/react/index.js","../Posts":"containers/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Contact/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Posts":"containers/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Contact/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94639,8 +94583,6 @@ exports.Contact = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
@@ -94676,17 +94618,12 @@ var Contact = function Contact(_ref) {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-contact-form"
-    })), _react.default.createElement(_Footer.Footer, {
-      siteOptions: siteOptions,
-      headingColor: "white",
-      containerClass: "mx-auto",
-      headingClass: "text-center font-bold"
-    }));
+    })));
   });
 };
 
 exports.Contact = Contact;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Post/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Post/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94787,8 +94724,6 @@ var _Sidebar = require("../Sidebar");
 
 var _Post = require("../../components/Post");
 
-var _Footer = require("../../components/Footer");
-
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
 var _post = _interopRequireDefault(require("../../queries/post/post"));
@@ -94823,17 +94758,12 @@ var PostSingle = function PostSingle(_ref) {
       className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
     }, _react.default.createElement(_Post.Post, {
       post: posts[0]
-    }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
-      siteOptions: siteOptions,
-      headingColor: "white",
-      containerClass: "mx-auto",
-      headingClass: "text-center font-bold"
-    }));
+    }), _react.default.createElement(_Sidebar.Sidebar, null)))));
   });
 };
 
 exports.PostSingle = PostSingle;
-},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../Sidebar":"containers/Sidebar/index.tsx","../../components/Post":"components/Post/index.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/post":"queries/post/post.tsx","../../utils/helpers":"utils/helpers.tsx"}],"containers/Category/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../Sidebar":"containers/Sidebar/index.tsx","../../components/Post":"components/Post/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/post":"queries/post/post.tsx","../../utils/helpers":"utils/helpers.tsx"}],"containers/Category/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94850,8 +94780,6 @@ var _Posts = _interopRequireDefault(require("../../components/Posts"));
 var _Sidebar = require("../Sidebar");
 
 var _helpers = require("../../utils/helpers");
-
-var _Footer = require("../../components/Footer");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
@@ -94886,17 +94814,12 @@ var Category = function Category(_ref) {
       posts: categories[0].posts,
       orientation: "vertical",
       heading: categories[0].name
-    }), _react.default.createElement(_Sidebar.Sidebar, null)))), _react.default.createElement(_Footer.Footer, {
-      siteOptions: siteOptions,
-      headingColor: "white",
-      containerClass: "mx-auto",
-      headingClass: "text-center font-bold"
-    }));
+    }), _react.default.createElement(_Sidebar.Sidebar, null)))));
   });
 };
 
 exports.Category = Category;
-},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../../components/Posts":"components/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/category/posts":"queries/category/posts.tsx"}],"components/Nav/main.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../../components/Posts":"components/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/category/posts":"queries/category/posts.tsx"}],"components/Nav/main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95044,7 +94967,47 @@ var Header = function Header(props) {
 };
 
 exports.Header = Header;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"components/Query/index.tsx","../Nav/main":"components/Nav/main.js","../../../assets/images/logo.svg":"../assets/images/logo.svg","../../queries/top-menu":"queries/top-menu/index.tsx"}],"queries/site-options/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"components/Query/index.tsx","../Nav/main":"components/Nav/main.js","../../../assets/images/logo.svg":"../assets/images/logo.svg","../../queries/top-menu":"queries/top-menu/index.tsx"}],"components/Footer/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Footer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Social = require("../Elements/Social");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+var Footer = function Footer(_ref) {
+  var siteOptions = _ref.siteOptions,
+      iconColor = _ref.iconColor,
+      iconBgColor = _ref.iconBgColor,
+      iconHvColor = _ref.iconHvColor,
+      headingColor = _ref.headingColor,
+      containerClasses = _ref.containerClasses,
+      headingClasses = _ref.headingClasses,
+      listClasses = _ref.listClasses;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
+    className: "section-footer w-full bg-darkblue text-white py-16"
+  }, _react.default.createElement("div", {
+    className: "container"
+  }, _react.default.createElement(_Social.Social, {
+    siteOptions: siteOptions,
+    headingColor: headingColor,
+    containerClasses: containerClasses,
+    headingClasses: headingClasses,
+    listClasses: listClasses
+  }), _react.default.createElement("p", {
+    className: "font-roboto mx-auto block text-center mt-3"
+  }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
+};
+
+exports.Footer = Footer;
+},{"react":"../node_modules/react/index.js","../Elements/Social":"components/Elements/Social.tsx"}],"queries/site-options/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95090,6 +95053,8 @@ var _Category = require("../../containers/Category");
 var _Header = require("../../components/Header");
 
 var _apiHelper = require("../../utils/apiHelper");
+
+var _Footer = require("../../components/Footer");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
@@ -95149,32 +95114,27 @@ var App = function App() {
     })), _react.default.createElement(_reactRouterDom.Route, {
       path: "/about",
       exact: true
-    }, _react.default.createElement(_About.About, {
-      siteOptions: siteOptions
-    })), _react.default.createElement(_reactRouterDom.Route, {
+    }, _react.default.createElement(_About.About, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/blog",
       exact: true
-    }, _react.default.createElement(_Blog.Blog, {
-      siteOptions: siteOptions
-    })), _react.default.createElement(_reactRouterDom.Route, {
+    }, _react.default.createElement(_Blog.Blog, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/contact",
       exact: true
-    }, _react.default.createElement(_Contact.Contact, {
-      siteOptions: siteOptions
-    })), _react.default.createElement(_reactRouterDom.Route, {
+    }, _react.default.createElement(_Contact.Contact, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/post/:slug"
-    }, _react.default.createElement(_Post.PostSingle, {
-      siteOptions: siteOptions
-    })), _react.default.createElement(_reactRouterDom.Route, {
+    }, _react.default.createElement(_Post.PostSingle, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/category/:slug"
-    }, _react.default.createElement(_Category.Category, {
-      siteOptions: siteOptions
-    }))))));
+    }, _react.default.createElement(_Category.Category, null)))), _react.default.createElement(_Footer.Footer, {
+      siteOptions: siteOptions,
+      headingColor: "white",
+      containerClasses: "mx-auto",
+      headingClasses: "text-center font-bold"
+    })));
   });
 };
 
 exports.App = App;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../About":"containers/About/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../About":"containers/About/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

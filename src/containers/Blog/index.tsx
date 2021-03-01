@@ -4,7 +4,6 @@ import React from 'react';
 import Posts from '../Posts';
 import { Sidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
-import { Footer } from '../../components/Footer';
 // Queries
 import Query from "../../components/Query";
 import PAGE_QUERY from "../../queries/page/page";
@@ -43,13 +42,6 @@ export const Blog = ({siteOptions}) => {
                             </div>
 
                         </section>
-
-                        <Footer
-                            siteOptions={siteOptions}
-                            headingColor="white"
-                            containerClass="mx-auto"
-                            headingClass="text-center font-bold"
-                        />
 
                     </React.Fragment>
                 )

@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 import Posts from "../../components/Posts";
 import { Sidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
-import { Footer } from '../../components/Footer';
 // Queries
 import Query from "../../components/Query";
 import CATEGORY_POSTS_QUERY from "../../queries/category/posts";
@@ -46,13 +45,6 @@ export const Category = ({siteOptions}) => {
                             </div>
 
                         </section>
-
-                        <Footer
-                            siteOptions={siteOptions}
-                            headingColor="white"
-                            containerClass="mx-auto"
-                            headingClass="text-center font-bold"
-                        />
 
                     </React.Fragment>
                 )

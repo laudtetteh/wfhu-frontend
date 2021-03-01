@@ -3,7 +3,6 @@ import React from 'react';
 // Containers
 import Testimonials from '../Testimonials';
 import { DocumentHead } from '../../utils/helpers';
-import { Footer } from '../../components/Footer';
 // Queries
 import Query from "../../components/Query";
 import PAGE_QUERY from "../../queries/page/page";
@@ -11,7 +10,7 @@ import PAGE_QUERY from "../../queries/page/page";
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
 
-export const About = ({siteOptions}) => {
+export const About = () => {
 
     return (
 
@@ -57,13 +56,6 @@ export const About = ({siteOptions}) => {
                             </div>
 
                         </section>
-
-                        <Footer
-                            siteOptions={siteOptions}
-                            headingColor="white"
-                            containerClasses="mx-auto"
-                            headingClasses="text-center font-bold"
-                        />
 
                     </React.Fragment>
                 )

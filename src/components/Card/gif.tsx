@@ -4,7 +4,6 @@ import React from "react";
 import { SmartImage } from '../../utils/helpers';
 
 export const Card = ({ gif }) => {
-console.log(gif);
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? gif.image.url

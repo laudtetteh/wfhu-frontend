@@ -17,6 +17,7 @@ import { Categories } from "../../containers/Categories";
 // Components
 import { Header } from '../../components/Header';
 import { getSiteOptions } from '../../utils/apiHelper';
+import { Footer } from '../../components/Footer';
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 // Queries
@@ -62,28 +63,35 @@ export const App = () => {
                                     </Route>
 
                                     <Route path="/about" exact>
-                                        <About siteOptions={siteOptions} />
+                                        <About />
                                     </Route>
 
                                     <Route path="/blog" exact>
-                                        <Blog siteOptions={siteOptions} />
+                                        <Blog />
                                     </Route>
 
                                     <Route path="/contact" exact>
-                                        <Contact siteOptions={siteOptions} />
+                                        <Contact />
                                     </Route>
 
                                     <Route path="/post/:slug">
-                                        <PostSingle siteOptions={siteOptions} />
+                                        <PostSingle />
                                     </Route>
 
                                     <Route path="/category/:slug">
-                                        <Category siteOptions={siteOptions} />
+                                        <Category />
                                     </Route>
 
                                 </Switch>
 
                             </div>
+
+                            <Footer
+                                siteOptions={siteOptions}
+                                headingColor="white"
+                                containerClasses="mx-auto"
+                                headingClasses="text-center font-bold"
+                            />
 
                         </React.Fragment>
                     </Router>
