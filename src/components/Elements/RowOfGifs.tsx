@@ -12,11 +12,11 @@ export const RowOfGifs = (props) => {
         <React.Fragment>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {leftGifs.map((gif, i) => {
-                    return <Card gif={gif.gif} key={`gif__${gif.gif.id}`} />
+                    return <Card gif={gif.gif} key={`gif__${gif.id}`} />
                 })}
 
                 {rightGifs.map((gif, i) => {
-                    return <Card gif={gif.gif} key={`gif__${gif.gif.id}`} />
+                    return <Card gif={gif.gif} key={`gif__${gif.id}`} />
                 })}
             </div>
         </React.Fragment>

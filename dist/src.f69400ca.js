@@ -85111,7 +85111,7 @@ var Card = function Card(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "md:mt-0 mt-5 md:first:mt-0"
+    className: "md:mt-0 my-5 md:first:mt-0"
   }, _react.default.createElement("div", {
     className: "card-post--image col-span-1"
   }, _react.default.createElement("img", {
@@ -85147,12 +85147,12 @@ var RowOfGifs = function RowOfGifs(props) {
   }, leftGifs.map(function (gif, i) {
     return _react.default.createElement(_gif.Card, {
       gif: gif.gif,
-      key: "gif__".concat(gif.gif.id)
+      key: "gif__".concat(gif.id)
     });
   }), rightGifs.map(function (gif, i) {
     return _react.default.createElement(_gif.Card, {
       gif: gif.gif,
-      key: "gif__".concat(gif.gif.id)
+      key: "gif__".concat(gif.id)
     });
   })));
 };
@@ -94347,13 +94347,13 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/About/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Bio/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.About = void 0;
+exports.Bio = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -94372,22 +94372,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Packages
 // Containers
 // Queries
-var About = function About() {
+var Bio = function Bio() {
   return _react.default.createElement(_Query.default, {
     query: _page.default,
-    slug: "about"
+    slug: "bio"
   }, function (_ref) {
     var pages = _ref.data.pages;
     var pageBag = (0, _apiHelper.getPageData)(pages[0]);
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
-      title: "About"
+      title: "Bio"
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
       className: "container mx-auto md:px-60 py-12 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-    }, "About"), _react.default.createElement("div", {
+    }, "Bio"), _react.default.createElement("div", {
       className: "description description font-roboto"
     }, _react.default.createElement("div", {
       className: "description description font-roboto"
@@ -94403,8 +94403,268 @@ var About = function About() {
   });
 };
 
-exports.About = About;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"queries/category/posts.tsx":[function(require,module,exports) {
+exports.Bio = Bio;
+},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Card = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _helpers = require("../../utils/helpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Card = function Card(_ref) {
+  var event = _ref.event,
+      orientation = _ref.orientation;
+  // const imageUrl =
+  //     process.env.NODE_ENV !== "development"
+  //     ? event.image.url
+  //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
+  var object = event;
+  var content_type = "event";
+  var image_size = "event_loop";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
+
+  if (orientation == 'vertical') {
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+      className: "md:grid md:grid-cols-1 md:grid-cols-3 md:grid-flow-col md:gap-4 w-full md:w-auto event-".concat(event.id)
+    }, _react.default.createElement("div", {
+      className: "card-event--image col-span-1"
+    }, _react.default.createElement(_reactRouterDom.Link, {
+      to: "/event/".concat(event.slug),
+      className: "card-event--image"
+    }, _react.default.createElement("img", {
+      src: imageUrl,
+      alt: imageUrl,
+      height: "100",
+      className: "w-full"
+    }))), _react.default.createElement("div", {
+      className: "card-event--details col-span-2 mt-3 md:mt-0"
+    }, _react.default.createElement(_reactRouterDom.Link, {
+      to: "/event/".concat(event.slug),
+      className: "card-event--title font-roboto no-underline"
+    }, _react.default.createElement("p", {
+      id: "name",
+      className: "font-roboto text-base text-black font-medium"
+    }, event.name)), _react.default.createElement("p", {
+      id: "",
+      className: "card-event--date font-roboto text-xs text-black font-thin italic"
+    }, _react.default.createElement(_helpers.STFDate, {
+      _timestamp: event.published_at,
+      _format: "MMMM D, YYYY"
+    })), _react.default.createElement("p", {
+      id: "name",
+      className: "font-roboto text-base text-black font-normal mt-5"
+    }, _react.default.createElement(_helpers.TrimText, {
+      text: event.description,
+      limit: 200
+    })))));
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "md:mt-0 mt-5 md:first:mt-0 event-".concat(event.id)
+  }, _react.default.createElement("div", {
+    className: "card-event--image"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/event/".concat(event.slug),
+    className: "card-event--image"
+  }, _react.default.createElement("img", {
+    src: imageUrl,
+    alt: imageUrl,
+    height: "100",
+    className: "w-full"
+  }))), _react.default.createElement("div", {
+    className: "card-event--details mt-3"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/event/".concat(event.slug),
+    className: "card-event--title font-roboto no-underline"
+  }, _react.default.createElement("p", {
+    id: "name",
+    className: "font-roboto text-base text-yellow"
+  }, event.name)), _react.default.createElement("p", {
+    id: "",
+    className: "card-event--date font-roboto text-xs text-blue-100 italic"
+  }, _react.default.createElement(_helpers.STFDate, {
+    _timestamp: event.published_at,
+    _format: "MMMM D, YYYY"
+  })))));
+};
+
+exports.Card = Card;
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Events/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _event = require("../Card/event");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Events = function Events(_ref) {
+  var events = _ref.events,
+      orientation = _ref.orientation,
+      heading = _ref.heading;
+
+  if (orientation == 'vertical') {
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+      className: "col-span-5 space-y-6"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
+    }, heading), events.map(function (event, index) {
+      var _React$createElement;
+
+      return _react.default.createElement(_event.Card, (_React$createElement = {
+        key: index,
+        event: event
+      }, _defineProperty(_React$createElement, "key", "event-".concat(event.id)), _defineProperty(_React$createElement, "orientation", "vertical"), _React$createElement));
+    })));
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "grid grid-cols-1 gap-4 md:grid-cols-3 events-loop"
+  }, events.map(function (event, index) {
+    var _React$createElement2;
+
+    return _react.default.createElement(_event.Card, (_React$createElement2 = {
+      key: index,
+      event: event
+    }, _defineProperty(_React$createElement2, "key", "event-".concat(event.id)), _defineProperty(_React$createElement2, "orientation", "horizontal"), _React$createElement2));
+  })));
+};
+
+var _default = Events;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../Card/event":"components/Card/event.tsx"}],"queries/event/events.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!)  {\n        events(limit: $limit) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var _default = EVENTS_QUERY;
+exports.default = _default;
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GetEvents = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Events = _interopRequireDefault(require("../../components/Events"));
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _events = _interopRequireDefault(require("../../queries/event/events"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var GetEvents = function GetEvents(_ref) {
+  var limit = _ref.limit,
+      orientation = _ref.orientation,
+      heading = _ref.heading;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
+    query: _events.default,
+    limit: limit
+  }, function (_ref2) {
+    var events = _ref2.data.events;
+    return _react.default.createElement(_Events.default, {
+      events: events,
+      orientation: orientation,
+      heading: heading
+    });
+  }));
+};
+
+exports.GetEvents = GetEvents;
+},{"react":"../node_modules/react/index.js","../../components/Events":"components/Events/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/event/events":"queries/event/events.tsx"}],"containers/Events/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Events = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _GetEvents = _interopRequireDefault(require("../GetEvents"));
+
+var _helpers = require("../../utils/helpers");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _page = _interopRequireDefault(require("../../queries/page/page"));
+
+var _apiHelper = require("../../utils/apiHelper");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Containers
+// Queries
+var Events = function Events() {
+  return _react.default.createElement(_Query.default, {
+    query: _page.default,
+    slug: "events"
+  }, function (_ref) {
+    var pages = _ref.data.pages;
+    var pageBag = (0, _apiHelper.getPageData)(pages[0]);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+      title: "Events"
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none section-page-content"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto md:px-60 py-12 section-testimonials"
+    }, _react.default.createElement("h1", {
+      className: "section-heading font-bellota text-5xl text-red text-left mb-8"
+    }, "Bio"), _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, _react.default.createElement("div", {
+      className: "description description font-roboto"
+    }, pageBag.description)))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Testimonials"), _react.default.createElement(_GetEvents.default, {
+      limit: 4
+    }))));
+  });
+};
+
+exports.Events = Events;
+},{"react":"../node_modules/react/index.js","../GetEvents":"containers/GetEvents/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"queries/category/posts.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95040,7 +95300,9 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Home = require("../Home");
 
-var _About = require("../About");
+var _Bio = require("../Bio");
+
+var _Events = require("../Events");
 
 var _Blog = require("../Blog");
 
@@ -95112,9 +95374,12 @@ var App = function App() {
     }, _react.default.createElement(_Home.Home, {
       siteOptions: siteOptions
     })), _react.default.createElement(_reactRouterDom.Route, {
-      path: "/about",
+      path: "/bio",
       exact: true
-    }, _react.default.createElement(_About.About, null)), _react.default.createElement(_reactRouterDom.Route, {
+    }, _react.default.createElement(_Bio.Bio, null)), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/events",
+      exact: true
+    }, _react.default.createElement(_Events.Events, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/blog",
       exact: true
     }, _react.default.createElement(_Blog.Blog, null)), _react.default.createElement(_reactRouterDom.Route, {
@@ -95134,7 +95399,7 @@ var App = function App() {
 };
 
 exports.App = App;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../About":"containers/About/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../Bio":"containers/Bio/index.tsx","../Events":"containers/Events/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98332,6 +98597,8 @@ module.exports = {
       "kind": "UNION",
       "name": "Morph",
       "possibleTypes": [{
+        "name": "EventNote"
+      }, {
         "name": "PageNote"
       }, {
         "name": "PostNote"
@@ -98371,6 +98638,48 @@ module.exports = {
         "name": "updateCategoryPayload"
       }, {
         "name": "deleteCategoryPayload"
+      }, {
+        "name": "Event"
+      }, {
+        "name": "EventConnection"
+      }, {
+        "name": "EventAggregator"
+      }, {
+        "name": "EventGroupBy"
+      }, {
+        "name": "EventConnectionId"
+      }, {
+        "name": "EventConnection_id"
+      }, {
+        "name": "EventConnectionCreated_at"
+      }, {
+        "name": "EventConnectionUpdated_at"
+      }, {
+        "name": "EventConnectionName"
+      }, {
+        "name": "EventConnectionSlug"
+      }, {
+        "name": "EventConnectionDescription"
+      }, {
+        "name": "EventConnectionImage"
+      }, {
+        "name": "EventConnectionPublish_at"
+      }, {
+        "name": "EventConnectionSeo"
+      }, {
+        "name": "EventConnectionEvent_start"
+      }, {
+        "name": "EventConnectionEvent_end"
+      }, {
+        "name": "EventConnectionEvent_details"
+      }, {
+        "name": "EventConnectionPublished_at"
+      }, {
+        "name": "createEventPayload"
+      }, {
+        "name": "updateEventPayload"
+      }, {
+        "name": "deleteEventPayload"
       }, {
         "name": "Footer"
       }, {
@@ -98736,6 +99045,12 @@ module.exports = {
       }, {
         "name": "deleteUserPayload"
       }, {
+        "name": "ComponentEventMeta"
+      }, {
+        "name": "ComponentEventOpeningHours"
+      }, {
+        "name": "ComponentEventSeo"
+      }, {
         "name": "ComponentFooterLink"
       }, {
         "name": "ComponentPageConnectCta"
@@ -98972,7 +99287,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57425" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

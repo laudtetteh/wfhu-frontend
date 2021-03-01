@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import logo from '../../../assets/images/logo.svg';
 // Page Containers
 import { Home } from '../Home';
-import { About } from '../About';
+import { Bio } from '../Bio';
+import { Events } from '../Events';
 import { Blog } from '../Blog';
 import { Contact } from '../Contact';
 import { NotFound } from '../NotFound';
@@ -62,8 +63,12 @@ export const App = () => {
                                         <Home siteOptions={siteOptions} />
                                     </Route>
 
-                                    <Route path="/about" exact>
-                                        <About />
+                                    <Route path="/bio" exact>
+                                        <Bio />
+                                    </Route>
+
+                                    <Route path="/events" exact>
+                                        <Events />
                                     </Route>
 
                                     <Route path="/blog" exact>

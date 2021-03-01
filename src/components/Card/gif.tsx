@@ -19,7 +19,7 @@ export const Card = ({ gif }) => {
     return (
         <React.Fragment>
 
-        <div className="md:mt-0 mt-5 md:first:mt-0">
+        <div className="md:mt-0 my-5 md:first:mt-0">
             <div className="card-post--image col-span-1">
                 <img src={imageUrl} alt={imageUrl} height="100" className="rounded-xl w-full"/>
             </div>
