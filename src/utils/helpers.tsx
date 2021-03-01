@@ -96,6 +96,19 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
             break;
 
+        case "gif":
+
+            if( object.url !== null && object.url !== undefined ) {
+                _imageUrl = object.url
+
+            } else {
+
+                _imageUrl = plchld_post;
+                console.log("Missing (correctly-sized) image for one or more gifs. Placeholder used");
+            }
+
+            break;
+
         default:
 
             console.log("No image found for one or more of `content_type`s. Placeholder used");

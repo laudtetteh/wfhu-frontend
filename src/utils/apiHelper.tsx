@@ -13,6 +13,7 @@ export const getPageData = props => {
     let image = {};
     let intro_cta = {};
     let connect_cta = {};
+    let row_of_gifs = {};
 
     if( props.name !== undefined ) {
         name = props.name;
@@ -47,6 +48,10 @@ export const getPageData = props => {
                 if( group.__typename == "ComponentPageConnectCta" ) {
                     connect_cta = group;
                 }
+
+                if( group.__typename == "ComponentPageRowOfGifs" ) {
+                    row_of_gifs = group.gifs_component;
+                }
             })
         }
     }
@@ -58,6 +63,7 @@ export const getPageData = props => {
     pageData['no_of_posts'] = no_of_posts;
     pageData['intro_cta'] = intro_cta;
     pageData['connect_cta'] = connect_cta;
+    pageData['row_of_gifs'] = row_of_gifs;
 
     return pageData;
 }

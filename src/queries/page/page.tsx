@@ -37,6 +37,14 @@ const PAGE_QUERY = gql`
                 ... on ComponentPageNoOfPostsToShow {
                     no_of_posts
                 }
+
+                ... on ComponentPageRowOfGifs {
+                    gifs_component {
+                      gif {
+                        url
+                      }
+                    }
+                }
             }
 
             published_at

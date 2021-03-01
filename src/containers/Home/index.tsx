@@ -6,6 +6,7 @@ import Posts from '../Posts';
 // Components
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
 import { IntroCTA } from '../../components/Cta/IntroCTA';
+import { RowOfGifs } from '../../components/Elements/RowOfGifs';
 // Queries
 import Query from "../../components/Query";
 import PAGE_QUERY from "../../queries/page/page";
@@ -78,6 +79,16 @@ export const Home = ({siteOptions}) => {
                                 </h2>
 
                                 <Posts limit={3} orientation="horizontal"/>
+                            </div>
+
+                        </section>
+
+                        <section className="w-full bg-none">
+
+                            <div className="container mx-auto py-12">
+
+                                <RowOfGifs pageBag={pageBag} limit={3} />
+
                             </div>
 
                         </section>
