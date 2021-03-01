@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 // Containers
-import GetEvents from '../GetEvents';
+import { GetEvents } from '../GetEvents';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import Query from "../../components/Query";
@@ -30,7 +30,7 @@ export const Events = () => {
 
                             <div className="container mx-auto md:px-60 py-12 section-testimonials">
 
-                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Bio</h1>
+                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Events</h1>
 
                                 <div className="description description font-roboto">
 

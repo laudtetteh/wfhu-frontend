@@ -53097,6 +53097,16 @@ var SmartImage = function SmartImage(_ref4) {
 
       break;
 
+    case "event":
+      if (object.image !== null && object.image.formats.event_loop !== undefined) {
+        _imageUrl = object.image.formats.event_loop.url;
+      } else {
+        _imageUrl = _placeholder_post_loop.default;
+        console.log("Missing (correctly-sized) image for one or more events. Placeholder used");
+      }
+
+      break;
+
     default:
       console.log("No image found for one or more of `content_type`s. Placeholder used");
   }
@@ -94508,7 +94518,7 @@ exports.Card = Card;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Events = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -94550,8 +94560,7 @@ var Events = function Events(_ref) {
   })));
 };
 
-var _default = Events;
-exports.default = _default;
+exports.Events = Events;
 },{"react":"../node_modules/react/index.js","../Card/event":"components/Card/event.tsx"}],"queries/event/events.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -94581,7 +94590,7 @@ exports.GetEvents = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Events = _interopRequireDefault(require("../../components/Events"));
+var _Events = require("../../components/Events");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
@@ -94598,7 +94607,7 @@ var GetEvents = function GetEvents(_ref) {
     limit: limit
   }, function (_ref2) {
     var events = _ref2.data.events;
-    return _react.default.createElement(_Events.default, {
+    return _react.default.createElement(_Events.Events, {
       events: events,
       orientation: orientation,
       heading: heading
@@ -94617,7 +94626,7 @@ exports.Events = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _GetEvents = _interopRequireDefault(require("../GetEvents"));
+var _GetEvents = require("../GetEvents");
 
 var _helpers = require("../../utils/helpers");
 
@@ -94647,7 +94656,7 @@ var Events = function Events() {
       className: "container mx-auto md:px-60 py-12 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
-    }, "Bio"), _react.default.createElement("div", {
+    }, "Events"), _react.default.createElement("div", {
       className: "description description font-roboto"
     }, _react.default.createElement("div", {
       className: "description description font-roboto"
@@ -94657,7 +94666,7 @@ var Events = function Events() {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Testimonials"), _react.default.createElement(_GetEvents.default, {
+    }, "Testimonials"), _react.default.createElement(_GetEvents.GetEvents, {
       limit: 4
     }))));
   });

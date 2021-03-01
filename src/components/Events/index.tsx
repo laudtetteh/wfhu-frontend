@@ -3,7 +3,7 @@ import React from "react";
 // Components
 import { Card } from "../Card/event";
 
-const Events = ({ events, orientation, heading }) => {
+export const Events = ({ events, orientation, heading }) => {
 
     if(orientation == 'vertical') {
 
@@ -37,5 +37,3 @@ const Events = ({ events, orientation, heading }) => {
         </React.Fragment>
     );
 };
-
-export default Events;

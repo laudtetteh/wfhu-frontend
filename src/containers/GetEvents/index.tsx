@@ -1,5 +1,5 @@
 import React from "react";
-import Events from "../../components/Events";
+import { Events } from "../../components/Events";
 import Query from "../../components/Query";
 import EVENTS_QUERY from "../../queries/event/events";
 

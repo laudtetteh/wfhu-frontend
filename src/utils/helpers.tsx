@@ -44,6 +44,7 @@ export const SmartImage = ({object, content_type, image_size}) => {
     let _imageUrl;
 
     switch(content_type) {
+
         case "testimonial":
 
             if( object.image !== null && object.image.formats.testimonial_loop !== undefined ) {
@@ -105,6 +106,19 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
                 _imageUrl = plchld_post;
                 console.log("Missing (correctly-sized) image for one or more gifs. Placeholder used");
+            }
+
+            break;
+
+        case "event":
+
+            if( object.image !== null && object.image.formats.event_loop !== undefined ) {
+                _imageUrl = object.image.formats.event_loop.url;
+
+            } else {
+
+                _imageUrl = plchld_post;
+                console.log("Missing (correctly-sized) image for one or more events. Placeholder used");
             }
 
             break;
