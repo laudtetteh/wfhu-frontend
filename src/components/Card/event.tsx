@@ -37,10 +37,8 @@ export const Card = ({ event, orientation }) => {
 
                     <p id="" className="card-event--date font-roboto text-xs text-blue-100 italic">
                         <STFStartEndDates
-                            _start_date={event.event_start_date}
-                            _start_time={event.event_start_time}
-                            _end_date={event.event_end_date}
-                            _end_time={event.event_end_time}
+                            _start={event.event_start}
+                            _end={event.event_end}
                          />
                     </p>
                 </div>

@@ -53017,39 +53017,35 @@ var STFDate = function STFDate(_ref) {
 exports.STFDate = STFDate;
 
 var STFStartEndDates = function STFStartEndDates(_ref2) {
-  var _start_date = _ref2._start_date,
-      _start_time = _ref2._start_time,
-      _end_date = _ref2._end_date,
-      _end_time = _ref2._end_time;
+  var _start = _ref2._start,
+      _end = _ref2._end;
   var startEndDates = '';
   var startEndTimes = '';
 
-  if (_start_date && _end_date) {
+  if (_start && _end) {
     var startDateFormatted = _react.default.createElement(_reactMoment.default, {
       format: "MMMM D, YYYY"
-    }, _start_date);
+    }, _start);
 
     var endDateFormatted = _react.default.createElement(_reactMoment.default, {
       format: "MMMM D, YYYY"
-    }, _end_date);
+    }, _end);
 
-    if (_start_date == _end_date) {
+    var startTimeFormatted = _react.default.createElement(_reactMoment.default, {
+      format: "hh:mm"
+    }, _start);
+
+    var endTimeFormatted = _react.default.createElement(_reactMoment.default, {
+      format: "hh:mm"
+    }, _end);
+
+    if (startDateFormatted == endDateFormatted) {
       startEndDates = startDateFormatted;
     } else {
       startEndDates = _react.default.createElement(_react.default.Fragment, null, " ", startDateFormatted, " - ", endDateFormatted, " ");
     }
-  }
 
-  if (_start_time && _end_time) {
-    var startTimeFormatted = _react.default.createElement(_reactMoment.default, {
-      format: "hh:mm"
-    }, _start_time);
-
-    var endTimeFormatted = _react.default.createElement(_reactMoment.default, {
-      format: "hh:mm"
-    }, _end_time);
-
-    if (_start_time && _end_time) {
+    if (startTimeFormatted && endTimeFormatted) {
       startEndTimes = _react.default.createElement(_react.default.Fragment, null, " ", startTimeFormatted, " - ", endTimeFormatted, " ");
     } else {
       startEndTimes = "Not specified. Contact Organizer.";
@@ -94514,10 +94510,8 @@ var Card = function Card(_ref) {
     id: "",
     className: "card-event--date font-roboto text-xs text-blue-100 italic"
   }, _react.default.createElement(_helpers.STFStartEndDates, {
-    _start_date: event.event_start_date,
-    _start_time: event.event_start_time,
-    _end_date: event.event_end_date,
-    _end_time: event.event_end_time
+    _start: event.event_start,
+    _end: event.event_end
   })))));
 };
 
@@ -94570,7 +94564,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!)  {\n        events(limit: $limit) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start_date\n            event_start_time\n            event_end_date\n            event_end_time\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!)  {\n        events(limit: $limit) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {

@@ -14,15 +14,19 @@ export const STFDate = ({_timestamp, _format}) => {
     )
 }
 
-export const STFStartEndDates = ({_start_date, _start_time, _end_date, _end_time}) => {
+export const STFStartEndDates = ({_start, _end}) => {
     let startEndDates = '';
     let startEndTimes = '';
 
-    if( _start_date && _end_date ) {
-        const startDateFormatted = <Moment format="MMMM D, YYYY">{_start_date}</Moment>;
-        const endDateFormatted = <Moment format="MMMM D, YYYY">{_end_date}</Moment>;
+    if( _start && _end ) {
 
-        if( _start_date == _end_date ) {
+        const startDateFormatted = <Moment format="MMMM D, YYYY">{_start}</Moment>;
+        const endDateFormatted = <Moment format="MMMM D, YYYY">{_end}</Moment>;
+
+        const startTimeFormatted = <Moment format="hh:mm">{_start}</Moment>;
+        const endTimeFormatted = <Moment format="hh:mm">{_end}</Moment>;
+
+        if( startDateFormatted == endDateFormatted ) {
 
             startEndDates = startDateFormatted;
 
@@ -30,14 +34,8 @@ export const STFStartEndDates = ({_start_date, _start_time, _end_date, _end_time
 
             startEndDates = <> {startDateFormatted} - {endDateFormatted} </>;
         }
-    }
 
-    if( _start_time && _end_time ) {
-        const startTimeFormatted = <Moment format="hh:mm">{_start_time}</Moment>;
-        const endTimeFormatted = <Moment format="hh:mm">{_end_time}</Moment>;
-
-
-        if( _start_time && _end_time ) {
+        if( startTimeFormatted && endTimeFormatted ) {
 
             startEndTimes = <> {startTimeFormatted} - {endTimeFormatted} </>;
 
@@ -45,11 +43,9 @@ export const STFStartEndDates = ({_start_date, _start_time, _end_date, _end_time
 
             startEndTimes = "Not specified. Contact Organizer.";
         }
-
     }
 
     return <> {startEndDates} | {startEndTimes} </>;
-
 }
 
 
