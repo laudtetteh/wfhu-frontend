@@ -94656,8 +94656,7 @@ var Events = function Events() {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 12,
-      event_ended: true,
-      false: true,
+      event_ended: false,
       heading: "Upcoming Presentations"
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
@@ -94666,7 +94665,6 @@ var Events = function Events() {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 12,
       event_ended: true,
-      true: true,
       heading: "Most Recent Presentations"
     }))));
   });
