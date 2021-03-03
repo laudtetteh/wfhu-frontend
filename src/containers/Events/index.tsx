@@ -28,7 +28,7 @@ export const Events = () => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto md:px-60 py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-testimonials">
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Events</h1>
 
@@ -47,9 +47,7 @@ export const Events = () => {
 
                             <div className="container mx-auto py-12 section-testimonials">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
-
-                                <GetEvents limit={4} />
+                                <GetEvents limit={12} heading="Upcoming Events" />
 
                             </div>
 

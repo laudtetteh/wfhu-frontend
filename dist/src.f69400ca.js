@@ -52986,7 +52986,7 @@ module.exports = "/placeholder_split_section.4d8a28a8.jpg";
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.STFDate = void 0;
+exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.STFStartEndDates = exports.STFDate = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53016,16 +53016,61 @@ var STFDate = function STFDate(_ref) {
 
 exports.STFDate = STFDate;
 
-var DocumentHead = function DocumentHead(_ref2) {
-  var title = _ref2.title;
+var STFStartEndDates = function STFStartEndDates(_ref2) {
+  var _start_date = _ref2._start_date,
+      _start_time = _ref2._start_time,
+      _end_date = _ref2._end_date,
+      _end_time = _ref2._end_time;
+  var startEndDates = '';
+  var startEndTimes = '';
+
+  if (_start_date && _end_date) {
+    var startDateFormatted = _react.default.createElement(_reactMoment.default, {
+      format: "MMMM D, YYYY"
+    }, _start_date);
+
+    var endDateFormatted = _react.default.createElement(_reactMoment.default, {
+      format: "MMMM D, YYYY"
+    }, _end_date);
+
+    if (_start_date == _end_date) {
+      startEndDates = startDateFormatted;
+    } else {
+      startEndDates = _react.default.createElement(_react.default.Fragment, null, " ", startDateFormatted, " - ", endDateFormatted, " ");
+    }
+  }
+
+  if (_start_time && _end_time) {
+    var startTimeFormatted = _react.default.createElement(_reactMoment.default, {
+      format: "hh:mm"
+    }, _start_time);
+
+    var endTimeFormatted = _react.default.createElement(_reactMoment.default, {
+      format: "hh:mm"
+    }, _end_time);
+
+    if (_start_time && _end_time) {
+      startEndTimes = _react.default.createElement(_react.default.Fragment, null, " ", startTimeFormatted, " - ", endTimeFormatted, " ");
+    } else {
+      startEndTimes = "Not specified. Contact Organizer.";
+    }
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, " ", startEndDates, " | ", startEndTimes, " ");
+};
+
+exports.STFStartEndDates = STFStartEndDates;
+
+var DocumentHead = function DocumentHead(_ref3) {
+  var title = _ref3.title;
   return _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, title, " | Work From Home University"));
 };
 
 exports.DocumentHead = DocumentHead;
 
-var TrimText = function TrimText(_ref3) {
-  var text = _ref3.text,
-      limit = _ref3.limit;
+var TrimText = function TrimText(_ref4) {
+  var text = _ref4.text,
+      limit = _ref4.limit;
   var trimmed = '';
 
   if (text.length > limit) {
@@ -53039,10 +53084,10 @@ var TrimText = function TrimText(_ref3) {
 
 exports.TrimText = TrimText;
 
-var SmartImage = function SmartImage(_ref4) {
-  var object = _ref4.object,
-      content_type = _ref4.content_type,
-      image_size = _ref4.image_size;
+var SmartImage = function SmartImage(_ref5) {
+  var object = _ref5.object,
+      content_type = _ref5.content_type,
+      image_size = _ref5.image_size;
 
   var _imageUrl;
 
@@ -53098,8 +53143,8 @@ var SmartImage = function SmartImage(_ref4) {
       break;
 
     case "event":
-      if (object.image !== null && object.image.formats.event_loop !== undefined) {
-        _imageUrl = object.image.formats.event_loop.url;
+      if (object.image !== null && object.image.formats.post_loop !== undefined) {
+        _imageUrl = object.image.formats.post_loop.url;
       } else {
         _imageUrl = _placeholder_post_loop.default;
         console.log("Missing (correctly-sized) image for one or more events. Placeholder used");
@@ -94439,49 +94484,12 @@ var Card = function Card(_ref) {
   //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
   var object = event;
   var content_type = "event";
-  var image_size = "event_loop";
+  var image_size = "post_loop";
   var imageUrl = (0, _helpers.SmartImage)({
     object: object,
     content_type: content_type,
     image_size: image_size
   });
-
-  if (orientation == 'vertical') {
-    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-3 md:grid-flow-col md:gap-4 w-full md:w-auto event-".concat(event.id)
-    }, _react.default.createElement("div", {
-      className: "card-event--image col-span-1"
-    }, _react.default.createElement(_reactRouterDom.Link, {
-      to: "/event/".concat(event.slug),
-      className: "card-event--image"
-    }, _react.default.createElement("img", {
-      src: imageUrl,
-      alt: imageUrl,
-      height: "100",
-      className: "w-full"
-    }))), _react.default.createElement("div", {
-      className: "card-event--details col-span-2 mt-3 md:mt-0"
-    }, _react.default.createElement(_reactRouterDom.Link, {
-      to: "/event/".concat(event.slug),
-      className: "card-event--title font-roboto no-underline"
-    }, _react.default.createElement("p", {
-      id: "name",
-      className: "font-roboto text-base text-black font-medium"
-    }, event.name)), _react.default.createElement("p", {
-      id: "",
-      className: "card-event--date font-roboto text-xs text-black font-thin italic"
-    }, _react.default.createElement(_helpers.STFDate, {
-      _timestamp: event.published_at,
-      _format: "MMMM D, YYYY"
-    })), _react.default.createElement("p", {
-      id: "name",
-      className: "font-roboto text-base text-black font-normal mt-5"
-    }, _react.default.createElement(_helpers.TrimText, {
-      text: event.description,
-      limit: 200
-    })))));
-  }
-
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "md:mt-0 mt-5 md:first:mt-0 event-".concat(event.id)
   }, _react.default.createElement("div", {
@@ -94505,9 +94513,11 @@ var Card = function Card(_ref) {
   }, event.name)), _react.default.createElement("p", {
     id: "",
     className: "card-event--date font-roboto text-xs text-blue-100 italic"
-  }, _react.default.createElement(_helpers.STFDate, {
-    _timestamp: event.published_at,
-    _format: "MMMM D, YYYY"
+  }, _react.default.createElement(_helpers.STFStartEndDates, {
+    _start_date: event.event_start_date,
+    _start_time: event.event_start_time,
+    _end_date: event.event_end_date,
+    _end_time: event.event_end_time
   })))));
 };
 
@@ -94530,33 +94540,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Events = function Events(_ref) {
   var events = _ref.events,
-      orientation = _ref.orientation,
       heading = _ref.heading;
-
-  if (orientation == 'vertical') {
-    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: "col-span-5 space-y-6"
-    }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
-    }, heading), events.map(function (event, index) {
-      var _React$createElement;
-
-      return _react.default.createElement(_event.Card, (_React$createElement = {
-        key: index,
-        event: event
-      }, _defineProperty(_React$createElement, "key", "event-".concat(event.id)), _defineProperty(_React$createElement, "orientation", "vertical"), _React$createElement));
-    })));
-  }
-
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h2", {
+    className: "section-heading font-bellota text-4xl text-red text-left mb-3"
+  }, heading), _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-3 events-loop"
   }, events.map(function (event, index) {
-    var _React$createElement2;
-
-    return _react.default.createElement(_event.Card, (_React$createElement2 = {
+    return _react.default.createElement(_event.Card, _defineProperty({
       key: index,
       event: event
-    }, _defineProperty(_React$createElement2, "key", "event-".concat(event.id)), _defineProperty(_React$createElement2, "orientation", "horizontal"), _React$createElement2));
+    }, "key", "event-".concat(event.id)));
   })));
 };
 
@@ -94577,7 +94570,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!)  {\n        events(limit: $limit) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!)  {\n        events(limit: $limit) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start_date\n            event_start_time\n            event_end_date\n            event_end_time\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -94609,7 +94602,6 @@ var GetEvents = function GetEvents(_ref) {
     var events = _ref2.data.events;
     return _react.default.createElement(_Events.Events, {
       events: events,
-      orientation: orientation,
       heading: heading
     });
   }));
@@ -94653,7 +94645,7 @@ var Events = function Events() {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto md:px-60 py-12 section-testimonials"
+      className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "Events"), _react.default.createElement("div", {
@@ -94664,10 +94656,9 @@ var Events = function Events() {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-testimonials"
-    }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Testimonials"), _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 4
+    }, _react.default.createElement(_GetEvents.GetEvents, {
+      limit: 12,
+      heading: "Upcoming Events"
     }))));
   });
 };
@@ -98676,11 +98667,15 @@ module.exports = {
       }, {
         "name": "EventConnectionSeo"
       }, {
-        "name": "EventConnectionEvent_start"
+        "name": "EventConnectionEvent_start_date"
       }, {
-        "name": "EventConnectionEvent_end"
+        "name": "EventConnectionEvent_end_date"
       }, {
         "name": "EventConnectionEvent_details"
+      }, {
+        "name": "EventConnectionEvent_start_time"
+      }, {
+        "name": "EventConnectionEvent_end_time"
       }, {
         "name": "EventConnectionPublished_at"
       }, {
@@ -99296,7 +99291,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57425" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63331" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

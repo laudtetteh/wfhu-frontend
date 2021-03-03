@@ -11,7 +11,7 @@ export const GetEvents = ({limit, orientation, heading}) => {
 
             <Query query={EVENTS_QUERY} limit={limit}>
                 {({ data: { events } }) => {
-                    return <Events events={events} orientation={orientation} heading={heading} />;
+                    return <Events events={events} heading={heading} />;
                 }}
             </Query>
 

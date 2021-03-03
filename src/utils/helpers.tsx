@@ -14,6 +14,45 @@ export const STFDate = ({_timestamp, _format}) => {
     )
 }
 
+export const STFStartEndDates = ({_start_date, _start_time, _end_date, _end_time}) => {
+    let startEndDates = '';
+    let startEndTimes = '';
+
+    if( _start_date && _end_date ) {
+        const startDateFormatted = <Moment format="MMMM D, YYYY">{_start_date}</Moment>;
+        const endDateFormatted = <Moment format="MMMM D, YYYY">{_end_date}</Moment>;
+
+        if( _start_date == _end_date ) {
+
+            startEndDates = startDateFormatted;
+
+        } else {
+
+            startEndDates = <> {startDateFormatted} - {endDateFormatted} </>;
+        }
+    }
+
+    if( _start_time && _end_time ) {
+        const startTimeFormatted = <Moment format="hh:mm">{_start_time}</Moment>;
+        const endTimeFormatted = <Moment format="hh:mm">{_end_time}</Moment>;
+
+
+        if( _start_time && _end_time ) {
+
+            startEndTimes = <> {startTimeFormatted} - {endTimeFormatted} </>;
+
+        } else {
+
+            startEndTimes = "Not specified. Contact Organizer.";
+        }
+
+    }
+
+    return <> {startEndDates} | {startEndTimes} </>;
+
+}
+
+
 export const DocumentHead = ({title}) => {
     return (
         <Helmet>
@@ -112,8 +151,8 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "event":
 
-            if( object.image !== null && object.image.formats.event_loop !== undefined ) {
-                _imageUrl = object.image.formats.event_loop.url;
+            if( object.image !== null && object.image.formats.post_loop !== undefined ) {
+                _imageUrl = object.image.formats.post_loop.url;
 
             } else {
 
