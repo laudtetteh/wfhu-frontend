@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const EVENTS_QUERY = gql`
-    query Events($limit: Int!)  {
-        events(limit: $limit) {
+    query Events($limit: Int!, $event_ended: Boolean!)  {
+        events(limit: $limit, where: {event_ended: $event_ended}) {
             id
             name
             slug
@@ -10,6 +10,7 @@ const EVENTS_QUERY = gql`
             event_details
             event_start
             event_end
+            event_ended
             image {
                 formats
             }

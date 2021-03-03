@@ -10,6 +10,7 @@ const EVENT_QUERY = gql`
             event_details
             event_start
             event_end
+            event_ended
             image {
                 formats
             }

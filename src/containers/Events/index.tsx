@@ -47,7 +47,17 @@ export const Events = () => {
 
                             <div className="container mx-auto py-12 section-testimonials">
 
-                                <GetEvents limit={12} heading="Upcoming Events" />
+                                <GetEvents limit={12} event_ended=false heading="Upcoming Presentations" />
+
+                            </div>
+
+                        </section>
+
+                        <section className="w-full bg-none">
+
+                            <div className="container mx-auto py-12 section-testimonials">
+
+                                <GetEvents limit={12} event_ended=true heading="Most Recent Presentations" />
 
                             </div>
 

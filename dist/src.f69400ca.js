@@ -53021,25 +53021,26 @@ var STFStartEndDates = function STFStartEndDates(_ref2) {
       _end = _ref2._end;
   var startEndDates = '';
   var startEndTimes = '';
+  var startDateFormatted;
+  var endDateFormatted;
+  var startTimeFormatted;
+  var endTimeFormatted;
 
   if (_start && _end) {
-    var startDateFormatted = _react.default.createElement(_reactMoment.default, {
+    startDateFormatted = _react.default.createElement(_reactMoment.default, {
       format: "MMMM D, YYYY"
     }, _start);
-
-    var endDateFormatted = _react.default.createElement(_reactMoment.default, {
+    endDateFormatted = _react.default.createElement(_reactMoment.default, {
       format: "MMMM D, YYYY"
     }, _end);
-
-    var startTimeFormatted = _react.default.createElement(_reactMoment.default, {
+    startTimeFormatted = _react.default.createElement(_reactMoment.default, {
       format: "hh:mm"
     }, _start);
-
-    var endTimeFormatted = _react.default.createElement(_reactMoment.default, {
+    endTimeFormatted = _react.default.createElement(_reactMoment.default, {
       format: "hh:mm"
     }, _end);
 
-    if (startDateFormatted == endDateFormatted) {
+    if (startDateFormatted === endDateFormatted) {
       startEndDates = startDateFormatted;
     } else {
       startEndDates = _react.default.createElement(_react.default.Fragment, null, " ", startDateFormatted, " - ", endDateFormatted, " ");
@@ -53267,12 +53268,14 @@ var Query = function Query(_ref) {
       query = _ref.query,
       id = _ref.id,
       limit = _ref.limit,
+      event_ended = _ref.event_ended,
       slug = _ref.slug;
 
   var _useQuery = (0, _reactHooks.useQuery)(query, {
     variables: {
       id: id,
       limit: limit,
+      event_ended: event_ended,
       slug: slug
     }
   }),
@@ -94564,7 +94567,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!)  {\n        events(limit: $limit) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!, $event_ended: Boolean!)  {\n        events(limit: $limit, where: {event_ended: $event_ended}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -94587,11 +94590,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var GetEvents = function GetEvents(_ref) {
   var limit = _ref.limit,
-      orientation = _ref.orientation,
+      event_ended = _ref.event_ended,
       heading = _ref.heading;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _events.default,
-    limit: limit
+    limit: limit,
+    event_ended: event_ended
   }, function (_ref2) {
     var events = _ref2.data.events;
     return _react.default.createElement(_Events.Events, {
@@ -94652,7 +94656,18 @@ var Events = function Events() {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 12,
-      heading: "Upcoming Events"
+      event_ended: true,
+      false: true,
+      heading: "Upcoming Presentations"
+    }))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-testimonials"
+    }, _react.default.createElement(_GetEvents.GetEvents, {
+      limit: 12,
+      event_ended: true,
+      true: true,
+      heading: "Most Recent Presentations"
     }))));
   });
 };
@@ -98661,15 +98676,13 @@ module.exports = {
       }, {
         "name": "EventConnectionSeo"
       }, {
-        "name": "EventConnectionEvent_start_date"
+        "name": "EventConnectionEvent_start"
       }, {
-        "name": "EventConnectionEvent_end_date"
+        "name": "EventConnectionEvent_end"
       }, {
         "name": "EventConnectionEvent_details"
       }, {
-        "name": "EventConnectionEvent_start_time"
-      }, {
-        "name": "EventConnectionEvent_end_time"
+        "name": "EventConnectionEvent_ended"
       }, {
         "name": "EventConnectionPublished_at"
       }, {
@@ -99285,7 +99298,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63331" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52917" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
