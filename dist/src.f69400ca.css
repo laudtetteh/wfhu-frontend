@@ -6266,14 +6266,20 @@ body {
 
 .stf-bg-1 {
   background-image: url("/background-1.8edbe8d2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .stf-bg-2 {
   background-image: url("/background-2.bf131f11.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .stf-bg-3 {
   background-image: url("/background-3.7229caf0.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*

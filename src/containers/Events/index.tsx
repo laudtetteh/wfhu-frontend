@@ -47,7 +47,13 @@ export const Events = () => {
 
                             <div className="container mx-auto py-12 section-testimonials">
 
-                                <GetEvents limit={12} event_ended={false} heading="Upcoming Presentations" />
+                                <GetEvents
+                                    limit={10}
+                                    event_ended={false}
+                                    heading="Upcoming Presentations"
+                                    heading_classes="text-red text-left"
+                                    more_link={false}
+                                />
 
                             </div>
 
@@ -57,7 +63,13 @@ export const Events = () => {
 
                             <div className="container mx-auto py-12 section-testimonials">
 
-                                <GetEvents limit={12} event_ended={true} heading="Most Recent Presentations" />
+                                <GetEvents
+                                    limit={10}
+                                    event_ended={true}
+                                    heading="Most Recent Presentations"
+                                    heading_classes="text-red text-left"
+                                    more_link={false}
+                                />
 
                             </div>
 

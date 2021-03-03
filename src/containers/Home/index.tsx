@@ -2,6 +2,7 @@
 import React from 'react';
 // Containers
 import Testimonials from '../Testimonials';
+import { GetEvents } from '../GetEvents';
 import Posts from '../Posts';
 // Components
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
@@ -88,6 +89,38 @@ export const Home = ({siteOptions}) => {
                             <div className="container mx-auto py-12">
 
                                 <RowOfGifs pageBag={pageBag} limit={3} />
+
+                            </div>
+
+                        </section>
+
+                        <section className="w-full stf-bg-2 section-connect-cta">
+
+                            <div className="container mx-auto py-12">
+
+                                <GetEvents
+                                    limit={5}
+                                    event_ended={false}
+                                    heading="Upcoming Presentations"
+                                    heading_classes="text-white text-left"
+                                    more_link={true}
+                                />
+
+                            </div>
+
+                        </section>
+
+                        <section className="w-full bg-none">
+
+                            <div className="container mx-auto py-12">
+
+                                <GetEvents
+                                    limit={5}
+                                    event_ended={true}
+                                    heading="Most Recent Presentations"
+                                    heading_classes="text-red text-left"
+                                    more_link={true}
+                                />
 
                             </div>
 

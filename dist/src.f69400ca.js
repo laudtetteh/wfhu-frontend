@@ -53192,13 +53192,6 @@ var Card = function Card(_ref) {
     className: "mx-auto md:mt-0 mt-5 md:first:mt-0"
   }, _react.default.createElement("div", {
     className: ""
-  }, _react.default.createElement("img", {
-    src: imageUrl,
-    alt: imageUrl,
-    height: "100",
-    className: "rounded-xl w-full"
-  })), _react.default.createElement("div", {
-    className: ""
   }, _react.default.createElement("p", {
     className: "card-testimonial-description text-base font-roboto font-medium mt-3 mb-3"
   }, testimonial.description), _react.default.createElement("p", {
@@ -73692,7 +73685,167 @@ var Testimonial = function Testimonial(_ref) {
 
 var _default = Testimonial;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../../components/Testimonials":"components/Testimonials/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/testimonial/testimonials":"queries/testimonial/testimonials.tsx"}],"components/Card/post.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../components/Testimonials":"components/Testimonials/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/testimonial/testimonials":"queries/testimonial/testimonials.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Card = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _helpers = require("../../utils/helpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Card = function Card(_ref) {
+  var event = _ref.event,
+      orientation = _ref.orientation;
+  // const imageUrl =
+  //     process.env.NODE_ENV !== "development"
+  //     ? event.image.url
+  //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
+  var object = event;
+  var content_type = "event";
+  var image_size = "post_loop";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "md:mt-0 mt-5 md:first:mt-0 event-".concat(event.id)
+  }, _react.default.createElement("div", {
+    className: "card-event--image"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/event/".concat(event.slug),
+    className: "card-event--image"
+  }, _react.default.createElement("img", {
+    src: imageUrl,
+    alt: imageUrl,
+    height: "100",
+    className: "w-full"
+  }))), _react.default.createElement("div", {
+    className: "card-event--details mt-3"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/event/".concat(event.slug),
+    className: "card-event--title font-roboto no-underline"
+  }, _react.default.createElement("p", {
+    id: "name",
+    className: "font-roboto text-base text-yellow"
+  }, event.name)), _react.default.createElement("p", {
+    id: "",
+    className: "card-event--date font-roboto text-xs text-blue-100 italic"
+  }, _react.default.createElement(_helpers.STFStartEndDates, {
+    _start: event.event_start,
+    _end: event.event_end
+  })))));
+};
+
+exports.Card = Card;
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Events/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Events = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _event = require("../Card/event");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Events = function Events(_ref) {
+  var events = _ref.events,
+      heading = _ref.heading,
+      heading_classes = _ref.heading_classes,
+      more_link = _ref.more_link;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h2", {
+    className: "section-heading font-bellota text-4xl mb-3 ".concat(heading_classes)
+  }, heading, more_link && _react.default.createElement(_reactRouterDom.Link, {
+    to: "/events",
+    className: "link-all font-roboto text-base text-yellow underline pl-3"
+  }, "All Events")), _react.default.createElement("div", {
+    className: "grid grid-cols-1 gap-4 md:grid-cols-5 events-loop"
+  }, events.map(function (event, index) {
+    return _react.default.createElement(_event.Card, _defineProperty({
+      key: index,
+      event: event
+    }, "key", "event-".concat(event.id)));
+  })));
+};
+
+exports.Events = Events;
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/event":"components/Card/event.tsx"}],"queries/event/events.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!, $event_ended: Boolean!)  {\n        events(limit: $limit, where: {event_ended: $event_ended}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var _default = EVENTS_QUERY;
+exports.default = _default;
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GetEvents = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Events = require("../../components/Events");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _events = _interopRequireDefault(require("../../queries/event/events"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var GetEvents = function GetEvents(_ref) {
+  var limit = _ref.limit,
+      event_ended = _ref.event_ended,
+      heading = _ref.heading,
+      heading_classes = _ref.heading_classes,
+      more_link = _ref.more_link;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
+    query: _events.default,
+    limit: limit,
+    event_ended: event_ended
+  }, function (_ref2) {
+    var events = _ref2.data.events;
+    return _react.default.createElement(_Events.Events, {
+      events: events,
+      event_ended: event_ended,
+      heading: heading,
+      heading_classes: heading_classes,
+      more_link: more_link
+    });
+  }));
+};
+
+exports.GetEvents = GetEvents;
+},{"react":"../node_modules/react/index.js","../../components/Events":"components/Events/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/event/events":"queries/event/events.tsx"}],"components/Card/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94319,6 +94472,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Testimonials = _interopRequireDefault(require("../Testimonials"));
 
+var _GetEvents = require("../GetEvents");
+
 var _Posts = _interopRequireDefault(require("../Posts"));
 
 var _ConnectCTA = require("../../components/Cta/ConnectCTA");
@@ -94396,12 +94551,32 @@ var Home = function Home(_ref) {
     }, _react.default.createElement(_RowOfGifs.RowOfGifs, {
       pageBag: pageBag,
       limit: 3
+    }))), _react.default.createElement("section", {
+      className: "w-full stf-bg-2 section-connect-cta"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12"
+    }, _react.default.createElement(_GetEvents.GetEvents, {
+      limit: 5,
+      event_ended: false,
+      heading: "Upcoming Presentations",
+      heading_classes: "text-white text-left",
+      more_link: true
+    }))), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12"
+    }, _react.default.createElement(_GetEvents.GetEvents, {
+      limit: 5,
+      event_ended: true,
+      heading: "Most Recent Presentations",
+      heading_classes: "text-red text-left",
+      more_link: true
     }))));
   });
 };
 
 exports.Home = Home;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Bio/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../GetEvents":"containers/GetEvents/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Bio/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94458,155 +94633,7 @@ var Bio = function Bio() {
 };
 
 exports.Bio = Bio;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Card = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _helpers = require("../../utils/helpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Card = function Card(_ref) {
-  var event = _ref.event,
-      orientation = _ref.orientation;
-  // const imageUrl =
-  //     process.env.NODE_ENV !== "development"
-  //     ? event.image.url
-  //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
-  var object = event;
-  var content_type = "event";
-  var image_size = "post_loop";
-  var imageUrl = (0, _helpers.SmartImage)({
-    object: object,
-    content_type: content_type,
-    image_size: image_size
-  });
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "md:mt-0 mt-5 md:first:mt-0 event-".concat(event.id)
-  }, _react.default.createElement("div", {
-    className: "card-event--image"
-  }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/event/".concat(event.slug),
-    className: "card-event--image"
-  }, _react.default.createElement("img", {
-    src: imageUrl,
-    alt: imageUrl,
-    height: "100",
-    className: "w-full"
-  }))), _react.default.createElement("div", {
-    className: "card-event--details mt-3"
-  }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/event/".concat(event.slug),
-    className: "card-event--title font-roboto no-underline"
-  }, _react.default.createElement("p", {
-    id: "name",
-    className: "font-roboto text-base text-yellow"
-  }, event.name)), _react.default.createElement("p", {
-    id: "",
-    className: "card-event--date font-roboto text-xs text-blue-100 italic"
-  }, _react.default.createElement(_helpers.STFStartEndDates, {
-    _start: event.event_start,
-    _end: event.event_end
-  })))));
-};
-
-exports.Card = Card;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Events/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Events = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _event = require("../Card/event");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Events = function Events(_ref) {
-  var events = _ref.events,
-      heading = _ref.heading;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl text-red text-left mb-3"
-  }, heading), _react.default.createElement("div", {
-    className: "grid grid-cols-1 gap-4 md:grid-cols-3 events-loop"
-  }, events.map(function (event, index) {
-    return _react.default.createElement(_event.Card, _defineProperty({
-      key: index,
-      event: event
-    }, "key", "event-".concat(event.id)));
-  })));
-};
-
-exports.Events = Events;
-},{"react":"../node_modules/react/index.js","../Card/event":"components/Card/event.tsx"}],"queries/event/events.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
-
-var _templateObject;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!, $event_ended: Boolean!)  {\n        events(limit: $limit, where: {event_ended: $event_ended}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
-var _default = EVENTS_QUERY;
-exports.default = _default;
-},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GetEvents = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Events = require("../../components/Events");
-
-var _Query = _interopRequireDefault(require("../../components/Query"));
-
-var _events = _interopRequireDefault(require("../../queries/event/events"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var GetEvents = function GetEvents(_ref) {
-  var limit = _ref.limit,
-      event_ended = _ref.event_ended,
-      heading = _ref.heading;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
-    query: _events.default,
-    limit: limit,
-    event_ended: event_ended
-  }, function (_ref2) {
-    var events = _ref2.data.events;
-    return _react.default.createElement(_Events.Events, {
-      events: events,
-      heading: heading
-    });
-  }));
-};
-
-exports.GetEvents = GetEvents;
-},{"react":"../node_modules/react/index.js","../../components/Events":"components/Events/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/event/events":"queries/event/events.tsx"}],"containers/Events/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Events/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94655,17 +94682,21 @@ var Events = function Events() {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 12,
+      limit: 10,
       event_ended: false,
-      heading: "Upcoming Presentations"
+      heading: "Upcoming Presentations",
+      heading_classes: "text-red text-left",
+      more_link: false
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 12,
+      limit: 10,
       event_ended: true,
-      heading: "Most Recent Presentations"
+      heading: "Most Recent Presentations",
+      heading_classes: "text-red text-left",
+      more_link: false
     }))));
   });
 };
@@ -99296,7 +99327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52917" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54663" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

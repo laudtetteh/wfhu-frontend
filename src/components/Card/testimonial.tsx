@@ -22,9 +22,6 @@ const Card = ({ testimonial }) => {
         <React.Fragment>
 
         <div className="mx-auto md:mt-0 mt-5 md:first:mt-0">
-            <div className="">
-                <img src={imageUrl} alt={imageUrl} height="100" className="rounded-xl w-full"/>
-            </div>
 
             <div className="">
 
