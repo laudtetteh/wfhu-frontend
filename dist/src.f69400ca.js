@@ -53274,6 +53274,7 @@ var Query = function Query(_ref) {
       query = _ref.query,
       id = _ref.id,
       limit = _ref.limit,
+      sort = _ref.sort,
       event_ended = _ref.event_ended,
       event_start_gt = _ref.event_start_gt,
       event_start_lt = _ref.event_start_lt,
@@ -53283,6 +53284,7 @@ var Query = function Query(_ref) {
     variables: (_variables = {
       id: id,
       limit: limit,
+      sort: sort,
       event_ended: event_ended,
       event_start_gt: event_start_gt
     }, _defineProperty(_variables, "event_start_gt", event_start_gt), _defineProperty(_variables, "slug", slug), _variables)
@@ -73811,7 +73813,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!, $event_ended: Boolean!, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(limit: $limit, where: {event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($sort: String!, $limit: Int, $event_ended: Boolean!, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -73833,13 +73835,12 @@ var _events = _interopRequireDefault(require("../../queries/event/events"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var GetEvents = function GetEvents(props) {
-  console.log(props.event_start_lt);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _events.default,
-    limit: props.limit,
     event_ended: props.event_ended,
     event_start_gt: props.event_start_gt,
-    event_start_lt: props.event_start_lt
+    event_start_lt: props.event_start_lt,
+    sort: props.sort
   }, function (_ref) {
     var events = _ref.data.events;
     return _react.default.createElement(_Events.Events, {
@@ -94507,6 +94508,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Utilities
 var Home = function Home(_ref) {
   var siteOptions = _ref.siteOptions;
+
+  var _now = new Date();
+
+  var _nowIso = _now.toISOString();
+
   return _react.default.createElement(_Query.default, {
     query: _page.default,
     slug: "home"
@@ -94566,6 +94572,7 @@ var Home = function Home(_ref) {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 5,
       event_ended: false,
+      event_start_gt: _nowIso,
       heading: "Upcoming Presentations",
       heading_classes: "text-white text-left",
       more_link: true
@@ -94576,6 +94583,8 @@ var Home = function Home(_ref) {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 5,
       event_ended: true,
+      event_start_lt: _nowIso,
+      sort: "event_start:ASC",
       heading: "Most Recent Presentations",
       heading_classes: "text-red text-left",
       more_link: true
@@ -94694,9 +94703,9 @@ var Events = function Events() {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 10,
       event_ended: false,
       event_start_gt: _nowIso,
+      sort: "event_start:ASC",
       heading: "Upcoming Presentations",
       heading_classes: "text-red text-left",
       more_link: false
@@ -94705,9 +94714,9 @@ var Events = function Events() {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 10,
       event_ended: true,
       event_start_lt: _nowIso,
+      sort: "event_start:ASC",
       heading: "Most Recent Presentations",
       heading_classes: "text-red text-left",
       more_link: false

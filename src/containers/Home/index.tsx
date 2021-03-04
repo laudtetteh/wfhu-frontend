@@ -17,6 +17,9 @@ import { getPageData } from '../../utils/apiHelper';
 
 export const Home = ({siteOptions}) => {
 
+    const _now = new Date();
+    const _nowIso = _now.toISOString();
+
     return (
 
         <Query query={PAGE_QUERY} slug="home">
@@ -101,6 +104,7 @@ export const Home = ({siteOptions}) => {
                                 <GetEvents
                                     limit={5}
                                     event_ended={false}
+                                    event_start_gt={_nowIso}
                                     heading="Upcoming Presentations"
                                     heading_classes="text-white text-left"
                                     more_link={true}
@@ -117,6 +121,8 @@ export const Home = ({siteOptions}) => {
                                 <GetEvents
                                     limit={5}
                                     event_ended={true}
+                                    event_start_lt={_nowIso}
+                                    sort="event_start:ASC"
                                     heading="Most Recent Presentations"
                                     heading_classes="text-red text-left"
                                     more_link={true}

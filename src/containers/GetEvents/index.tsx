@@ -4,17 +4,17 @@ import Query from "../../components/Query";
 import EVENTS_QUERY from "../../queries/event/events";
 
 export const GetEvents = props => {
-console.log(props.event_start_lt)
+
     return (
 
         <React.Fragment>
 
             <Query
                 query={EVENTS_QUERY}
-                limit={props.limit}
                 event_ended={props.event_ended}
                 event_start_gt={props.event_start_gt}
-                event_start_lt={props.event_start_lt}>
+                event_start_lt={props.event_start_lt}
+                sort={props.sort}>
                 {({ data: { events } }) => {
                     return <Events
                                 events={events}

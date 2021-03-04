@@ -51,9 +51,9 @@ export const Events = () => {
                             <div className="container mx-auto py-12 section-testimonials">
 
                                 <GetEvents
-                                    limit={10}
                                     event_ended={false}
                                     event_start_gt={_nowIso}
+                                    sort="event_start:ASC"
                                     heading="Upcoming Presentations"
                                     heading_classes="text-red text-left"
                                     more_link={false}
@@ -68,9 +68,9 @@ export const Events = () => {
                             <div className="container mx-auto py-12 section-testimonials">
 
                                 <GetEvents
-                                    limit={10}
                                     event_ended={true}
                                     event_start_lt={_nowIso}
+                                    sort="event_start:ASC"
                                     heading="Most Recent Presentations"
                                     heading_classes="text-red text-left"
                                     more_link={false}
