@@ -71,7 +71,7 @@ export const Events = () => {
                                     event_ended={true}
                                     event_start_lt={_nowIso}
                                     sort="event_start:ASC"
-                                    heading="Most Recent Presentations"
+                                    heading="Recent Presentations"
                                     heading_classes="text-red text-left"
                                     more_link={false}
                                 />
