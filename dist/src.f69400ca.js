@@ -73754,7 +73754,7 @@ var Card = function Card(_ref) {
     className: "font-roboto text-base text-yellow"
   }, event.name)), _react.default.createElement("p", {
     id: "",
-    className: "card-event--date font-roboto text-xs text-blue-100 italic"
+    className: "card-event--date font-roboto text-xs text-darkblue italic"
   }, _react.default.createElement(_helpers.STFStartEndDates, {
     _start: event.event_start,
     _end: event.event_end

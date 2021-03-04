@@ -35,7 +35,7 @@ export const Card = ({ event }) => {
                     </Link>
 
 
-                    <p id="" className="card-event--date font-roboto text-xs text-blue-100 italic">
+                    <p id="" className="card-event--date font-roboto text-xs text-darkblue italic">
                         <STFStartEndDates
                             _start={event.event_start}
                             _end={event.event_end}
