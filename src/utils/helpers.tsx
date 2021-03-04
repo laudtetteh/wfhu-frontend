@@ -164,6 +164,19 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
             break;
 
+        case "event_single":
+
+            if( object.image !== null && object.image.formats.post_single !== undefined ) {
+                _imageUrl = object.image.formats.post_single.url;
+
+            } else {
+
+                _imageUrl = plchld_post_single;
+                console.log("Missing (correctly-sized) image for one or more events. Placeholder used");
+            }
+
+            break;
+
         default:
 
             console.log("No image found for one or more of `content_type`s. Placeholder used");

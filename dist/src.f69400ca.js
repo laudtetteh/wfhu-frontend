@@ -53149,6 +53149,16 @@ var SmartImage = function SmartImage(_ref5) {
 
       break;
 
+    case "event_single":
+      if (object.image !== null && object.image.formats.post_single !== undefined) {
+        _imageUrl = object.image.formats.post_single.url;
+      } else {
+        _imageUrl = _placeholder_post_single.default;
+        console.log("Missing (correctly-sized) image for one or more events. Placeholder used");
+      }
+
+      break;
+
     default:
       console.log("No image found for one or more of `content_type`s. Placeholder used");
   }
@@ -53255,22 +53265,27 @@ var _spinner = _interopRequireDefault(require("../../../assets/images/spinner.sv
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Assets
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Query = function Query(_ref) {
+  var _variables;
+
   var children = _ref.children,
       query = _ref.query,
       id = _ref.id,
       limit = _ref.limit,
       event_ended = _ref.event_ended,
+      event_start_gt = _ref.event_start_gt,
+      event_start_lt = _ref.event_start_lt,
       slug = _ref.slug;
 
   var _useQuery = (0, _reactHooks.useQuery)(query, {
-    variables: {
+    variables: (_variables = {
       id: id,
       limit: limit,
       event_ended: event_ended,
-      slug: slug
-    }
+      event_start_gt: event_start_gt
+    }, _defineProperty(_variables, "event_start_gt", event_start_gt), _defineProperty(_variables, "slug", slug), _variables)
   }),
       data = _useQuery.data,
       loading = _useQuery.loading,
@@ -73702,8 +73717,7 @@ var _helpers = require("../../utils/helpers");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Card = function Card(_ref) {
-  var event = _ref.event,
-      orientation = _ref.orientation;
+  var event = _ref.event;
   // const imageUrl =
   //     process.env.NODE_ENV !== "development"
   //     ? event.image.url
@@ -73762,25 +73776,21 @@ var _event = require("../Card/event");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Events = function Events(_ref) {
-  var events = _ref.events,
-      heading = _ref.heading,
-      heading_classes = _ref.heading_classes,
-      more_link = _ref.more_link;
+// Packages
+// Components
+var Events = function Events(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-4xl mb-3 ".concat(heading_classes)
-  }, heading, more_link && _react.default.createElement(_reactRouterDom.Link, {
+    className: "section-heading font-bellota text-4xl mb-3 ".concat(props.heading_classes)
+  }, props.heading, props.more_link && _react.default.createElement(_reactRouterDom.Link, {
     to: "/events",
     className: "link-all font-roboto text-base text-yellow underline pl-3"
   }, "All Events")), _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-5 events-loop"
-  }, events.map(function (event, index) {
-    return _react.default.createElement(_event.Card, _defineProperty({
-      key: index,
-      event: event
-    }, "key", "event-".concat(event.id)));
+  }, props.events.map(function (event) {
+    return _react.default.createElement(_event.Card, {
+      event: event,
+      key: "event-".concat(event.id)
+    });
   })));
 };
 
@@ -73801,7 +73811,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!, $event_ended: Boolean!)  {\n        events(limit: $limit, where: {event_ended: $event_ended}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($limit: Int!, $event_ended: Boolean!, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(limit: $limit, where: {event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -73822,24 +73832,22 @@ var _events = _interopRequireDefault(require("../../queries/event/events"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var GetEvents = function GetEvents(_ref) {
-  var limit = _ref.limit,
-      event_ended = _ref.event_ended,
-      heading = _ref.heading,
-      heading_classes = _ref.heading_classes,
-      more_link = _ref.more_link;
+var GetEvents = function GetEvents(props) {
+  console.log(props.event_start_lt);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _events.default,
-    limit: limit,
-    event_ended: event_ended
-  }, function (_ref2) {
-    var events = _ref2.data.events;
+    limit: props.limit,
+    event_ended: props.event_ended,
+    event_start_gt: props.event_start_gt,
+    event_start_lt: props.event_start_lt
+  }, function (_ref) {
+    var events = _ref.data.events;
     return _react.default.createElement(_Events.Events, {
       events: events,
-      event_ended: event_ended,
-      heading: heading,
-      heading_classes: heading_classes,
-      more_link: more_link
+      event_ended: props.event_ended,
+      heading: props.heading,
+      heading_classes: props.heading_classes,
+      more_link: props.more_link
     });
   }));
 };
@@ -94684,6 +94692,8 @@ var Events = function Events() {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 10,
       event_ended: false,
+      event_start_gt: "2021-02-04T10:00:00.000Z",
+      event_start_lt: "2021-03-16T10:00:00.000Z",
       heading: "Upcoming Presentations",
       heading_classes: "text-red text-left",
       more_link: false
@@ -94694,6 +94704,7 @@ var Events = function Events() {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 10,
       event_ended: true,
+      event_start_lt: "2021-03-04T10:00:00.000Z",
       heading: "Most Recent Presentations",
       heading_classes: "text-red text-left",
       more_link: false
@@ -94740,7 +94751,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n      slug\n    }\n  }\n"])));
 var _default = CATEGORIES_QUERY;
 exports.default = _default;
-},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"components/Nav/blog.js":[function(require,module,exports) {
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"components/Nav/blog.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94763,32 +94774,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Packages
 // Queries
 var BlogNav = function BlogNav() {
-  return /*#__PURE__*/_react.default.createElement(_Query.default, {
+  return _react.default.createElement(_Query.default, {
     query: _categories.default,
     id: null
   }, function (_ref) {
     var categories = _ref.data.categories;
-    return /*#__PURE__*/_react.default.createElement("nav", {
+    return _react.default.createElement("nav", {
       className: "nav-sidebar"
-    }, /*#__PURE__*/_react.default.createElement("h2", {
+    }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-left mb-3"
-    }, "Series"), /*#__PURE__*/_react.default.createElement("ul", {
+    }, "Series"), _react.default.createElement("ul", {
       className: "loop-categories font-roboto text-base text-black font-medium"
     }, categories.map(function (category, i) {
-      return /*#__PURE__*/_react.default.createElement("li", {
+      return _react.default.createElement("li", {
         key: category.id,
         className: "mb-3"
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/category/".concat(category.slug),
         className: "link-category"
-      }, /*#__PURE__*/_react.default.createElement("p", {
+      }, _react.default.createElement("p", {
         className: ""
-      }, category.name)), /*#__PURE__*/_react.default.createElement(_Query.default, {
+      }, category.name)), _react.default.createElement(_Query.default, {
         query: _posts.default,
         slug: category.slug
       }, function (_ref2) {
         var categories = _ref2.data.categories;
-        return /*#__PURE__*/_react.default.createElement("p", {
+        return _react.default.createElement("p", {
           className: "post-category-postcount font-roboto text-xs text-black font-thin italic"
         }, categories[0].posts.length, " Posts");
       }));
@@ -94797,28 +94808,93 @@ var BlogNav = function BlogNav() {
 };
 
 exports.BlogNav = BlogNav;
-},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/posts":"queries/category/posts.tsx","../../queries/category/categories":"queries/category/categories.tsx"}],"containers/Sidebar/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/posts":"queries/category/posts.tsx","../../queries/category/categories":"queries/category/categories.tsx"}],"components/Nav/event.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Sidebar = void 0;
+exports.EventNav = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Query = _interopRequireDefault(require("../Query"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _events = _interopRequireDefault(require("../../queries/event/events"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Queries
+var EventNav = function EventNav() {
+  return _react.default.createElement(_Query.default, {
+    query: _events.default,
+    id: null
+  }, function (_ref) {
+    var categories = _ref.data.categories;
+    return _react.default.createElement("nav", {
+      className: "nav-sidebar"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
+    }, "Series"), _react.default.createElement("ul", {
+      className: "loop-categories font-roboto text-base text-black font-medium"
+    }, categories.map(function (category, i) {
+      return _react.default.createElement("li", {
+        key: category.id,
+        className: "mb-3"
+      }, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/category/".concat(category.slug),
+        className: "link-category"
+      }, _react.default.createElement("p", {
+        className: ""
+      }, category.name)), _react.default.createElement(_Query.default, {
+        query: CATEGORY_POSTS_QUERY,
+        slug: category.slug
+      }, function (_ref2) {
+        var categories = _ref2.data.categories;
+        return _react.default.createElement("p", {
+          className: "post-category-postcount font-roboto text-xs text-black font-thin italic"
+        }, categories[0].posts.length, " Posts");
+      }));
+    })));
+  });
+};
+
+exports.EventNav = EventNav;
+},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../queries/event/events":"queries/event/events.tsx"}],"containers/Sidebar/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.EventSidebar = exports.BlogSidebar = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _blog = require("../../components/Nav/blog");
 
+var _event = require("../../components/Nav/event");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Sidebar = function Sidebar() {
+var BlogSidebar = function BlogSidebar() {
   return _react.default.createElement("div", {
     className: "col-span-2 mt-10 md:mt-0"
   }, _react.default.createElement(_blog.BlogNav, null));
 };
 
-exports.Sidebar = Sidebar;
-},{"react":"../node_modules/react/index.js","../../components/Nav/blog":"components/Nav/blog.js"}],"containers/Blog/index.tsx":[function(require,module,exports) {
+exports.BlogSidebar = BlogSidebar;
+
+var EventSidebar = function EventSidebar() {
+  return _react.default.createElement("div", {
+    className: "col-span-2 mt-10 md:mt-0"
+  }, _react.default.createElement(_event.EventNav, null));
+};
+
+exports.EventSidebar = EventSidebar;
+},{"react":"../node_modules/react/index.js","../../components/Nav/blog":"components/Nav/blog.tsx","../../components/Nav/event":"components/Nav/event.tsx"}],"containers/Blog/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94865,7 +94941,7 @@ var Blog = function Blog(_ref) {
       limit: 12,
       orientation: "vertical",
       heading: "Posts"
-    }), _react.default.createElement(_Sidebar.Sidebar, null)))));
+    }), _react.default.createElement(_Sidebar.BlogSidebar, null)))));
   });
 };
 
@@ -94921,73 +94997,7 @@ var Contact = function Contact(_ref) {
 };
 
 exports.Contact = Contact;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Post/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Post = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _helpers = require("../../utils/helpers");
-
-var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
-
-var _reactRouterDom = require("react-router-dom");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Post = function Post(_ref) {
-  var post = _ref.post;
-  // const imageUrl =
-  //   process.env.NODE_ENV !== "development"
-  //     ? post.image.url
-  //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
-  // const imageUrl = post.image.url;
-  var object = post;
-  var content_type = "post_single";
-  var image_size = "post_single";
-  var imageUrl = (0, _helpers.SmartImage)({
-    object: object,
-    content_type: content_type,
-    image_size: image_size
-  });
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "col-span-5 space-y-6"
-  }, _react.default.createElement("div", {
-    className: "w-full"
-  }, _react.default.createElement("img", {
-    src: imageUrl,
-    alt: imageUrl,
-    className: "w-full"
-  })), _react.default.createElement("div", {
-    className: "byline"
-  }, _react.default.createElement("h3", {
-    className: "card-post-name font-roboto text-2xl text-black mb-3"
-  }, post.name), _react.default.createElement("p", {
-    className: "card-post-name font-roboto text-base text-darkblue mb-3"
-  }, _react.default.createElement(_helpers.STFDate, {
-    _timestamp: post.published_at,
-    _format: "MMMM D, YYYY"
-  }), _react.default.createElement("span", {
-    className: "font-thin"
-  }, " | "), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/category/".concat(post.category.slug)
-  }, _react.default.createElement("span", {
-    className: "card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3"
-  }, _react.default.createElement("i", {
-    className: "fa fa-tags bg-none text-darkblue text-sm mr-1"
-  }), post.category.name)))), _react.default.createElement("p", {
-    className: "card-post-description text-base font-roboto font-normal mt-3 mb-3"
-  }, _react.default.createElement(_reactMarkdown.default, {
-    source: post.description
-  }))));
-};
-
-exports.Post = Post;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"queries/post/post.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"queries/post/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95012,15 +95022,13 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PostSingle = void 0;
+exports.Post = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactRouter = require("react-router");
 
 var _Sidebar = require("../Sidebar");
-
-var _Post = require("../../components/Post");
 
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
@@ -95032,10 +95040,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Packages
 // Containers
-// Components
 // Queries
 // Utilities
-var PostSingle = function PostSingle(_ref) {
+var Post = function Post(_ref) {
   var siteOptions = _ref.siteOptions;
 
   var _useParams = (0, _reactRouter.useParams)(),
@@ -95054,14 +95061,145 @@ var PostSingle = function PostSingle(_ref) {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
       className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
-    }, _react.default.createElement(_Post.Post, {
+    }, _react.default.createElement(Post, {
       post: posts[0]
-    }), _react.default.createElement(_Sidebar.Sidebar, null)))));
+    }), _react.default.createElement(_Sidebar.BlogSidebar, null)))));
   });
 };
 
-exports.PostSingle = PostSingle;
-},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../Sidebar":"containers/Sidebar/index.tsx","../../components/Post":"components/Post/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/post":"queries/post/post.tsx","../../utils/helpers":"utils/helpers.tsx"}],"containers/Category/index.tsx":[function(require,module,exports) {
+exports.Post = Post;
+},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../Sidebar":"containers/Sidebar/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/post":"queries/post/post.tsx","../../utils/helpers":"utils/helpers.tsx"}],"components/Event/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.EventComponent = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _helpers = require("../../utils/helpers");
+
+var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var EventComponent = function EventComponent(_ref) {
+  var event = _ref.event;
+  // const imageUrl =
+  //   process.env.NODE_ENV !== "development"
+  //     ? event.image.url
+  //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
+  // const imageUrl = event.image.url;
+  var object = event;
+  var content_type = "event_single";
+  var image_size = "event_single";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "col-span-5 space-y-6"
+  }, _react.default.createElement("div", {
+    className: "w-full"
+  }, _react.default.createElement("img", {
+    src: imageUrl,
+    alt: imageUrl,
+    className: "w-full"
+  })), _react.default.createElement("div", {
+    className: "byline"
+  }, _react.default.createElement("h3", {
+    className: "card-event-name font-roboto text-2xl text-black mb-3"
+  }, event.name), _react.default.createElement("p", {
+    className: "card-event-name font-roboto text-base text-darkblue mb-3"
+  }, _react.default.createElement(_helpers.STFStartEndDates, {
+    _start: event.event_start,
+    _end: event.event_end
+  }))), _react.default.createElement("p", {
+    className: "card-event-description text-base font-roboto font-normal mt-3 mb-3"
+  }, _react.default.createElement(_reactMarkdown.default, {
+    source: event.description
+  })), _react.default.createElement("p", {
+    className: "card-event-description text-base font-roboto font-normal mt-3 mb-3"
+  }, _react.default.createElement(_reactMarkdown.default, {
+    source: event.event_details
+  }))));
+};
+
+exports.EventComponent = EventComponent;
+},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js"}],"queries/event/event.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($slug: String!) {\n        events(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var _default = EVENT_QUERY;
+exports.default = _default;
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Event/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Event = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouter = require("react-router");
+
+var _Event = require("../../components/Event");
+
+var _Query = _interopRequireDefault(require("../../components/Query"));
+
+var _event = _interopRequireDefault(require("../../queries/event/event"));
+
+var _helpers = require("../../utils/helpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Components
+// Queries
+// Utilities
+var Event = function Event(_ref) {
+  var siteOptions = _ref.siteOptions;
+
+  var _useParams = (0, _reactRouter.useParams)(),
+      slug = _useParams.slug;
+
+  return _react.default.createElement(_Query.default, {
+    query: _event.default,
+    slug: slug
+  }, function (_ref2) {
+    var events = _ref2.data.events;
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
+      title: events[0].name
+    }), _react.default.createElement("section", {
+      className: "w-full bg-none"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-events"
+    }, _react.default.createElement("div", {
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
+    }, _react.default.createElement(_Event.EventComponent, {
+      event: events[0]
+    })))));
+  });
+};
+
+exports.Event = Event;
+},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../../components/Event":"components/Event/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/event/event":"queries/event/event.tsx","../../utils/helpers":"utils/helpers.tsx"}],"containers/Category/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95112,12 +95250,12 @@ var Category = function Category(_ref) {
       posts: categories[0].posts,
       orientation: "vertical",
       heading: categories[0].name
-    }), _react.default.createElement(_Sidebar.Sidebar, null)))));
+    }), _react.default.createElement(_Sidebar.BlogSidebar, null)))));
   });
 };
 
 exports.Category = Category;
-},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../../components/Posts":"components/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/category/posts":"queries/category/posts.tsx"}],"components/Nav/main.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../../components/Posts":"components/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/category/posts":"queries/category/posts.tsx"}],"components/Nav/main.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95140,16 +95278,16 @@ var MainNav = function MainNav(props) {
       props.hideMenu();
     }
   }, [location.pathname]);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "w-full block flex-grow lg:items-center lg:w-auto ".concat(props.menuVisibility ? '' : 'hidden', " ").concat(props.containerClasses),
     id: props.containerId
-  }, /*#__PURE__*/_react.default.createElement("ul", {
+  }, _react.default.createElement("ul", {
     className: "text-sm lg:flex-grow  text-center lg:text-right ".concat(props.listClasses)
   }, props.links.map(function (link, index) {
-    return /*#__PURE__*/_react.default.createElement("li", {
+    return _react.default.createElement("li", {
       className: "block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white text-lg ".concat(props.listItemClasses),
       key: index
-    }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
+    }, _react.default.createElement(_reactRouterDom.NavLink, {
       exact: true,
       to: link.path,
       name: link.label,
@@ -95265,7 +95403,7 @@ var Header = function Header(props) {
 };
 
 exports.Header = Header;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"components/Query/index.tsx","../Nav/main":"components/Nav/main.js","../../../assets/images/logo.svg":"../assets/images/logo.svg","../../queries/top-menu":"queries/top-menu/index.tsx"}],"components/Footer/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../components/Query":"components/Query/index.tsx","../Nav/main":"components/Nav/main.tsx","../../../assets/images/logo.svg":"../assets/images/logo.svg","../../queries/top-menu":"queries/top-menu/index.tsx"}],"components/Footer/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95348,6 +95486,8 @@ var _Contact = require("../Contact");
 
 var _Post = require("../../containers/Post");
 
+var _Event = require("../../containers/Event");
+
 var _Category = require("../../containers/Category");
 
 var _Header = require("../../components/Header");
@@ -95425,7 +95565,9 @@ var App = function App() {
       exact: true
     }, _react.default.createElement(_Contact.Contact, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/post/:slug"
-    }, _react.default.createElement(_Post.PostSingle, null)), _react.default.createElement(_reactRouterDom.Route, {
+    }, _react.default.createElement(_Post.Post, null)), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/event/:slug"
+    }, _react.default.createElement(_Event.Event, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/category/:slug"
     }, _react.default.createElement(_Category.Category, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
@@ -95437,7 +95579,7 @@ var App = function App() {
 };
 
 exports.App = App;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../Bio":"containers/Bio/index.tsx","../Events":"containers/Events/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"containers/Home/index.tsx","../Bio":"containers/Bio/index.tsx","../Events":"containers/Events/index.tsx","../Blog":"containers/Blog/index.tsx","../Contact":"containers/Contact/index.tsx","../../containers/Post":"containers/Post/index.tsx","../../containers/Event":"containers/Event/index.tsx","../../containers/Category":"containers/Category/index.tsx","../../components/Header":"components/Header/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx","../../components/Footer":"components/Footer/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/site-options":"queries/site-options/index.tsx"}],"../node_modules/apollo-cache/lib/bundle.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99327,7 +99469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54663" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49715" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

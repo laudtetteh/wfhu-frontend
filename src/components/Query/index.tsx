@@ -4,9 +4,16 @@ import * as CSS from 'csstype';
 // Assets
 import spinner from '../../../assets/images/spinner.svg';
 
-const Query = ({ children, query, id, limit, event_ended, slug }) => {
+const Query = ({ children, query, id, limit, event_ended, event_start_gt, event_start_lt, slug }) => {
     const { data, loading, error } = useQuery(query, {
-        variables: { id: id, limit: limit, event_ended: event_ended, slug: slug }
+        variables: {
+            id: id,
+            limit: limit,
+            event_ended: event_ended,
+            event_start_gt:event_start_gt,
+            event_start_gt:event_start_gt,
+            slug: slug
+        }
     });
 
     const spinnerStyles: CSS.Properties = {

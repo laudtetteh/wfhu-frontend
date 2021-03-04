@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { STFDate, STFStartEndDates, SmartImage, TrimText } from '../../utils/helpers';
 
-export const Card = ({ event, orientation }) => {
+export const Card = ({ event }) => {
     // const imageUrl =
     //     process.env.NODE_ENV !== "development"
     //     ? event.image.url

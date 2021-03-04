@@ -12,7 +12,9 @@ import { Contact } from '../Contact';
 import { NotFound } from '../NotFound';
 // Other Containers
 import { Posts } from "../../containers/Posts";
-import { PostSingle } from "../../containers/Post";
+import { Post } from "../../containers/Post";
+import { Event } from "../../containers/Event";
+import { GetEvents } from "../../containers/GetEvents";
 import { Category } from "../../containers/Category";
 import { Categories } from "../../containers/Categories";
 // Components
@@ -80,7 +82,11 @@ export const App = () => {
                                     </Route>
 
                                     <Route path="/post/:slug">
-                                        <PostSingle />
+                                        <Post />
+                                    </Route>
+
+                                    <Route path="/event/:slug">
+                                        <Event />
                                     </Route>
 
                                     <Route path="/category/:slug">

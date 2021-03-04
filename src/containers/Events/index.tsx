@@ -50,6 +50,8 @@ export const Events = () => {
                                 <GetEvents
                                     limit={10}
                                     event_ended={false}
+                                    event_start_gt="2021-02-04T10:00:00.000Z"
+                                    event_start_lt="2021-03-16T10:00:00.000Z"
                                     heading="Upcoming Presentations"
                                     heading_classes="text-red text-left"
                                     more_link={false}
@@ -66,6 +68,7 @@ export const Events = () => {
                                 <GetEvents
                                     limit={10}
                                     event_ended={true}
+                                    event_start_lt="2021-03-04T10:00:00.000Z"
                                     heading="Most Recent Presentations"
                                     heading_classes="text-red text-left"
                                     more_link={false}

@@ -2,7 +2,7 @@
 import React from 'react';
 // Containers
 import Posts from '../Posts';
-import { Sidebar } from '../Sidebar';
+import { BlogSidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import Query from "../../components/Query";
@@ -35,7 +35,7 @@ export const Blog = ({siteOptions}) => {
 
                                     <Posts limit={12} orientation="vertical" heading="Posts" />
 
-                                    <Sidebar />
+                                    <BlogSidebar />
 
                                 </div>
 

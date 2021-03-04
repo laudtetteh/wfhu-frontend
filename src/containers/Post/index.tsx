@@ -3,9 +3,9 @@ import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 // Containers
-import { Sidebar } from '../Sidebar';
+import { BlogSidebar } from '../Sidebar';
 // Components
-import { Post } from "../../components/Post";
+import { PostComponent } from "../../components/Post";
 // Queries
 import Query from "../../components/Query";
 import POST_QUERY from "../../queries/post/post";
@@ -13,7 +13,7 @@ import POST_QUERY from "../../queries/post/post";
 import { STFDate, DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
 
-export const PostSingle = ({siteOptions}) => {
+export const Post = ({siteOptions}) => {
 
 
     let { slug } = useParams();
@@ -38,7 +38,7 @@ export const PostSingle = ({siteOptions}) => {
 
                                         <Post post={posts[0]} />
 
-                                        <Sidebar />
+                                        <BlogSidebar />
 
                                     </div>
                                 </div>

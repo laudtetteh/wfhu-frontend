@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from "react-router";
 // Containers
 import Posts from "../../components/Posts";
-import { Sidebar } from '../Sidebar';
+import { BlogSidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import Query from "../../components/Query";
@@ -38,7 +38,7 @@ export const Category = ({siteOptions}) => {
 
                                     <Posts limit={12} posts={categories[0].posts} orientation="vertical" heading={categories[0].name} />
 
-                                    <Sidebar />
+                                    <BlogSidebar />
 
                                 </div>
 

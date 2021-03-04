@@ -3,8 +3,9 @@ import Query from "../../components/Query";
 import { Link } from "react-router-dom";
 
 import { BlogNav } from '../../components/Nav/blog';
+import { EventNav } from '../../components/Nav/event';
 
-export const Sidebar = () => {
+export const BlogSidebar = () => {
 
     return (
 
@@ -12,4 +13,14 @@ export const Sidebar = () => {
             <BlogNav />
         </div>
     );
-};
+}
+
+export const EventSidebar = () => {
+
+    return (
+
+        <div className="col-span-2 mt-10 md:mt-0">
+            <EventNav />
+        </div>
+    );
+}

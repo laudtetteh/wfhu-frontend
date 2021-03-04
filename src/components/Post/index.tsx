@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { STFDate } from '../../utils/helpers';
 
-export const Post = ({post}) => {
+export const PostComponent = ({post}) => {
 
     // const imageUrl =
     //   process.env.NODE_ENV !== "development"

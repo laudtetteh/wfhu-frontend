@@ -3,20 +3,25 @@ import { Events } from "../../components/Events";
 import Query from "../../components/Query";
 import EVENTS_QUERY from "../../queries/event/events";
 
-export const GetEvents = ({limit, event_ended, heading, heading_classes, more_link}) => {
-
+export const GetEvents = props => {
+console.log(props.event_start_lt)
     return (
 
         <React.Fragment>
 
-            <Query query={EVENTS_QUERY} limit={limit} event_ended={event_ended}>
+            <Query
+                query={EVENTS_QUERY}
+                limit={props.limit}
+                event_ended={props.event_ended}
+                event_start_gt={props.event_start_gt}
+                event_start_lt={props.event_start_lt}>
                 {({ data: { events } }) => {
                     return <Events
                                 events={events}
-                                event_ended={event_ended}
-                                heading={heading}
-                                heading_classes={heading_classes}
-                                more_link={more_link}
+                                event_ended={props.event_ended}
+                                heading={props.heading}
+                                heading_classes={props.heading_classes}
+                                more_link={props.more_link}
                             />;
                 }}
             </Query>
