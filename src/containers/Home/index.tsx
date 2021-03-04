@@ -105,6 +105,7 @@ export const Home = ({siteOptions}) => {
                                     limit={5}
                                     event_ended={false}
                                     event_start_gt={_nowIso}
+                                    sort="event_start:ASC"
                                     heading="Upcoming Presentations"
                                     heading_classes="text-white text-left"
                                     more_link={true}
