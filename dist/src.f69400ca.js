@@ -94667,6 +94667,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Containers
 // Queries
 var Events = function Events() {
+  var _now = new Date();
+
+  var _nowIso = _now.toISOString();
+
   return _react.default.createElement(_Query.default, {
     query: _page.default,
     slug: "events"
@@ -94692,8 +94696,7 @@ var Events = function Events() {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 10,
       event_ended: false,
-      event_start_gt: "2021-02-04T10:00:00.000Z",
-      event_start_lt: "2021-03-16T10:00:00.000Z",
+      event_start_gt: _nowIso,
       heading: "Upcoming Presentations",
       heading_classes: "text-red text-left",
       more_link: false
@@ -94704,7 +94707,7 @@ var Events = function Events() {
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 10,
       event_ended: true,
-      event_start_lt: "2021-03-04T10:00:00.000Z",
+      event_start_lt: _nowIso,
       heading: "Most Recent Presentations",
       heading_classes: "text-red text-left",
       more_link: false
