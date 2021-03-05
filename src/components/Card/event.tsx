@@ -18,7 +18,7 @@ export const Card = ({ event }) => {
 
         <React.Fragment>
 
-            <div className={`md:mt-0 mt-5 md:first:mt-0 event-${event.id}`}>
+            <div className={`md:mt-0 mt-5 first:mt-0 event-${event.id}`}>
 
                 <div className="card-event--image">
                     <Link to={`/event/${event.slug}`} className="card-event--image">

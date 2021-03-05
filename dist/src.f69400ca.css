@@ -6395,12 +6395,20 @@ li.stf-main-nav-list-item a:hover::after {
     margin-left: -30%;
     width: 30%;
   }
+
+  .wrapper-sidebar {
+    margin-top: 5rem;
+  }
 }
 
 @media screen and (min-width: 301px) and (max-width: 639px) {
   .mc-embedded-subscribe {
     margin-left: -25%;
     width: 25%;
+  }
+
+  .wrapper-sidebar {
+    margin-top: 5rem;
   }
 }
 

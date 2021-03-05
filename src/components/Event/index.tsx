@@ -22,7 +22,11 @@ export const EventComponent = ({event}) => {
 
         <React.Fragment>
 
-            <div className={`col-span-5 space-y-6 event-${event.id}`}>
+            <div className={`col-span-5 event-${event.id}`}>
+
+                <a href="/events">
+                    <h4 class="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Events</h4>
+                </a>
 
                 <div className="w-full">
                     <img src={imageUrl} alt={imageUrl} className="w-full"/>
@@ -30,7 +34,7 @@ export const EventComponent = ({event}) => {
 
                 <div className="byline">
 
-                    <h3 className="card-event-name font-roboto text-2xl text-black mb-3">
+                    <h3 className="card-event-name font-roboto text-2xl text-black my-3">
 
                         {event.name}
 

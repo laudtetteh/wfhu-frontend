@@ -2,6 +2,8 @@
 import React from "react";
 import Query from "../Query";
 import { Link } from "react-router-dom";
+// Components
+import { Card } from "../Card/event";
 // Queries
 import EVENTS_QUERY from "../../queries/event/events";
 
@@ -26,25 +28,22 @@ export const EventNav = props => {
 
                         <nav className="nav-sidebar">
 
-                            <h2 className="section-heading font-bellota text-4xl text-red text-left mb-3">More Events</h2>
+                            <h2 className="section-heading font-bellota text-3xl text-red text-left mb-5">More Events</h2>
 
-                            <ul className="loop-categories font-roboto text-base text-black font-medium">
+                            <ul className="loop-events font-roboto text-base text-black font-medium">
 
                                 {events.map((event) => {
 
                                     return (
 
                                         <li key={event.id} className="mb-3">
-
                                             <Link
                                                 to={`/event/${event.slug}`}
-                                                className="link-category">
+                                                className="link-event">
 
-                                                <p className="">{event.name}</p>
+                                                <Card event={event} key={`event-${event.id}`} className=key={`event-${event.id}`} />
 
                                             </Link>
-
-
                                         </li>
                                     );
 

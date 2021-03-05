@@ -73727,7 +73727,7 @@ var Card = function Card(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "md:mt-0 mt-5 md:first:mt-0 event-".concat(event.id)
+    className: "md:mt-0 mt-5 first:mt-0 event-".concat(event.id)
   }, _react.default.createElement("div", {
     className: "card-event--image"
   }, _react.default.createElement(_reactRouterDom.Link, {
@@ -94822,12 +94822,14 @@ var _Query = _interopRequireDefault(require("../Query"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _event = require("../Card/event");
+
 var _events = _interopRequireDefault(require("../../queries/event/events"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Packages
-// Queries
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var EventNav = function EventNav(props) {
   var _now = new Date();
 
@@ -94845,25 +94847,27 @@ var EventNav = function EventNav(props) {
     return _react.default.createElement("nav", {
       className: "nav-sidebar"
     }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
+      className: "section-heading font-bellota text-3xl text-red text-left mb-5"
     }, "More Events"), _react.default.createElement("ul", {
-      className: "loop-categories font-roboto text-base text-black font-medium"
+      className: "loop-events font-roboto text-base text-black font-medium"
     }, events.map(function (event) {
       return _react.default.createElement("li", {
         key: event.id,
         className: "mb-3"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/event/".concat(event.slug),
-        className: "link-category"
-      }, _react.default.createElement("p", {
-        className: ""
-      }, event.name)));
+        className: "link-event"
+      }, _react.default.createElement(_event.Card, _defineProperty({
+        event: event,
+        key: "event-".concat(event.id),
+        className: true
+      }, "key", "event-".concat(event.id)))));
     })));
   });
 };
 
 exports.EventNav = EventNav;
-},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../queries/event/events":"queries/event/events.tsx"}],"containers/Sidebar/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/event":"components/Card/event.tsx","../../queries/event/events":"queries/event/events.tsx"}],"containers/Sidebar/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94881,7 +94885,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var BlogSidebar = function BlogSidebar() {
   return _react.default.createElement("div", {
-    className: "col-span-2 mt-10 md:mt-0"
+    className: "col-span-2 mt-10 md:mt-0 wrapper-sidebar"
   }, _react.default.createElement(_blog.BlogNav, null));
 };
 
@@ -94889,7 +94893,7 @@ exports.BlogSidebar = BlogSidebar;
 
 var EventSidebar = function EventSidebar(props) {
   return _react.default.createElement("div", {
-    className: "col-span-2 mt-10 md:mt-0"
+    className: "col-span-2 wrapper-sidebar"
   }, _react.default.createElement(_event.EventNav, {
     exclude: props.exclude
   }));
@@ -95102,8 +95106,12 @@ var EventComponent = function EventComponent(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "col-span-5 space-y-6 event-".concat(event.id)
-  }, _react.default.createElement("div", {
+    className: "col-span-5 event-".concat(event.id)
+  }, _react.default.createElement("a", {
+    href: "/events"
+  }, _react.default.createElement("h4", {
+    class: "section-heading font-bellota text-3xl text-red text-left mb-5"
+  }, "<All Events")), _react.default.createElement("div", {
     className: "w-full"
   }, _react.default.createElement("img", {
     src: imageUrl,
@@ -95112,7 +95120,7 @@ var EventComponent = function EventComponent(_ref) {
   })), _react.default.createElement("div", {
     className: "byline"
   }, _react.default.createElement("h3", {
-    className: "card-event-name font-roboto text-2xl text-black mb-3"
+    className: "card-event-name font-roboto text-2xl text-black my-3"
   }, event.name), _react.default.createElement("p", {
     className: "card-event-name font-roboto text-base text-darkblue mb-3"
   }, _react.default.createElement(_helpers.STFStartEndDates, {
@@ -95196,7 +95204,7 @@ var Event = function Event(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-events"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Event.EventComponent, {
       event: events[0]
     }), _react.default.createElement(_Sidebar.EventSidebar, {
@@ -99476,7 +99484,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61327" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50623" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
