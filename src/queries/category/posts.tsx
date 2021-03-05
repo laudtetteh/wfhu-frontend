@@ -19,6 +19,7 @@ const CATEGORY_POSTS_QUERY = gql`
                     name
                     slug
                 }
+                published_at
             }
         }
     }

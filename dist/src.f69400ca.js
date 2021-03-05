@@ -73865,14 +73865,13 @@ var _helpers = require("../../utils/helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Card = function Card(_ref) {
-  var post = _ref.post,
-      orientation = _ref.orientation;
-  // const imageUrl =
+var Card = function Card(props) {
+  console.log(props.post.published_at); // const imageUrl =
   //     process.env.NODE_ENV !== "development"
   //     ? post.image.url
   //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
-  var object = post;
+
+  var object = props.post;
   var content_type = "post";
   var image_size = "post_loop";
   var imageUrl = (0, _helpers.SmartImage)({
@@ -73881,13 +73880,13 @@ var Card = function Card(_ref) {
     image_size: image_size
   });
 
-  if (orientation == 'vertical') {
+  if (props.orientation == 'vertical') {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-3 md:grid-flow-col md:gap-4 w-full md:w-auto post-".concat(post.id)
+      className: "md:grid md:grid-cols-1 md:grid-cols-3 md:grid-flow-col md:gap-4 w-full md:w-auto post-".concat(props.post.id)
     }, _react.default.createElement("div", {
       className: "card-post--image col-span-1"
     }, _react.default.createElement(_reactRouterDom.Link, {
-      to: "/post/".concat(post.slug),
+      to: "/post/".concat(props.post.slug),
       className: "card-post--image"
     }, _react.default.createElement("img", {
       src: imageUrl,
@@ -73897,32 +73896,32 @@ var Card = function Card(_ref) {
     }))), _react.default.createElement("div", {
       className: "card-post--details col-span-2 mt-3 md:mt-0"
     }, _react.default.createElement(_reactRouterDom.Link, {
-      to: "/post/".concat(post.slug),
+      to: "/post/".concat(props.post.slug),
       className: "card-post--title font-roboto no-underline"
     }, _react.default.createElement("p", {
       id: "name",
       className: "font-roboto text-base text-black font-medium"
-    }, post.name)), _react.default.createElement("p", {
+    }, props.post.name)), _react.default.createElement("p", {
       id: "",
       className: "card-post--date font-roboto text-xs text-black font-thin italic"
     }, _react.default.createElement(_helpers.STFDate, {
-      _timestamp: post.published_at,
+      _timestamp: props.post.published_at,
       _format: "MMMM D, YYYY"
     })), _react.default.createElement("p", {
       id: "name",
       className: "font-roboto text-base text-black font-normal mt-5"
     }, _react.default.createElement(_helpers.TrimText, {
-      text: post.description,
+      text: props.post.description,
       limit: 200
     })))));
   }
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "md:mt-0 mt-5 md:first:mt-0 post-".concat(post.id)
+    className: "md:mt-0 mt-5 md:first:mt-0 post-".concat(props.post.id)
   }, _react.default.createElement("div", {
     className: "card-post--image"
   }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/post/".concat(post.slug),
+    to: "/post/".concat(props.post.slug),
     className: "card-post--image"
   }, _react.default.createElement("img", {
     src: imageUrl,
@@ -73932,16 +73931,16 @@ var Card = function Card(_ref) {
   }))), _react.default.createElement("div", {
     className: "card-post--details mt-3"
   }, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/post/".concat(post.slug),
+    to: "/post/".concat(props.post.slug),
     className: "card-post--title font-roboto no-underline"
   }, _react.default.createElement("p", {
     id: "name",
     className: "font-roboto text-base text-yellow"
-  }, post.name)), _react.default.createElement("p", {
+  }, props.post.name)), _react.default.createElement("p", {
     id: "",
     className: "card-post--date font-roboto text-xs text-blue-100 italic"
   }, _react.default.createElement(_helpers.STFDate, {
-    _timestamp: post.published_at,
+    _timestamp: props.post.published_at,
     _format: "MMMM D, YYYY"
   })))));
 };
@@ -94723,7 +94722,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Categories($slug: String!) {\n        categories(where: {slug: $slug}) {\n            id\n            name\n            slug\n            posts {\n                id\n                name\n                slug\n                description\n                image {\n                    formats\n                }\n                category {\n                    id\n                    name\n                    slug\n                }\n            }\n        }\n    }\n"])));
+var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Categories($slug: String!) {\n        categories(where: {slug: $slug}) {\n            id\n            name\n            slug\n            posts {\n                id\n                name\n                slug\n                description\n                image {\n                    formats\n                }\n                category {\n                    id\n                    name\n                    slug\n                }\n                published_at\n            }\n        }\n    }\n"])));
 var _default = CATEGORY_POSTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"queries/category/categories.tsx":[function(require,module,exports) {
