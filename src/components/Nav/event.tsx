@@ -7,10 +7,18 @@ import EVENTS_QUERY from "../../queries/event/events";
 
 export const EventNav = props => {
 
+    const _now = new Date();
+    const _nowIso = _now.toISOString();
+
     return (
 
-
-            <Query query={EVENTS_QUERY} id={null} exlude={props.exclude} event_ended={false}>
+            <Query
+                query={EVENTS_QUERY}
+                id={null}
+                exlude={props.exclude}
+                event_ended={false}
+                event_start_gt={_nowIso}
+                sort="event_start:ASC">
 
                 {({ data: { events } }) => {
 

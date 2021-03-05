@@ -94829,11 +94829,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Packages
 // Queries
 var EventNav = function EventNav(props) {
+  var _now = new Date();
+
+  var _nowIso = _now.toISOString();
+
   return _react.default.createElement(_Query.default, {
     query: _events.default,
     id: null,
     exlude: props.exclude,
-    event_ended: false
+    event_ended: false,
+    event_start_gt: _nowIso,
+    sort: "event_start:ASC"
   }, function (_ref) {
     var events = _ref.data.events;
     return _react.default.createElement("nav", {
