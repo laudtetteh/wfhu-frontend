@@ -5,46 +5,37 @@ import { Link } from "react-router-dom";
 // Queries
 import EVENTS_QUERY from "../../queries/event/events";
 
-export const EventNav = () => {
+export const EventNav = props => {
 
     return (
 
 
-            <Query query={EVENTS_QUERY} id={null}>
+            <Query query={EVENTS_QUERY} id={null} exlude={props.exclude} event_ended={false}>
 
-                {({ data: { categories } }) => {
+                {({ data: { events } }) => {
 
                     return (
 
                         <nav className="nav-sidebar">
 
-                            <h2 className="section-heading font-bellota text-4xl text-red text-left mb-3">Series</h2>
+                            <h2 className="section-heading font-bellota text-4xl text-red text-left mb-3">More Events</h2>
 
                             <ul className="loop-categories font-roboto text-base text-black font-medium">
 
-                                {categories.map((category, i) => {
+                                {events.map((event) => {
 
                                     return (
 
-                                        <li key={category.id} className="mb-3">
+                                        <li key={event.id} className="mb-3">
 
                                             <Link
-                                                to={`/category/${category.slug}`}
+                                                to={`/event/${event.slug}`}
                                                 className="link-category">
 
-                                                <p className="">{category.name}</p>
+                                                <p className="">{event.name}</p>
 
                                             </Link>
 
-                                            <Query query={CATEGORY_POSTS_QUERY} slug={category.slug}>
-
-                                                {({ data: { categories } }) => {
-
-                                                    return (
-                                                        <p className="post-category-postcount font-roboto text-xs text-black font-thin italic">{categories[0].posts.length} Posts</p>
-                                                    );
-                                                }}
-                                            </Query>
 
                                         </li>
                                     );

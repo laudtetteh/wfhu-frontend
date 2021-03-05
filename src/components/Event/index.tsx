@@ -22,7 +22,7 @@ export const EventComponent = ({event}) => {
 
         <React.Fragment>
 
-            <div className="col-span-5 space-y-6">
+            <div className={`col-span-5 space-y-6 event-${event.id}`}>
 
                 <div className="w-full">
                     <img src={imageUrl} alt={imageUrl} className="w-full"/>

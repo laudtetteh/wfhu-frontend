@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const EVENTS_QUERY = gql`
-    query Events($sort: String!, $limit: Int, $event_ended: Boolean!, $event_start_gt: DateTime, $event_start_lt: DateTime)  {
-        events(sort: $sort, limit: $limit, where: {event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {
+    query Events($event_ended: Boolean!, $exlude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {
+        events(sort: $sort, limit: $limit, where: {_id_nin: [$exlude], event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {
             id
             name
             slug

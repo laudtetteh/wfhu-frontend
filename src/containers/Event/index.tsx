@@ -38,7 +38,10 @@ export const Event = ({siteOptions}) => {
 
                                         <EventComponent event={events[0]} />
 
+                                        <EventSidebar exclude={events[0].id} />
+
                                     </div>
+
                                 </div>
 
                             </section>

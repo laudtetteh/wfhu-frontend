@@ -15,12 +15,12 @@ export const BlogSidebar = () => {
     );
 }
 
-export const EventSidebar = () => {
+export const EventSidebar = props => {
 
     return (
 
         <div className="col-span-2 mt-10 md:mt-0">
-            <EventNav />
+            <EventNav exclude={props.exclude} />
         </div>
     );
 }
