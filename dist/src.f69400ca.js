@@ -73855,7 +73855,7 @@ exports.GetEvents = GetEvents;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Card = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -73946,8 +73946,7 @@ var Card = function Card(_ref) {
   })))));
 };
 
-var _default = Card;
-exports.default = _default;
+exports.Card = Card;
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Posts/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -73958,41 +73957,36 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _post = _interopRequireDefault(require("../Card/post"));
+var _post = require("../Card/post");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Posts = function Posts(_ref) {
-  var posts = _ref.posts,
-      orientation = _ref.orientation,
-      heading = _ref.heading;
-
-  if (orientation == 'vertical') {
+var Posts = function Posts(props) {
+  if (props.orientation == 'vertical') {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
       className: "col-span-5 space-y-6"
     }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
-    }, heading), posts.map(function (post, index) {
-      var _React$createElement;
-
-      return _react.default.createElement(_post.default, (_React$createElement = {
-        key: index,
-        post: post
-      }, _defineProperty(_React$createElement, "key", "post-".concat(post.id)), _defineProperty(_React$createElement, "orientation", "vertical"), _React$createElement));
+      className: "section-heading font-bellota text-4xl mb-3 ".concat(props.heading_classes)
+    }, props.heading, props.more_link && _react.default.createElement(Link, {
+      to: "/blog",
+      className: "link-all font-roboto text-base text-yellow underline pl-3"
+    }, "All Posts")), props.posts.map(function (post) {
+      return _react.default.createElement(_post.Card, {
+        post: post,
+        key: "post-".concat(post.id),
+        orientation: "vertical"
+      });
     })));
   }
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
-  }, posts.map(function (post, index) {
-    var _React$createElement2;
-
-    return _react.default.createElement(_post.default, (_React$createElement2 = {
-      key: index,
-      post: post
-    }, _defineProperty(_React$createElement2, "key", "post-".concat(post.id)), _defineProperty(_React$createElement2, "orientation", "horizontal"), _React$createElement2));
+  }, props.posts.map(function (post) {
+    return _react.default.createElement(_post.Card, {
+      post: post,
+      key: "post-".concat(post.id),
+      orientation: "horizontal"
+    });
   })));
 };
 
@@ -74014,7 +74008,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int!)  {\n        posts(limit: $limit) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
+var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int, $exclude: ID, $sort: String) {\n        posts(sort: $sort, limit: $limit, where: {_id_nin: [$exclude]}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
 var _default = POSTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Posts/index.tsx":[function(require,module,exports) {
@@ -94765,25 +94759,56 @@ var _Query = _interopRequireDefault(require("../Query"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _posts = _interopRequireDefault(require("../../queries/category/posts"));
+var _post = require("../Card/post");
+
+var _posts = _interopRequireDefault(require("../../queries/post/posts"));
+
+var _posts2 = _interopRequireDefault(require("../../queries/category/posts"));
 
 var _categories = _interopRequireDefault(require("../../queries/category/categories"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
+// Components
 // Queries
-var BlogNav = function BlogNav() {
-  return _react.default.createElement(_Query.default, {
-    query: _categories.default,
-    id: null
+var BlogNav = function BlogNav(props) {
+  return _react.default.createElement(_react.default.Fragment, null, props.more_posts && _react.default.createElement(_Query.default, {
+    query: _posts.default,
+    id: null,
+    exclude: props.exclude,
+    sort: "publishedAT:ASC"
   }, function (_ref) {
-    var categories = _ref.data.categories;
+    var posts = _ref.data.posts;
     return _react.default.createElement("nav", {
       className: "nav-sidebar"
     }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-left mb-3"
-    }, "Series"), _react.default.createElement("ul", {
+      className: "section-heading font-bellota text-3xl text-red text-left mb-5"
+    }, "More Posts"), _react.default.createElement("ul", {
+      className: "loop-posts font-roboto text-base text-black font-medium"
+    }, posts.map(function (post) {
+      return _react.default.createElement("li", {
+        key: post.id,
+        className: "mb-3"
+      }, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/post/".concat(post.slug),
+        className: "link-event"
+      }, _react.default.createElement(_post.Card, {
+        post: post,
+        key: "post-".concat(post.id),
+        orientation: "horizontal"
+      })));
+    })));
+  }), _react.default.createElement(_Query.default, {
+    query: _categories.default,
+    id: null
+  }, function (_ref2) {
+    var categories = _ref2.data.categories;
+    return _react.default.createElement("nav", {
+      className: "nav-sidebar"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-3xl text-red text-left mb-5"
+    }, "Categories"), _react.default.createElement("ul", {
       className: "loop-categories font-roboto text-base text-black font-medium"
     }, categories.map(function (category, i) {
       return _react.default.createElement("li", {
@@ -94795,20 +94820,20 @@ var BlogNav = function BlogNav() {
       }, _react.default.createElement("p", {
         className: ""
       }, category.name)), _react.default.createElement(_Query.default, {
-        query: _posts.default,
+        query: _posts2.default,
         slug: category.slug
-      }, function (_ref2) {
-        var categories = _ref2.data.categories;
+      }, function (_ref3) {
+        var categories = _ref3.data.categories;
         return _react.default.createElement("p", {
           className: "post-category-postcount font-roboto text-xs text-black font-thin italic"
         }, categories[0].posts.length, " Posts");
       }));
     })));
-  });
+  }));
 };
 
 exports.BlogNav = BlogNav;
-},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../queries/category/posts":"queries/category/posts.tsx","../../queries/category/categories":"queries/category/categories.tsx"}],"components/Nav/event.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/post":"components/Card/post.tsx","../../queries/post/posts":"queries/post/posts.tsx","../../queries/category/posts":"queries/category/posts.tsx","../../queries/category/categories":"queries/category/categories.tsx"}],"components/Nav/event.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94883,10 +94908,13 @@ var _event = require("../../components/Nav/event");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var BlogSidebar = function BlogSidebar() {
+var BlogSidebar = function BlogSidebar(props) {
   return _react.default.createElement("div", {
-    className: "col-span-2 mt-10 md:mt-0 wrapper-sidebar"
-  }, _react.default.createElement(_blog.BlogNav, null));
+    className: "col-span-2 wrapper-sidebar"
+  }, _react.default.createElement(_blog.BlogNav, {
+    exclude: props.exclude,
+    more_posts: props.more_posts
+  }));
 };
 
 exports.BlogSidebar = BlogSidebar;
@@ -94947,7 +94975,9 @@ var Blog = function Blog(_ref) {
       limit: 12,
       orientation: "vertical",
       heading: "Posts"
-    }), _react.default.createElement(_Sidebar.BlogSidebar, null)))));
+    }), _react.default.createElement(_Sidebar.BlogSidebar, {
+      more_posts: false
+    })))));
   });
 };
 
@@ -95003,7 +95033,77 @@ var Contact = function Contact(_ref) {
 };
 
 exports.Contact = Contact;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"queries/post/post.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Post/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PostComponent = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _helpers = require("../../utils/helpers");
+
+var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PostComponent = function PostComponent(_ref) {
+  var post = _ref.post;
+  // const imageUrl =
+  //   process.env.NODE_ENV !== "development"
+  //     ? post.image.url
+  //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
+  // const imageUrl = post.image.url;
+  var object = post;
+  var content_type = "post_single";
+  var image_size = "post_single";
+  var imageUrl = (0, _helpers.SmartImage)({
+    object: object,
+    content_type: content_type,
+    image_size: image_size
+  });
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: "col-span-5 space-y-6"
+  }, _react.default.createElement("a", {
+    href: "/blog"
+  }, _react.default.createElement("h4", {
+    className: "section-heading font-bellota text-3xl text-red text-left mb-5"
+  }, "<All Posts")), _react.default.createElement("div", {
+    className: "w-full"
+  }, _react.default.createElement("img", {
+    src: imageUrl,
+    alt: imageUrl,
+    className: "w-full"
+  })), _react.default.createElement("div", {
+    className: "byline"
+  }, _react.default.createElement("h3", {
+    className: "card-post-name font-roboto text-2xl text-black mb-3"
+  }, post.name), _react.default.createElement("p", {
+    className: "card-post-name font-roboto text-base text-darkblue mb-3"
+  }, _react.default.createElement(_helpers.STFDate, {
+    _timestamp: post.published_at,
+    _format: "MMMM D, YYYY"
+  }), _react.default.createElement("span", {
+    className: "font-thin"
+  }, " | "), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/category/".concat(post.category.slug)
+  }, _react.default.createElement("span", {
+    className: "card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3"
+  }, _react.default.createElement("i", {
+    className: "fa fa-tags bg-none text-darkblue text-sm mr-1"
+  }), post.category.name)))), _react.default.createElement("p", {
+    className: "card-post-description text-base font-roboto font-normal mt-3 mb-3"
+  }, _react.default.createElement(_reactMarkdown.default, {
+    source: post.description
+  }))));
+};
+
+exports.PostComponent = PostComponent;
+},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"queries/post/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95036,6 +95136,8 @@ var _reactRouter = require("react-router");
 
 var _Sidebar = require("../Sidebar");
 
+var _Post = require("../../components/Post");
+
 var _Query = _interopRequireDefault(require("../../components/Query"));
 
 var _post = _interopRequireDefault(require("../../queries/post/post"));
@@ -95046,6 +95148,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Packages
 // Containers
+// Components
 // Queries
 // Utilities
 var Post = function Post(_ref) {
@@ -95067,14 +95170,17 @@ var Post = function Post(_ref) {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
       className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
-    }, _react.default.createElement(Post, {
+    }, _react.default.createElement(_Post.PostComponent, {
       post: posts[0]
-    }), _react.default.createElement(_Sidebar.BlogSidebar, null)))));
+    }), _react.default.createElement(_Sidebar.BlogSidebar, {
+      exclude: posts[0].id,
+      more_posts: true
+    })))));
   });
 };
 
 exports.Post = Post;
-},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../Sidebar":"containers/Sidebar/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/post":"queries/post/post.tsx","../../utils/helpers":"utils/helpers.tsx"}],"components/Event/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router":"../node_modules/react-router/esm/react-router.js","../Sidebar":"containers/Sidebar/index.tsx","../../components/Post":"components/Post/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/post":"queries/post/post.tsx","../../utils/helpers":"utils/helpers.tsx"}],"components/Event/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95110,7 +95216,7 @@ var EventComponent = function EventComponent(_ref) {
   }, _react.default.createElement("a", {
     href: "/events"
   }, _react.default.createElement("h4", {
-    class: "section-heading font-bellota text-3xl text-red text-left mb-5"
+    className: "section-heading font-bellota text-3xl text-red text-left mb-5"
   }, "<All Events")), _react.default.createElement("div", {
     className: "w-full"
   }, _react.default.createElement("img", {
@@ -95265,7 +95371,9 @@ var Category = function Category(_ref) {
       posts: categories[0].posts,
       orientation: "vertical",
       heading: categories[0].name
-    }), _react.default.createElement(_Sidebar.BlogSidebar, null)))));
+    }), _react.default.createElement(_Sidebar.BlogSidebar, {
+      more_posts: false
+    })))));
   });
 };
 
@@ -95573,18 +95681,18 @@ var App = function App() {
       path: "/events",
       exact: true
     }, _react.default.createElement(_Events.Events, null)), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/event/:slug"
+    }, _react.default.createElement(_Event.Event, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/blog",
       exact: true
     }, _react.default.createElement(_Blog.Blog, null)), _react.default.createElement(_reactRouterDom.Route, {
-      path: "/contact",
-      exact: true
-    }, _react.default.createElement(_Contact.Contact, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/post/:slug"
     }, _react.default.createElement(_Post.Post, null)), _react.default.createElement(_reactRouterDom.Route, {
-      path: "/event/:slug"
-    }, _react.default.createElement(_Event.Event, null)), _react.default.createElement(_reactRouterDom.Route, {
       path: "/category/:slug"
-    }, _react.default.createElement(_Category.Category, null)))), _react.default.createElement(_Footer.Footer, {
+    }, _react.default.createElement(_Category.Category, null)), _react.default.createElement(_reactRouterDom.Route, {
+      path: "/contact",
+      exact: true
+    }, _react.default.createElement(_Contact.Contact, null)))), _react.default.createElement(_Footer.Footer, {
       siteOptions: siteOptions,
       headingColor: "white",
       containerClasses: "mx-auto",

@@ -73,24 +73,24 @@ export const App = () => {
                                         <Events />
                                     </Route>
 
-                                    <Route path="/blog" exact>
-                                        <Blog />
+                                    <Route path="/event/:slug">
+                                        <Event />
                                     </Route>
 
-                                    <Route path="/contact" exact>
-                                        <Contact />
+                                    <Route path="/blog" exact>
+                                        <Blog />
                                     </Route>
 
                                     <Route path="/post/:slug">
                                         <Post />
                                     </Route>
 
-                                    <Route path="/event/:slug">
-                                        <Event />
-                                    </Route>
-
                                     <Route path="/category/:slug">
                                         <Category />
+                                    </Route>
+
+                                    <Route path="/contact" exact>
+                                        <Contact />
                                     </Route>
 
                                 </Switch>

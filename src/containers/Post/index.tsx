@@ -36,9 +36,9 @@ export const Post = ({siteOptions}) => {
 
                                     <div className="md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto">
 
-                                        <Post post={posts[0]} />
+                                        <PostComponent post={posts[0]} />
 
-                                        <BlogSidebar />
+                                        <BlogSidebar exclude={posts[0].id} more_posts={true} />
 
                                     </div>
                                 </div>

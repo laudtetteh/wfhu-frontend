@@ -24,6 +24,11 @@ export const PostComponent = ({post}) => {
         <React.Fragment>
 
             <div className="col-span-5 space-y-6">
+
+                <a href="/blog">
+                    <h4 className="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Posts</h4>
+                </a>
+
                 <div className="w-full">
                     <img src={imageUrl} alt={imageUrl} className="w-full"/>
                 </div>

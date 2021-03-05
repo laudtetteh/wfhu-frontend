@@ -38,7 +38,7 @@ export const Category = ({siteOptions}) => {
 
                                     <Posts limit={12} posts={categories[0].posts} orientation="vertical" heading={categories[0].name} />
 
-                                    <BlogSidebar />
+                                    <BlogSidebar more_posts={false} />
 
                                 </div>
 

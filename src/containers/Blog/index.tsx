@@ -35,7 +35,7 @@ export const Blog = ({siteOptions}) => {
 
                                     <Posts limit={12} orientation="vertical" heading="Posts" />
 
-                                    <BlogSidebar />
+                                    <BlogSidebar more_posts={false} />
 
                                 </div>
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { STFDate, SmartImage, TrimText } from '../../utils/helpers';
 
-const Card = ({ post, orientation }) => {
+export const Card = ({ post, orientation }) => {
 
     // const imageUrl =
     //     process.env.NODE_ENV !== "development"
@@ -86,5 +86,3 @@ const Card = ({ post, orientation }) => {
         </React.Fragment>
     );
 };
-
-export default Card;

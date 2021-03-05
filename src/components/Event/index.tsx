@@ -25,7 +25,7 @@ export const EventComponent = ({event}) => {
             <div className={`col-span-5 event-${event.id}`}>
 
                 <a href="/events">
-                    <h4 class="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Events</h4>
+                    <h4 className="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Events</h4>
                 </a>
 
                 <div className="w-full">
