@@ -15,7 +15,7 @@ export const EventNav = props => {
             <Query
                 query={EVENTS_QUERY}
                 id={null}
-                exlude={props.exclude}
+                exclude={props.exclude}
                 event_ended={false}
                 event_start_gt={_nowIso}
                 sort="event_start:ASC">

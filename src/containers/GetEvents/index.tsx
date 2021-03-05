@@ -15,7 +15,9 @@ export const GetEvents = props => {
                 event_start_gt={props.event_start_gt}
                 event_start_lt={props.event_start_lt}
                 sort={props.sort}>
+
                 {({ data: { events } }) => {
+
                     return <Events
                                 events={events}
                                 event_ended={props.event_ended}

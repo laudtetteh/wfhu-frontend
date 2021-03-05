@@ -15,7 +15,6 @@ import { getPageData } from '../../utils/apiHelper';
 
 export const Event = ({siteOptions}) => {
 
-
     let { slug } = useParams();
 
         return (

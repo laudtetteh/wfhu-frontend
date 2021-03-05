@@ -73808,7 +73808,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($event_ended: Boolean!, $exlude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exlude], event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($event_ended: Boolean!, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -94836,7 +94836,7 @@ var EventNav = function EventNav(props) {
   return _react.default.createElement(_Query.default, {
     query: _events.default,
     id: null,
-    exlude: props.exclude,
+    exclude: props.exclude,
     event_ended: false,
     event_start_gt: _nowIso,
     sort: "event_start:ASC"
