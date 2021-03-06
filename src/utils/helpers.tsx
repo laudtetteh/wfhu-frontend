@@ -58,6 +58,18 @@ export const STFStartEndDates = ({_start, _end, _timezone, _format}) => {
     );
 }
 
+export const STFIsUpcoming = ({event_ended, _start}) => {
+    const _now = new Date();
+    const _nowIso = _now.toISOString();
+
+    if( event_ended !== true && _start >= _nowIso ) {
+        return (
+            <span className="event-badge font-roboto bg-red text-base text-white font-medium py-1 px-2 rounded">UPCOMING</span>
+        )
+    }
+
+    return null;
+}
 
 export const DocumentHead = ({title}) => {
     return (

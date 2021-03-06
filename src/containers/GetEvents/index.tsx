@@ -11,10 +11,11 @@ export const GetEvents = props => {
 
             <Query
                 query={EVENTS_QUERY}
+                sort={props.sort}
                 event_ended={props.event_ended}
                 event_start_gt={props.event_start_gt}
                 event_start_lt={props.event_start_lt}
-                sort={props.sort}>
+                keep_on_homepage={props.keep_on_homepage}>
 
                 {({ data: { events } }) => {
 

@@ -52986,7 +52986,7 @@ module.exports = "/placeholder_split_section.4d8a28a8.jpg";
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.STFStartEndDates = exports.STFDate = void 0;
+exports.SmartImage = exports.TrimText = exports.DocumentHead = exports.STFIsUpcoming = exports.STFStartEndDates = exports.STFDate = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53064,16 +53064,35 @@ var STFStartEndDates = function STFStartEndDates(_ref2) {
 
 exports.STFStartEndDates = STFStartEndDates;
 
-var DocumentHead = function DocumentHead(_ref3) {
-  var title = _ref3.title;
+var STFIsUpcoming = function STFIsUpcoming(_ref3) {
+  var event_ended = _ref3.event_ended,
+      _start = _ref3._start;
+
+  var _now = new Date();
+
+  var _nowIso = _now.toISOString();
+
+  if (event_ended !== true && _start >= _nowIso) {
+    return _react.default.createElement("span", {
+      className: "event-badge font-roboto bg-red text-base text-white font-medium py-1 px-2 rounded"
+    }, "UPCOMING");
+  }
+
+  return null;
+};
+
+exports.STFIsUpcoming = STFIsUpcoming;
+
+var DocumentHead = function DocumentHead(_ref4) {
+  var title = _ref4.title;
   return _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, title, " | Work From Home University"));
 };
 
 exports.DocumentHead = DocumentHead;
 
-var TrimText = function TrimText(_ref4) {
-  var text = _ref4.text,
-      limit = _ref4.limit;
+var TrimText = function TrimText(_ref5) {
+  var text = _ref5.text,
+      limit = _ref5.limit;
   var trimmed = '';
 
   if (text.length > limit) {
@@ -53087,10 +53106,10 @@ var TrimText = function TrimText(_ref4) {
 
 exports.TrimText = TrimText;
 
-var SmartImage = function SmartImage(_ref5) {
-  var object = _ref5.object,
-      content_type = _ref5.content_type,
-      image_size = _ref5.image_size;
+var SmartImage = function SmartImage(_ref6) {
+  var object = _ref6.object,
+      content_type = _ref6.content_type,
+      image_size = _ref6.image_size;
 
   var _imageUrl;
 
@@ -53274,6 +53293,7 @@ var Query = function Query(_ref) {
       limit = _ref.limit,
       exclude = _ref.exclude,
       sort = _ref.sort,
+      keep_on_homepage = _ref.keep_on_homepage,
       event_ended = _ref.event_ended,
       event_start_gt = _ref.event_start_gt,
       event_start_lt = _ref.event_start_lt,
@@ -53282,12 +53302,13 @@ var Query = function Query(_ref) {
   var _useQuery = (0, _reactHooks.useQuery)(query, {
     variables: (_variables = {
       id: id,
+      slug: slug,
+      sort: sort,
       limit: limit,
       exclude: exclude,
-      sort: sort,
       event_ended: event_ended,
       event_start_gt: event_start_gt
-    }, _defineProperty(_variables, "event_start_gt", event_start_gt), _defineProperty(_variables, "slug", slug), _variables)
+    }, _defineProperty(_variables, "event_start_gt", event_start_gt), _defineProperty(_variables, "keep_on_homepage", keep_on_homepage), _variables)
   }),
       data = _useQuery.data,
       loading = _useQuery.loading,
@@ -73735,7 +73756,7 @@ var Card = function Card(_ref) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "md:mt-0 mt-5 first:mt-0 event-".concat(event.id)
   }, _react.default.createElement("div", {
-    className: "card-event--image"
+    className: "card-event--image-wrapper"
   }, _react.default.createElement(_reactRouterDom.Link, {
     to: "/event/".concat(event.slug),
     className: "card-event--image"
@@ -73744,6 +73765,9 @@ var Card = function Card(_ref) {
     alt: imageUrl,
     height: "100",
     className: "w-full"
+  }), _react.default.createElement(_helpers.STFIsUpcoming, {
+    _start: event.event_start,
+    event_ended: event.event_ended
   }))), _react.default.createElement("div", {
     className: "card-event--details mt-3"
   }, _react.default.createElement(_reactRouterDom.Link, {
@@ -73784,7 +73808,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Events = function Events(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h2", {
-    className: "section-heading font-bellota text-red text-3xl mb-5 ".concat(props.heading_classes)
+    className: "section-heading font-bellota ".concat(props.heading_classes)
   }, props.heading, props.more_link && _react.default.createElement(_reactRouterDom.Link, {
     to: "/events",
     className: "link-all font-roboto text-base text-yellow underline pl-3"
@@ -73816,7 +73840,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($event_ended: Boolean!, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($keep_on_homepage: Boolean, $event_ended: Boolean, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], keep_on_homepage: $keep_on_homepage, event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            keep_on_homepage\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -73840,10 +73864,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var GetEvents = function GetEvents(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
     query: _events.default,
+    sort: props.sort,
     event_ended: props.event_ended,
     event_start_gt: props.event_start_gt,
     event_start_lt: props.event_start_lt,
-    sort: props.sort
+    keep_on_homepage: props.keep_on_homepage
   }, function (_ref) {
     var events = _ref.data.events;
     return _react.default.createElement(_Events.Events, {
@@ -94559,24 +94584,11 @@ var Home = function Home(_ref) {
       className: "container mx-auto py-12"
     }, _react.default.createElement(_GetEvents.GetEvents, {
       limit: 5,
-      event_ended: false,
-      event_start_gt: _nowIso,
       sort: "event_start:ASC",
-      heading: "Upcoming Presentations",
-      heading_classes: "text-white text-left",
-      more_link: true
-    }))), _react.default.createElement("section", {
-      className: "w-full bg-none"
-    }, _react.default.createElement("div", {
-      className: "container mx-auto py-12"
-    }, _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 5,
-      event_ended: true,
-      event_start_lt: _nowIso,
-      sort: "event_start:ASC",
-      heading: "Recent Presentations",
-      heading_classes: "text-red text-left",
-      more_link: true
+      heading: "Presentations",
+      heading_classes: "text-4xl text-white mb-3",
+      more_link: true,
+      keep_on_homepage: true
     }))));
   });
 };
@@ -94696,7 +94708,7 @@ var Events = function Events() {
       event_start_gt: _nowIso,
       sort: "event_start:ASC",
       heading: "Upcoming Presentations",
-      heading_classes: "text-red text-left",
+      heading_classes: "text-3xl text-red mb-5",
       more_link: false
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
@@ -94707,7 +94719,7 @@ var Events = function Events() {
       event_start_lt: _nowIso,
       sort: "event_start:ASC",
       heading: "Recent Presentations",
-      heading_classes: "text-red text-left",
+      heading_classes: "text-3xl text-red mb-5",
       more_link: false
     }))));
   });
@@ -94880,7 +94892,7 @@ var EventNav = function EventNav(props) {
       className: "nav-sidebar"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-3xl text-red text-left mb-5"
-    }, "More Events"), _react.default.createElement("ul", {
+    }, "Upcoming Events"), _react.default.createElement("ul", {
       className: "loop-events font-roboto text-base text-black font-medium"
     }, events.map(function (event) {
       return _react.default.createElement("li", {
@@ -95269,7 +95281,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($slug: String!) {\n        events(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($slug: String!) {\n        events(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            keep_on_homepage\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENT_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Event/index.tsx":[function(require,module,exports) {

@@ -6388,6 +6388,17 @@ li.stf-main-nav-list-item a:hover::after {
   padding-left: 20px;
   margin: 0;
 }
+
+.card-event--image {
+  display: block;
+  position: relative;
+}
+
+.card-event--image .event-badge {
+  position: absolute;
+  margin-top: -40px;
+  right: 10px;
+}
 /****** Media Queries********/
 
 @media screen and (max-width: 301px) {

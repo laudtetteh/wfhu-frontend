@@ -4,17 +4,18 @@ import * as CSS from 'csstype';
 // Assets
 import spinner from '../../../assets/images/spinner.svg';
 
-const Query = ({ children, query, id, limit, exclude, sort, event_ended, event_start_gt, event_start_lt, slug }) => {
+const Query = ({ children, query, id, limit, exclude, sort, keep_on_homepage, event_ended, event_start_gt, event_start_lt, slug }) => {
     const { data, loading, error } = useQuery(query, {
         variables: {
             id: id,
+            slug: slug,
+            sort: sort,
             limit: limit,
             exclude: exclude,
-            sort: sort,
             event_ended: event_ended,
             event_start_gt:event_start_gt,
             event_start_gt:event_start_gt,
-            slug: slug
+            keep_on_homepage: keep_on_homepage,
         }
     });
 

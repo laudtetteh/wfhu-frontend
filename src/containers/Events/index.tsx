@@ -55,7 +55,7 @@ export const Events = () => {
                                     event_start_gt={_nowIso}
                                     sort="event_start:ASC"
                                     heading="Upcoming Presentations"
-                                    heading_classes="text-red text-left"
+                                    heading_classes="text-3xl text-red mb-5"
                                     more_link={false}
                                 />
 
@@ -72,7 +72,7 @@ export const Events = () => {
                                     event_start_lt={_nowIso}
                                     sort="event_start:ASC"
                                     heading="Recent Presentations"
-                                    heading_classes="text-red text-left"
+                                    heading_classes="text-3xl text-red mb-5"
                                     more_link={false}
                                 />
 

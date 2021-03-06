@@ -12,6 +12,7 @@ const EVENT_QUERY = gql`
             event_end
             event_timezone
             event_ended
+            keep_on_homepage
             image {
                 formats
             }

@@ -28,7 +28,7 @@ export const EventNav = props => {
 
                         <nav className="nav-sidebar">
 
-                            <h2 className="section-heading font-bellota text-3xl text-red text-left mb-5">More Events</h2>
+                            <h2 className="section-heading font-bellota text-3xl text-red text-left mb-5">Upcoming Events</h2>
 
                             <ul className="loop-events font-roboto text-base text-black font-medium">
 

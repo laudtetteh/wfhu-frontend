@@ -103,30 +103,11 @@ export const Home = ({siteOptions}) => {
 
                                 <GetEvents
                                     limit={5}
-                                    event_ended={false}
-                                    event_start_gt={_nowIso}
                                     sort="event_start:ASC"
-                                    heading="Upcoming Presentations"
-                                    heading_classes="text-white text-left"
+                                    heading="Presentations"
+                                    heading_classes="text-4xl text-white mb-3"
                                     more_link={true}
-                                />
-
-                            </div>
-
-                        </section>
-
-                        <section className="w-full bg-none">
-
-                            <div className="container mx-auto py-12">
-
-                                <GetEvents
-                                    limit={5}
-                                    event_ended={true}
-                                    event_start_lt={_nowIso}
-                                    sort="event_start:ASC"
-                                    heading="Recent Presentations"
-                                    heading_classes="text-red text-left"
-                                    more_link={true}
+                                    keep_on_homepage={true}
                                 />
 
                             </div>

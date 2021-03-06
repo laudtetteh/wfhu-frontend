@@ -10,7 +10,7 @@ export const Events = props => {
 
         <React.Fragment>
 
-            <h2 className={`section-heading font-bellota text-red text-3xl mb-5 ${props.heading_classes}`}>
+            <h2 className={`section-heading font-bellota ${props.heading_classes}`}>
 
                 {props.heading}
 
