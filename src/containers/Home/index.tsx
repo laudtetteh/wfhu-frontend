@@ -1,21 +1,21 @@
 // Packages
 import React from 'react';
 // Containers
-import Testimonials from '../Testimonials';
+import { GetTestimonials } from '../GetTestimonials';
 import { GetEvents } from '../GetEvents';
-import Posts from '../Posts';
+import { GetPosts } from '../GetPosts';
 // Components
 import { ConnectCTA } from '../../components/Cta/ConnectCTA';
 import { IntroCTA } from '../../components/Cta/IntroCTA';
 import { RowOfGifs } from '../../components/Elements/RowOfGifs';
 // Queries
-import Query from "../../components/Query";
-import PAGE_QUERY from "../../queries/page/page";
+import { Query } from "../../components/Query";
+import { PAGE_QUERY } from "../../queries/page/page";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
 
-export const Home = ({siteOptions}) => {
+export const Home = props => {
 
     const _now = new Date();
     const _nowIso = _now.toISOString();
@@ -50,7 +50,7 @@ export const Home = ({siteOptions}) => {
 
                                 <ConnectCTA
                                     pageBag={pageBag}
-                                    siteOptions={siteOptions}
+                                    siteOptions={props.siteOptions}
                                     containerClasses="float-none md:float-right mx-auto"
                                     headingColor="darkblue"
                                     headingClasses="stf-text-shadow-white-top-left text-center md:text-right"
@@ -67,7 +67,7 @@ export const Home = ({siteOptions}) => {
 
                                 <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Testimonials</h2>
 
-                                <Testimonials limit={4} />
+                                <GetTestimonials limit={4} />
 
                             </div>
 
@@ -82,7 +82,8 @@ export const Home = ({siteOptions}) => {
                                     <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
                                 </h2>
 
-                                <Posts limit={3} orientation="horizontal"/>
+                                <GetPosts limit={3} orientation="horizontal" nameClasses="text-base text-yellow" dateClasses="text-xs text-blue-100 italic" />
+
                             </div>
 
                         </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "../Card/post";
 
-const Posts = props => {
+export const Posts = props => {
 
     if(props.orientation == 'vertical') {
 
@@ -47,5 +47,3 @@ const Posts = props => {
         </React.Fragment>
     );
 };
-
-export default Posts;

@@ -1,16 +1,17 @@
+// Packages
 import React from "react";
-import Card from "../Card/testimonial";
+// Components
+import { Card } from "../Card/testimonial";
 
-const Testimonials = ({ testimonials }) => {
+export const Testimonials = props => {
+
     return (
         <React.Fragment>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-                {testimonials.map((testimonial, i) => {
-                    return <Card testimonial={testimonial} key={`testimonial__${testimonial.id}`} />
+                {props.testimonials.map((testimonial) => {
+                    return <Card testimonial={testimonial} key={`testimonial-${testimonial.id}`} />
                 })}
             </div>
         </React.Fragment>
     );
 };
-
-export default Testimonials;

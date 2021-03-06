@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const PAGE_QUERY = gql`
+export const PAGE_QUERY = gql`
     query Pages($slug: String!) {
         pages(where: {slug: $slug}) {
             id
@@ -58,5 +58,3 @@ const PAGE_QUERY = gql`
         }
     }
 `;
-
-export default PAGE_QUERY;

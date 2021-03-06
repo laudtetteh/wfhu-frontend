@@ -50,7 +50,7 @@ const fieldGroup: CSS.Properties = {
     width: '100%',
 };
 
-class SignupForm extends Component {
+export class SignupForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -137,5 +137,3 @@ class SignupForm extends Component {
         )
     }
 }
-
-export { SignupForm };

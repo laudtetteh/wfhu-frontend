@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const TESTIMONIAL_QUERY = gql`
+export const TESTIMONIAL_QUERY = gql`
   query Testimonials($id: ID!) {
     testimonial(id: $id) {
       id
@@ -13,5 +13,3 @@ const TESTIMONIAL_QUERY = gql`
     }
   }
 `;
-
-export default TESTIMONIAL_QUERY;

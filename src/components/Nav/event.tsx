@@ -1,11 +1,11 @@
 // Packages
 import React from "react";
-import Query from "../Query";
 import { Link } from "react-router-dom";
 // Components
 import { Card } from "../Card/event";
 // Queries
-import EVENTS_QUERY from "../../queries/event/events";
+import { Query } from "../Query";
+import { EVENTS_QUERY } from "../../queries/event/events";
 
 export const EventNav = props => {
 

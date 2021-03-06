@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const EVENT_QUERY = gql`
+export const EVENT_QUERY = gql`
     query Events($slug: String!) {
         events(where: {slug: $slug}) {
             id
@@ -20,5 +20,3 @@ const EVENT_QUERY = gql`
         }
     }
 `;
-
-export default EVENT_QUERY;

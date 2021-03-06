@@ -2,7 +2,7 @@
 import React from 'react'
 import { Social } from '../Elements/Social';
 
-export const Footer = ({siteOptions, iconColor, iconBgColor, iconHvColor, headingColor, containerClasses, headingClasses, listClasses}) => {
+export const Footer = props => {
 
     return (
 
@@ -13,11 +13,11 @@ export const Footer = ({siteOptions, iconColor, iconBgColor, iconHvColor, headin
                 <div className="container">
 
                     <Social
-                        siteOptions={siteOptions}
-                        headingColor={headingColor}
-                        containerClasses={containerClasses}
-                        headingClasses={headingClasses}
-                        listClasses={listClasses}
+                        siteOptions={props.siteOptions}
+                        headingColor={props.headingColor}
+                        containerClasses={props.containerClasses}
+                        headingClasses={props.headingClasses}
+                        listClasses={props.listClasses}
                     />
 
                     <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University</p>

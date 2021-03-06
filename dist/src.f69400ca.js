@@ -46119,7 +46119,61 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
+},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../assets/images/spinner.svg":[function(require,module,exports) {
+module.exports = "/spinner.dddba45b.svg";
+},{}],"components/Query/index.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Query = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactHooks = require("@apollo/react-hooks");
+
+var _spinner = _interopRequireDefault(require("../../../assets/images/spinner.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Packages
+// Assets
+var Query = function Query(props) {
+  var _useQuery = (0, _reactHooks.useQuery)(props.query, {
+    variables: {
+      id: props.id,
+      slug: props.slug,
+      sort: props.sort,
+      limit: props.limit,
+      exclude: props.exclude,
+      event_ended: props.event_ended,
+      event_start_gt: props.event_start_gt,
+      event_start_lt: props.event_start_lt,
+      keep_on_homepage: props.keep_on_homepage
+    }
+  }),
+      data = _useQuery.data,
+      loading = _useQuery.loading,
+      error = _useQuery.error;
+
+  var spinnerStyles = {
+    width: "30px",
+    marginLeft: "auto",
+    marginRight: "auto"
+  };
+  if (loading) return _react.default.createElement("img", {
+    src: _spinner.default,
+    style: spinnerStyles
+  });
+  if (error) return _react.default.createElement("p", null, "Error: ", JSON.stringify(error));
+  return props.children({
+    data: data
+  });
+};
+
+exports.Query = Query;
+},{"react":"../node_modules/react/index.js","@apollo/react-hooks":"../node_modules/@apollo/react-hooks/lib/react-hooks.esm.js","../../../assets/images/spinner.svg":"../assets/images/spinner.svg"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -53208,7 +53262,7 @@ exports.SmartImage = SmartImage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Card = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53218,14 +53272,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Packages
 // Helpers
-var Card = function Card(_ref) {
-  var testimonial = _ref.testimonial;
+var Card = function Card(props) {
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? testimonial.image.url
   //     : process.env.REACT_APP_BACKEND_URL + testimonial.image.url;
   // const imageUrl = testimonial.image.formats.testimonial_loop.url;
-  var object = testimonial;
+  var object = props.testimonial;
   var content_type = "testimonial";
   var image_size = "testimonial_loop";
   var imageUrl = (0, _helpers.SmartImage)({
@@ -53235,116 +53288,49 @@ var Card = function Card(_ref) {
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "mx-auto md:mt-0 mt-1 md:first:mt-0"
-  }, testimonial.description && _react.default.createElement("p", {
+  }, props.testimonial.description && _react.default.createElement("p", {
     className: "card-testimonial-description text-base font-roboto font-medium mt-3 mb-3"
   }, _react.default.createElement("i", {
     "aria-hidden": "true",
-    class: "fa fa-quote-left inline mr-2"
-  }), testimonial.description, _react.default.createElement("i", {
+    className: "fa fa-quote-left inline mr-2"
+  }), props.testimonial.description, _react.default.createElement("i", {
     "aria-hidden": "true",
-    class: "fa fa-quote-right text-xs inline ml-2"
-  })), testimonial.name && _react.default.createElement("p", {
+    className: "fa fa-quote-right text-xs inline ml-2"
+  })), props.testimonial.name && _react.default.createElement("p", {
     className: "card-testimonial-name text-base font-roboto italic"
-  }, "- ", testimonial.name)));
+  }, "- ", props.testimonial.name)));
 };
 
-var _default = Card;
-exports.default = _default;
+exports.Card = Card;
 },{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Testimonials/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Testimonials = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _testimonial = _interopRequireDefault(require("../Card/testimonial"));
+var _testimonial = require("../Card/testimonial");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Testimonials = function Testimonials(_ref) {
-  var testimonials = _ref.testimonials;
+// Packages
+// Components
+var Testimonials = function Testimonials(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-4"
-  }, testimonials.map(function (testimonial, i) {
-    return _react.default.createElement(_testimonial.default, {
+  }, props.testimonials.map(function (testimonial) {
+    return _react.default.createElement(_testimonial.Card, {
       testimonial: testimonial,
-      key: "testimonial__".concat(testimonial.id)
+      key: "testimonial-".concat(testimonial.id)
     });
   })));
 };
 
-var _default = Testimonials;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Card/testimonial":"components/Card/testimonial.tsx"}],"../assets/images/spinner.svg":[function(require,module,exports) {
-module.exports = "/spinner.dddba45b.svg";
-},{}],"components/Query/index.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactHooks = require("@apollo/react-hooks");
-
-var _spinner = _interopRequireDefault(require("../../../assets/images/spinner.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Assets
-var Query = function Query(_ref) {
-  var children = _ref.children,
-      query = _ref.query,
-      id = _ref.id,
-      limit = _ref.limit,
-      exclude = _ref.exclude,
-      sort = _ref.sort,
-      keep_on_homepage = _ref.keep_on_homepage,
-      event_ended = _ref.event_ended,
-      event_start_gt = _ref.event_start_gt,
-      event_start_lt = _ref.event_start_lt,
-      slug = _ref.slug;
-
-  var _useQuery = (0, _reactHooks.useQuery)(query, {
-    variables: {
-      id: id,
-      slug: slug,
-      sort: sort,
-      limit: limit,
-      exclude: exclude,
-      event_ended: event_ended,
-      event_start_gt: event_start_gt,
-      event_start_lt: event_start_lt,
-      keep_on_homepage: keep_on_homepage
-    }
-  }),
-      data = _useQuery.data,
-      loading = _useQuery.loading,
-      error = _useQuery.error;
-
-  var spinnerStyles = {
-    width: "30px",
-    marginLeft: "auto",
-    marginRight: "auto"
-  };
-  if (loading) return _react.default.createElement("img", {
-    src: _spinner.default,
-    style: spinnerStyles
-  });
-  if (error) return _react.default.createElement("p", null, "Error: ", JSON.stringify(error));
-  return children({
-    data: data
-  });
-};
-
-var _default = Query;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","@apollo/react-hooks":"../node_modules/@apollo/react-hooks/lib/react-hooks.esm.js","../../../assets/images/spinner.svg":"../assets/images/spinner.svg"}],"../node_modules/graphql/version.mjs":[function(require,module,exports) {
+exports.Testimonials = Testimonials;
+},{"react":"../node_modules/react/index.js","../Card/testimonial":"components/Card/testimonial.tsx"}],"../node_modules/graphql/version.mjs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73688,7 +73674,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.TESTIMONIALS_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -73699,44 +73685,41 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var TESTIMONIALS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Testimonials($limit: Int!)  {\n        testimonials(limit: $limit) {\n            id\n            name\n            description\n            image {\n                formats\n            }\n        }\n    }\n"])));
-var _default = TESTIMONIALS_QUERY;
-exports.default = _default;
-},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Testimonials/index.tsx":[function(require,module,exports) {
+exports.TESTIMONIALS_QUERY = TESTIMONIALS_QUERY;
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetTestimonials/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.GetTestimonials = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Testimonials = _interopRequireDefault(require("../../components/Testimonials"));
+var _Query = require("../../components/Query");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Testimonials = require("../../components/Testimonials");
 
-var _testimonials = _interopRequireDefault(require("../../queries/testimonial/testimonials"));
+var _testimonials = require("../../queries/testimonial/testimonials");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
-// Queries
-var Testimonial = function Testimonial(_ref) {
-  var limit = _ref.limit;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
-    query: _testimonials.default,
-    limit: limit
-  }, function (_ref2) {
-    var testimonials = _ref2.data.testimonials;
-    return _react.default.createElement(_Testimonials.default, {
+// Components
+var GetTestimonials = function GetTestimonials(props) {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.Query, {
+    query: _testimonials.TESTIMONIALS_QUERY,
+    limit: props.limit
+  }, function (_ref) {
+    var testimonials = _ref.data.testimonials;
+    return _react.default.createElement(_Testimonials.Testimonials, {
       testimonials: testimonials
     });
   }));
 };
 
-var _default = Testimonial;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../../components/Testimonials":"components/Testimonials/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/testimonial/testimonials":"queries/testimonial/testimonials.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
+exports.GetTestimonials = GetTestimonials;
+},{"react":"../node_modules/react/index.js","../../components/Query":"components/Query/index.tsx","../../components/Testimonials":"components/Testimonials/index.tsx","../../queries/testimonial/testimonials":"queries/testimonial/testimonials.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73843,7 +73826,7 @@ exports.Events = Events;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.EVENTS_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -73854,8 +73837,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($keep_on_homepage: Boolean, $event_ended: Boolean, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], keep_on_homepage: $keep_on_homepage, event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            keep_on_homepage\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
-var _default = EVENTS_QUERY;
-exports.default = _default;
+exports.EVENTS_QUERY = EVENTS_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -73868,15 +73850,18 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Events = require("../../components/Events");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _events = _interopRequireDefault(require("../../queries/event/events"));
+var _events = require("../../queries/event/events");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Packages
+// Components
+// Utilities
 var GetEvents = function GetEvents(props) {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
-    query: _events.default,
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.Query, {
+    query: _events.EVENTS_QUERY,
     sort: props.sort,
     limit: props.limit,
     event_ended: props.event_ended,
@@ -73913,11 +73898,10 @@ var _helpers = require("../../utils/helpers");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Card = function Card(props) {
-  console.log(props.post.published_at); // const imageUrl =
+  // const imageUrl =
   //     process.env.NODE_ENV !== "development"
   //     ? post.image.url
   //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
-
   var object = props.post;
   var content_type = "post";
   var image_size = "post_loop";
@@ -73982,10 +73966,10 @@ var Card = function Card(props) {
     className: "card-post--title font-roboto font-medium no-underline"
   }, _react.default.createElement("p", {
     id: "name",
-    className: "font-roboto text-base text-yellow"
+    className: "font-roboto ".concat(props.nameClasses)
   }, props.post.name)), _react.default.createElement("p", {
     id: "",
-    className: "card-post--date font-roboto text-xs text-blue-100 italic"
+    className: "card-post--date font-roboto ".concat(props.dateClasses)
   }, _react.default.createElement(_helpers.STFDate, {
     _timestamp: props.post.published_at,
     _format: "MMMM D, YYYY"
@@ -73999,7 +73983,7 @@ exports.Card = Card;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Posts = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -74036,15 +74020,14 @@ var Posts = function Posts(props) {
   })));
 };
 
-var _default = Posts;
-exports.default = _default;
+exports.Posts = Posts;
 },{"react":"../node_modules/react/index.js","../Card/post":"components/Card/post.tsx"}],"queries/post/posts.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.POSTS_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -74055,45 +74038,45 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($limit: Int, $exclude: ID, $sort: String) {\n        posts(sort: $sort, limit: $limit, where: {_id_nin: [$exclude]}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
-var _default = POSTS_QUERY;
-exports.default = _default;
-},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Posts/index.tsx":[function(require,module,exports) {
+exports.POSTS_QUERY = POSTS_QUERY;
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetPosts/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.GetPosts = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Posts = _interopRequireDefault(require("../../components/Posts"));
+var _Posts = require("../../components/Posts");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _posts = _interopRequireDefault(require("../../queries/post/posts"));
+var _posts = require("../../queries/post/posts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var GetPosts = function GetPosts(_ref) {
-  var limit = _ref.limit,
-      orientation = _ref.orientation,
-      heading = _ref.heading;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.default, {
-    query: _posts.default,
-    limit: limit
-  }, function (_ref2) {
-    var posts = _ref2.data.posts;
-    return _react.default.createElement(_Posts.default, {
+// Packages
+// Components
+// Queries
+var GetPosts = function GetPosts(props) {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.Query, {
+    query: _posts.POSTS_QUERY,
+    limit: props.limit
+  }, function (_ref) {
+    var posts = _ref.data.posts;
+    return _react.default.createElement(_Posts.Posts, {
       posts: posts,
-      orientation: orientation,
-      heading: heading
+      orientation: props.orientation,
+      heading: props.heading,
+      nameClasses: props.nameClasses,
+      dateClasses: props.dateClasses
     });
   }));
 };
 
-var _default = GetPosts;
-exports.default = _default;
+exports.GetPosts = GetPosts;
 },{"react":"../node_modules/react/index.js","../../components/Posts":"components/Posts/index.tsx","../../components/Query":"components/Query/index.tsx","../../queries/post/posts":"queries/post/posts.tsx"}],"components/Elements/Social.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -85407,7 +85390,7 @@ exports.RowOfGifs = RowOfGifs;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.PAGE_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -85418,8 +85401,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var PAGE_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageNoOfPostsToShow {\n                    no_of_posts\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
-var _default = PAGE_QUERY;
-exports.default = _default;
+exports.PAGE_QUERY = PAGE_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"../node_modules/xtend/immutable.js":[function(require,module,exports) {
 module.exports = extend;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -94512,11 +94494,11 @@ exports.Home = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Testimonials = _interopRequireDefault(require("../Testimonials"));
+var _GetTestimonials = require("../GetTestimonials");
 
 var _GetEvents = require("../GetEvents");
 
-var _Posts = _interopRequireDefault(require("../Posts"));
+var _GetPosts = require("../GetPosts");
 
 var _ConnectCTA = require("../../components/Cta/ConnectCTA");
 
@@ -94524,9 +94506,9 @@ var _IntroCTA = require("../../components/Cta/IntroCTA");
 
 var _RowOfGifs = require("../../components/Elements/RowOfGifs");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _page = _interopRequireDefault(require("../../queries/page/page"));
+var _page = require("../../queries/page/page");
 
 var _helpers = require("../../utils/helpers");
 
@@ -94539,18 +94521,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 // Queries
 // Utilities
-var Home = function Home(_ref) {
-  var siteOptions = _ref.siteOptions;
-
+var Home = function Home(props) {
   var _now = new Date();
 
   var _nowIso = _now.toISOString();
 
-  return _react.default.createElement(_Query.default, {
-    query: _page.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _page.PAGE_QUERY,
     slug: "home"
-  }, function (_ref2) {
-    var pages = _ref2.data.pages;
+  }, function (_ref) {
+    var pages = _ref.data.pages;
     var pageBag = (0, _apiHelper.getPageData)(pages[0]);
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: "Home"
@@ -94566,7 +94546,7 @@ var Home = function Home(_ref) {
       className: "container mx-auto py-12"
     }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
       pageBag: pageBag,
-      siteOptions: siteOptions,
+      siteOptions: props.siteOptions,
       containerClasses: "float-none md:float-right mx-auto",
       headingColor: "darkblue",
       headingClasses: "stf-text-shadow-white-top-left text-center md:text-right",
@@ -94577,7 +94557,7 @@ var Home = function Home(_ref) {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-center mb-8"
-    }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
+    }, "Testimonials"), _react.default.createElement(_GetTestimonials.GetTestimonials, {
       limit: 4
     }))), _react.default.createElement("section", {
       className: "w-full stf-bg-3 section-posts--loop"
@@ -94588,9 +94568,11 @@ var Home = function Home(_ref) {
     }, "Blog Posts", _react.default.createElement("a", {
       href: "/blog",
       className: "link-all font-roboto text-base text-yellow underline pl-3"
-    }, "All Posts")), _react.default.createElement(_Posts.default, {
+    }, "All Posts")), _react.default.createElement(_GetPosts.GetPosts, {
       limit: 3,
-      orientation: "horizontal"
+      orientation: "horizontal",
+      nameClasses: "text-base text-yellow",
+      dateClasses: "text-xs text-blue-100 italic"
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
@@ -94614,7 +94596,7 @@ var Home = function Home(_ref) {
 };
 
 exports.Home = Home;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../GetEvents":"containers/GetEvents/index.tsx","../Posts":"containers/Posts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Elements/Paragraphs.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../GetTestimonials":"containers/GetTestimonials/index.tsx","../GetEvents":"containers/GetEvents/index.tsx","../GetPosts":"containers/GetPosts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Elements/Paragraphs.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94679,7 +94661,7 @@ exports.Bio = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Testimonials = _interopRequireDefault(require("../Testimonials"));
+var _GetTestimonials = require("../GetTestimonials");
 
 var _helpers = require("../../utils/helpers");
 
@@ -94687,9 +94669,9 @@ var _Paragraphs = require("../../components/Elements/Paragraphs");
 
 var _SingleImage = require("../../components/Elements/SingleImage");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _page = _interopRequireDefault(require("../../queries/page/page"));
+var _page = require("../../queries/page/page");
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -94700,8 +94682,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //Components
 // Queries
 var Bio = function Bio() {
-  return _react.default.createElement(_Query.default, {
-    query: _page.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _page.PAGE_QUERY,
     slug: "bio"
   }, function (_ref) {
     var pages = _ref.data.pages;
@@ -94728,14 +94710,14 @@ var Bio = function Bio() {
       className: "container mx-auto py-12 section-testimonials"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Testimonials"), _react.default.createElement(_Testimonials.default, {
+    }, "Testimonials"), _react.default.createElement(_GetTestimonials.GetTestimonials, {
       limit: 4
     }))));
   });
 };
 
 exports.Bio = Bio;
-},{"react":"../node_modules/react/index.js","../Testimonials":"containers/Testimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Elements/Paragraphs":"components/Elements/Paragraphs.tsx","../../components/Elements/SingleImage":"components/Elements/SingleImage.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Events/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../GetTestimonials":"containers/GetTestimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Elements/Paragraphs":"components/Elements/Paragraphs.tsx","../../components/Elements/SingleImage":"components/Elements/SingleImage.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Events/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94749,9 +94731,9 @@ var _GetEvents = require("../GetEvents");
 
 var _helpers = require("../../utils/helpers");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _page = _interopRequireDefault(require("../../queries/page/page"));
+var _page = require("../../queries/page/page");
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -94765,8 +94747,8 @@ var Events = function Events() {
 
   var _nowIso = _now.toISOString();
 
-  return _react.default.createElement(_Query.default, {
-    query: _page.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _page.PAGE_QUERY,
     slug: "events"
   }, function (_ref) {
     var pages = _ref.data.pages;
@@ -94816,7 +94798,7 @@ exports.Events = Events;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.CATEGORY_POSTS_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -94827,15 +94809,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var CATEGORY_POSTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Categories($slug: String!) {\n        categories(where: {slug: $slug}) {\n            id\n            name\n            slug\n            posts {\n                id\n                name\n                slug\n                description\n                image {\n                    formats\n                }\n                category {\n                    id\n                    name\n                    slug\n                }\n                published_at\n            }\n        }\n    }\n"])));
-var _default = CATEGORY_POSTS_QUERY;
-exports.default = _default;
+exports.CATEGORY_POSTS_QUERY = CATEGORY_POSTS_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"queries/category/categories.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.CATEGORIES_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -94846,8 +94827,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var CATEGORIES_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  query Categories {\n    categories {\n      id\n      name\n      slug\n    }\n  }\n"])));
-var _default = CATEGORIES_QUERY;
-exports.default = _default;
+exports.CATEGORIES_QUERY = CATEGORIES_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"components/Nav/blog.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -94858,17 +94838,17 @@ exports.BlogNav = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Query = _interopRequireDefault(require("../Query"));
-
 var _reactRouterDom = require("react-router-dom");
 
 var _post = require("../Card/post");
 
-var _posts = _interopRequireDefault(require("../../queries/post/posts"));
+var _Query = require("../Query");
 
-var _posts2 = _interopRequireDefault(require("../../queries/category/posts"));
+var _posts = require("../../queries/post/posts");
 
-var _categories = _interopRequireDefault(require("../../queries/category/categories"));
+var _posts2 = require("../../queries/category/posts");
+
+var _categories = require("../../queries/category/categories");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -94876,8 +94856,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 // Queries
 var BlogNav = function BlogNav(props) {
-  return _react.default.createElement(_react.default.Fragment, null, props.more_posts && _react.default.createElement(_Query.default, {
-    query: _posts.default,
+  return _react.default.createElement(_react.default.Fragment, null, props.more_posts && _react.default.createElement(_Query.Query, {
+    query: _posts.POSTS_QUERY,
     id: null,
     exclude: props.exclude,
     sort: "publishedAT:ASC"
@@ -94899,11 +94879,13 @@ var BlogNav = function BlogNav(props) {
       }, _react.default.createElement(_post.Card, {
         post: post,
         key: "post-".concat(post.id),
-        orientation: "horizontal"
+        orientation: "horizontal",
+        nameClasses: props.nameClasses,
+        dateClasses: props.dateClasses
       })));
     })));
-  }), _react.default.createElement(_Query.default, {
-    query: _categories.default,
+  }), _react.default.createElement(_Query.Query, {
+    query: _categories.CATEGORIES_QUERY,
     id: null
   }, function (_ref2) {
     var categories = _ref2.data.categories;
@@ -94922,8 +94904,8 @@ var BlogNav = function BlogNav(props) {
         className: "link-category"
       }, _react.default.createElement("p", {
         className: ""
-      }, category.name)), _react.default.createElement(_Query.default, {
-        query: _posts2.default,
+      }, category.name)), _react.default.createElement(_Query.Query, {
+        query: _posts2.CATEGORY_POSTS_QUERY,
         slug: category.slug
       }, function (_ref3) {
         var categories = _ref3.data.categories;
@@ -94936,7 +94918,7 @@ var BlogNav = function BlogNav(props) {
 };
 
 exports.BlogNav = BlogNav;
-},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/post":"components/Card/post.tsx","../../queries/post/posts":"queries/post/posts.tsx","../../queries/category/posts":"queries/category/posts.tsx","../../queries/category/categories":"queries/category/categories.tsx"}],"components/Nav/event.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/post":"components/Card/post.tsx","../Query":"components/Query/index.tsx","../../queries/post/posts":"queries/post/posts.tsx","../../queries/category/posts":"queries/category/posts.tsx","../../queries/category/categories":"queries/category/categories.tsx"}],"components/Nav/event.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94946,13 +94928,13 @@ exports.EventNav = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Query = _interopRequireDefault(require("../Query"));
-
 var _reactRouterDom = require("react-router-dom");
 
 var _event = require("../Card/event");
 
-var _events = _interopRequireDefault(require("../../queries/event/events"));
+var _Query = require("../Query");
+
+var _events = require("../../queries/event/events");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -94963,8 +94945,8 @@ var EventNav = function EventNav(props) {
 
   var _nowIso = _now.toISOString();
 
-  return _react.default.createElement(_Query.default, {
-    query: _events.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _events.EVENTS_QUERY,
     id: null,
     exclude: props.exclude,
     event_ended: false,
@@ -94995,7 +94977,7 @@ var EventNav = function EventNav(props) {
 };
 
 exports.EventNav = EventNav;
-},{"react":"../node_modules/react/index.js","../Query":"components/Query/index.tsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/event":"components/Card/event.tsx","../../queries/event/events":"queries/event/events.tsx"}],"containers/Sidebar/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../Card/event":"components/Card/event.tsx","../Query":"components/Query/index.tsx","../../queries/event/events":"queries/event/events.tsx"}],"containers/Sidebar/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95011,12 +94993,15 @@ var _event = require("../../components/Nav/event");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Packages
 var BlogSidebar = function BlogSidebar(props) {
   return _react.default.createElement("div", {
     className: "col-span-2 wrapper-sidebar"
   }, _react.default.createElement(_blog.BlogNav, {
     exclude: props.exclude,
-    more_posts: props.more_posts
+    more_posts: props.more_posts,
+    nameClasses: props.nameClasses,
+    dateClasses: props.dateClasses
   }));
 };
 
@@ -95041,15 +95026,15 @@ exports.Blog = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Posts = _interopRequireDefault(require("../Posts"));
+var _GetPosts = require("../GetPosts");
 
 var _Sidebar = require("../Sidebar");
 
 var _helpers = require("../../utils/helpers");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _page = _interopRequireDefault(require("../../queries/page/page"));
+var _page = require("../../queries/page/page");
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -95060,8 +95045,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Queries
 var Blog = function Blog(_ref) {
   var siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_Query.default, {
-    query: _page.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _page.PAGE_QUERY,
     slug: "blog"
   }, function (_ref2) {
     var pages = _ref2.data.pages;
@@ -95074,7 +95059,7 @@ var Blog = function Blog(_ref) {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
       className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
-    }, _react.default.createElement(_Posts.default, {
+    }, _react.default.createElement(_GetPosts.GetPosts, {
       limit: 12,
       orientation: "vertical",
       heading: "Posts"
@@ -95085,7 +95070,7 @@ var Blog = function Blog(_ref) {
 };
 
 exports.Blog = Blog;
-},{"react":"../node_modules/react/index.js","../Posts":"containers/Posts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Contact/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../GetPosts":"containers/GetPosts/index.tsx","../Sidebar":"containers/Sidebar/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Query":"components/Query/index.tsx","../../queries/page/page":"queries/page/page.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/Contact/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -95097,9 +95082,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _helpers = require("../../utils/helpers");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _page = _interopRequireDefault(require("../../queries/page/page"));
+var _page = require("../../queries/page/page");
 
 var _apiHelper = require("../../utils/apiHelper");
 
@@ -95109,8 +95094,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Queries
 var Contact = function Contact(_ref) {
   var siteOptions = _ref.siteOptions;
-  return _react.default.createElement(_Query.default, {
-    query: _page.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _page.PAGE_QUERY,
     slug: "contact"
   }, function (_ref2) {
     var pages = _ref2.data.pages;
@@ -95146,22 +95131,23 @@ exports.PostComponent = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _helpers = require("../../utils/helpers");
-
 var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _helpers = require("../../utils/helpers");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PostComponent = function PostComponent(_ref) {
-  var post = _ref.post;
+// Packages
+// Utilities
+var PostComponent = function PostComponent(props) {
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? post.image.url
   //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
   // const imageUrl = post.image.url;
-  var object = post;
+  var object = props.post;
   var content_type = "post_single";
   var image_size = "post_single";
   var imageUrl = (0, _helpers.SmartImage)({
@@ -95185,34 +95171,34 @@ var PostComponent = function PostComponent(_ref) {
     className: "byline"
   }, _react.default.createElement("h3", {
     className: "card-post-name font-roboto text-2xl text-black my-3"
-  }, post.name), _react.default.createElement("p", {
+  }, props.post.name), _react.default.createElement("p", {
     className: "card-post-name font-roboto text-base text-darkblue mb-3"
   }, _react.default.createElement(_helpers.STFDate, {
-    _timestamp: post.published_at,
+    _timestamp: props.post.published_at,
     _format: "MMMM D, YYYY"
   }), _react.default.createElement("span", {
     className: "font-thin"
   }, " | "), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/category/".concat(post.category.slug)
+    to: "/category/".concat(props.post.category.slug)
   }, _react.default.createElement("span", {
     className: "card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement("i", {
     className: "fa fa-tags bg-none text-darkblue text-sm mr-1"
-  }), post.category.name)))), _react.default.createElement("p", {
+  }), props.post.category.name)))), _react.default.createElement("p", {
     className: "card-post-description text-base font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement(_reactMarkdown.default, {
-    source: post.description
+    source: props.post.description
   }))));
 };
 
 exports.PostComponent = PostComponent;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"queries/post/post.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../utils/helpers":"utils/helpers.tsx"}],"queries/post/post.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.POST_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -95223,8 +95209,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var POST_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Posts($slug: String!) {\n        posts(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
-var _default = POST_QUERY;
-exports.default = _default;
+exports.POST_QUERY = POST_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Post/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -95241,9 +95226,9 @@ var _Sidebar = require("../Sidebar");
 
 var _Post = require("../../components/Post");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _post = _interopRequireDefault(require("../../queries/post/post"));
+var _post = require("../../queries/post/post");
 
 var _helpers = require("../../utils/helpers");
 
@@ -95260,8 +95245,8 @@ var Post = function Post(_ref) {
   var _useParams = (0, _reactRouter.useParams)(),
       slug = _useParams.slug;
 
-  return _react.default.createElement(_Query.default, {
-    query: _post.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _post.POST_QUERY,
     slug: slug
   }, function (_ref2) {
     var posts = _ref2.data.posts;
@@ -95277,7 +95262,9 @@ var Post = function Post(_ref) {
       post: posts[0]
     }), _react.default.createElement(_Sidebar.BlogSidebar, {
       exclude: posts[0].id,
-      more_posts: true
+      more_posts: true,
+      nameClasses: "text-base text-yellow",
+      dateClasses: "text-xs text-blue-100 italic"
     })))));
   });
 };
@@ -95293,20 +95280,21 @@ exports.EventComponent = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _helpers = require("../../utils/helpers");
-
 var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+
+var _helpers = require("../../utils/helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var EventComponent = function EventComponent(_ref) {
-  var event = _ref.event;
+// Packages
+// Utilities
+var EventComponent = function EventComponent(props) {
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? event.image.url
   //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
   // const imageUrl = event.image.url;
-  var object = event;
+  var object = props.event;
   var content_type = "event_single";
   var image_size = "event_single";
   var imageUrl = (0, _helpers.SmartImage)({
@@ -95315,7 +95303,7 @@ var EventComponent = function EventComponent(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "col-span-5 event-".concat(event.id)
+    className: "col-span-5 event-".concat(props.event.id)
   }, _react.default.createElement("a", {
     href: "/events"
   }, _react.default.createElement("h4", {
@@ -95328,34 +95316,34 @@ var EventComponent = function EventComponent(_ref) {
     className: "w-full"
   })), _react.default.createElement("div", {
     className: "byline"
-  }, event.name && _react.default.createElement("h3", {
+  }, props.event.name && _react.default.createElement("h3", {
     className: "card-event-name font-roboto text-2xl text-black my-3"
-  }, event.name), _react.default.createElement("p", {
+  }, props.event.name), _react.default.createElement("p", {
     className: "card-event-name font-roboto text-base text-darkblue mb-3"
   }, _react.default.createElement(_helpers.STFStartEndDates, {
-    _start: event.event_start,
-    _end: event.event_end,
-    _timezone: event.event_timezone,
+    _start: props.event.event_start,
+    _end: props.event.event_end,
+    _timezone: props.event.event_timezone,
     _format: "full"
-  }))), event.description && _react.default.createElement("p", {
+  }))), props.event.description && _react.default.createElement("p", {
     className: "card-event-description text-base font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement(_reactMarkdown.default, {
-    source: event.description
-  })), event.event_details && _react.default.createElement("p", {
+    source: props.event.description
+  })), props.event.event_details && _react.default.createElement("p", {
     className: "card-event-description text-base font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement(_reactMarkdown.default, {
-    source: event.event_details
+    source: props.event.event_details
   }))));
 };
 
 exports.EventComponent = EventComponent;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js"}],"queries/event/event.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","../../utils/helpers":"utils/helpers.tsx"}],"queries/event/event.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.EVENT_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -95366,8 +95354,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($slug: String!) {\n        events(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            keep_on_homepage\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
-var _default = EVENT_QUERY;
-exports.default = _default;
+exports.EVENT_QUERY = EVENT_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Event/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -95384,9 +95371,9 @@ var _Sidebar = require("../Sidebar");
 
 var _Event = require("../../components/Event");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _event = _interopRequireDefault(require("../../queries/event/event"));
+var _event = require("../../queries/event/event");
 
 var _helpers = require("../../utils/helpers");
 
@@ -95403,8 +95390,8 @@ var Event = function Event(_ref) {
   var _useParams = (0, _reactRouter.useParams)(),
       slug = _useParams.slug;
 
-  return _react.default.createElement(_Query.default, {
-    query: _event.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _event.EVENT_QUERY,
     slug: slug
   }, function (_ref2) {
     var events = _ref2.data.events;
@@ -95437,15 +95424,15 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouter = require("react-router");
 
-var _Posts = _interopRequireDefault(require("../../components/Posts"));
+var _Posts = require("../../components/Posts");
 
 var _Sidebar = require("../Sidebar");
 
 var _helpers = require("../../utils/helpers");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _posts = _interopRequireDefault(require("../../queries/category/posts"));
+var _posts = require("../../queries/category/posts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -95458,8 +95445,8 @@ var Category = function Category(_ref) {
   var _useParams = (0, _reactRouter.useParams)(),
       slug = _useParams.slug;
 
-  return _react.default.createElement(_Query.default, {
-    query: _posts.default,
+  return _react.default.createElement(_Query.Query, {
+    query: _posts.CATEGORY_POSTS_QUERY,
     slug: slug
   }, function (_ref2) {
     var categories = _ref2.data.categories;
@@ -95471,7 +95458,7 @@ var Category = function Category(_ref) {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
       className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
-    }, _react.default.createElement(_Posts.default, {
+    }, _react.default.createElement(_Posts.Posts, {
       limit: 12,
       posts: categories[0].posts,
       orientation: "vertical",
@@ -95534,7 +95521,7 @@ module.exports = "/logo.d9d21b47.svg";
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.TOPMENU_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -95545,8 +95532,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var TOPMENU_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query TopMenu {\n      topMenu {\n        id\n        link {\n            id\n            label\n            path\n        }\n      }\n    }\n"])));
-var _default = TOPMENU_QUERY;
-exports.default = _default;
+exports.TOPMENU_QUERY = TOPMENU_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"components/Header/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -95559,13 +95545,13 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
 var _main = require("../Nav/main");
 
 var _logo = _interopRequireDefault(require("../../../assets/images/logo.svg"));
 
-var _topMenu = _interopRequireDefault(require("../../queries/top-menu"));
+var _topMenu = require("../../queries/top-menu");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -95599,8 +95585,8 @@ var Header = function Header(props) {
     xmlns: "http://www.w3.org/2000/svg"
   }, _react.default.createElement("title", null, "Menu"), _react.default.createElement("path", {
     d: "M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
-  })))), _react.default.createElement(_Query.default, {
-    query: _topMenu.default
+  })))), _react.default.createElement(_Query.Query, {
+    query: _topMenu.TOPMENU_QUERY
   }, function (_ref) {
     var topMenu = _ref.data.topMenu;
     return _react.default.createElement(_main.MainNav, {
@@ -95613,8 +95599,8 @@ var Header = function Header(props) {
       listItemClasses: "stf-main-nav-list-item mr-4",
       linkClasses: "stf-main-nav-link inline-block stf-nav-list-item-link hover:text-darkblue"
     });
-  }))), _react.default.createElement(_Query.default, {
-    query: _topMenu.default
+  }))), _react.default.createElement(_Query.Query, {
+    query: _topMenu.TOPMENU_QUERY
   }, function (_ref2) {
     var topMenu = _ref2.data.topMenu;
     return _react.default.createElement(_main.MainNav, {
@@ -95646,25 +95632,17 @@ var _Social = require("../Elements/Social");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
-var Footer = function Footer(_ref) {
-  var siteOptions = _ref.siteOptions,
-      iconColor = _ref.iconColor,
-      iconBgColor = _ref.iconBgColor,
-      iconHvColor = _ref.iconHvColor,
-      headingColor = _ref.headingColor,
-      containerClasses = _ref.containerClasses,
-      headingClasses = _ref.headingClasses,
-      listClasses = _ref.listClasses;
+var Footer = function Footer(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
     className: "section-footer w-full bg-darkblue text-white py-16 h-60 bottom-0 absolute"
   }, _react.default.createElement("div", {
     className: "container"
   }, _react.default.createElement(_Social.Social, {
-    siteOptions: siteOptions,
-    headingColor: headingColor,
-    containerClasses: containerClasses,
-    headingClasses: headingClasses,
-    listClasses: listClasses
+    siteOptions: props.siteOptions,
+    headingColor: props.headingColor,
+    containerClasses: props.containerClasses,
+    headingClasses: props.headingClasses,
+    listClasses: props.listClasses
   }), _react.default.createElement("p", {
     className: "font-roboto mx-auto block text-center mt-3"
   }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
@@ -95677,7 +95655,7 @@ exports.Footer = Footer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.SITEOPTIONS_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -95688,8 +95666,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var SITEOPTIONS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query SiteOptions {\n        siteOption {\n            id\n            social {\n                youtube\n                instagram\n                facebook\n                linkedin\n                twitter\n            }\n        }\n    }\n"])));
-var _default = SITEOPTIONS_QUERY;
-exports.default = _default;
+exports.SITEOPTIONS_QUERY = SITEOPTIONS_QUERY;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/App/index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -95724,11 +95701,9 @@ var _apiHelper = require("../../utils/apiHelper");
 
 var _Footer = require("../../components/Footer");
 
-var _Query = _interopRequireDefault(require("../../components/Query"));
+var _Query = require("../../components/Query");
 
-var _siteOptions = _interopRequireDefault(require("../../queries/site-options"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _siteOptions = require("../../queries/site-options");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -95760,8 +95735,8 @@ var App = function App() {
     setMenuVisibility(false);
   };
 
-  return _react.default.createElement(_Query.default, {
-    query: _siteOptions.default
+  return _react.default.createElement(_Query.Query, {
+    query: _siteOptions.SITEOPTIONS_QUERY
   }, function (_ref) {
     var siteOption = _ref.data.siteOption;
     var siteOptions = (0, _apiHelper.getSiteOptions)(siteOption);
@@ -98994,6 +98969,8 @@ module.exports = {
         "name": "ComponentPageConnectCta"
       }, {
         "name": "ComponentPageRowOfGifs"
+      }, {
+        "name": "ComponentPageSingleImage"
       }]
     }, {
       "kind": "UNION",
@@ -99485,6 +99462,8 @@ module.exports = {
       }, {
         "name": "ComponentPageSeo"
       }, {
+        "name": "ComponentPageSingleImage"
+      }, {
         "name": "ComponentPostMeta"
       }, {
         "name": "ComponentPostOpeningHours"
@@ -99701,7 +99680,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60511" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65128" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const CATEGORY_QUERY = gql`
+export const CATEGORY_QUERY = gql`
     query Categories($slug: String!) {
         categories(where: {slug: $slug}) {
           id
@@ -9,5 +9,3 @@ const CATEGORY_QUERY = gql`
         }
       }
 `;
-
-export default CATEGORY_QUERY;

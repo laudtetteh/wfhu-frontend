@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const SITEOPTIONS_QUERY = gql`
+export const SITEOPTIONS_QUERY = gql`
     query SiteOptions {
         siteOption {
             id
@@ -14,5 +14,3 @@ const SITEOPTIONS_QUERY = gql`
         }
     }
 `;
-
-export default SITEOPTIONS_QUERY;

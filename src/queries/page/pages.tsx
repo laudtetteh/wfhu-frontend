@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const PAGES_QUERY = gql`
+export const PAGES_QUERY = gql`
     query Pages($limit: Int!) {
         pages(limit: $limit) {
             id
@@ -58,5 +58,3 @@ const PAGES_QUERY = gql`
         }
     }
 `;
-
-export default PAGES_QUERY;

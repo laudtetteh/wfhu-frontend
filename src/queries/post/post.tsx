@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const POST_QUERY = gql`
+export const POST_QUERY = gql`
     query Posts($slug: String!) {
         posts(where: {slug: $slug}) {
             id
@@ -19,5 +19,3 @@ const POST_QUERY = gql`
         }
     }
 `;
-
-export default POST_QUERY;

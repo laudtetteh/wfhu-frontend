@@ -1,13 +1,14 @@
 // Packages
 import React from "react";
-import Query from "../../components/Query";
 import { Link } from "react-router-dom";
+// Components
+import { Query } from "../../components/Query";
 // Queries
-import CATEGORIES_QUERY from "../../queries/category/categories";
+import { CATEGORIES_QUERY } from "../../queries/category/categories";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 
-const Categories = () => {
+export const Categories = () => {
 
     return (
 
@@ -23,7 +24,7 @@ const Categories = () => {
 
                         <div className="grid-cols-1 md:grid-cols-2">
 
-                            <h2 class="section-heading font-bellota text-4xl text-red text-left mb-8">Series</h2>
+                            <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Series</h2>
 
                             <nav className="nav-categories">
                                 <ul className="loop-categories">
@@ -49,5 +50,3 @@ const Categories = () => {
         </React.Fragment>
     );
 };
-
-export default Categories;

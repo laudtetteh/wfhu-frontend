@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-const MainNav = (props) => {
+export const MainNav = props => {
 
     const location = useLocation();
 
@@ -43,5 +43,3 @@ const MainNav = (props) => {
         </React.Fragment>
     );
 };
-
-export { MainNav };

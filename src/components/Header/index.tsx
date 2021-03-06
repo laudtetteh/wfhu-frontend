@@ -2,12 +2,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
 // Components
-import Query from "../../components/Query";
+import { Query } from "../../components/Query";
 import { MainNav } from "../Nav/main";
 // Assets
 import logo from '../../../assets/images/logo.svg'
 // Queries
-import TOPMENU_QUERY from "../../queries/top-menu";
+import { TOPMENU_QUERY } from "../../queries/top-menu";
 
 export const Header = (props) => {
 

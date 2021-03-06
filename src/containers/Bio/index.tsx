@@ -1,14 +1,14 @@
 // Packages
 import React from 'react';
 // Containers
-import Testimonials from '../Testimonials';
+import { GetTestimonials } from '../GetTestimonials';
 import { DocumentHead } from '../../utils/helpers';
 //Components
 import { Paragraphs } from "../../components/Elements/Paragraphs";
 import { SingleImage } from "../../components/Elements/SingleImage";
 // Queries
-import Query from "../../components/Query";
-import PAGE_QUERY from "../../queries/page/page";
+import { Query } from "../../components/Query";
+import { PAGE_QUERY } from "../../queries/page/page";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -60,7 +60,7 @@ export const Bio = () => {
 
                                 <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
 
-                                <Testimonials limit={4} />
+                                <GetTestimonials limit={4} />
 
                             </div>
 

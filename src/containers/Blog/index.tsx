@@ -1,12 +1,12 @@
 // Packages
 import React from 'react';
 // Containers
-import Posts from '../Posts';
+import { GetPosts } from '../GetPosts';
 import { BlogSidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
-import Query from "../../components/Query";
-import PAGE_QUERY from "../../queries/page/page";
+import { Query } from "../../components/Query";
+import { PAGE_QUERY } from "../../queries/page/page";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -33,7 +33,7 @@ export const Blog = ({siteOptions}) => {
 
                                 <div className="md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto">
 
-                                    <Posts limit={12} orientation="vertical" heading="Posts" />
+                                    <GetPosts limit={12} orientation="vertical" heading="Posts" />
 
                                     <BlogSidebar more_posts={false} />
 

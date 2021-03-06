@@ -24,8 +24,8 @@ import { Footer } from '../../components/Footer';
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 // Queries
-import Query from "../../components/Query";
-import SITEOPTIONS_QUERY from "../../queries/site-options";
+import { Query } from "../../components/Query";
+import { SITEOPTIONS_QUERY } from "../../queries/site-options";
 
 export const App = () => {
 

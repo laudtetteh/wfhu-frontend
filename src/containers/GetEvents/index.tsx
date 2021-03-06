@@ -1,7 +1,10 @@
+// Packages
 import React from "react";
+// Components
 import { Events } from "../../components/Events";
-import Query from "../../components/Query";
-import EVENTS_QUERY from "../../queries/event/events";
+import { Query } from "../../components/Query";
+// Utilities
+import { EVENTS_QUERY } from "../../queries/event/events";
 
 export const GetEvents = props => {
 

@@ -7,8 +7,8 @@ import { BlogSidebar } from '../Sidebar';
 // Components
 import { PostComponent } from "../../components/Post";
 // Queries
-import Query from "../../components/Query";
-import POST_QUERY from "../../queries/post/post";
+import { Query } from "../../components/Query";
+import { POST_QUERY } from "../../queries/post/post";
 // Utilities
 import { STFDate, DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -38,7 +38,7 @@ export const Post = ({siteOptions}) => {
 
                                         <PostComponent post={posts[0]} />
 
-                                        <BlogSidebar exclude={posts[0].id} more_posts={true} />
+                                        <BlogSidebar exclude={posts[0].id} more_posts={true} nameClasses="text-base text-yellow" dateClasses="text-xs text-blue-100 italic" />
 
                                     </div>
                                 </div>

@@ -1,13 +1,13 @@
 // Packages
 import React from "react";
-import Query from "../Query";
 import { Link } from "react-router-dom";
 // Components
 import { Card } from "../Card/post";
 // Queries
-import POSTS_QUERY from "../../queries/post/posts";
-import CATEGORY_POSTS_QUERY from "../../queries/category/posts";
-import CATEGORIES_QUERY from "../../queries/category/categories";
+import { Query } from "../Query";
+import { POSTS_QUERY } from "../../queries/post/posts";
+import { CATEGORY_POSTS_QUERY } from "../../queries/category/posts";
+import { CATEGORIES_QUERY } from "../../queries/category/categories";
 
 export const BlogNav = props => {
 
@@ -42,7 +42,11 @@ export const BlogNav = props => {
                                                 to={`/post/${post.slug}`}
                                                 className="link-event">
 
-                                                <Card post={post} key={`post-${post.id}`} orientation="horizontal" />
+                                                <Card
+                                                    post={post} key={`post-${post.id}`}
+                                                    orientation="horizontal"
+                                                    nameClasses={props.nameClasses}
+                                                    dateClasses={props.dateClasses} />
 
                                             </Link>
                                         </li>

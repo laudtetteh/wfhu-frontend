@@ -7,8 +7,8 @@ import { EventSidebar } from '../Sidebar';
 // Components
 import { EventComponent } from "../../components/Event";
 // Queries
-import Query from "../../components/Query";
-import EVENT_QUERY from "../../queries/event/event";
+import { Query } from "../../components/Query";
+import { EVENT_QUERY } from "../../queries/event/event";
 // Utilities
 import { STFDate, DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';

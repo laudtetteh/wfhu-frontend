@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const TOPMENU_QUERY = gql`
+export const TOPMENU_QUERY = gql`
     query TopMenu {
       topMenu {
         id
@@ -12,5 +12,3 @@ const TOPMENU_QUERY = gql`
       }
     }
 `;
-
-export default TOPMENU_QUERY;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { STFDate, SmartImage, TrimText } from '../../utils/helpers';
 
 export const Card = props => {
-console.log(props.post.published_at)
+
     // const imageUrl =
     //     process.env.NODE_ENV !== "development"
     //     ? post.image.url
@@ -69,16 +69,14 @@ console.log(props.post.published_at)
                     </Link>
                 </div>
 
-
                 <div className="card-post--details mt-3">
                     <Link to={`/post/${props.post.slug}`} className="card-post--title font-roboto font-medium no-underline">
-                        <p id="name" className="font-roboto text-base text-yellow">
+                        <p id="name" className={`font-roboto ${props.nameClasses}`}>
                             {props.post.name}
                         </p>
                     </Link>
 
-
-                    <p id="" className="card-post--date font-roboto text-xs text-blue-100 italic">
+                    <p id="" className={`card-post--date font-roboto ${props.dateClasses}`}>
                         <STFDate _timestamp={props.post.published_at} _format="MMMM D, YYYY" />
                     </p>
                 </div>
