@@ -9,6 +9,7 @@
 @import './_typography';
 @import './_custom';
 @import './_responsive';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

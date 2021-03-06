@@ -11,7 +11,7 @@ const Posts = props => {
 
                 <div className="col-span-5 space-y-6">
 
-                    <h2 className={`section-heading font-bellota text-4xl mb-3 ${props.heading_classes}`}>
+                    <h2 className={`section-heading font-bellota text-red text-3xl mb-5 ${props.heading_classes}`}>
 
                         {props.heading}
 

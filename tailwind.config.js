@@ -7,10 +7,12 @@ module.exports = {
   ],
   darkMode: false,
   variants: {
-    margin: ['first', 'last'],
-    backgroundColor: ['responsive', 'focus', 'visited', 'active', 'hover', 'group-hover'],
-    borderColor: ['focus-visible', 'first'],
-    textColor: ['responsive', 'focus', 'visited', 'active', 'hover', 'group-hover'],
+    extend: {
+      margin: ['first', 'last'],
+      backgroundColor: ['responsive', 'focus', 'visited', 'active', 'hover', 'group-hover'],
+      borderColor: ['focus-visible', 'first'],
+      textColor: ['responsive', 'focus', 'visited', 'active', 'hover', 'group-hover'],
+    }
   },
   plugins: [],
   theme: {
@@ -52,7 +54,7 @@ module.exports = {
     },
     screens: {
       'xs': '300px',
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 300px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
