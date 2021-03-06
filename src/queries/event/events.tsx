@@ -10,6 +10,7 @@ const EVENTS_QUERY = gql`
             event_details
             event_start
             event_end
+            event_timezone
             event_ended
             image {
                 formats

@@ -39,6 +39,8 @@ export const Card = ({ event }) => {
                         <STFStartEndDates
                             _start={event.event_start}
                             _end={event.event_end}
+                            _timezone={event.event_timezone}
+                            _format="simple"
                          />
                     </p>
                 </div>

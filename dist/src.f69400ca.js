@@ -53018,7 +53018,9 @@ exports.STFDate = STFDate;
 
 var STFStartEndDates = function STFStartEndDates(_ref2) {
   var _start = _ref2._start,
-      _end = _ref2._end;
+      _end = _ref2._end,
+      _timezone = _ref2._timezone,
+      _format = _ref2._format;
   var startEndDates = '';
   var startEndTimes = '';
   var startDateFormatted;
@@ -53034,10 +53036,10 @@ var STFStartEndDates = function STFStartEndDates(_ref2) {
       format: "MMMM D, YYYY"
     }, _end);
     startTimeFormatted = _react.default.createElement(_reactMoment.default, {
-      format: "hh:mm"
+      format: "h:mma"
     }, _start);
     endTimeFormatted = _react.default.createElement(_reactMoment.default, {
-      format: "hh:mm"
+      format: "h:mma"
     }, _end);
 
     if (startDateFormatted === endDateFormatted) {
@@ -53053,7 +53055,11 @@ var STFStartEndDates = function STFStartEndDates(_ref2) {
     }
   }
 
-  return _react.default.createElement(_react.default.Fragment, null, " ", startEndDates, " | ", startEndTimes, " ");
+  if (_format == "simple") {
+    return _react.default.createElement(_react.default.Fragment, null, " ", startDateFormatted, " ", startTimeFormatted, " ", _timezone);
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, " ", startEndDates, " | ", startEndTimes, " ", _timezone);
 };
 
 exports.STFStartEndDates = STFStartEndDates;
@@ -73751,7 +73757,9 @@ var Card = function Card(_ref) {
     className: "card-event--date font-roboto text-xs text-darkblue italic"
   }, _react.default.createElement(_helpers.STFStartEndDates, {
     _start: event.event_start,
-    _end: event.event_end
+    _end: event.event_end,
+    _timezone: event.event_timezone,
+    _format: "simple"
   })))));
 };
 
@@ -73808,7 +73816,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($event_ended: Boolean!, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($event_ended: Boolean!, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENTS_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetEvents/index.tsx":[function(require,module,exports) {
@@ -95230,7 +95238,9 @@ var EventComponent = function EventComponent(_ref) {
     className: "card-event-name font-roboto text-base text-darkblue mb-3"
   }, _react.default.createElement(_helpers.STFStartEndDates, {
     _start: event.event_start,
-    _end: event.event_end
+    _end: event.event_end,
+    _timezone: event.event_timezone,
+    _format: "full"
   }))), _react.default.createElement("p", {
     className: "card-event-description text-base font-roboto font-normal mt-3 mb-3"
   }, _react.default.createElement(_reactMarkdown.default, {
@@ -95259,7 +95269,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($slug: String!) {\n        events(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
+var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    query Events($slug: String!) {\n        events(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 var _default = EVENT_QUERY;
 exports.default = _default;
 },{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/Event/index.tsx":[function(require,module,exports) {

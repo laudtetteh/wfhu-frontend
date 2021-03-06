@@ -14,7 +14,7 @@ export const STFDate = ({_timestamp, _format}) => {
     )
 }
 
-export const STFStartEndDates = ({_start, _end}) => {
+export const STFStartEndDates = ({_start, _end, _timezone, _format}) => {
     let startEndDates = '';
     let startEndTimes = '';
     let startDateFormatted;
@@ -27,8 +27,8 @@ export const STFStartEndDates = ({_start, _end}) => {
         startDateFormatted = <Moment format="MMMM D, YYYY">{_start}</Moment>;
         endDateFormatted = <Moment format="MMMM D, YYYY">{_end}</Moment>;
 
-        startTimeFormatted = <Moment format="hh:mm">{_start}</Moment>;
-        endTimeFormatted = <Moment format="hh:mm">{_end}</Moment>;
+        startTimeFormatted = <Moment format="h:mma">{_start}</Moment>;
+        endTimeFormatted = <Moment format="h:mma">{_end}</Moment>;
 
         if( startDateFormatted === endDateFormatted ) {
 
@@ -49,8 +49,12 @@ export const STFStartEndDates = ({_start, _end}) => {
         }
     }
 
+    if( _format == "simple" ) {
+        return <> {startDateFormatted} {startTimeFormatted} {_timezone}</>
+    }
+
     return (
-        <> {startEndDates} | {startEndTimes} </>
+        <> {startEndDates} | {startEndTimes} {_timezone}</>
     );
 }
 
