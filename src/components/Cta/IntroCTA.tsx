@@ -22,7 +22,7 @@ export const IntroCTA = (props) => {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 
-                <div className="mx-auto  mx-auto py-12 lg:mr-5">
+                <div className="mx-auto py-12 lg:mr-5">
                     <h3 className="section-heading font-bellota text-2xl text-white mb-3">{props.pageBag.intro_cta.intro_heading}</h3>
 
                     <p className="section-paragraph font-roboto text-base text-white mb-3">
@@ -39,7 +39,7 @@ export const IntroCTA = (props) => {
 
                 </div>
 
-                <div className="section-image intro-section-image float-right bg-cover bg-no-repeat" style={introImage}></div>
+                <div className="intro-section-image float-right bg-cover bg-no-repeat" style={introImage}></div>
 
             </div>
 

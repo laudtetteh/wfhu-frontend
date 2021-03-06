@@ -15,6 +15,7 @@ const PAGE_QUERY = gql`
                     content
                 }
             }
+
             dynamic_fields {
 
                 __typename
@@ -43,6 +44,12 @@ const PAGE_QUERY = gql`
                       gif {
                         url
                       }
+                    }
+                }
+
+                ... on ComponentPageSingleImage {
+                    profile_pic {
+                        formats
                     }
                 }
             }

@@ -15,6 +15,7 @@ const PAGES_QUERY = gql`
                     content
                 }
             }
+
             dynamic_fields {
 
                 __typename
@@ -36,6 +37,20 @@ const PAGES_QUERY = gql`
 
                 ... on ComponentPageNoOfPostsToShow {
                     no_of_posts
+                }
+
+                ... on ComponentPageRowOfGifs {
+                    gifs_component {
+                      gif {
+                        url
+                      }
+                    }
+                }
+
+                ... on ComponentPageSingleImage {
+                    profile_pic {
+                        formats
+                    }
                 }
             }
 

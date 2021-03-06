@@ -3,6 +3,9 @@ import React from 'react';
 // Containers
 import Testimonials from '../Testimonials';
 import { DocumentHead } from '../../utils/helpers';
+//Components
+import { Paragraphs } from "../../components/Elements/Paragraphs";
+import { SingleImage } from "../../components/Elements/SingleImage";
 // Queries
 import Query from "../../components/Query";
 import PAGE_QUERY from "../../queries/page/page";
@@ -30,17 +33,23 @@ export const Bio = () => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto md:px-60 py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-bio">
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Bio</h1>
 
-                                <div className="description description font-roboto">
+                                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 
-                                     <div className="description description font-roboto">
-                                        {pageBag.description}
-                                    </div>
+                                    {pageBag.description &&
+
+                                        <Paragraphs text={pageBag.description} classes="mx-auto lg:mr-5" />
+                                    }
+
+                                    {pageBag.profile_pic &&
+                                        <SingleImage image={pageBag.profile_pic} classes="mx-auto md:mx-0 float-right" />
+                                    }
 
                                 </div>
+
                             </div>
 
                         </section>
