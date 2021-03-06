@@ -26,8 +26,11 @@ const Card = ({ testimonial }) => {
             <div className="">
 
                 { testimonial.description &&
+
                     <p className="card-testimonial-description text-base font-roboto font-medium mt-3 mb-3">
+                        <i aria-hidden="true" class="fa fa-quote-left inline mr-2"></i>
                         {testimonial.description}
+                        <i aria-hidden="true" class="fa fa-quote-right text-xs inline ml-2"></i>
                     </p>
                 }
 

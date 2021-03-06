@@ -71,7 +71,7 @@ console.log(props.post.published_at)
 
 
                 <div className="card-post--details mt-3">
-                    <Link to={`/post/${props.post.slug}`} className="card-post--title font-roboto no-underline">
+                    <Link to={`/post/${props.post.slug}`} className="card-post--title font-roboto font-medium no-underline">
                         <p id="name" className="font-roboto text-base text-yellow">
                             {props.post.name}
                         </p>

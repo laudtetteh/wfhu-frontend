@@ -14,7 +14,7 @@ const Query = ({ children, query, id, limit, exclude, sort, keep_on_homepage, ev
             exclude: exclude,
             event_ended: event_ended,
             event_start_gt:event_start_gt,
-            event_start_gt:event_start_gt,
+            event_start_lt:event_start_lt,
             keep_on_homepage: keep_on_homepage,
         }
     });

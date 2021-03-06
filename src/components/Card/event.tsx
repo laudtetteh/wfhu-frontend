@@ -31,8 +31,8 @@ export const Card = ({ event }) => {
                 <div className="card-event--details mt-3">
 
                     {event.name &&
-                        <Link to={`/event/${event.slug}`} className="card-event--title font-roboto no-underline">
-                            <p id="name" className="font-roboto text-base text-yellow">
+                        <Link to={`/event/${event.slug}`} className="card-event--title font-roboto font-medium no-underline">
+                            <p id="name" className="font-roboto text-base text-black">
                                 {event.name}
                             </p>
                         </Link>
