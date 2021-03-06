@@ -23,19 +23,20 @@ export const Card = ({ event }) => {
                 <div className="card-event--image-wrapper">
                     <Link to={`/event/${event.slug}`} className="card-event--image">
                         <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
-
                         <STFIsUpcoming _start={event.event_start} event_ended={event.event_ended} />
-
                     </Link>
                 </div>
 
 
                 <div className="card-event--details mt-3">
-                    <Link to={`/event/${event.slug}`} className="card-event--title font-roboto no-underline">
-                        <p id="name" className="font-roboto text-base text-yellow">
-                            {event.name}
-                        </p>
-                    </Link>
+
+                    {event.name &&
+                        <Link to={`/event/${event.slug}`} className="card-event--title font-roboto no-underline">
+                            <p id="name" className="font-roboto text-base text-yellow">
+                                {event.name}
+                            </p>
+                        </Link>
+                    }
 
 
                     <p id="" className="card-event--date font-roboto text-xs text-darkblue italic">

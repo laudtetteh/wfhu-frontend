@@ -25,13 +25,17 @@ const Card = ({ testimonial }) => {
 
             <div className="">
 
-                <p className="card-testimonial-description text-base font-roboto font-medium mt-3 mb-3">
-                    {testimonial.description}
-                </p>
+                { testimonial.description &&
+                    <p className="card-testimonial-description text-base font-roboto font-medium mt-3 mb-3">
+                        {testimonial.description}
+                    </p>
+                }
 
-                <p className="card-testimonial-name text-base font-roboto italic">
-                    - {testimonial.name}
-                </p>
+                { testimonial.name &&
+                    <p className="card-testimonial-name text-base font-roboto italic">
+                        {testimonial.name}
+                    </p>
+                }
 
             </div>
 

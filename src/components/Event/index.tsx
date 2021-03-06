@@ -34,11 +34,11 @@ export const EventComponent = ({event}) => {
 
                 <div className="byline">
 
-                    <h3 className="card-event-name font-roboto text-2xl text-black my-3">
-
-                        {event.name}
-
-                    </h3>
+                    {event.name &&
+                        <h3 className="card-event-name font-roboto text-2xl text-black my-3">
+                            {event.name}
+                        </h3>
+                    }
 
                     <p className="card-event-name font-roboto text-base text-darkblue mb-3">
                         <STFStartEndDates
@@ -51,13 +51,17 @@ export const EventComponent = ({event}) => {
 
                 </div>
 
-                <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
-                    <ReactMarkdown source={event.description} />
-                </p>
+                {event.description &&
+                    <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
+                        <ReactMarkdown source={event.description} />
+                    </p>
+                }
 
-                <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
-                    <ReactMarkdown source={event.event_details} />
-                </p>
+                {event.event_details &&
+                    <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
+                        <ReactMarkdown source={event.event_details} />
+                    </p>
+                }
 
             </div>
         </React.Fragment>

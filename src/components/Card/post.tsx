@@ -43,9 +43,11 @@ console.log(props.post.published_at)
                             <STFDate _timestamp={props.post.published_at} _format="MMMM D, YYYY" />
                         </p>
 
-                        <p id="name" className="font-roboto text-base text-black font-normal mt-5">
-                            <TrimText text={props.post.description} limit={200} />
-                        </p>
+                        {props.post.description &&
+                            <p id="name" className="font-roboto text-base text-black font-normal mt-5">
+                                <TrimText text={props.post.description} limit={200} />
+                            </p>
+                        }
 
                     </div>
 
