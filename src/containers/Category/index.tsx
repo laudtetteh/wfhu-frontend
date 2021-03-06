@@ -34,7 +34,7 @@ export const Category = ({siteOptions}) => {
 
                             <div className="container mx-auto py-12 section-posts">
 
-                                <div className="md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto">
+                                <div className="md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto">
 
                                     <Posts limit={12} posts={categories[0].posts} orientation="vertical" heading={categories[0].name} />
 

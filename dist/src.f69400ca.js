@@ -94969,7 +94969,7 @@ var Blog = function Blog(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       orientation: "vertical",
@@ -95066,7 +95066,7 @@ var PostComponent = function PostComponent(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "col-span-5 space-y-6"
+    className: "col-span-5"
   }, _react.default.createElement("a", {
     href: "/blog"
   }, _react.default.createElement("h4", {
@@ -95080,7 +95080,7 @@ var PostComponent = function PostComponent(_ref) {
   })), _react.default.createElement("div", {
     className: "byline"
   }, _react.default.createElement("h3", {
-    className: "card-post-name font-roboto text-2xl text-black mb-3"
+    className: "card-post-name font-roboto text-2xl text-black my-3"
   }, post.name), _react.default.createElement("p", {
     className: "card-post-name font-roboto text-base text-darkblue mb-3"
   }, _react.default.createElement(_helpers.STFDate, {
@@ -95168,7 +95168,7 @@ var Post = function Post(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Post.PostComponent, {
       post: posts[0]
     }), _react.default.createElement(_Sidebar.BlogSidebar, {
@@ -95364,7 +95364,7 @@ var Category = function Category(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-4 w-full md:w-auto"
+      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       posts: categories[0].posts,

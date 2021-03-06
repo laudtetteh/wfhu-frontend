@@ -23,7 +23,7 @@ export const PostComponent = ({post}) => {
 
         <React.Fragment>
 
-            <div className="col-span-5 space-y-6">
+            <div className="col-span-5">
 
                 <a href="/blog">
                     <h4 className="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Posts</h4>
@@ -35,7 +35,7 @@ export const PostComponent = ({post}) => {
 
                 <div className="byline">
 
-                    <h3 className="card-post-name font-roboto text-2xl text-black mb-3">
+                    <h3 className="card-post-name font-roboto text-2xl text-black my-3">
 
                         {post.name}
 
