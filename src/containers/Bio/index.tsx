@@ -37,15 +37,15 @@ export const Bio = () => {
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Bio</h1>
 
-                                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <div className="md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto">
 
                                     {pageBag.description &&
 
-                                        <Paragraphs text={pageBag.description} classes="mx-auto lg:mr-5" />
+                                        <Paragraphs text={pageBag.description} classes="col-span-4 mx-auto lg:mr-5" />
                                     }
 
                                     {pageBag.profile_pic &&
-                                        <SingleImage image={pageBag.profile_pic} classes="mx-auto md:mx-0 float-right" />
+                                        <SingleImage image={pageBag.profile_pic} classes="col-span-3 mx-auto md:mx-0 float-right" />
                                     }
 
                                 </div>

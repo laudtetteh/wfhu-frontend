@@ -21,26 +21,22 @@ const Card = ({ testimonial }) => {
     return (
         <React.Fragment>
 
-        <div className="mx-auto md:mt-0 mt-5 md:first:mt-0">
+        <div className="mx-auto md:mt-0 mt-1 md:first:mt-0">
 
-            <div className="">
+            { testimonial.description &&
 
-                { testimonial.description &&
+                <p className="card-testimonial-description text-base font-roboto font-medium mt-3 mb-3">
+                    <i aria-hidden="true" class="fa fa-quote-left inline mr-2"></i>
+                    {testimonial.description}
+                    <i aria-hidden="true" class="fa fa-quote-right text-xs inline ml-2"></i>
+                </p>
+            }
 
-                    <p className="card-testimonial-description text-base font-roboto font-medium mt-3 mb-3">
-                        <i aria-hidden="true" class="fa fa-quote-left inline mr-2"></i>
-                        {testimonial.description}
-                        <i aria-hidden="true" class="fa fa-quote-right text-xs inline ml-2"></i>
-                    </p>
-                }
-
-                { testimonial.name &&
-                    <p className="card-testimonial-name text-base font-roboto italic">
-                        {testimonial.name}
-                    </p>
-                }
-
-            </div>
+            { testimonial.name &&
+                <p className="card-testimonial-name text-base font-roboto italic">
+                    - {testimonial.name}
+                </p>
+            }
 
         </div>
 

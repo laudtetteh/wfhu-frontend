@@ -31,7 +31,7 @@ export const Blog = ({siteOptions}) => {
 
                             <div className="container mx-auto py-12 section-posts">
 
-                                <div className="md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto">
+                                <div className="md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto">
 
                                     <Posts limit={12} orientation="vertical" heading="Posts" />
 

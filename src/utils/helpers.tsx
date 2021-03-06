@@ -156,11 +156,11 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "single_image":
 
-            if( object.profile_pic !== null && object.profile_pic.formats.testimonial_loop !== undefined ) {
-                _imageUrl = object.profile_pic.formats.testimonial_loop.url;
+            if( object.profile_pic !== null && object.profile_pic.formats.split_section !== undefined ) {
+                _imageUrl = object.profile_pic.formats.split_section.url;
 
             } else {
-                _imageUrl = plchld_testimonial;
+                _imageUrl = plchld_split_section;
                 console.log("Missing (correctly-sized) image for single image. Placeholder used");
             }
 

@@ -53155,10 +53155,10 @@ var SmartImage = function SmartImage(_ref6) {
       break;
 
     case "single_image":
-      if (object.profile_pic !== null && object.profile_pic.formats.testimonial_loop !== undefined) {
-        _imageUrl = object.profile_pic.formats.testimonial_loop.url;
+      if (object.profile_pic !== null && object.profile_pic.formats.split_section !== undefined) {
+        _imageUrl = object.profile_pic.formats.split_section.url;
       } else {
-        _imageUrl = _placeholder_testimonial_loop.default;
+        _imageUrl = _placeholder_split_section.default;
         console.log("Missing (correctly-sized) image for single image. Placeholder used");
       }
 
@@ -53234,9 +53234,7 @@ var Card = function Card(_ref) {
     image_size: image_size
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "mx-auto md:mt-0 mt-5 md:first:mt-0"
-  }, _react.default.createElement("div", {
-    className: ""
+    className: "mx-auto md:mt-0 mt-1 md:first:mt-0"
   }, testimonial.description && _react.default.createElement("p", {
     className: "card-testimonial-description text-base font-roboto font-medium mt-3 mb-3"
   }, _react.default.createElement("i", {
@@ -53247,7 +53245,7 @@ var Card = function Card(_ref) {
     class: "fa fa-quote-right text-xs inline ml-2"
   })), testimonial.name && _react.default.createElement("p", {
     className: "card-testimonial-name text-base font-roboto italic"
-  }, testimonial.name))));
+  }, "- ", testimonial.name)));
 };
 
 var _default = Card;
@@ -94717,13 +94715,13 @@ var Bio = function Bio() {
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "Bio"), _react.default.createElement("div", {
-      className: "grid grid-cols-1 gap-4 md:grid-cols-2"
+      className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, pageBag.description && _react.default.createElement(_Paragraphs.Paragraphs, {
       text: pageBag.description,
-      classes: "mx-auto lg:mr-5"
+      classes: "col-span-4 mx-auto lg:mr-5"
     }), pageBag.profile_pic && _react.default.createElement(_SingleImage.SingleImage, {
       image: pageBag.profile_pic,
-      classes: "mx-auto md:mx-0 float-right"
+      classes: "col-span-3 mx-auto md:mx-0 float-right"
     })))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
@@ -95075,7 +95073,7 @@ var Blog = function Blog(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
+      className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       orientation: "vertical",
@@ -95274,7 +95272,7 @@ var Post = function Post(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
+      className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Post.PostComponent, {
       post: posts[0]
     }), _react.default.createElement(_Sidebar.BlogSidebar, {
@@ -95417,7 +95415,7 @@ var Event = function Event(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-events"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
+      className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Event.EventComponent, {
       event: events[0]
     }), _react.default.createElement(_Sidebar.EventSidebar, {
@@ -95472,7 +95470,7 @@ var Category = function Category(_ref) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12 section-posts"
     }, _react.default.createElement("div", {
-      className: "md:grid md:grid-cols-1 md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
+      className: "md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto"
     }, _react.default.createElement(_Posts.default, {
       limit: 12,
       posts: categories[0].posts,
