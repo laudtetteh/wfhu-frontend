@@ -12,6 +12,7 @@ export const GetEvents = props => {
             <Query
                 query={EVENTS_QUERY}
                 sort={props.sort}
+                limit={props.limit}
                 event_ended={props.event_ended}
                 event_start_gt={props.event_start_gt}
                 event_start_lt={props.event_start_lt}
