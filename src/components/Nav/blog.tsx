@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { Card } from "../Card/post";
 // Queries
 import { Query } from "../Query";
-import { POSTS_QUERY } from "../../queries/post/posts";
-import { CATEGORY_POSTS_QUERY } from "../../queries/category/posts";
-import { CATEGORIES_QUERY } from "../../queries/category/categories";
+import { POSTS_QUERY } from "../../queries";
+import { CATEGORY_POSTS_QUERY } from "../../queries";
+import { CATEGORIES_QUERY } from "../../queries";
 
 export const BlogNav = props => {
 

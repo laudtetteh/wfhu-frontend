@@ -4,7 +4,7 @@ import React from "react";
 import { Posts } from "../../components/Posts";
 import { Query } from "../../components/Query";
 // Queries
-import { POSTS_QUERY } from "../../queries/post/posts";
+import { POSTS_QUERY } from "../../queries";
 
 export const GetPosts = props => {
 

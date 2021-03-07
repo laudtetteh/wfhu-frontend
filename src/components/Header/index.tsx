@@ -7,7 +7,7 @@ import { MainNav } from "../Nav/main";
 // Assets
 import logo from '../../../assets/images/logo.svg'
 // Queries
-import { TOPMENU_QUERY } from "../../queries/top-menu";
+import { TOPMENU_QUERY } from "../../queries";
 
 export const Header = (props) => {
 

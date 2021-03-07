@@ -4,7 +4,7 @@ import React from "react";
 import { Events } from "../../components/Events";
 import { Query } from "../../components/Query";
 // Utilities
-import { EVENTS_QUERY } from "../../queries/event/events";
+import { EVENTS_QUERY } from "../../queries";
 
 export const GetEvents = props => {
 

@@ -4,7 +4,7 @@ import React from "react";
 import { Card } from "../Card/event";
 // Queries
 import { Query } from "../Query";
-import { EVENTS_QUERY } from "../../queries/event/events";
+import { EVENTS_QUERY } from "../../queries";
 
 export const EventNav = props => {
 

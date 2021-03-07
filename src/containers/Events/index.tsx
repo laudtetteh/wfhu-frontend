@@ -5,7 +5,7 @@ import { GetEvents } from '../GetEvents';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import { Query } from "../../components/Query";
-import { PAGE_QUERY } from "../../queries/page/page";
+import { PAGE_QUERY } from "../../queries";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';

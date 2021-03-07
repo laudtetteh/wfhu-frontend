@@ -3,7 +3,7 @@ import React from "react";
 // Components
 import { Query } from "../../components/Query";
 import { Testimonials } from "../../components/Testimonials";
-import { TESTIMONIALS_QUERY } from "../../queries/testimonial/testimonials";
+import { TESTIMONIALS_QUERY } from "../../queries";
 
 export const GetTestimonials = props => {
 

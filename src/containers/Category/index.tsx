@@ -7,7 +7,7 @@ import { BlogSidebar } from '../Sidebar';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import { Query } from "../../components/Query";
-import { CATEGORY_POSTS_QUERY } from "../../queries/category/posts";
+import { CATEGORY_POSTS_QUERY } from "../../queries";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';

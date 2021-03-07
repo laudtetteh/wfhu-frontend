@@ -8,7 +8,7 @@ import { BlogSidebar } from '../Sidebar';
 import { PostComponent } from "../../components/Post";
 // Queries
 import { Query } from "../../components/Query";
-import { POST_QUERY } from "../../queries/post/post";
+import { POST_QUERY } from "../../queries";
 // Utilities
 import { STFDate, DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';

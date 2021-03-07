@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // Components
 import { Query } from "../../components/Query";
 // Queries
-import { CATEGORIES_QUERY } from "../../queries/category/categories";
+import { CATEGORIES_QUERY } from "../../queries";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 
