@@ -1,6 +1,5 @@
 // Packages
 import React from "react";
-import { Link } from "react-router-dom";
 // Components
 import { Card } from "../Card/event";
 // Queries
@@ -36,14 +35,12 @@ export const EventNav = props => {
 
                                     return (
 
-                                        <li key={event.id} className="mb-3">
-                                            <Link
-                                                to={`/event/${event.slug}`}
-                                                className="link-event">
-
-                                                <Card event={event} key={`event-${event.id}`} className=key={`event-${event.id}`} />
-
-                                            </Link>
+                                        <li key={event.id} className="mb-10">
+                                            <Card
+                                                event={event}
+                                                key={`event-${event.id}`}
+                                                className={`event-${event.id}`}
+                                            />
                                         </li>
                                     );
 

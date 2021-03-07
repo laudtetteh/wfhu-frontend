@@ -82,7 +82,12 @@ export const Home = props => {
                                     <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
                                 </h2>
 
-                                <GetPosts limit={3} orientation="horizontal" nameClasses="text-base text-yellow" dateClasses="text-xs text-blue-100 italic" />
+                                <GetPosts
+                                    limit={3}
+                                    orientation="horizontal"
+                                    nameClasses="text-base text-yellow"
+                                    dateClasses="text-xs text-blue-100 italic"
+                                />
 
                             </div>
 

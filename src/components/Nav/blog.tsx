@@ -37,18 +37,14 @@ export const BlogNav = props => {
 
                                     return (
 
-                                        <li key={post.id} className="mb-3">
-                                            <Link
-                                                to={`/post/${post.slug}`}
-                                                className="link-event">
-
-                                                <Card
-                                                    post={post} key={`post-${post.id}`}
-                                                    orientation="horizontal"
-                                                    nameClasses={props.nameClasses}
-                                                    dateClasses={props.dateClasses} />
-
-                                            </Link>
+                                        <li key={post.id} className="mb-10">
+                                            <Card
+                                                post={post}
+                                                key={`post-${post.id}`}
+                                                orientation="horizontal"
+                                                nameClasses={props.nameClasses}
+                                                dateClasses={props.dateClasses}
+                                            />
                                         </li>
                                     );
 
@@ -77,7 +73,7 @@ export const BlogNav = props => {
 
                                     return (
 
-                                        <li key={category.id} className="mb-3">
+                                        <li key={category.id} className="mb-5">
 
                                             <Link
                                                 to={`/category/${category.slug}`}

@@ -17,12 +17,12 @@ export const GetPosts = props => {
                 {({ data: { posts } }) => {
 
                     return <Posts
-                        posts={posts}
-                        orientation={props.orientation}
-                        heading={props.heading}
-                        nameClasses={props.nameClasses}
-                        dateClasses={props.dateClasses}
-                    />;
+                                posts={posts}
+                                orientation={props.orientation}
+                                heading={props.heading}
+                                nameClasses={props.nameClasses}
+                                dateClasses={props.dateClasses}
+                            />;
 
                 }}
 

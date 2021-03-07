@@ -39,7 +39,12 @@ export const Posts = props => {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop">
                 {props.posts.map((post) => {
-                    return <Card post={post} key={`post-${post.id}`} orientation="horizontal" />
+                    return <Card
+                                post={post} key={`post-${post.id}`}
+                                orientation="horizontal"
+                                nameClasses={props.nameClasses}
+                                dateClasses={props.dateClasses}
+                            />
                 })}
 
             </div>

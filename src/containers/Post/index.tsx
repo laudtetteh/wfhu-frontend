@@ -38,7 +38,12 @@ export const Post = ({siteOptions}) => {
 
                                         <PostComponent post={posts[0]} />
 
-                                        <BlogSidebar exclude={posts[0].id} more_posts={true} nameClasses="text-base text-yellow" dateClasses="text-xs text-blue-100 italic" />
+                                        <BlogSidebar
+                                            exclude={posts[0].id}
+                                            more_posts={true}
+                                            nameClasses="text-base text-black"
+                                            dateClasses="text-xs text-darkblue italic"
+                                        />
 
                                     </div>
                                 </div>

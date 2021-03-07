@@ -10,7 +10,7 @@ export const BlogSidebar = props => {
 
     return (
 
-        <div className="col-span-2 wrapper-sidebar">
+        <div className="col-span-2 mt-20 md:mt-0">
             <BlogNav
                 exclude={props.exclude}
                 more_posts={props.more_posts}
@@ -25,7 +25,7 @@ export const EventSidebar = props => {
 
     return (
 
-        <div className="col-span-2 wrapper-sidebar">
+        <div className="col-span-2 mt-20 md:mt-0">
             <EventNav exclude={props.exclude} />
         </div>
     );
