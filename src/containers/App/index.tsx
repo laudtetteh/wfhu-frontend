@@ -4,28 +4,25 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Assets
 import logo from '../../../assets/images/logo.svg';
 // Page Containers
-import { Home } from '../Home';
-import { Bio } from '../Bio';
-import { Events } from '../Events';
-import { Blog } from '../Blog';
-import { Contact } from '../Contact';
-import { NotFound } from '../NotFound';
+import { PageHome } from '../PageHome';
+import { PageBio } from '../PageBio';
+import { PageEvents } from '../PageEvents';
+import { PageBlog } from '../PageBlog';
+import { PageContact } from '../PageContact';
+import { PageNotFound } from '../PageNotFound';
 // Other Containers
-import { Posts } from "../../containers/Posts";
-import { Post } from "../../containers/Post";
-import { Event } from "../../containers/Event";
-import { GetEvents } from "../../containers/GetEvents";
-import { Category } from "../../containers/Category";
-import { Categories } from "../../containers/Categories";
+import { SinglePost } from "../../containers/SinglePost";
+import { SingleEvent } from "../../containers/SingleEvent";
+import { SingleCategory } from "../../containers/SingleCategory";
 // Components
 import { Header } from '../../components/Header';
-import { getSiteOptions } from '../../utils/apiHelper';
 import { Footer } from '../../components/Footer';
 // Utilities
+import { getSiteOptions } from '../../utils/apiHelper';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import { Query } from "../../components/Query";
-import { SITEOPTIONS_QUERY } from "../../queries/site-options";
+import { SITEOPTIONS_QUERY } from "../../queries";
 
 export const App = () => {
 
@@ -62,35 +59,35 @@ export const App = () => {
                                 <Switch>
 
                                     <Route path="/" exact>
-                                        <Home siteOptions={siteOptions} />
+                                        <PageHome siteOptions={siteOptions} />
                                     </Route>
 
                                     <Route path="/bio" exact>
-                                        <Bio />
+                                        <PageBio />
                                     </Route>
 
                                     <Route path="/events" exact>
-                                        <Events />
+                                        <PageEvents />
                                     </Route>
 
                                     <Route path="/event/:slug">
-                                        <Event />
+                                        <SingleEvent />
                                     </Route>
 
                                     <Route path="/blog" exact>
-                                        <Blog />
+                                        <PageBlog />
                                     </Route>
 
                                     <Route path="/post/:slug">
-                                        <Post />
+                                        <SinglePost />
                                     </Route>
 
                                     <Route path="/category/:slug">
-                                        <Category />
+                                        <SingleCategory />
                                     </Route>
 
                                     <Route path="/contact" exact>
-                                        <Contact />
+                                        <PageContact />
                                     </Route>
 
                                 </Switch>
