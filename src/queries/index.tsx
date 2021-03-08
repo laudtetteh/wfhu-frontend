@@ -1,3 +1,4 @@
+// GraphQL Queries to consume strapi API
 import gql from "graphql-tag";
 
 export const CATEGORIES_QUERY = gql`
@@ -19,7 +20,6 @@ export const CATEGORY_QUERY = gql`
         }
       }
 `;
-
 
 export const CATEGORY_POSTS_QUERY = gql`
     query Categories($slug: String!) {
@@ -287,7 +287,6 @@ export const TESTIMONIALS_QUERY = gql`
         }
     }
 `;
-
 
 export const TOPMENU_QUERY = gql`
     query TopMenu {

@@ -61,7 +61,7 @@ export const Card = props => {
 
         <React.Fragment>
 
-            <div className={`md:mt-0 mt-5 md:first:mt-0 post-${props.post.id}`}>
+            <div className={`posts-loop posts-loop--vertical md:mt-0 mt-5 md:first:mt-0 post-${props.post.id}`}>
 
                 <div className="card-post--image">
                     <Link to={`/post/${props.post.slug}`} className="card-post--image">

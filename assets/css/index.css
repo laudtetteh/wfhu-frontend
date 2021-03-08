@@ -4,6 +4,9 @@
 @import "@fortawesome/fontawesome-free/scss/solid";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 /* end fontawesome. */
+/* hover.css. */
+@import "hover.css";
+/* end hover.css. */
 
 @import './_fonts';
 @import './_typography';

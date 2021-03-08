@@ -65,7 +65,7 @@ export const PageHome = props => {
 
                             <div className="container mx-auto py-12 section-testimonials">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Testimonials</h2>
+                                <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Reviews</h2>
 
                                 <GetTestimonials limit={4} />
 
