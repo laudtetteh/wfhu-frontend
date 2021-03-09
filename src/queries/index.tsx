@@ -123,10 +123,6 @@ export const PAGE_QUERY = gql`
                     button_text
                 }
 
-                ... on ComponentPageNoOfPostsToShow {
-                    no_of_posts
-                }
-
                 ... on ComponentPageRowOfGifs {
                     gifs_component {
                       gif {
@@ -180,10 +176,6 @@ export const PAGES_QUERY = gql`
                     paragraph
                     button_link
                     button_text
-                }
-
-                ... on ComponentPageNoOfPostsToShow {
-                    no_of_posts
                 }
 
                 ... on ComponentPageRowOfGifs {

@@ -6,7 +6,6 @@ export const getPageData = props => {
 
     let pageData = {};
 
-    let no_of_posts = 0;
     let name = '';
     let description = '';
     let category = {};
@@ -38,10 +37,6 @@ export const getPageData = props => {
 
             props.dynamic_fields.map((group) => {
 
-                if( group.__typename == "ComponentPageNoOfPostsToShow" ) {
-                    no_of_posts = group;
-                }
-
                 if( group.__typename == "ComponentPageIntroCta" ) {
                     intro_cta = group;
                 }
@@ -65,7 +60,6 @@ export const getPageData = props => {
     pageData["description"] = description;
     pageData["category"] = category;
     pageData["image"] = image;
-    pageData['no_of_posts'] = no_of_posts;
     pageData['intro_cta'] = intro_cta;
     pageData['connect_cta'] = connect_cta;
     pageData['row_of_gifs'] = row_of_gifs;
