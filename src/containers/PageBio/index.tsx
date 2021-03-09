@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 // Containers
-import { GetTestimonials } from '../GetTestimonials';
+import { GetReviews } from '../GetReviews';
 import { DocumentHead } from '../../utils/helpers';
 //Components
 import { Paragraphs } from "../../components/Elements/Paragraphs";
@@ -56,11 +56,11 @@ export const PageBio = () => {
 
                         <section className="w-full bg-none">
 
-                            <div className="container mx-auto py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-reviews">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Testimonials</h2>
+                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Reviews</h2>
 
-                                <GetTestimonials limit={4} />
+                                <GetReviews limit={4} />
 
                             </div>
 

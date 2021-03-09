@@ -261,9 +261,9 @@ export const SITEOPTIONS_QUERY = gql`
     }
 `;
 
-export const TESTIMONIAL_QUERY = gql`
-  query Testimonials($id: ID!) {
-    testimonial(id: $id) {
+export const REVIEW_QUERY = gql`
+  query Reviews($id: ID!) {
+    review(id: $id) {
       id
       name
       description
@@ -275,9 +275,9 @@ export const TESTIMONIAL_QUERY = gql`
   }
 `;
 
-export const TESTIMONIALS_QUERY = gql`
-    query Testimonials($limit: Int!)  {
-        testimonials(limit: $limit) {
+export const REVIEWS_QUERY = gql`
+    query Reviews($limit: Int!)  {
+        reviews(limit: $limit) {
             id
             name
             description

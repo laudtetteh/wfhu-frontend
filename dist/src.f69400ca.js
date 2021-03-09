@@ -53026,8 +53026,8 @@ exports.Helmet = HelmetExport;
 HelmetExport.renderStatic = HelmetExport.rewind;
 var _default = HelmetExport;
 exports.default = _default;
-},{"prop-types":"../node_modules/prop-types/index.js","react-side-effect":"../node_modules/react-side-effect/lib/index.js","react-fast-compare":"../node_modules/react-fast-compare/index.js","react":"../node_modules/react/index.js","object-assign":"../node_modules/object-assign/index.js"}],"../assets/images/placeholder_testimonial_loop.jpg":[function(require,module,exports) {
-module.exports = "/placeholder_testimonial_loop.df182f6e.jpg";
+},{"prop-types":"../node_modules/prop-types/index.js","react-side-effect":"../node_modules/react-side-effect/lib/index.js","react-fast-compare":"../node_modules/react-fast-compare/index.js","react":"../node_modules/react/index.js","object-assign":"../node_modules/object-assign/index.js"}],"../assets/images/placeholder_review_loop.jpg":[function(require,module,exports) {
+module.exports = "/placeholder_review_loop.ed211885.jpg";
 },{}],"../assets/images/placeholder_post_loop.jpg":[function(require,module,exports) {
 module.exports = "/placeholder_post_loop.07cfdf05.jpg";
 },{}],"../assets/images/placeholder_post_single.jpg":[function(require,module,exports) {
@@ -53048,7 +53048,7 @@ var _reactMoment = _interopRequireDefault(require("react-moment"));
 
 var _reactHelmet = require("react-helmet");
 
-var _placeholder_testimonial_loop = _interopRequireDefault(require("../../assets/images/placeholder_testimonial_loop.jpg"));
+var _placeholder_review_loop = _interopRequireDefault(require("../../assets/images/placeholder_review_loop.jpg"));
 
 var _placeholder_post_loop = _interopRequireDefault(require("../../assets/images/placeholder_post_loop.jpg"));
 
@@ -53168,12 +53168,12 @@ var SmartImage = function SmartImage(_ref6) {
   var _imageUrl;
 
   switch (content_type) {
-    case "testimonial":
-      if (object.image !== null && object.image.formats.testimonial_loop !== undefined) {
-        _imageUrl = object.image.formats.testimonial_loop.url;
+    case "review":
+      if (object.image !== null && object.image.formats.review_loop !== undefined) {
+        _imageUrl = object.image.formats.review_loop.url;
       } else {
-        _imageUrl = _placeholder_testimonial_loop.default;
-        console.log("Missing (correctly-sized) image for one or more testimonials. Placeholder used");
+        _imageUrl = _placeholder_review_loop.default;
+        console.log("Missing (correctly-sized) image for one or more reviews. Placeholder used");
       }
 
       break;
@@ -53256,7 +53256,7 @@ var SmartImage = function SmartImage(_ref6) {
 };
 
 exports.SmartImage = SmartImage;
-},{"react":"../node_modules/react/index.js","react-moment":"../node_modules/react-moment/dist/index.js","react-helmet":"../node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_testimonial_loop.jpg":"../assets/images/placeholder_testimonial_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"../assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_post_single.jpg":"../assets/images/placeholder_post_single.jpg","../../assets/images/placeholder_split_section.jpg":"../assets/images/placeholder_split_section.jpg"}],"components/Card/testimonial.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-moment":"../node_modules/react-moment/dist/index.js","react-helmet":"../node_modules/react-helmet/es/Helmet.js","../../assets/images/placeholder_review_loop.jpg":"../assets/images/placeholder_review_loop.jpg","../../assets/images/placeholder_post_loop.jpg":"../assets/images/placeholder_post_loop.jpg","../../assets/images/placeholder_post_single.jpg":"../assets/images/placeholder_post_single.jpg","../../assets/images/placeholder_split_section.jpg":"../assets/images/placeholder_split_section.jpg"}],"components/Card/review.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53275,12 +53275,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Card = function Card(props) {
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
-  //     ? testimonial.image.url
-  //     : process.env.REACT_APP_BACKEND_URL + testimonial.image.url;
-  // const imageUrl = testimonial.image.formats.testimonial_loop.url;
-  var object = props.testimonial;
-  var content_type = "testimonial";
-  var image_size = "testimonial_loop";
+  //     ? review.image.url
+  //     : process.env.REACT_APP_BACKEND_URL + review.image.url;
+  // const imageUrl = review.image.formats.review_loop.url;
+  var object = props.review;
+  var content_type = "review";
+  var image_size = "review_loop";
   var imageUrl = (0, _helpers.SmartImage)({
     object: object,
     content_type: content_type,
@@ -53288,49 +53288,49 @@ var Card = function Card(props) {
   });
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "mx-auto md:mt-0 mt-1 md:first:mt-0"
-  }, props.testimonial.description && _react.default.createElement("p", {
-    className: "card-testimonial-description text-base font-roboto font-medium mt-3 mb-3"
+  }, props.review.description && _react.default.createElement("p", {
+    className: "card-review-description text-base font-roboto font-medium mt-3 mb-3"
   }, _react.default.createElement("i", {
     "aria-hidden": "true",
     className: "fa fa-quote-left inline mr-2"
-  }), props.testimonial.description, _react.default.createElement("i", {
+  }), props.review.description, _react.default.createElement("i", {
     "aria-hidden": "true",
     className: "fa fa-quote-right text-xs inline ml-2"
-  })), props.testimonial.name && _react.default.createElement("p", {
-    className: "card-testimonial-name text-base font-roboto italic"
-  }, "- ", props.testimonial.name)));
+  })), props.review.name && _react.default.createElement("p", {
+    className: "card-review-name text-base font-roboto italic"
+  }, "- ", props.review.name)));
 };
 
 exports.Card = Card;
-},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Testimonials/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../utils/helpers":"utils/helpers.tsx"}],"components/Reviews/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Testimonials = void 0;
+exports.Reviews = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _testimonial = require("../Card/testimonial");
+var _review = require("../Card/review");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Packages
 // Components
-var Testimonials = function Testimonials(props) {
+var Reviews = function Reviews(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-4"
-  }, props.testimonials.map(function (testimonial) {
-    return _react.default.createElement(_testimonial.Card, {
-      testimonial: testimonial,
-      key: "testimonial-".concat(testimonial.id)
+  }, props.reviews.map(function (review) {
+    return _react.default.createElement(_review.Card, {
+      review: review,
+      key: "review-".concat(review.id)
     });
   })));
 };
 
-exports.Testimonials = Testimonials;
-},{"react":"../node_modules/react/index.js","../Card/testimonial":"components/Card/testimonial.tsx"}],"../node_modules/graphql/version.mjs":[function(require,module,exports) {
+exports.Reviews = Reviews;
+},{"react":"../node_modules/react/index.js","../Card/review":"components/Card/review.tsx"}],"../node_modules/graphql/version.mjs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73674,7 +73674,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TOPMENU_QUERY = exports.TESTIMONIALS_QUERY = exports.TESTIMONIAL_QUERY = exports.SITEOPTIONS_QUERY = exports.POSTS_QUERY = exports.POST_QUERY = exports.PAGES_QUERY = exports.PAGE_QUERY = exports.EVENTS_QUERY = exports.EVENT_QUERY = exports.CATEGORY_POSTS_QUERY = exports.CATEGORY_QUERY = exports.CATEGORIES_QUERY = void 0;
+exports.TOPMENU_QUERY = exports.REVIEWS_QUERY = exports.REVIEW_QUERY = exports.SITEOPTIONS_QUERY = exports.POSTS_QUERY = exports.POST_QUERY = exports.PAGES_QUERY = exports.PAGE_QUERY = exports.EVENTS_QUERY = exports.EVENT_QUERY = exports.CATEGORY_POSTS_QUERY = exports.CATEGORY_QUERY = exports.CATEGORIES_QUERY = void 0;
 
 var _graphqlTag = _interopRequireDefault(require("graphql-tag"));
 
@@ -73704,25 +73704,25 @@ var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject9 || (_templateObject9
 exports.POSTS_QUERY = POSTS_QUERY;
 var SITEOPTIONS_QUERY = (0, _graphqlTag.default)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n    query SiteOptions {\n        siteOption {\n            id\n            social {\n                youtube\n                instagram\n                facebook\n                linkedin\n                twitter\n            }\n        }\n    }\n"])));
 exports.SITEOPTIONS_QUERY = SITEOPTIONS_QUERY;
-var TESTIMONIAL_QUERY = (0, _graphqlTag.default)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  query Testimonials($id: ID!) {\n    testimonial(id: $id) {\n      id\n      name\n      description\n      image {\n        formats\n      }\n      published_at\n    }\n  }\n"])));
-exports.TESTIMONIAL_QUERY = TESTIMONIAL_QUERY;
-var TESTIMONIALS_QUERY = (0, _graphqlTag.default)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n    query Testimonials($limit: Int!)  {\n        testimonials(limit: $limit) {\n            id\n            name\n            description\n            image {\n                formats\n            }\n        }\n    }\n"])));
-exports.TESTIMONIALS_QUERY = TESTIMONIALS_QUERY;
+var REVIEW_QUERY = (0, _graphqlTag.default)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  query Reviews($id: ID!) {\n    review(id: $id) {\n      id\n      name\n      description\n      image {\n        formats\n      }\n      published_at\n    }\n  }\n"])));
+exports.REVIEW_QUERY = REVIEW_QUERY;
+var REVIEWS_QUERY = (0, _graphqlTag.default)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n    query Reviews($limit: Int!)  {\n        reviews(limit: $limit) {\n            id\n            name\n            description\n            image {\n                formats\n            }\n        }\n    }\n"])));
+exports.REVIEWS_QUERY = REVIEWS_QUERY;
 var TOPMENU_QUERY = (0, _graphqlTag.default)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n    query TopMenu {\n      topMenu {\n        id\n        link {\n            id\n            label\n            path\n        }\n      }\n    }\n"])));
 exports.TOPMENU_QUERY = TOPMENU_QUERY;
-},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetTestimonials/index.tsx":[function(require,module,exports) {
+},{"graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"containers/GetReviews/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GetTestimonials = void 0;
+exports.GetReviews = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _Query = require("../../components/Query");
 
-var _Testimonials = require("../../components/Testimonials");
+var _Reviews = require("../../components/Reviews");
 
 var _queries = require("../../queries");
 
@@ -73730,20 +73730,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Packages
 // Components
-var GetTestimonials = function GetTestimonials(props) {
+var GetReviews = function GetReviews(props) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.Query, {
-    query: _queries.TESTIMONIALS_QUERY,
+    query: _queries.REVIEWS_QUERY,
     limit: props.limit
   }, function (_ref) {
-    var testimonials = _ref.data.testimonials;
-    return _react.default.createElement(_Testimonials.Testimonials, {
-      testimonials: testimonials
+    var reviews = _ref.data.reviews;
+    return _react.default.createElement(_Reviews.Reviews, {
+      reviews: reviews
     });
   }));
 };
 
-exports.GetTestimonials = GetTestimonials;
-},{"react":"../node_modules/react/index.js","../../components/Query":"components/Query/index.tsx","../../components/Testimonials":"components/Testimonials/index.tsx","../../queries":"queries/index.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
+exports.GetReviews = GetReviews;
+},{"react":"../node_modules/react/index.js","../../components/Query":"components/Query/index.tsx","../../components/Reviews":"components/Reviews/index.tsx","../../queries":"queries/index.tsx"}],"components/Card/event.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94466,7 +94466,7 @@ exports.PageHome = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _GetTestimonials = require("../GetTestimonials");
+var _GetReviews = require("../GetReviews");
 
 var _GetEvents = require("../GetEvents");
 
@@ -94526,10 +94526,10 @@ var PageHome = function PageHome(props) {
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto py-12 section-reviews"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-center mb-8"
-    }, "Reviews"), _react.default.createElement(_GetTestimonials.GetTestimonials, {
+    }, "Reviews"), _react.default.createElement(_GetReviews.GetReviews, {
       limit: 4
     }))), _react.default.createElement("section", {
       className: "w-full stf-bg-3 section-posts--loop"
@@ -94568,7 +94568,7 @@ var PageHome = function PageHome(props) {
 };
 
 exports.PageHome = PageHome;
-},{"react":"../node_modules/react/index.js","../GetTestimonials":"containers/GetTestimonials/index.tsx","../GetEvents":"containers/GetEvents/index.tsx","../GetPosts":"containers/GetPosts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries":"queries/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Elements/Paragraphs.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../GetReviews":"containers/GetReviews/index.tsx","../GetEvents":"containers/GetEvents/index.tsx","../GetPosts":"containers/GetPosts/index.tsx","../../components/Cta/ConnectCTA":"components/Cta/ConnectCTA.tsx","../../components/Cta/IntroCTA":"components/Cta/IntroCTA.tsx","../../components/Elements/RowOfGifs":"components/Elements/RowOfGifs.tsx","../../components/Query":"components/Query/index.tsx","../../queries":"queries/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"components/Elements/Paragraphs.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94606,7 +94606,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SingleImage = function SingleImage(props) {
   var object = props.image;
   var content_type = "single_image";
-  var image_size = "testimonial_loop";
+  var image_size = "review_loop";
   var imageUrl = (0, _helpers.SmartImage)({
     object: object,
     content_type: content_type,
@@ -94633,7 +94633,7 @@ exports.PageBio = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _GetTestimonials = require("../GetTestimonials");
+var _GetReviews = require("../GetReviews");
 
 var _helpers = require("../../utils/helpers");
 
@@ -94679,17 +94679,17 @@ var PageBio = function PageBio() {
     })))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto py-12 section-reviews"
     }, _react.default.createElement("h2", {
       className: "section-heading font-bellota text-4xl text-red text-left mb-8"
-    }, "Testimonials"), _react.default.createElement(_GetTestimonials.GetTestimonials, {
+    }, "Reviews"), _react.default.createElement(_GetReviews.GetReviews, {
       limit: 4
     }))));
   });
 };
 
 exports.PageBio = PageBio;
-},{"react":"../node_modules/react/index.js","../GetTestimonials":"containers/GetTestimonials/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Elements/Paragraphs":"components/Elements/Paragraphs.tsx","../../components/Elements/SingleImage":"components/Elements/SingleImage.tsx","../../components/Query":"components/Query/index.tsx","../../queries":"queries/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/PageEvents/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../GetReviews":"containers/GetReviews/index.tsx","../../utils/helpers":"utils/helpers.tsx","../../components/Elements/Paragraphs":"components/Elements/Paragraphs.tsx","../../components/Elements/SingleImage":"components/Elements/SingleImage.tsx","../../components/Query":"components/Query/index.tsx","../../queries":"queries/index.tsx","../../utils/apiHelper":"utils/apiHelper.tsx"}],"containers/PageEvents/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -94730,7 +94730,7 @@ var PageEvents = function PageEvents() {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto py-12 section-reviews"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "Events"), _react.default.createElement("div", {
@@ -94740,7 +94740,7 @@ var PageEvents = function PageEvents() {
     }, pageBag.description)))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto py-12 section-reviews"
     }, _react.default.createElement(_GetEvents.GetEvents, {
       event_ended: false,
       event_start_gt: _nowIso,
@@ -94751,7 +94751,7 @@ var PageEvents = function PageEvents() {
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-testimonials"
+      className: "container mx-auto py-12 section-reviews"
     }, _react.default.createElement(_GetEvents.GetEvents, {
       event_ended: true,
       event_start_lt: _nowIso,
@@ -95030,7 +95030,7 @@ var PageContact = function PageContact(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 md:px-60 section-testimonials"
+      className: "container mx-auto py-12 md:px-60 section-reviews"
     }, _react.default.createElement("h1", {
       className: "section-heading font-bellota text-5xl text-red text-left mb-8"
     }, "Contact"), _react.default.createElement("div", {
@@ -98841,7 +98841,7 @@ module.exports = {
       }, {
         "name": "PostNote"
       }, {
-        "name": "TestimonialNote"
+        "name": "ReviewNote"
       }, {
         "name": "UsersPermissionsMe"
       }, {
@@ -98963,32 +98963,6 @@ module.exports = {
       }, {
         "name": "deleteHistoryPayload"
       }, {
-        "name": "Like"
-      }, {
-        "name": "LikeConnection"
-      }, {
-        "name": "LikeAggregator"
-      }, {
-        "name": "LikeGroupBy"
-      }, {
-        "name": "LikeConnectionId"
-      }, {
-        "name": "LikeConnection_id"
-      }, {
-        "name": "LikeConnectionCreatedAt"
-      }, {
-        "name": "LikeConnectionUpdatedAt"
-      }, {
-        "name": "LikeConnectionAuthor"
-      }, {
-        "name": "LikeConnectionReview"
-      }, {
-        "name": "createLikePayload"
-      }, {
-        "name": "updateLikePayload"
-      }, {
-        "name": "deleteLikePayload"
-      }, {
         "name": "Page"
       }, {
         "name": "PageConnection"
@@ -99067,31 +99041,25 @@ module.exports = {
       }, {
         "name": "ReviewAggregator"
       }, {
-        "name": "ReviewAggregatorSum"
-      }, {
-        "name": "ReviewAggregatorAvg"
-      }, {
-        "name": "ReviewAggregatorMin"
-      }, {
-        "name": "ReviewAggregatorMax"
-      }, {
         "name": "ReviewGroupBy"
       }, {
         "name": "ReviewConnectionId"
       }, {
         "name": "ReviewConnection_id"
       }, {
-        "name": "ReviewConnectionCreatedAt"
+        "name": "ReviewConnectionCreated_at"
       }, {
-        "name": "ReviewConnectionUpdatedAt"
+        "name": "ReviewConnectionUpdated_at"
       }, {
-        "name": "ReviewConnectionContent"
+        "name": "ReviewConnectionImage"
       }, {
-        "name": "ReviewConnectionNote"
+        "name": "ReviewConnectionName"
       }, {
-        "name": "ReviewConnectionAuthor"
+        "name": "ReviewConnectionDescription"
       }, {
-        "name": "ReviewConnectionPost"
+        "name": "ReviewConnectionPublish_at"
+      }, {
+        "name": "ReviewConnectionPublished_at"
       }, {
         "name": "createReviewPayload"
       }, {
@@ -99104,38 +99072,6 @@ module.exports = {
         "name": "updateSiteOptionPayload"
       }, {
         "name": "deleteSiteOptionPayload"
-      }, {
-        "name": "Testimonial"
-      }, {
-        "name": "TestimonialConnection"
-      }, {
-        "name": "TestimonialAggregator"
-      }, {
-        "name": "TestimonialGroupBy"
-      }, {
-        "name": "TestimonialConnectionId"
-      }, {
-        "name": "TestimonialConnection_id"
-      }, {
-        "name": "TestimonialConnectionCreated_at"
-      }, {
-        "name": "TestimonialConnectionUpdated_at"
-      }, {
-        "name": "TestimonialConnectionImage"
-      }, {
-        "name": "TestimonialConnectionName"
-      }, {
-        "name": "TestimonialConnectionDescription"
-      }, {
-        "name": "TestimonialConnectionPublish_at"
-      }, {
-        "name": "TestimonialConnectionPublished_at"
-      }, {
-        "name": "createTestimonialPayload"
-      }, {
-        "name": "updateTestimonialPayload"
-      }, {
-        "name": "deleteTestimonialPayload"
       }, {
         "name": "TopMenu"
       }, {
@@ -99539,7 +99475,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54479" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51728" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

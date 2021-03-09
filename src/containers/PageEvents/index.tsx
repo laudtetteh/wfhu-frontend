@@ -31,7 +31,7 @@ export const PageEvents = () => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-reviews">
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Events</h1>
 
@@ -48,7 +48,7 @@ export const PageEvents = () => {
 
                         <section className="w-full bg-none">
 
-                            <div className="container mx-auto py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-reviews">
 
                                 <GetEvents
                                     event_ended={false}
@@ -65,7 +65,7 @@ export const PageEvents = () => {
 
                         <section className="w-full bg-none">
 
-                            <div className="container mx-auto py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-reviews">
 
                                 <GetEvents
                                     event_ended={true}

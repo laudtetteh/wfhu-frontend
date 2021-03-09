@@ -7,7 +7,7 @@ export const SingleImage = props => {
 
     const object = props.image;
     const content_type = "single_image";
-    const image_size = "testimonial_loop";
+    const image_size = "review_loop";
 
     const imageUrl = SmartImage({object, content_type, image_size});
 

@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 // Containers
-import { Testimonials } from '../Testimonials';
+import { Reviews } from '../Reviews';
 import { DocumentHead } from '../../utils/helpers';
 // Queries
 import { Query } from "../../components/Query";
@@ -30,7 +30,7 @@ export const PageContact = ({siteOptions}) => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto py-12 md:px-60 section-testimonials">
+                            <div className="container mx-auto py-12 md:px-60 section-reviews">
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Contact</h1>
 

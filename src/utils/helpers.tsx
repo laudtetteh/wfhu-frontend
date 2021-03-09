@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import {Helmet} from "react-helmet";
 // Assets
-import plchld_testimonial from '../../assets/images/placeholder_testimonial_loop.jpg';
+import plchld_review from '../../assets/images/placeholder_review_loop.jpg';
 import plchld_post from '../../assets/images/placeholder_post_loop.jpg';
 import plchld_post_single from '../../assets/images/placeholder_post_single.jpg';
 import plchld_split_section from '../../assets/images/placeholder_split_section.jpg';
@@ -102,15 +102,15 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
     switch(content_type) {
 
-        case "testimonial":
+        case "review":
 
-            if( object.image !== null && object.image.formats.testimonial_loop !== undefined ) {
-                _imageUrl = object.image.formats.testimonial_loop.url;
+            if( object.image !== null && object.image.formats.review_loop !== undefined ) {
+                _imageUrl = object.image.formats.review_loop.url;
 
             } else {
 
-                _imageUrl = plchld_testimonial;
-                console.log("Missing (correctly-sized) image for one or more testimonials. Placeholder used");
+                _imageUrl = plchld_review;
+                console.log("Missing (correctly-sized) image for one or more reviews. Placeholder used");
             }
 
             break;

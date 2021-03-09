@@ -1,7 +1,7 @@
 // Packages
 import React from 'react';
 // Containers
-import { GetTestimonials } from '../GetTestimonials';
+import { GetReviews } from '../GetReviews';
 import { GetEvents } from '../GetEvents';
 import { GetPosts } from '../GetPosts';
 // Components
@@ -63,11 +63,11 @@ export const PageHome = props => {
 
                         <section className="w-full bg-none">
 
-                            <div className="container mx-auto py-12 section-testimonials">
+                            <div className="container mx-auto py-12 section-reviews">
 
                                 <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Reviews</h2>
 
-                                <GetTestimonials limit={4} />
+                                <GetReviews limit={4} />
 
                             </div>
 
