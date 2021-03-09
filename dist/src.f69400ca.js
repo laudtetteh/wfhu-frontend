@@ -94513,16 +94513,12 @@ var PageHome = function PageHome(props) {
     }, _react.default.createElement(_IntroCTA.IntroCTA, {
       pageBag: pageBag
     }))), _react.default.createElement("section", {
-      className: "w-full stf-bg-2 section-connect-cta"
+      className: "w-full bg-none"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12"
-    }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
+    }, _react.default.createElement(_RowOfGifs.RowOfGifs, {
       pageBag: pageBag,
-      siteOptions: props.siteOptions,
-      containerClasses: "float-none md:float-right mx-auto",
-      headingColor: "darkblue",
-      headingClasses: "stf-text-shadow-white-top-left text-center md:text-right",
-      listClasses: "flex justify-center"
+      limit: 3
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
@@ -94531,6 +94527,17 @@ var PageHome = function PageHome(props) {
       className: "section-heading font-bellota text-4xl text-red text-center mb-8"
     }, "Reviews"), _react.default.createElement(_GetReviews.GetReviews, {
       limit: 4
+    }))), _react.default.createElement("section", {
+      className: "w-full stf-bg-2 section-connect-cta"
+    }, _react.default.createElement("div", {
+      className: "container mx-auto py-12"
+    }, _react.default.createElement(_GetEvents.GetEvents, {
+      limit: 5,
+      sort: "event_start:ASC",
+      heading: "Presentations",
+      heading_classes: "text-4xl text-white mb-3",
+      more_link: true,
+      keep_on_homepage: true
     }))), _react.default.createElement("section", {
       className: "w-full stf-bg-3 section-posts--loop"
     }, _react.default.createElement("div", {
@@ -94546,23 +94553,16 @@ var PageHome = function PageHome(props) {
       nameClasses: "text-base text-yellow",
       dateClasses: "text-xs text-blue-100 italic"
     }))), _react.default.createElement("section", {
-      className: "w-full bg-none"
-    }, _react.default.createElement("div", {
-      className: "container mx-auto py-12"
-    }, _react.default.createElement(_RowOfGifs.RowOfGifs, {
-      pageBag: pageBag,
-      limit: 3
-    }))), _react.default.createElement("section", {
       className: "w-full stf-bg-2 section-connect-cta"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12"
-    }, _react.default.createElement(_GetEvents.GetEvents, {
-      limit: 5,
-      sort: "event_start:ASC",
-      heading: "Presentations",
-      heading_classes: "text-4xl text-white mb-3",
-      more_link: true,
-      keep_on_homepage: true
+    }, _react.default.createElement(_ConnectCTA.ConnectCTA, {
+      pageBag: pageBag,
+      siteOptions: props.siteOptions,
+      containerClasses: "float-none md:float-right mx-auto",
+      headingColor: "darkblue",
+      headingClasses: "stf-text-shadow-white-top-left text-center md:text-right",
+      listClasses: "flex justify-center"
     }))));
   });
 };

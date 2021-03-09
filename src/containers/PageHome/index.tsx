@@ -44,18 +44,11 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full stf-bg-2 section-connect-cta">
+                        <section className="w-full bg-none">
 
                             <div className="container mx-auto py-12">
 
-                                <ConnectCTA
-                                    pageBag={pageBag}
-                                    siteOptions={props.siteOptions}
-                                    containerClasses="float-none md:float-right mx-auto"
-                                    headingColor="darkblue"
-                                    headingClasses="stf-text-shadow-white-top-left text-center md:text-right"
-                                    listClasses="flex justify-center"
-                                />
+                                <RowOfGifs pageBag={pageBag} limit={3} />
 
                             </div>
 
@@ -68,6 +61,23 @@ export const PageHome = props => {
                                 <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Reviews</h2>
 
                                 <GetReviews limit={4} />
+
+                            </div>
+
+                        </section>
+
+                        <section className="w-full stf-bg-2 section-connect-cta">
+
+                            <div className="container mx-auto py-12">
+
+                                <GetEvents
+                                    limit={5}
+                                    sort="event_start:ASC"
+                                    heading="Presentations"
+                                    heading_classes="text-4xl text-white mb-3"
+                                    more_link={true}
+                                    keep_on_homepage={true}
+                                />
 
                             </div>
 
@@ -93,32 +103,26 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full bg-none">
-
-                            <div className="container mx-auto py-12">
-
-                                <RowOfGifs pageBag={pageBag} limit={3} />
-
-                            </div>
-
-                        </section>
-
                         <section className="w-full stf-bg-2 section-connect-cta">
 
                             <div className="container mx-auto py-12">
 
-                                <GetEvents
-                                    limit={5}
-                                    sort="event_start:ASC"
-                                    heading="Presentations"
-                                    heading_classes="text-4xl text-white mb-3"
-                                    more_link={true}
-                                    keep_on_homepage={true}
+                                <ConnectCTA
+                                    pageBag={pageBag}
+                                    siteOptions={props.siteOptions}
+                                    containerClasses="float-none md:float-right mx-auto"
+                                    headingColor="darkblue"
+                                    headingClasses="stf-text-shadow-white-top-left text-center md:text-right"
+                                    listClasses="flex justify-center"
                                 />
 
                             </div>
 
                         </section>
+
+
+
+
 
                     </React.Fragment>
                 )
