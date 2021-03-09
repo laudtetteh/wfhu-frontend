@@ -6,18 +6,6 @@ import { TrimText, SmartImage } from '../../utils/helpers';
 
 export const Card = props => {
 
-  // const imageUrl =
-  //   process.env.NODE_ENV !== "development"
-  //     ? review.image.url
-  //     : process.env.REACT_APP_BACKEND_URL + review.image.url;
-    // const imageUrl = review.image.formats.review_loop.url;
-
-    const object = props.review;
-    const content_type = "review";
-    const image_size = "review_loop";
-
-    const imageUrl = SmartImage({object, content_type, image_size});
-
     return (
         <React.Fragment>
 

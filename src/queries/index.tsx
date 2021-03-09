@@ -280,9 +280,6 @@ export const REVIEW_QUERY = gql`
       id
       name
       description
-      image {
-        formats
-      }
       published_at
     }
   }
@@ -294,9 +291,6 @@ export const REVIEWS_QUERY = gql`
             id
             name
             description
-            image {
-                formats
-            }
         }
     }
 `;

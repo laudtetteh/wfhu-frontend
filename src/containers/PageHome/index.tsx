@@ -54,7 +54,7 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full bg-none">
+                        <section className="w-full stf-bg-2">
 
                             <div className="container mx-auto py-12 section-reviews">
 
@@ -66,7 +66,7 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full stf-bg-2 section-connect-cta">
+                        <section className="w-full bg-none section-connect-cta">
 
                             <div className="container mx-auto py-12">
 
@@ -74,7 +74,7 @@ export const PageHome = props => {
                                     limit={5}
                                     sort="event_start:ASC"
                                     heading="Presentations"
-                                    heading_classes="text-4xl text-white mb-3"
+                                    heading_classes="text-4xl text-red mb-3"
                                     more_link={true}
                                     keep_on_homepage={true}
                                 />
