@@ -14,10 +14,10 @@ export const Footer = props => {
 
                     <Social
                         siteOptions={props.siteOptions}
-                        headingColor={props.headingColor}
-                        containerClasses={props.containerClasses}
-                        headingClasses={props.headingClasses}
-                        listClasses={props.listClasses}
+                        headingColor="white"
+                        containerClasses="mx-auto"
+                        headingClasses="mb-3 text-center font-bold"
+                        listClasses="flex justify-center"
                     />
 
                     <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University, LLC</p>

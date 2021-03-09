@@ -73702,7 +73702,7 @@ var POST_QUERY = (0, _graphqlTag.default)(_templateObject8 || (_templateObject8 
 exports.POST_QUERY = POST_QUERY;
 var POSTS_QUERY = (0, _graphqlTag.default)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n    query Posts($limit: Int, $exclude: ID, $sort: String) {\n        posts(sort: $sort, limit: $limit, where: {_id_nin: [$exclude]}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
 exports.POSTS_QUERY = POSTS_QUERY;
-var SITEOPTIONS_QUERY = (0, _graphqlTag.default)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n    query SiteOptions {\n        siteOption {\n            id\n            social {\n                youtube\n                instagram\n                facebook\n                linkedin\n                twitter\n            }\n        }\n    }\n"])));
+var SITEOPTIONS_QUERY = (0, _graphqlTag.default)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n    query SiteOptions {\n        siteOption {\n            id\n            social {\n                linkedin\n                facebook\n                instagram\n                twitter\n            }\n        }\n    }\n"])));
 exports.SITEOPTIONS_QUERY = SITEOPTIONS_QUERY;
 var REVIEW_QUERY = (0, _graphqlTag.default)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  query Reviews($id: ID!) {\n    review(id: $id) {\n      id\n      name\n      description\n      image {\n        formats\n      }\n      published_at\n    }\n  }\n"])));
 exports.REVIEW_QUERY = REVIEW_QUERY;
@@ -74080,43 +74080,33 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Social = function Social(props) {
+  var socialLinks = props.siteOptions.social;
+  var _linkLookup = {
+    linkedin: "linkedin",
+    facebook: "facebook-f",
+    instagram: "instagram",
+    twitter: "twitter"
+  };
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "social-buttons ".concat(props.containerClasses)
   }, _react.default.createElement("h3", {
     className: "section-heading font-bellota text-2xl text-".concat(props.headingColor, " mb-3 ").concat(props.headingClasses)
   }, "Connect with me!"), _react.default.createElement("ul", {
     className: "block clear-both overflow-hidden ".concat(props.listClasses)
-  }, _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
-  }, _react.default.createElement("a", {
-    href: props.siteOptions.social.youtube
-  }, _react.default.createElement("i", {
-    className: "fab fa-youtube bg-none text-lg"
-  }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
-  }, _react.default.createElement("a", {
-    href: props.siteOptions.social.instagram
-  }, _react.default.createElement("i", {
-    className: "fab fa-instagram bg-none text-lg"
-  }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
-  }, _react.default.createElement("a", {
-    href: props.siteOptions.social.facebook
-  }, _react.default.createElement("i", {
-    className: "fab fa-facebook-f bg-none text-lg"
-  }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
-  }, _react.default.createElement("a", {
-    href: props.siteOptions.social.linkedin
-  }, _react.default.createElement("i", {
-    className: "fab fa-linkedin bg-none text-lg"
-  }))), _react.default.createElement("li", {
-    className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
-  }, _react.default.createElement("a", {
-    href: props.siteOptions.social.twitter
-  }, _react.default.createElement("i", {
-    className: "fab fa-twitter bg-none text-lg"
-  }))))));
+  }, Object.keys(socialLinks).map(function (link) {
+    {
+      if (link in _linkLookup) {
+        return _react.default.createElement("li", {
+          key: link,
+          className: "rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0"
+        }, _react.default.createElement("a", {
+          href: socialLinks[link]
+        }, _react.default.createElement("i", {
+          className: "fab fa-".concat(_linkLookup[link], " bg-none text-lg")
+        })));
+      }
+    }
+  }))));
 };
 
 exports.Social = Social;
@@ -85368,7 +85358,7 @@ var RowOfGifs = function RowOfGifs(props) {
   }, gifs.map(function (gif, i) {
     return _react.default.createElement(_gif.Card, {
       gif: gif.gif,
-      key: "gif__".concat(gif.id)
+      key: "gif__".concat(i)
     });
   })));
 };
@@ -95510,10 +95500,10 @@ var Footer = function Footer(props) {
     className: "container"
   }, _react.default.createElement(_Social.Social, {
     siteOptions: props.siteOptions,
-    headingColor: props.headingColor,
-    containerClasses: props.containerClasses,
-    headingClasses: props.headingClasses,
-    listClasses: props.listClasses
+    headingColor: "white",
+    containerClasses: "mx-auto",
+    headingClasses: "mb-3 text-center font-bold",
+    listClasses: "flex justify-center"
   }), _react.default.createElement("p", {
     className: "font-roboto mx-auto block text-center mt-3"
   }, "\xA9 ", new Date().getFullYear(), " Work from Home University, LLC"))));

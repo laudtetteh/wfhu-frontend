@@ -251,10 +251,9 @@ export const SITEOPTIONS_QUERY = gql`
         siteOption {
             id
             social {
-                youtube
-                instagram
-                facebook
                 linkedin
+                facebook
+                instagram
                 twitter
             }
         }

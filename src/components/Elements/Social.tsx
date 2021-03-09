@@ -2,42 +2,40 @@ import React from 'react';
 
 export const Social = (props) => {
 
+    const socialLinks = props.siteOptions.social;
+
+    const _linkLookup = {
+        linkedin: "linkedin",
+        facebook: "facebook-f",
+        instagram: "instagram",
+        twitter: "twitter",
+    }
+
     return (
 
         <React.Fragment>
+
             <div className={`social-buttons ${props.containerClasses}`}>
+
                 <h3 className={`section-heading font-bellota text-2xl text-${props.headingColor} mb-3 ${props.headingClasses}`}>Connect with me!</h3>
 
                 <ul className={`block clear-both overflow-hidden ${props.listClasses}`}>
-                    <li className={`rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0`}>
-                        <a href={props.siteOptions.social.youtube}>
-                            <i className={`fab fa-youtube bg-none text-lg`}></i>
-                        </a>
-                    </li>
 
-                    <li className={`rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0`}>
-                        <a href={props.siteOptions.social.instagram}>
-                            <i className={`fab fa-instagram bg-none text-lg`}></i>
-                        </a>
-                    </li>
+                {Object.keys(socialLinks).map((link) => {
 
-                    <li className={`rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0`}>
-                        <a href={props.siteOptions.social.facebook}>
-                            <i className={`fab fa-facebook-f bg-none text-lg`}></i>
-                        </a>
-                    </li>
+                    {if(link in _linkLookup) {
 
-                    <li className={`rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0`}>
-                        <a href={props.siteOptions.social.linkedin}>
-                            <i className={`fab fa-linkedin bg-none text-lg`}></i>
-                        </a>
-                    </li>
+                        return (
 
-                    <li className={`rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0`}>
-                        <a href={props.siteOptions.social.twitter}>
-                            <i className={`fab fa-twitter bg-none text-lg`}></i>
-                        </a>
-                    </li>
+                            <li key={link} className={`rounded-full h-8 w-8 flex items-center float-left justify-center inline-block ml-3 first:ml-0`}>
+                                <a href={socialLinks[link]}>
+                                    <i className={`fab fa-${_linkLookup[link]} bg-none text-lg`}></i>
+                                </a>
+                            </li>
+                        )
+                    }}
+                )}
+
                 </ul>
             </div>
         </React.Fragment>
