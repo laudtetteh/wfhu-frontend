@@ -131,6 +131,17 @@ export const PAGE_QUERY = gql`
                     }
                 }
 
+                ... on ComponentPageRowOfPosts {
+                    posts {
+                      id
+                      name
+                      slug
+                      image {
+                          formats
+                      }
+                    }
+                }
+
                 ... on ComponentPageSingleImage {
                     profile_pic {
                         formats
@@ -182,6 +193,17 @@ export const PAGES_QUERY = gql`
                     gifs_component {
                       gif {
                         url
+                      }
+                    }
+                }
+
+                ... on ComponentPageRowOfPosts {
+                    posts {
+                      id
+                      name
+                      slug
+                      image {
+                          formats
                       }
                     }
                 }

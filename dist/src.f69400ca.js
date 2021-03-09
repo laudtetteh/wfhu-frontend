@@ -73694,9 +73694,9 @@ var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject4 || (_templateObject4
 exports.EVENT_QUERY = EVENT_QUERY;
 var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n    query Events($keep_on_homepage: Boolean, $event_ended: Boolean, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], keep_on_homepage: $keep_on_homepage, event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            keep_on_homepage\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 exports.EVENTS_QUERY = EVENTS_QUERY;
-var PAGE_QUERY = (0, _graphqlTag.default)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
+var PAGE_QUERY = (0, _graphqlTag.default)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfPosts {\n                    posts {\n                      id\n                      name\n                      slug\n                      image {\n                          formats\n                      }\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
 exports.PAGE_QUERY = PAGE_QUERY;
-var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n    query Pages($limit: Int!) {\n        pages(limit: $limit) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
+var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n    query Pages($limit: Int!) {\n        pages(limit: $limit) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfPosts {\n                    posts {\n                      id\n                      name\n                      slug\n                      image {\n                          formats\n                      }\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
 exports.PAGES_QUERY = PAGES_QUERY;
 var POST_QUERY = (0, _graphqlTag.default)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n    query Posts($slug: String!) {\n        posts(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            image {\n                formats\n            }\n            category {\n                id\n                name\n                slug\n            }\n            published_at\n        }\n    }\n"])));
 exports.POST_QUERY = POST_QUERY;
@@ -74051,13 +74051,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 // Queries
 var GetPosts = function GetPosts(props) {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.Query, {
+  var _posts;
+
+  if (props.posts && props.posts.length > 0) {
+    _posts = props.posts;
+  } else if (!props.posts || props.posts.length === 0) {
+    _posts = false;
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _posts && _react.default.createElement(_Posts.Posts, {
+    posts: _posts,
+    orientation: props.orientation,
+    heading: props.heading,
+    nameClasses: props.nameClasses,
+    dateClasses: props.dateClasses
+  }), !_posts && _react.default.createElement(_Query.Query, {
     query: _queries.POSTS_QUERY,
     limit: props.limit
   }, function (_ref) {
     var posts = _ref.data.posts;
+    _posts = posts;
     return _react.default.createElement(_Posts.Posts, {
-      posts: posts,
+      posts: _posts,
       orientation: props.orientation,
       heading: props.heading,
       nameClasses: props.nameClasses,
@@ -94374,6 +94389,7 @@ var getPageData = function getPageData(props) {
   var intro_cta = {};
   var connect_cta = {};
   var row_of_gifs = {};
+  var row_of_posts = {};
   var profile_pic = {};
 
   if (props.name !== undefined) {
@@ -94409,6 +94425,10 @@ var getPageData = function getPageData(props) {
           row_of_gifs = group.gifs_component;
         }
 
+        if (group.__typename == "ComponentPageRowOfPosts") {
+          row_of_posts = group.posts;
+        }
+
         if (group.__typename == "ComponentPageSingleImage") {
           profile_pic = group;
         }
@@ -94423,6 +94443,7 @@ var getPageData = function getPageData(props) {
   pageData['intro_cta'] = intro_cta;
   pageData['connect_cta'] = connect_cta;
   pageData['row_of_gifs'] = row_of_gifs;
+  pageData['row_of_posts'] = row_of_posts;
   pageData['profile_pic'] = profile_pic;
   return pageData;
 };
@@ -94487,7 +94508,8 @@ var PageHome = function PageHome(props) {
     slug: "home"
   }, function (_ref) {
     var pages = _ref.data.pages;
-    var pageBag = (0, _apiHelper.getPageData)(pages[0]);
+    var pageBag = (0, _apiHelper.getPageData)(pages[0]); // console.log(pageBag.row_of_posts)
+
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: "Home"
     }), _react.default.createElement("section", {
@@ -94532,6 +94554,7 @@ var PageHome = function PageHome(props) {
       href: "/blog",
       className: "link-all font-roboto text-base text-yellow underline pl-3"
     }, "All Posts")), _react.default.createElement(_GetPosts.GetPosts, {
+      posts: pageBag.row_of_posts,
       limit: 3,
       orientation: "horizontal",
       nameClasses: "text-base text-yellow",
@@ -98799,8 +98822,6 @@ module.exports = {
       "kind": "UNION",
       "name": "PageDynamicFieldsDynamicZone",
       "possibleTypes": [{
-        "name": "ComponentPageNoOfPostsToShow"
-      }, {
         "name": "ComponentPageIntroCta"
       }, {
         "name": "ComponentPageConnectCta"
@@ -98808,6 +98829,8 @@ module.exports = {
         "name": "ComponentPageRowOfGifs"
       }, {
         "name": "ComponentPageSingleImage"
+      }, {
+        "name": "ComponentPageRowOfPosts"
       }]
     }, {
       "kind": "UNION",
@@ -99225,13 +99248,11 @@ module.exports = {
       }, {
         "name": "ComponentPageMeta"
       }, {
-        "name": "ComponentPageNoOfPostsToShow"
-      }, {
-        "name": "ComponentPageNumberOfPostsToShow"
-      }, {
         "name": "ComponentPageOpeningHours"
       }, {
         "name": "ComponentPageRowOfGifs"
+      }, {
+        "name": "ComponentPageRowOfPosts"
       }, {
         "name": "ComponentPageSeo"
       }, {
@@ -99459,7 +99480,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51728" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63234" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -27,7 +27,7 @@ export const PageHome = props => {
             {({ data: { pages } }) => {
 
                 const pageBag = getPageData(pages[0]);
-
+// console.log(pageBag.row_of_posts)
                 return (
 
                     <React.Fragment>
@@ -93,6 +93,7 @@ export const PageHome = props => {
                                 </h2>
 
                                 <GetPosts
+                                    posts={pageBag.row_of_posts}
                                     limit={3}
                                     orientation="horizontal"
                                     nameClasses="text-base text-yellow"
