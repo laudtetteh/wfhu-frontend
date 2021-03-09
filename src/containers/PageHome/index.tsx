@@ -120,10 +120,6 @@ export const PageHome = props => {
 
                         </section>
 
-
-
-
-
                     </React.Fragment>
                 )
             }}

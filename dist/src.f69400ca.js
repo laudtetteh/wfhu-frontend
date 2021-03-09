@@ -95516,7 +95516,7 @@ var Footer = function Footer(props) {
     listClasses: props.listClasses
   }), _react.default.createElement("p", {
     className: "font-roboto mx-auto block text-center mt-3"
-  }, "\xA9 ", new Date().getFullYear(), " Work from Home University"))));
+  }, "\xA9 ", new Date().getFullYear(), " Work from Home University, LLC"))));
 };
 
 exports.Footer = Footer;

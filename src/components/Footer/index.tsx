@@ -20,7 +20,7 @@ export const Footer = props => {
                         listClasses={props.listClasses}
                     />
 
-                    <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University</p>
+                    <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University, LLC</p>
                 </div>
 
             </section>
