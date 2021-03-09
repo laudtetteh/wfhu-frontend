@@ -74017,7 +74017,7 @@ var Posts = function Posts(props) {
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop"
-  }, props.posts.map(function (post) {
+  }, props.posts.slice(0, props.limit).map(function (post) {
     return _react.default.createElement(_post.Card, {
       post: post,
       key: "post-".concat(post.id),
@@ -74061,6 +74061,7 @@ var GetPosts = function GetPosts(props) {
 
   return _react.default.createElement(_react.default.Fragment, null, _posts && _react.default.createElement(_Posts.Posts, {
     posts: _posts,
+    limit: props.limit,
     orientation: props.orientation,
     heading: props.heading,
     nameClasses: props.nameClasses,
@@ -74073,6 +74074,7 @@ var GetPosts = function GetPosts(props) {
     _posts = posts;
     return _react.default.createElement(_Posts.Posts, {
       posts: _posts,
+      limit: props.limit,
       orientation: props.orientation,
       heading: props.heading,
       nameClasses: props.nameClasses,

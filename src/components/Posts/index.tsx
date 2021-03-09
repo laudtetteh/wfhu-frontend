@@ -38,7 +38,7 @@ export const Posts = props => {
         <React.Fragment>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 posts-loop">
-                {props.posts.map((post) => {
+                {props.posts.slice(0, props.limit).map((post) => {
                     return <Card
                                 post={post} key={`post-${post.id}`}
                                 orientation="horizontal"

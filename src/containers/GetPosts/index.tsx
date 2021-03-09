@@ -16,7 +16,7 @@ export const GetPosts = props => {
 
     } else if( !props.posts || (props.posts.length === 0) ) {
 
-        _posts = false
+        _posts = false;
     }
 
     return (
@@ -27,6 +27,7 @@ export const GetPosts = props => {
 
                 <Posts
                     posts={_posts}
+                    limit={props.limit}
                     orientation={props.orientation}
                     heading={props.heading}
                     nameClasses={props.nameClasses}
@@ -47,6 +48,7 @@ export const GetPosts = props => {
 
                             <Posts
                                 posts={_posts}
+                                limit={props.limit}
                                 orientation={props.orientation}
                                 heading={props.heading}
                                 nameClasses={props.nameClasses}
