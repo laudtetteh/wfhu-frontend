@@ -7,6 +7,9 @@ export const getPageData = props => {
 
     let name = '';
     let description = '';
+    let intro_cta_paragraph = '';
+    let paragraph = '';
+    let connect_cta_paragraph = '';
     let category = {};
     let image = {};
     let intro_cta = {};
@@ -25,6 +28,10 @@ export const getPageData = props => {
         description = <span className="description font-roboto" dangerouslySetInnerHTML={{__html: props.description}} />
     }
 
+    if( props.paragraph !== undefined ) {
+        paragraph = <span className="paragraph font-roboto" dangerouslySetInnerHTML={{__html: props.paragraph}} />
+    }
+
     if( props.category !== undefined ) {
         category = props.category;
     }
@@ -41,10 +48,18 @@ export const getPageData = props => {
 
                 if( group.__typename == "ComponentPageIntroCta" ) {
                     intro_cta = group;
+
+                    if( intro_cta.intro_paragraph !== undefined ) {
+                        intro_cta_paragraph = <span className="intro_paragraph font-roboto" dangerouslySetInnerHTML={{__html: intro_cta.intro_paragraph}} />
+                    }
                 }
 
                 if( group.__typename == "ComponentPageConnectCta" ) {
                     connect_cta = group;
+
+                    if( connect_cta.paragraph !== undefined ) {
+                        connect_cta_paragraph = <span className="paragraph font-roboto" dangerouslySetInnerHTML={{__html: connect_cta.paragraph}} />
+                    }
                 }
 
                 if( group.__typename == "ComponentPageRowOfGifs" ) {
@@ -73,6 +88,9 @@ export const getPageData = props => {
 
     pageData["name"] = name;
     pageData["description"] = description;
+    pageData["paragraph"] = paragraph;
+    pageData["intro_cta_paragraph"] = intro_cta_paragraph;
+    pageData["connect_cta_paragraph"] = connect_cta_paragraph;
     pageData["category"] = category;
     pageData["image"] = image;
     pageData['intro_cta'] = intro_cta;

@@ -25,9 +25,9 @@ export const IntroCTA = (props) => {
                 <div className="mx-auto py-12 lg:mr-5">
                     <h3 className="section-heading font-bellota text-2xl text-white mb-3">{props.pageBag.intro_cta.intro_heading}</h3>
 
-                    <p className="section-paragraph font-roboto text-base text-white mb-3">
-                        {props.pageBag.intro_cta.intro_paragraph}
-                    </p>
+                    <div className="section-paragraph font-roboto text-base text-white mb-3">
+                        {props.pageBag.intro_cta_paragraph}
+                    </div>
 
                     <p className="section-paragraph font-roboto text-base text-white mb-2 mt-10 font-medium">
                         Get notified when I publish something new

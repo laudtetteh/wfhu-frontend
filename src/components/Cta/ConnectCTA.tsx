@@ -13,9 +13,9 @@ export const ConnectCTA = (props) => {
                 <div className="section-connect--left">
                     <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right">{props.pageBag.connect_cta.heading}</h3>
 
-                    <p className="section-heading font-roboto text-base text-white mb-3">
-                        {props.pageBag.connect_cta.paragraph}
-                    </p>
+                    <div className="section-heading font-roboto text-base text-white mb-3">
+                        {props.pageBag.connect_cta_paragraph}
+                    </div>
 
                     <a href={props.pageBag.connect_cta.button_link} className="bg-yellow hover:bg-darkblue hover:text-white text-darkblue text-center block font-roboto font-semibold py-2 px-4 mt-10 md:mt-0 border border-white rounded shadow md:float-right float-none md:mx-0 mx-auto no-underline">
                         {props.pageBag.connect_cta.button_text}
