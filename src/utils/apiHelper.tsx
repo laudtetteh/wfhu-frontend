@@ -14,6 +14,7 @@ export const getPageData = props => {
     let row_of_gifs = {};
     let row_of_posts = {};
     let row_of_reviews = {};
+    let row_of_events = {};
     let profile_pic = {};
 
     if( props.name !== undefined ) {
@@ -58,6 +59,11 @@ export const getPageData = props => {
                     row_of_reviews = group.reviews;
                 }
 
+
+                if( group.__typename == "ComponentPageRowOfEvents" ) {
+                    row_of_events = group.events;
+                }
+
                 if( group.__typename == "ComponentPageSingleImage" ) {
                     profile_pic = group;
                 }
@@ -74,6 +80,7 @@ export const getPageData = props => {
     pageData['row_of_gifs'] = row_of_gifs;
     pageData['row_of_posts'] = row_of_posts;
     pageData['row_of_reviews'] = row_of_reviews;
+    pageData['row_of_events'] = row_of_events;
     pageData['profile_pic'] = profile_pic;
 
     return pageData;

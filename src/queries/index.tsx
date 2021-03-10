@@ -150,6 +150,25 @@ export const PAGE_QUERY = gql`
                     }
                 }
 
+                ... on ComponentPageRowOfEvents {
+                    events {
+                        id
+                        name
+                        slug
+                        description
+                        event_details
+                        event_start
+                        event_end
+                        event_timezone
+                        event_ended
+                        keep_on_homepage
+                        image {
+                            formats
+                        }
+                        published_at
+                    }
+                }
+
                 ... on ComponentPageSingleImage {
                     profile_pic {
                         formats

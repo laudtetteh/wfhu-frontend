@@ -24,7 +24,7 @@ export const Events = props => {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-5 events-loop">
 
-                {props.events.map((event) => {
+                {props.events.slice(0, props.limit).map((event) => {
                     return <Card event={event} key={`event-${event.id}`} className=key={`event-${event.id}`} />
                 })}
 

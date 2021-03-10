@@ -66595,7 +66595,7 @@ var EVENT_QUERY = (0, _graphqlTag.default)(_templateObject4 || (_templateObject4
 exports.EVENT_QUERY = EVENT_QUERY;
 var EVENTS_QUERY = (0, _graphqlTag.default)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n    query Events($keep_on_homepage: Boolean, $event_ended: Boolean, $exclude: ID, $sort: String, $limit: Int, $event_start_gt: DateTime, $event_start_lt: DateTime)  {\n        events(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], keep_on_homepage: $keep_on_homepage, event_ended: $event_ended, event_start_gt: $event_start_gt, event_start_lt: $event_start_lt}) {\n            id\n            name\n            slug\n            description\n            event_details\n            event_start\n            event_end\n            event_timezone\n            event_ended\n            keep_on_homepage\n            image {\n                formats\n            }\n            published_at\n        }\n    }\n"])));
 exports.EVENTS_QUERY = EVENTS_QUERY;
-var PAGE_QUERY = (0, _graphqlTag.default)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfPosts {\n                    posts {\n                      id\n                      name\n                      slug\n                      image {\n                          formats\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfReviews {\n                    reviews {\n                      id\n                      name\n                      description\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
+var PAGE_QUERY = (0, _graphqlTag.default)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n    query Pages($slug: String!) {\n        pages(where: {slug: $slug}) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfPosts {\n                    posts {\n                      id\n                      name\n                      slug\n                      image {\n                          formats\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfReviews {\n                    reviews {\n                      id\n                      name\n                      description\n                    }\n                }\n\n                ... on ComponentPageRowOfEvents {\n                    events {\n                        id\n                        name\n                        slug\n                        description\n                        event_details\n                        event_start\n                        event_end\n                        event_timezone\n                        event_ended\n                        keep_on_homepage\n                        image {\n                            formats\n                        }\n                        published_at\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
 exports.PAGE_QUERY = PAGE_QUERY;
 var PAGES_QUERY = (0, _graphqlTag.default)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n    query Pages($limit: Int!) {\n        pages(limit: $limit) {\n            id\n            name\n            slug\n            description\n            seo {\n                title\n                description\n                meta {\n                    name\n                    content\n                }\n            }\n\n            dynamic_fields {\n\n                __typename\n\n                ... on ComponentPageIntroCta {\n                    intro_heading\n                    intro_paragraph\n                    intro_image {\n                      formats\n                    }\n                }\n\n                ... on ComponentPageConnectCta {\n                    heading\n                    paragraph\n                    button_link\n                    button_text\n                }\n\n                ... on ComponentPageRowOfGifs {\n                    gifs_component {\n                      gif {\n                        url\n                      }\n                    }\n                }\n\n                ... on ComponentPageRowOfPosts {\n                    posts {\n                      id\n                      name\n                      slug\n                      image {\n                          formats\n                      }\n                    }\n                }\n\n                ... on ComponentPageSingleImage {\n                    profile_pic {\n                        formats\n                    }\n                }\n            }\n\n            published_at\n        }\n    }\n"])));
 exports.PAGES_QUERY = PAGES_QUERY;
@@ -66650,7 +66650,7 @@ var GetReviews = function GetReviews(props) {
     var reviews = _ref.data.reviews;
     _reviews = reviews;
     return _react.default.createElement(_Reviews.Reviews, {
-      reviews: reviews,
+      reviews: _reviews,
       limit: props.limit
     });
   }));
@@ -73831,7 +73831,7 @@ var Events = function Events(props) {
     className: "link-all font-roboto text-base text-yellow underline pl-3"
   }, "All Events")), _react.default.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-5 events-loop"
-  }, props.events.map(function (event) {
+  }, props.events.slice(0, props.limit).map(function (event) {
     return _react.default.createElement(_event.Card, _defineProperty({
       event: event,
       key: "event-".concat(event.id),
@@ -73863,7 +73863,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 // Utilities
 var GetEvents = function GetEvents(props) {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Query.Query, {
+  var _events;
+
+  if (props.events && props.events.length > 0) {
+    _events = props.events;
+  } else if (!props.events || props.events.length === 0) {
+    _events = false;
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _events && _react.default.createElement(_Events.Events, {
+    events: _events,
+    limit: props.limit,
+    event_ended: props.event_ended,
+    heading: props.heading,
+    heading_classes: props.heading_classes,
+    more_link: props.more_link
+  }), !_events && _react.default.createElement(_Query.Query, {
     query: _queries.EVENTS_QUERY,
     sort: props.sort,
     limit: props.limit,
@@ -73873,8 +73888,9 @@ var GetEvents = function GetEvents(props) {
     keep_on_homepage: props.keep_on_homepage
   }, function (_ref) {
     var events = _ref.data.events;
+    _events = events;
     return _react.default.createElement(_Events.Events, {
-      events: events,
+      events: _events,
       event_ended: props.event_ended,
       heading: props.heading,
       heading_classes: props.heading_classes,
@@ -85402,6 +85418,7 @@ var getPageData = function getPageData(props) {
   var row_of_gifs = {};
   var row_of_posts = {};
   var row_of_reviews = {};
+  var row_of_events = {};
   var profile_pic = {};
 
   if (props.name !== undefined) {
@@ -85448,6 +85465,10 @@ var getPageData = function getPageData(props) {
           row_of_reviews = group.reviews;
         }
 
+        if (group.__typename == "ComponentPageRowOfEvents") {
+          row_of_events = group.events;
+        }
+
         if (group.__typename == "ComponentPageSingleImage") {
           profile_pic = group;
         }
@@ -85464,6 +85485,7 @@ var getPageData = function getPageData(props) {
   pageData['row_of_gifs'] = row_of_gifs;
   pageData['row_of_posts'] = row_of_posts;
   pageData['row_of_reviews'] = row_of_reviews;
+  pageData['row_of_events'] = row_of_events;
   pageData['profile_pic'] = profile_pic;
   return pageData;
 };
@@ -85558,6 +85580,7 @@ var PageHome = function PageHome(props) {
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12"
     }, _react.default.createElement(_GetEvents.GetEvents, {
+      events: pageBag.row_of_events,
       limit: 5,
       sort: "event_start:ASC",
       heading: "Presentations",
@@ -98835,6 +98858,8 @@ module.exports = {
         "name": "ComponentPageRowOfPosts"
       }, {
         "name": "ComponentPageRowOfReviews"
+      }, {
+        "name": "ComponentPageRowOfEvents"
       }]
     }, {
       "kind": "UNION",
@@ -99254,6 +99279,8 @@ module.exports = {
       }, {
         "name": "ComponentPageOpeningHours"
       }, {
+        "name": "ComponentPageRowOfEvents"
+      }, {
         "name": "ComponentPageRowOfGifs"
       }, {
         "name": "ComponentPageRowOfPosts"
@@ -99486,7 +99513,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50857" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52334" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

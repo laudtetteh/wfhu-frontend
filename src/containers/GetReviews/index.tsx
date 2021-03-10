@@ -41,7 +41,7 @@ export const GetReviews = props => {
                     return (
 
                         <Reviews
-                            reviews={reviews}
+                            reviews={_reviews}
                             limit={props.limit}
                         />
                     )

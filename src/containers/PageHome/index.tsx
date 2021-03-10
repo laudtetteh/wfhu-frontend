@@ -73,6 +73,7 @@ export const PageHome = props => {
                             <div className="container mx-auto py-12">
 
                                 <GetEvents
+                                    events={pageBag.row_of_events}
                                     limit={5}
                                     sort="event_start:ASC"
                                     heading="Presentations"
