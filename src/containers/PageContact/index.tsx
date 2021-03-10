@@ -34,13 +34,8 @@ export const PageContact = ({siteOptions}) => {
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Contact</h1>
 
-                                <div className="description description font-roboto">
+                                {pageBag.description}
 
-                                     <div className="description description font-roboto">
-                                        {pageBag.description}
-                                    </div>
-
-                                </div>
                             </div>
 
                         </section>

@@ -1,6 +1,5 @@
 // Packages
 import React from 'react';
-import ReactMarkdown from "react-markdown";
 
 export const getPageData = props => {
 
@@ -21,7 +20,7 @@ export const getPageData = props => {
     }
 
     if( props.description !== undefined ) {
-        description = <ReactMarkdown source={props.description} />;
+        description = <span className="description font-roboto" dangerouslySetInnerHTML={{__html: props.description}} />
     }
 
     if( props.category !== undefined ) {

@@ -144,3 +144,10 @@ li.stf-main-nav-list-item a:hover::after {
         right: 10px;
     }
 }
+
+.image.image-style-align-center {
+    img {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
