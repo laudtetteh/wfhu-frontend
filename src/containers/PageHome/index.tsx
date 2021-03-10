@@ -27,7 +27,7 @@ export const PageHome = props => {
             {({ data: { pages } }) => {
 
                 const pageBag = getPageData(pages[0]);
-// console.log(pageBag.row_of_posts)
+
                 return (
 
                     <React.Fragment>
@@ -60,7 +60,9 @@ export const PageHome = props => {
 
                                 <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Reviews</h2>
 
-                                <GetReviews limit={4} />
+                                <GetReviews
+                                    reviews={pageBag.row_of_reviews}
+                                    limit={4} />
 
                             </div>
 

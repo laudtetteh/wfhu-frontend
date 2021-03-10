@@ -142,6 +142,14 @@ export const PAGE_QUERY = gql`
                     }
                 }
 
+                ... on ComponentPageRowOfReviews {
+                    reviews {
+                      id
+                      name
+                      description
+                    }
+                }
+
                 ... on ComponentPageSingleImage {
                     profile_pic {
                         formats

@@ -13,6 +13,7 @@ export const getPageData = props => {
     let connect_cta = {};
     let row_of_gifs = {};
     let row_of_posts = {};
+    let row_of_reviews = {};
     let profile_pic = {};
 
     if( props.name !== undefined ) {
@@ -53,6 +54,10 @@ export const getPageData = props => {
                     row_of_posts = group.posts;
                 }
 
+                if( group.__typename == "ComponentPageRowOfReviews" ) {
+                    row_of_reviews = group.reviews;
+                }
+
                 if( group.__typename == "ComponentPageSingleImage" ) {
                     profile_pic = group;
                 }
@@ -68,6 +73,7 @@ export const getPageData = props => {
     pageData['connect_cta'] = connect_cta;
     pageData['row_of_gifs'] = row_of_gifs;
     pageData['row_of_posts'] = row_of_posts;
+    pageData['row_of_reviews'] = row_of_reviews;
     pageData['profile_pic'] = profile_pic;
 
     return pageData;
