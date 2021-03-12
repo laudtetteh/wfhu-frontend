@@ -46,9 +46,10 @@ export const PostComponent = (props) => {
                     <p className="card-post-name font-roboto text-base text-darkblue mb-3">
                         <STFDate _timestamp={props.post.published_at} _format="MMMM D, YYYY" />
 
-                        <span className="font-thin"> | </span>
-
                         {props.post.category &&
+
+                            <span className="font-thin"> | </span>
+
                             <Link to={`/category/${props.post.category.slug}`}>
                                 <span className="card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3">
                                     <i className="fa fa-tags bg-none text-darkblue text-sm mr-1"></i>
