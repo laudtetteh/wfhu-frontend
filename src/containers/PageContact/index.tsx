@@ -26,13 +26,15 @@ export const PageContact = ({siteOptions}) => {
 
                     <React.Fragment>
 
-
                         <DocumentHead title="Contact"/>
-
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto py-12 md:px-60 ssection-contact-form">
+                            <div className="container mx-auto py-12 md:px-60 section-contact-form">
+
+                                <div className="contact-page-content block">
+                                    {pageBag.description}
+                                </div>
 
                                 <ContactForm />
 

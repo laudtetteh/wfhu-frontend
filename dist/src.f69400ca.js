@@ -86319,8 +86319,10 @@ var PageContact = function PageContact(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 md:px-60 ssection-contact-form"
-    }, _react.default.createElement(_ContactForm.ContactForm, null))));
+      className: "container mx-auto py-12 md:px-60 section-contact-form"
+    }, _react.default.createElement("div", {
+      className: "contact-page-content block"
+    }, pageBag.description), _react.default.createElement(_ContactForm.ContactForm, null))));
   });
 };
 
