@@ -86164,7 +86164,7 @@ var ContactForm = function ContactForm() {
     name: "bot-field",
     onChange: handleChange
   }))), _react.default.createElement("div", {
-    className: "px-4 py-5 bg-white sm:p-6"
+    className: "bg-white"
   }, _react.default.createElement("div", {
     className: "grid grid-cols-6 gap-6"
   }, _react.default.createElement("div", {
@@ -86174,7 +86174,7 @@ var ContactForm = function ContactForm() {
     name: "first_name",
     id: "first_name",
     autocomplete: "given-name",
-    className: "mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "First Name"
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
@@ -86183,7 +86183,7 @@ var ContactForm = function ContactForm() {
     name: "last_name",
     id: "last_name",
     autocomplete: "family-name",
-    className: "mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Last Name"
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
@@ -86192,7 +86192,7 @@ var ContactForm = function ContactForm() {
     name: "email",
     id: "email",
     autocomplete: "email",
-    className: "mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Email"
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
@@ -86201,7 +86201,7 @@ var ContactForm = function ContactForm() {
     name: "phone",
     id: "phone",
     autocomplete: "phone",
-    className: "mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Phone"
   })), _react.default.createElement("div", {
     className: "col-span-6"
@@ -86210,7 +86210,7 @@ var ContactForm = function ContactForm() {
     name: "subject",
     id: "subject",
     autocomplete: "street-address",
-    className: "mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Subject"
   })), _react.default.createElement("div", {
     className: "col-span-6"
@@ -86220,7 +86220,7 @@ var ContactForm = function ContactForm() {
     id: "about",
     name: "about",
     rows: "3",
-    class: "shadow-sm focus:ring-red-600 focus:border-red mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    class: "shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Your message"
   }))), _react.default.createElement("div", {
     className: "col-span-6 float-right"
@@ -95683,7 +95683,7 @@ var Header = function Header(props) {
       menuVisibility: false,
       hideMenu: props.hideMenu,
       listClasses: "",
-      listItemClasses: "stf-main-nav-list-item mr-4",
+      listItemClasses: "stf-main-nav-list-item not:last:mr-4",
       linkClasses: "stf-main-nav-link inline-block stf-nav-list-item-link hover:text-darkblue"
     });
   }))), _react.default.createElement(_Query.Query, {

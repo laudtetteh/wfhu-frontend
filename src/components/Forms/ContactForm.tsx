@@ -46,32 +46,32 @@ export const ContactForm = () => {
                     </label>
                 </div>
 
-                <div className="px-4 py-5 bg-white sm:p-6">
+                <div className="bg-white">
                     <div className="grid grid-cols-6 gap-6">
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="First Name"/>
+                          <input type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="First Name"/>
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Last Name" />
+                          <input type="text" name="last_name" id="last_name" autocomplete="family-name" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Last Name" />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="email" id="email" autocomplete="email" className="mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Email" />
+                          <input type="text" name="email" id="email" autocomplete="email" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Email" />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="phone" id="phone" autocomplete="phone" className="mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Phone" />
+                          <input type="text" name="phone" id="phone" autocomplete="phone" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Phone" />
                         </div>
 
                         <div className="col-span-6">
-                          <input type="text" name="subject" id="subject" autocomplete="street-address" className="mt-1 focus:ring-red-600 focus:border-red block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Subject" />
+                          <input type="text" name="subject" id="subject" autocomplete="street-address" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Subject" />
                         </div>
 
                         <div className="col-span-6">
                             <div className="mt-1">
-                                <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-red-600 focus:border-red mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Your message"></textarea>
+                                <textarea id="about" name="about" rows="3" class="shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Your message"></textarea>
                             </div>
                         </div>
 
