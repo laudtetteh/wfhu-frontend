@@ -86129,7 +86129,7 @@ var ContactForm = function ContactForm() {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var form = e.target;
-    fetch('/', {
+    fetch("".concat("http://localhost:1234", "/messages"), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -86146,7 +86146,7 @@ var ContactForm = function ContactForm() {
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("form", {
     id: "contact-form",
-    name: "contact",
+    name: "contact-form",
     method: "post",
     action: "/thanks/",
     "data-netlify": "true",
@@ -86155,7 +86155,7 @@ var ContactForm = function ContactForm() {
   }, _react.default.createElement("input", {
     type: "hidden",
     name: "form-name",
-    value: "contact"
+    value: "contact-form"
   }), _react.default.createElement("div", {
     hidden: true
   }, _react.default.createElement("label", {
@@ -86173,7 +86173,7 @@ var ContactForm = function ContactForm() {
     type: "text",
     name: "first_name",
     id: "first_name",
-    autocomplete: "given-name",
+    autoComplete: "given-name",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "First Name"
   })), _react.default.createElement("div", {
@@ -86182,7 +86182,7 @@ var ContactForm = function ContactForm() {
     type: "text",
     name: "last_name",
     id: "last_name",
-    autocomplete: "family-name",
+    autoComplete: "family-name",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Last Name"
   })), _react.default.createElement("div", {
@@ -86191,7 +86191,7 @@ var ContactForm = function ContactForm() {
     type: "text",
     name: "email",
     id: "email",
-    autocomplete: "email",
+    autoComplete: "email",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Email"
   })), _react.default.createElement("div", {
@@ -86200,7 +86200,7 @@ var ContactForm = function ContactForm() {
     type: "text",
     name: "phone",
     id: "phone",
-    autocomplete: "phone",
+    autoComplete: "phone",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Phone"
   })), _react.default.createElement("div", {
@@ -86209,7 +86209,7 @@ var ContactForm = function ContactForm() {
     type: "text",
     name: "subject",
     id: "subject",
-    autocomplete: "street-address",
+    autoComplete: "street-address",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Subject"
   })), _react.default.createElement("div", {
@@ -86220,7 +86220,7 @@ var ContactForm = function ContactForm() {
     id: "about",
     name: "about",
     rows: "3",
-    class: "shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
+    className: "shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Your message"
   }))), _react.default.createElement("div", {
     className: "col-span-6 float-right"
