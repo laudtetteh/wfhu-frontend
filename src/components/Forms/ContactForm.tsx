@@ -1,4 +1,4 @@
-import React, {setState, useState} from 'react';
+import React, {useState} from 'react';
 
 function encode(data) {
     return Object.keys(data)
@@ -10,13 +10,14 @@ export const ContactForm = () => {
     const [state, setState] = useState({})
 
     const handleChange = (e) => {
-        setState({ ...state, [e.target.name]: e.target.value })
+        setState({ ...state, [e.target.name]: e.target.value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const form = e.target
-        fetch(`${process.env.REACT_APP_SERVER_URL}/messages`, {
+        const form = e.target;
+
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/messages`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({
@@ -51,28 +52,28 @@ export const ContactForm = () => {
                     <div className="grid grid-cols-6 gap-6">
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="first_name" id="first_name" autoComplete="given-name" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="First Name"/>
+                          <input type="text" name="first_name" id="first_name" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="First Name" onChange={handleChange} />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="last_name" id="last_name" autoComplete="family-name" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Last Name" />
+                          <input type="text" name="last_name" id="last_name" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Last Name" onChange={handleChange} />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="email" id="email" autoComplete="email" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Email" />
+                          <input type="text" name="email" id="email" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Email" onChange={handleChange} />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <input type="text" name="phone" id="phone" autoComplete="phone" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Phone" />
+                          <input type="text" name="phone" id="phone" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Phone" onChange={handleChange} />
                         </div>
 
                         <div className="col-span-6">
-                          <input type="text" name="subject" id="subject" autoComplete="street-address" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Subject" />
+                          <input type="text" name="subject" id="subject" className="mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Subject" onChange={handleChange} />
                         </div>
 
                         <div className="col-span-6">
                             <div className="mt-1">
-                                <textarea id="about" name="about" rows="3" className="shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Your message"></textarea>
+                                <textarea id="body" name="body" rows="3" className="shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Your message" onChange={handleChange} ></textarea>
                             </div>
                         </div>
 

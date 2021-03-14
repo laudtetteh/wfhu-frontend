@@ -86129,7 +86129,7 @@ var ContactForm = function ContactForm() {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var form = e.target;
-    fetch("".concat("http://localhost:1234", "/messages"), {
+    fetch("".concat("http://localhost:1337", "/messages"), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -86173,55 +86173,56 @@ var ContactForm = function ContactForm() {
     type: "text",
     name: "first_name",
     id: "first_name",
-    autoComplete: "given-name",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
-    placeholder: "First Name"
+    placeholder: "First Name",
+    onChange: handleChange
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
   }, _react.default.createElement("input", {
     type: "text",
     name: "last_name",
     id: "last_name",
-    autoComplete: "family-name",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
-    placeholder: "Last Name"
+    placeholder: "Last Name",
+    onChange: handleChange
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
   }, _react.default.createElement("input", {
     type: "text",
     name: "email",
     id: "email",
-    autoComplete: "email",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
-    placeholder: "Email"
+    placeholder: "Email",
+    onChange: handleChange
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
   }, _react.default.createElement("input", {
     type: "text",
     name: "phone",
     id: "phone",
-    autoComplete: "phone",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
-    placeholder: "Phone"
+    placeholder: "Phone",
+    onChange: handleChange
   })), _react.default.createElement("div", {
     className: "col-span-6"
   }, _react.default.createElement("input", {
     type: "text",
     name: "subject",
     id: "subject",
-    autoComplete: "street-address",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
-    placeholder: "Subject"
+    placeholder: "Subject",
+    onChange: handleChange
   })), _react.default.createElement("div", {
     className: "col-span-6"
   }, _react.default.createElement("div", {
     className: "mt-1"
   }, _react.default.createElement("textarea", {
-    id: "about",
-    name: "about",
+    id: "body",
+    name: "body",
     rows: "3",
     className: "shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
-    placeholder: "Your message"
+    placeholder: "Your message",
+    onChange: handleChange
   }))), _react.default.createElement("div", {
     className: "col-span-6 float-right"
   }, _react.default.createElement("button", {
