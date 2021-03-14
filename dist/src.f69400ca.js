@@ -86266,7 +86266,7 @@ var ContactForm = function ContactForm() {
   }, _react.default.createElement("textarea", {
     id: "body",
     name: "body",
-    rows: "3",
+    rows: "6",
     className: "shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Your message",
     onChange: handleChange,
@@ -86319,7 +86319,7 @@ var PageContact = function PageContact(_ref) {
     }), _react.default.createElement("section", {
       className: "w-full bg-none section-page-content"
     }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-contact-form"
+      className: "container mx-auto py-12 md:px-60 ssection-contact-form"
     }, _react.default.createElement(_ContactForm.ContactForm, null))));
   });
 };
@@ -99787,7 +99787,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54776" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50052" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -124,7 +124,7 @@ export const ContactForm = () => {
 
                         <div className="col-span-6">
                             <div className="mt-1">
-                                <textarea id="body" name="body" rows="3" className="shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Your message" onChange={handleChange} required></textarea>
+                                <textarea id="body" name="body" rows="6" className="shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md" placeholder="Your message" onChange={handleChange} required></textarea>
                             </div>
                         </div>
 

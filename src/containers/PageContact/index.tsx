@@ -32,7 +32,7 @@ export const PageContact = ({siteOptions}) => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto py-12 section-contact-form">
+                            <div className="container mx-auto py-12 md:px-60 ssection-contact-form">
 
                                 <ContactForm />
 
