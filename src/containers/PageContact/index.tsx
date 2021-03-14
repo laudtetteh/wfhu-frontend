@@ -6,6 +6,8 @@ import { DocumentHead } from '../../utils/helpers';
 // Queries
 import { Query } from "../../components/Query";
 import { PAGE_QUERY } from "../../queries";
+// Components
+import { ContactForm } from "../../components/Forms/ContactForm";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -30,20 +32,9 @@ export const PageContact = ({siteOptions}) => {
 
                         <section className="w-full bg-none section-page-content">
 
-                            <div className="container mx-auto py-12 md:px-60 section-reviews">
-
-                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Contact</h1>
-
-                                {pageBag.description}
-
-                            </div>
-
-                        </section>
-
-                        <section className="w-full bg-none">
-
                             <div className="container mx-auto py-12 section-contact-form">
 
+                                <ContactForm />
 
                             </div>
 

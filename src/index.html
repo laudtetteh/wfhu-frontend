@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body className="flex flex-col min-h-screen">
+    <!-- A little help for the Netlify post-processing bots -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="first_name" />
+      <input type="text" name="last_name" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="subject" />
+      <textarea name="body"></textarea>
+    </form>
+    <!--./ A little help for the Netlify post-processing bots -->
     <div id="root"></div>
     <script src="./index.tsx"></script>
 </body>

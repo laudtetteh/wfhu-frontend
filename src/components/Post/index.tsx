@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { STFDate, SmartImage } from '../../utils/helpers';
 import { STFDate } from '../../utils/helpers';
 
-export const PostComponent = (props) => {
+export const PostComponent = props => {
 
     // const imageUrl =
     //   process.env.NODE_ENV !== "development"

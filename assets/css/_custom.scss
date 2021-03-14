@@ -151,3 +151,39 @@ li.stf-main-nav-list-item a:hover::after {
         margin-left: auto;
     }
 }
+
+#contact-form {
+    [type='text'],
+    [type='email'],
+    [type='url'],
+    [type='password'],
+    [type='number'],
+    [type='date'],
+    [type='month'],
+    [type='search'],
+    [type='tel'],
+    [type='time'],
+    [multiple],
+    textarea,
+    textarea,
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        border-width: 1px;
+        padding-top: 0.5rem;
+        padding-right: 0.75rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0.75rem;
+    }
+
+    [type="submit"] {
+        appearance: none;
+        cursor: pointer;
+        border-width: 1px;
+        padding-left: 20px;
+        height: 35px;
+        padding-right: 20px;
+    }
+}
