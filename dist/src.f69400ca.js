@@ -86088,6 +86088,10 @@ exports.ContactForm = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jquery = _interopRequireDefault(require("jquery"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -86114,7 +86118,26 @@ function encode(data) {
   return Object.keys(data).map(function (key) {
     return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
   }).join('&');
-}
+} // CSS for success response fields
+
+
+var successFields = {
+  display: 'none',
+  fontFamily: 'roboto',
+  color: '#ffffff',
+  backgroundColor: '#a1a1aa',
+  marginTop: '.5em',
+  padding: '.5em'
+}; // CSS for success response fields
+
+var errorFields = {
+  display: 'none',
+  fontFamily: 'roboto',
+  color: '#ffffff',
+  backgroundColor: '#dd5569',
+  marginTop: '.5em',
+  padding: '.5em'
+};
 
 var ContactForm = function ContactForm() {
   var _useState = (0, _react.useState)({}),
@@ -86129,6 +86152,7 @@ var ContactForm = function ContactForm() {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     var form = e.target;
+    (0, _jquery.default)('#submit').html("Sending...");
     fetch("".concat("http://localhost:1337", "/messages"), {
       method: 'POST',
       headers: {
@@ -86137,10 +86161,20 @@ var ContactForm = function ContactForm() {
       body: encode(_objectSpread({
         'form-name': form.getAttribute('name')
       }, state))
-    }).then(function () {
-      return alert('success');
+    }).then(function (response) {
+      (0, _jquery.default)('#submit').html("Send");
+
+      if (response.ok) {
+        (0, _jquery.default)('#cf-success-response').text("Message sent!").show().delay(5000).fadeOut();
+        setTimeout(function () {
+          (0, _jquery.default)('#contact-form').find("input[type=text], input[type=email], textarea").val("");
+        }, 5000);
+      } else {
+        (0, _jquery.default)('#cf-error-response').text("Sorry, something went wrong. Message not sent.").show().delay(5000).fadeOut();
+      }
     }).catch(function (error) {
-      return alert(error);
+      (0, _jquery.default)('#submit').html("Send");
+      (0, _jquery.default)('#cf-error-response').text("Sorry, something went wrong. Message not sent.").show().delay(5000).fadeOut();
     });
   };
 
@@ -86168,6 +86202,17 @@ var ContactForm = function ContactForm() {
   }, _react.default.createElement("div", {
     className: "grid grid-cols-6 gap-6"
   }, _react.default.createElement("div", {
+    className: "col-span-6",
+    id: "cf-responses"
+  }, _react.default.createElement("div", {
+    className: "response",
+    id: "cf-error-response",
+    style: errorFields
+  }), _react.default.createElement("div", {
+    className: "response",
+    id: "cf-success-response",
+    style: successFields
+  })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
   }, _react.default.createElement("input", {
     type: "text",
@@ -86175,7 +86220,8 @@ var ContactForm = function ContactForm() {
     id: "first_name",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "First Name",
-    onChange: handleChange
+    onChange: handleChange,
+    required: true
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
   }, _react.default.createElement("input", {
@@ -86193,7 +86239,8 @@ var ContactForm = function ContactForm() {
     id: "email",
     className: "mt-1 focus:border-red-100 block w-full shadow-sm sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Email",
-    onChange: handleChange
+    onChange: handleChange,
+    required: true
   })), _react.default.createElement("div", {
     className: "col-span-6 sm:col-span-3"
   }, _react.default.createElement("input", {
@@ -86222,17 +86269,19 @@ var ContactForm = function ContactForm() {
     rows: "3",
     className: "shadow-sm focus:border-red-100 mt-1 block w-full sm:text-sm font-roboto md:text-base border-darkblue rounded-md",
     placeholder: "Your message",
-    onChange: handleChange
+    onChange: handleChange,
+    required: true
   }))), _react.default.createElement("div", {
     className: "col-span-6 float-right"
   }, _react.default.createElement("button", {
+    id: "submit",
     className: "bg-red hover:bg-blue text-white text-base font-roboto rounded-md",
     type: "submit"
   }, "Send"))))));
 };
 
 exports.ContactForm = ContactForm;
-},{"react":"../node_modules/react/index.js"}],"containers/PageContact/index.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","jquery":"../node_modules/jquery/dist/jquery.js"}],"containers/PageContact/index.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
