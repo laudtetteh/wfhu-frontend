@@ -33,6 +33,8 @@ export const CATEGORY_POSTS_QUERY = gql`
                 slug
                 description
                 image {
+                    ext
+                    url
                     formats
                 }
                 category {
@@ -60,6 +62,8 @@ export const EVENT_QUERY = gql`
             event_ended
             keep_on_homepage
             image {
+                ext
+                url
                 formats
             }
             published_at
@@ -81,6 +85,8 @@ export const EVENTS_QUERY = gql`
             event_ended
             keep_on_homepage
             image {
+                ext
+                url
                 formats
             }
             published_at
@@ -112,7 +118,9 @@ export const PAGE_QUERY = gql`
                     intro_heading
                     intro_paragraph
                     intro_image {
-                      formats
+                        ext
+                        url
+                        formats
                     }
                 }
 
@@ -137,7 +145,9 @@ export const PAGE_QUERY = gql`
                       name
                       slug
                       image {
-                          formats
+                        ext
+                        url
+                        formats
                       }
                     }
                 }
@@ -163,6 +173,8 @@ export const PAGE_QUERY = gql`
                         event_ended
                         keep_on_homepage
                         image {
+                            ext
+                            url
                             formats
                         }
                         published_at
@@ -171,6 +183,8 @@ export const PAGE_QUERY = gql`
 
                 ... on ComponentPageSingleImage {
                     profile_pic {
+                        ext
+                        url
                         formats
                     }
                 }
@@ -205,7 +219,9 @@ export const PAGES_QUERY = gql`
                     intro_heading
                     intro_paragraph
                     intro_image {
-                      formats
+                        ext
+                        url
+                        formats
                     }
                 }
 
@@ -230,7 +246,9 @@ export const PAGES_QUERY = gql`
                       name
                       slug
                       image {
-                          formats
+                        ext
+                        url
+                        formats
                       }
                     }
                 }
@@ -255,6 +273,8 @@ export const POST_QUERY = gql`
             slug
             description
             image {
+                ext
+                url
                 formats
             }
             category {
@@ -275,6 +295,8 @@ export const POSTS_QUERY = gql`
             slug
             description
             image {
+                ext
+                url
                 formats
             }
             category {

@@ -104,8 +104,16 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "review":
 
-            if( object.image !== null && object.image.formats.review_loop !== undefined ) {
-                _imageUrl = object.image.formats.review_loop.url;
+            if( object.image !== null {
+
+                if( object.image.ext == ".gif") {
+
+                    _imageUrl = object.image.url;
+
+                } else if( object.image.formats !== null && object.image.formats.review_loop !== undefined ) {
+
+                    _imageUrl = object.image.formats.review_loop.url;
+                }
 
             } else {
 
@@ -117,8 +125,16 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "post":
 
-            if( object.image !== null && object.image.formats.post_loop !== undefined ) {
-                _imageUrl = object.image.formats.post_loop.url;
+            if( object.image !== null {
+
+                if( object.image.ext == ".gif") {
+
+                    _imageUrl = object.image.url;
+
+                } else if( object.image.formats !== null && object.image.formats.post_loop !== undefined ) {
+
+                    _imageUrl = object.image.formats.post_loop.url;
+                }
 
             } else {
 
@@ -130,8 +146,16 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "post_single":
 
-            if( object.image !== null && object.image.formats.post_single !== undefined ) {
-                _imageUrl = object.image.formats.post_single.url;
+            if( object.image !== null {
+
+                if( object.image.ext == ".gif") {
+
+                    _imageUrl = object.image.url;
+
+                } else if( object.image.formats !== null && object.image.formats.post_single !== undefined ) {
+
+                    _imageUrl = object.image.formats.post_single.url;
+                }
 
             } else {
 
@@ -144,10 +168,19 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "split_section":
 
-            if( object.intro_image !== null && object.intro_image.formats.split_section !== undefined ) {
-                _imageUrl = object.intro_image.formats.split_section.url;
+            if( object.intro_image !== null {
+
+                if( object.intro_image.ext == ".gif") {
+
+                    _imageUrl = object.intro_image.url;
+
+                } else if( object.intro_image.formats !== null && object.intro_image.formats.split_section !== undefined ) {
+
+                    _imageUrl = object.intro_image.formats.split_section.url;
+                }
 
             } else {
+
                 _imageUrl = plchld_split_section;
                 console.log("Missing (correctly-sized) image for split_section. Placeholder used");
             }
@@ -156,10 +189,19 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "single_image":
 
-            if( object.profile_pic !== null && object.profile_pic.formats.split_section !== undefined ) {
-                _imageUrl = object.profile_pic.formats.split_section.url;
+            if( object.profile_pic !== null {
+
+                if( object.profile_pic.ext == ".gif") {
+
+                    _imageUrl = object.profile_pic.url;
+
+                } else if( object.profile_pic.formats !== null && object.profile_pic.formats.split_section !== undefined ) {
+
+                    _imageUrl = object.profile_pic.formats.split_section.url;
+                }
 
             } else {
+
                 _imageUrl = plchld_split_section;
                 console.log("Missing (correctly-sized) image for single image. Placeholder used");
             }
@@ -181,8 +223,16 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "event":
 
-            if( object.image !== null && object.image.formats.post_loop !== undefined ) {
-                _imageUrl = object.image.formats.post_loop.url;
+            if( object.image !== null {
+
+                if( object.image.ext == ".gif") {
+
+                    _imageUrl = object.image.url;
+
+                } else if( object.image.formats !== null && object.image.formats.post_loop !== undefined ) {
+
+                    _imageUrl = object.image.formats.post_loop.url;
+                }
 
             } else {
 
@@ -194,8 +244,16 @@ export const SmartImage = ({object, content_type, image_size}) => {
 
         case "event_single":
 
-            if( object.image !== null && object.image.formats.post_single !== undefined ) {
-                _imageUrl = object.image.formats.post_single.url;
+            if( object.image !== null {
+
+                if( object.image.ext == ".gif") {
+
+                    _imageUrl = object.image.url;
+
+                } else if( object.image.formats !== null && object.image.formats.post_single !== undefined ) {
+
+                    _imageUrl = object.image.formats.post_single.url;
+                }
 
             } else {
 

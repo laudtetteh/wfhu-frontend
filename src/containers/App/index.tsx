@@ -18,11 +18,7 @@ import { SingleCategory } from "../../containers/SingleCategory";
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 // Utilities
-import { getSiteOptions } from '../../utils/apiHelper';
 import { DocumentHead } from '../../utils/helpers';
-// Queries
-import { Query } from "../../components/Query";
-import { SITEOPTIONS_QUERY } from "../../queries";
 
 export const App = () => {
 
@@ -36,77 +32,65 @@ export const App = () => {
         setMenuVisibility(false);
     }
 
-    return  (
+    return (
 
-        <Query query={SITEOPTIONS_QUERY}>
+        <Router>
 
-            {({ data: { siteOption } }) => {
+            <React.Fragment>
 
-                const siteOptions = getSiteOptions(siteOption);
+                <div id="wrapper" className="flex-grow mb-60">
 
-                return (
+                    <section className="w-full">
+                        <Header toggleFunction={toggleVisibility} menuVisibility={menuVisibility} hideMenu={hideMenu} />
+                    </section>
 
-                    <Router>
+                    <Switch>
 
-                        <React.Fragment>
+                        <Route path="/" exact>
+                            <PageHome />
+                        </Route>
 
-                            <div id="wrapper" className="flex-grow mb-60">
+                        <Route path="/bio" exact>
+                            <PageBio />
+                        </Route>
 
-                                <section className="w-full">
-                                    <Header toggleFunction={toggleVisibility} menuVisibility={menuVisibility} hideMenu={hideMenu} />
-                                </section>
+                        <Route path="/events" exact>
+                            <PageEvents />
+                        </Route>
 
-                                <Switch>
+                        <Route path="/event/:slug">
+                            <SingleEvent />
+                        </Route>
 
-                                    <Route path="/" exact>
-                                        <PageHome siteOptions={siteOptions} />
-                                    </Route>
+                        <Route path="/blog" exact>
+                            <PageBlog />
+                        </Route>
 
-                                    <Route path="/bio" exact>
-                                        <PageBio />
-                                    </Route>
+                        <Route path="/post/:slug">
+                            <SinglePost />
+                        </Route>
 
-                                    <Route path="/events" exact>
-                                        <PageEvents />
-                                    </Route>
+                        <Route path="/category/:slug">
+                            <SingleCategory />
+                        </Route>
 
-                                    <Route path="/event/:slug">
-                                        <SingleEvent />
-                                    </Route>
+                        <Route path="/contact" exact>
+                            <PageContact />
+                        </Route>
 
-                                    <Route path="/blog" exact>
-                                        <PageBlog />
-                                    </Route>
+                    </Switch>
 
-                                    <Route path="/post/:slug">
-                                        <SinglePost />
-                                    </Route>
+                </div>
 
-                                    <Route path="/category/:slug">
-                                        <SingleCategory />
-                                    </Route>
+                <Footer
+                    headingColor="white"
+                    containerClasses="mx-auto"
+                    headingClasses="text-center font-bold"
+                >
+                </Footer>
 
-                                    <Route path="/contact" exact>
-                                        <PageContact />
-                                    </Route>
-
-                                </Switch>
-
-                            </div>
-
-                            <Footer
-                                siteOptions={siteOptions}
-                                headingColor="white"
-                                containerClasses="mx-auto"
-                                headingClasses="text-center font-bold"
-                            />
-
-                        </React.Fragment>
-                    </Router>
-                )
-            }}
-
-        </Query>
+            </React.Fragment>
+        </Router>
     )
 
 }
