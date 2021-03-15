@@ -30,7 +30,7 @@ export const IntroCTA = (props) => {
                     </div>
 
                     <p className="section-paragraph font-roboto text-base text-white mb-2 mt-10 font-medium">
-                        Get notified when I publish something new
+                        Subscribe to her mailing list and enter a monthly drawing for a free 20-minute 1:1 Zoom diagnostic session with Elisabeth.
                     </p>
 
                    <div className="signup-form-container">
