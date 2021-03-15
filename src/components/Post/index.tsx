@@ -49,14 +49,16 @@ export const PostComponent = props => {
 
                         {props.post.category &&
 
-                            <span className="font-thin"> | </span>
+                            <span>
+                                <span className="font-base"> | </span>
 
-                            <Link to={`/category/${props.post.category.slug}`}>
-                                <span className="card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3">
-                                    <i className="fa fa-tags bg-none text-darkblue text-sm mr-1"></i>
-                                    {props.post.category.name}
-                                </span>
-                            </Link>
+                                <Link to={`/category/${props.post.category.slug}`}>
+                                    <span className="card-post-category text-base text-darkblue font-roboto font-normal mt-3 mb-3">
+                                        <i className="fa fa-tags bg-none text-darkblue text-sm mr-1"></i>
+                                        {props.post.category.name}
+                                    </span>
+                                </Link>
+                            </span>
                         }
                     </p>
 
