@@ -1,5 +1,9 @@
+// Packages
 import React from "react";
 import { Link } from "react-router-dom";
+//Components
+import { Paragraphs } from "../../components/Elements/Paragraphs";
+// Utilities
 import { STFDate, SmartImage, TrimText } from '../../utils/helpers';
 
 export const Card = props => {
@@ -44,9 +48,7 @@ export const Card = props => {
                         </p>
 
                         {props.post.description &&
-                            <p id="name" className="font-roboto text-base text-black font-normal mt-5">
-                                <TrimText text={props.post.description} limit={200} />
-                            </p>
+                            <Paragraphs text={props.post.description} classes="font-roboto text-base text-black font-normal mt-5" limit={200} />
                         }
 
                     </div>

@@ -39,9 +39,7 @@ export const PostComponent = props => {
                 <div className="byline">
 
                     <h3 className="card-post-name font-roboto text-2xl text-black my-3">
-
                         {props.post.name}
-
                     </h3>
 
                     <p className="card-post-name font-roboto text-base text-darkblue mb-3">
