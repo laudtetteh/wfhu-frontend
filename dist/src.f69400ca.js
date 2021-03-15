@@ -85253,11 +85253,11 @@ var IntroCTA = function IntroCTA(props) {
   }, _react.default.createElement("div", {
     className: "mx-auto py-12 lg:mr-5"
   }, _react.default.createElement("h3", {
-    className: "section-heading font-bellota text-2xl text-white mb-3"
+    className: "section-heading font-bellota text-2xl text-white opacity-90 mb-3"
   }, props.pageBag.intro_cta.intro_heading), _react.default.createElement("div", {
-    className: "section-paragraph font-roboto text-base text-white mb-3"
+    className: "section-paragraph font-roboto text-base text-white opacity-90 mb-3"
   }, props.pageBag.intro_cta_paragraph), _react.default.createElement("p", {
-    className: "section-paragraph font-roboto text-base text-white mb-2 mt-10 font-medium"
+    className: "section-paragraph font-roboto text-base text-white opacity-90 mb-2 mt-10 font-medium"
   }, "Subscribe to her mailing list and enter a monthly drawing for a free 20-minute 1:1 Zoom diagnostic session with Elisabeth."), _react.default.createElement("div", {
     className: "signup-form-container"
   }, _react.default.createElement(_MailChimp.SignupForm, null))), _react.default.createElement("div", {
