@@ -34,7 +34,7 @@ export const PageHome = props => {
 
                         <DocumentHead title="Home" />
 
-                        <section className="w-full bg-darkblue section-connect-cta">
+                        <section className="w-full stf-bg-3 section-connect-cta">
 
                             <div className="container">
 
@@ -46,19 +46,9 @@ export const PageHome = props => {
 
                         <section className="w-full bg-none">
 
-                            <div className="container mx-auto py-12">
-
-                                <RowOfGifs pageBag={pageBag} limit={3} />
-
-                            </div>
-
-                        </section>
-
-                        <section className="w-full stf-bg-2">
-
                             <div className="container mx-auto py-12 section-reviews">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-center mb-8">Reviews</h2>
+                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Reviews</h2>
 
                                 <GetReviews
                                     reviews={pageBag.row_of_reviews}
@@ -68,7 +58,18 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full bg-none section-connect-cta">
+                        <section className="w-full stf-bg-2">
+
+                            <div className="container mx-auto py-12">
+
+                                <RowOfGifs pageBag={pageBag} limit={3} />
+
+                            </div>
+
+                        </section>
+
+
+                        <section className="w-full bg-none section-events">
 
                             <div className="container mx-auto py-12">
 
@@ -86,7 +87,7 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full stf-bg-3 section-posts--loop">
+                        <section className="w-full stf-bg-2 section-posts--loop">
 
                             <div className="container mx-auto py-12">
 

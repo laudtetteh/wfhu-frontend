@@ -85528,7 +85528,7 @@ var PageHome = function PageHome(props) {
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_helpers.DocumentHead, {
       title: "Home"
     }), _react.default.createElement("section", {
-      className: "w-full bg-darkblue section-connect-cta"
+      className: "w-full stf-bg-3 section-connect-cta"
     }, _react.default.createElement("div", {
       className: "container"
     }, _react.default.createElement(_IntroCTA.IntroCTA, {
@@ -85536,21 +85536,21 @@ var PageHome = function PageHome(props) {
     }))), _react.default.createElement("section", {
       className: "w-full bg-none"
     }, _react.default.createElement("div", {
+      className: "container mx-auto py-12 section-reviews"
+    }, _react.default.createElement("h2", {
+      className: "section-heading font-bellota text-4xl text-red text-left mb-8"
+    }, "Reviews"), _react.default.createElement(_GetReviews.GetReviews, {
+      reviews: pageBag.row_of_reviews,
+      limit: 4
+    }))), _react.default.createElement("section", {
+      className: "w-full stf-bg-2"
+    }, _react.default.createElement("div", {
       className: "container mx-auto py-12"
     }, _react.default.createElement(_RowOfGifs.RowOfGifs, {
       pageBag: pageBag,
       limit: 3
     }))), _react.default.createElement("section", {
-      className: "w-full stf-bg-2"
-    }, _react.default.createElement("div", {
-      className: "container mx-auto py-12 section-reviews"
-    }, _react.default.createElement("h2", {
-      className: "section-heading font-bellota text-4xl text-red text-center mb-8"
-    }, "Reviews"), _react.default.createElement(_GetReviews.GetReviews, {
-      reviews: pageBag.row_of_reviews,
-      limit: 4
-    }))), _react.default.createElement("section", {
-      className: "w-full bg-none section-connect-cta"
+      className: "w-full bg-none section-events"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12"
     }, _react.default.createElement(_GetEvents.GetEvents, {
@@ -85562,7 +85562,7 @@ var PageHome = function PageHome(props) {
       more_link: true,
       keep_on_homepage: true
     }))), _react.default.createElement("section", {
-      className: "w-full stf-bg-3 section-posts--loop"
+      className: "w-full stf-bg-2 section-posts--loop"
     }, _react.default.createElement("div", {
       className: "container mx-auto py-12"
     }, _react.default.createElement("h2", {
