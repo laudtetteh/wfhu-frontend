@@ -134,6 +134,17 @@ li.stf-main-nav-list-item a:hover::after {
     margin: 0;
 }
 
+.page-content {
+    a {
+        text-decoration: underline;
+        color: #C9273E;
+
+        &:hover {
+            color: #2D5F6E;
+        }
+    }
+}
+
 .card-event--image {
     display: block;
     position: relative;

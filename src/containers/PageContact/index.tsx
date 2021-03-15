@@ -34,7 +34,7 @@ export const PageContact = ({siteOptions}) => {
                             <div className="container mx-auto py-12 md:px-60 section-contact-form">
 
                                 {pageBag.description &&
-                                    <div className="contact-page-content block">
+                                    <div className="contact-page-content page-content block">
                                         <Paragraphs text={pageBag.description} classes="" />
                                     </div>
                                 }

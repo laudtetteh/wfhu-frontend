@@ -13,7 +13,7 @@ export const ConnectCTA = (props) => {
                 <div className="section-connect--left">
                     <h3 className="section-heading font-bellota text-2xl text-white mb-3 stf-text-shadow-darkblue-bottom-right">{props.pageBag.connect_cta.heading}</h3>
 
-                    <div className="section-heading font-roboto text-base text-white mb-3">
+                    <div className="section-heading page-content font-roboto text-base text-white mb-3">
                         {props.pageBag.connect_cta_paragraph}
                     </div>
 

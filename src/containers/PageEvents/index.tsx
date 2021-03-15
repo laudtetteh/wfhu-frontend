@@ -38,7 +38,7 @@ export const PageEvents = () => {
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Events</h1>
 
                                 {pageBag.description &&
-                                    <div className="contact-page-content block">
+                                    <div className="contact-page-content page-content block">
                                         <Paragraphs text={pageBag.description} classes="" />
                                     </div>
                                 }

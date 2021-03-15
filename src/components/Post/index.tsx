@@ -1,7 +1,8 @@
 // Packages
 import React from 'react';
-import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
+//Components
+import { Paragraphs } from "../../components/Elements/Paragraphs";
 // Utilities
 import { STFDate, SmartImage } from '../../utils/helpers';
 import { STFDate } from '../../utils/helpers';
@@ -61,9 +62,11 @@ export const PostComponent = props => {
 
                 </div>
 
-                <p className="card-post-description text-base font-roboto font-normal mt-3 mb-3">
-                    <ReactMarkdown source={props.post.description} />
-                </p>
+                {props.post.description &&
+                    <div className="contact-page-content page-content block">
+                        <Paragraphs text={props.post.description} classes="card-post-description text-base font-roboto font-normal mt-3 mb-3" />
+                    </div>
+                }
 
             </div>
         </React.Fragment>

@@ -41,7 +41,7 @@ export const PageBio = () => {
 
                                     {pageBag.description &&
 
-                                        <Paragraphs text={pageBag.description} classes="col-span-4 mx-auto lg:mr-5" />
+                                        <Paragraphs text={pageBag.description} classes="col-span-4 mx-auto lg:mr-5 page-content" />
                                     }
 
                                     {pageBag.profile_pic &&

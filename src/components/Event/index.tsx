@@ -56,7 +56,7 @@ export const EventComponent = props => {
                 </div>
 
                 {props.event.description &&
-                    <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
+                    <p className="card-event-description page-content text-base font-roboto font-normal mt-3 mb-3">
                         <Paragraphs text={props.event.description} classes="" />
                     </p>
                 }
