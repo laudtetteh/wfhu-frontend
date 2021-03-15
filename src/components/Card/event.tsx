@@ -6,7 +6,7 @@ export const Card = ({ event }) => {
     // const imageUrl =
     //     process.env.NODE_ENV !== "development"
     //     ? event.image.url
-    //     : process.env.REACT_APP_BACKEND_URL + event.image.url;
+    //     : process.env.REACT_APP_API_URL + event.image.url;
 
     const object = event;
     const content_type = "event";

@@ -12,7 +12,7 @@ export const PostComponent = props => {
     // const imageUrl =
     //   process.env.NODE_ENV !== "development"
     //     ? post.image.url
-    //     : process.env.REACT_APP_BACKEND_URL + post.image.url;
+    //     : process.env.REACT_APP_API_URL + post.image.url;
 
     // const imageUrl = post.image.url;
 

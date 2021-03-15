@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const { REACT_APP_BACKEND_URL } = process.env;
+const { REACT_APP_API_URL } = process.env;
 
-fetch(`${REACT_APP_BACKEND_URL}/graphql`, {
+fetch(`${REACT_APP_API_URL}/graphql`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({

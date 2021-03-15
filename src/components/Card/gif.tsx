@@ -7,7 +7,7 @@ export const Card = ({ gif }) => {
   // const imageUrl =
   //   process.env.NODE_ENV !== "development"
   //     ? gif.image.url
-  //     : process.env.REACT_APP_BACKEND_URL + gif.image.url;
+  //     : process.env.REACT_APP_API_URL + gif.image.url;
     // const imageUrl = gif.image.formats.gif_loop.url;
 
     const object = gif;

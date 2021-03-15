@@ -42,7 +42,7 @@ export const ContactForm = () => {
 
         $('#submit').html("Sending...")
 
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/messages`, {
+        fetch(`${process.env.REACT_APP_API_URL}/messages`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({
