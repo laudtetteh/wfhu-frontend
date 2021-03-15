@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { STFDate, STFStartEndDates, STFIsUpcoming, SmartImage, TrimText } from '../../utils/helpers';
+import { STFDate, STFStartEndDates, STFUpcomingBadge, SmartImage, TrimText } from '../../utils/helpers';
 
 export const Card = ({ event }) => {
     // const imageUrl =
@@ -23,7 +23,7 @@ export const Card = ({ event }) => {
                 <div className="card-event--image-wrapper">
                     <Link to={`/event/${event.slug}`} className="card-event--image">
                         <img src={imageUrl} alt={imageUrl} height="100" className="w-full"/>
-                        <STFIsUpcoming _start={event.event_start} event_ended={event.event_ended} />
+                        <STFUpcomingBadge _start={event.event_start} event_ended={event.event_ended} />
                     </Link>
                 </div>
 

@@ -6,7 +6,8 @@ import { DocumentHead } from '../../utils/helpers';
 // Queries
 import { Query } from "../../components/Query";
 import { PAGE_QUERY } from "../../queries";
-// Components
+//Components
+import { Paragraphs } from "../../components/Elements/Paragraphs";
 import { ContactForm } from "../../components/Forms/ContactForm";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
@@ -32,9 +33,11 @@ export const PageContact = ({siteOptions}) => {
 
                             <div className="container mx-auto py-12 md:px-60 section-contact-form">
 
-                                <div className="contact-page-content block">
-                                    {pageBag.description}
-                                </div>
+                                {pageBag.description &&
+                                    <div className="contact-page-content block">
+                                        <Paragraphs text={pageBag.description} classes="" />
+                                    </div>
+                                }
 
                                 <ContactForm />
 

@@ -25,7 +25,7 @@ export const getPageData = props => {
     }
 
     if( props.description !== undefined ) {
-        description = <span className="description font-roboto" dangerouslySetInnerHTML={{__html: props.description}} />
+        description = props.description;
     }
 
     if( props.paragraph !== undefined ) {

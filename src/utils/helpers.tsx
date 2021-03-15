@@ -58,7 +58,7 @@ export const STFStartEndDates = ({_start, _end, _timezone, _format}) => {
     );
 }
 
-export const STFIsUpcoming = ({event_ended, _start}) => {
+export const STFUpcomingBadge = ({event_ended, _start}) => {
     const _now = new Date();
     const _nowIso = _now.toISOString();
 

@@ -1,9 +1,10 @@
 // Packages
 import React from 'react';
 import ReactMarkdown from "react-markdown";
+//Components
+import { Paragraphs } from "../Elements/Paragraphs";
 // Utilities
-import { STFDate, SmartImage } from '../../utils/helpers';
-import { STFStartEndDates } from '../../utils/helpers';
+import { STFDate, STFStartEndDates, SmartImage, STFUpcomingBadge } from '../../utils/helpers';
 
 export const EventComponent = props => {
 
@@ -30,8 +31,9 @@ export const EventComponent = props => {
                     <h4 className="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Events</h4>
                 </a>
 
-                <div className="w-full">
+                <div className="card-event--image w-full">
                     <img src={imageUrl} alt={imageUrl} className="w-full"/>
+                    <STFUpcomingBadge _start={props.event.event_start} event_ended={props.event.event_ended} />
                 </div>
 
                 <div className="byline">
@@ -55,13 +57,13 @@ export const EventComponent = props => {
 
                 {props.event.description &&
                     <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
-                        <ReactMarkdown source={props.event.description} />
+                        <Paragraphs text={props.event.description} classes="" />
                     </p>
                 }
 
                 {props.event.event_details &&
                     <p className="card-event-description text-base font-roboto font-normal mt-3 mb-3">
-                        <ReactMarkdown source={props.event.event_details} />
+                        <Paragraphs text={props.event.event_details} classes="" />
                     </p>
                 }
 

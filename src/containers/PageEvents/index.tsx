@@ -3,6 +3,8 @@ import React from 'react';
 // Containers
 import { GetEvents } from '../GetEvents';
 import { DocumentHead } from '../../utils/helpers';
+//Components
+import { Paragraphs } from "../../components/Elements/Paragraphs";
 // Queries
 import { Query } from "../../components/Query";
 import { PAGE_QUERY } from "../../queries";
@@ -35,13 +37,12 @@ export const PageEvents = () => {
 
                                 <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Events</h1>
 
-                                <div className="description description font-roboto">
-
-                                     <div className="description description font-roboto">
-                                        {pageBag.description}
+                                {pageBag.description &&
+                                    <div className="contact-page-content block">
+                                        <Paragraphs text={pageBag.description} classes="" />
                                     </div>
+                                }
 
-                                </div>
                             </div>
 
                         </section>
