@@ -16,7 +16,9 @@ export const Card = props => {
             { props.review.description &&
 
                 <p className="card-review-description text-base font-roboto font-medium mt-3 mb-3">
-                    <i aria-hidden="true" className="fa fa-quote-left inline mr-2"></i>&nbsp;<Paragraphs text={props.review.description} classes="inline" />&nbsp;<i aria-hidden="true" className="fa fa-quote-right text-xs inline ml-2"></i>
+                    <i aria-hidden="true" className="fa fa-quote-left inline mr-2"></i>
+                    <Paragraphs text={props.review.description} classes="review-text inline" />
+                    <i aria-hidden="true" className="fa fa-quote-right text-xs inline ml-2"></i>
                 </p>
             }
 
