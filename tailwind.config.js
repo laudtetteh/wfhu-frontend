@@ -46,10 +46,10 @@ module.exports = {
         600: '#3AA9CB',
       },
       darkblue: {
-        DEFAULT: '#366878',
+        DEFAULT: '#2D5F6E',
         100: '#',
         300: '#',
-        600: '#366878',
+        600: '#2D5F6E',
       },
     },
     screens: {
