@@ -45,6 +45,7 @@ export const PostComponent = props => {
                     </h3>
 
                     <p className="card-post-name font-roboto text-base text-darkblue mb-3">
+
                         <STFDate _timestamp={props.post.published_at} _format="MMMM D, YYYY" />
 
                         {props.post.category &&
