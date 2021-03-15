@@ -49,7 +49,8 @@ export const PostComponent = props => {
 
                         {props.post.category &&
 
-                            <span>
+                            <span className="post-byline">
+
                                 <span className="font-base"> | </span>
 
                                 <Link to={`/category/${props.post.category.slug}`}>
@@ -58,6 +59,7 @@ export const PostComponent = props => {
                                         {props.post.category.name}
                                     </span>
                                 </Link>
+
                             </span>
                         }
                     </p>
