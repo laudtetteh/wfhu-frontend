@@ -113,6 +113,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.image.formats !== null && object.image.formats.review_loop !== undefined ) {
 
                     _imageUrl = object.image.formats.review_loop.url;
+
+                } else {
+
+                    _imageUrl = plchld_review;
                 }
 
             } else {
@@ -134,6 +138,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.image.formats !== null && object.image.formats.post_loop !== undefined ) {
 
                     _imageUrl = object.image.formats.post_loop.url;
+
+                } else {
+
+                    _imageUrl = plchld_post;
                 }
 
             } else {
@@ -155,6 +163,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.image.formats !== null && object.image.formats.post_single !== undefined ) {
 
                     _imageUrl = object.image.formats.post_single.url;
+
+                } else {
+
+                    _imageUrl = plchld_post_single;
                 }
 
             } else {
@@ -177,6 +189,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.intro_image.formats !== null && object.intro_image.formats.split_section !== undefined ) {
 
                     _imageUrl = object.intro_image.formats.split_section.url;
+
+                } else {
+
+                    _imageUrl = plchld_split_section;
                 }
 
             } else {
@@ -198,6 +214,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.profile_pic.formats !== null && object.profile_pic.formats.split_section !== undefined ) {
 
                     _imageUrl = object.profile_pic.formats.split_section.url;
+
+                } else {
+
+                    _imageUrl = plchld_split_section;
                 }
 
             } else {
@@ -232,6 +252,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.image.formats !== null && object.image.formats.post_loop !== undefined ) {
 
                     _imageUrl = object.image.formats.post_loop.url;
+
+                } else {
+
+                    _imageUrl = plchld_post;
                 }
 
             } else {
@@ -253,6 +277,10 @@ export const SmartImage = ({object, content_type, image_size}) => {
                 } else if( object.image.formats !== null && object.image.formats.post_single !== undefined ) {
 
                     _imageUrl = object.image.formats.post_single.url;
+
+                } else {
+
+                    _imageUrl = plchld_post_single;
                 }
 
             } else {
