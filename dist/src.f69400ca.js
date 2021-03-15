@@ -73858,7 +73858,7 @@ var Events = function Events(props) {
     to: "/events",
     className: "link-all font-roboto text-base text-yellow underline pl-3"
   }, "All Events")), _react.default.createElement("div", {
-    className: "grid grid-cols-1 gap-4 md:grid-cols-5 events-loop"
+    className: "grid grid-cols-1 gap-6 md:grid-cols-5 events-loop"
   }, props.events.slice(0, props.limit).map(function (event) {
     return _react.default.createElement(_event.Card, _defineProperty({
       event: event,
@@ -95770,7 +95770,11 @@ var Footer = function Footer(props) {
       listClasses: "flex justify-center"
     }), _react.default.createElement("p", {
       className: "font-roboto mx-auto block text-center mt-3"
-    }, "\xA9 ", new Date().getFullYear(), " Work from Home University, LLC"))));
+    }, "\xA9 ", new Date().getFullYear(), " Work from Home University, LLC"), _react.default.createElement("p", {
+      class: "font-roboto mx-auto block text-center mt-3"
+    }, _react.default.createElement("a", {
+      href: "/contact"
+    }, "Contact Elisabeth")))));
   });
 };
 

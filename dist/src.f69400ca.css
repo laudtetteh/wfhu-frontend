@@ -10550,8 +10550,10 @@ li.stf-main-nav-list-item a:hover::after {
 
 .card-event--image .event-badge {
   position: absolute;
-  margin-top: -40px;
-  right: 10px;
+  top: 0;
+  margin-top: 1rem;
+  left: -1rem;
+  box-shadow: 2px 2px 0px rgba(201, 39, 62, 0.5);
 }
 
 .image.image-style-align-center img {

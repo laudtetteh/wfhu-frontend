@@ -34,6 +34,9 @@ export const Footer = props => {
                                 />
 
                                 <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University, LLC</p>
+                                <p class="font-roboto mx-auto block text-center mt-3">
+                                    <a href="/contact">Contact Elisabeth</a>
+                                </p>
                             </div>
 
                         </section>
