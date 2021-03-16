@@ -31,6 +31,7 @@ export const CATEGORY_POSTS_QUERY = gql`
                 id
                 name
                 slug
+                excerpt
                 description
                 image {
                     ext
@@ -271,6 +272,7 @@ export const POST_QUERY = gql`
             id
             name
             slug
+            excerpt
             description
             image {
                 ext
@@ -293,6 +295,7 @@ export const POSTS_QUERY = gql`
             id
             name
             slug
+            excerpt
             description
             image {
                 ext

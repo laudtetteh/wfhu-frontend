@@ -208,3 +208,12 @@ li.stf-main-nav-list-item a:hover::after {
         display: inline;
     }
 }
+
+.page-content,
+.description {
+    figure.image {
+        width: 50%;
+        margin: 2rem auto;
+        max-width: 100%;
+    }
+}

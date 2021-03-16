@@ -7,6 +7,7 @@ export const getPageData = props => {
 
     let name = '';
     let description = '';
+    let excerpt = '';
     let intro_cta_paragraph = '';
     let paragraph = '';
     let connect_cta_paragraph = '';
@@ -26,6 +27,10 @@ export const getPageData = props => {
 
     if( props.description !== undefined ) {
         description = props.description;
+    }
+
+    if( props.excerpt !== undefined ) {
+        excerpt = props.excerpt;
     }
 
     if( props.paragraph !== undefined ) {
@@ -88,6 +93,7 @@ export const getPageData = props => {
 
     pageData["name"] = name;
     pageData["description"] = description;
+    pageData["excerpt"] = excerpt;
     pageData["paragraph"] = paragraph;
     pageData["intro_cta_paragraph"] = intro_cta_paragraph;
     pageData["connect_cta_paragraph"] = connect_cta_paragraph;

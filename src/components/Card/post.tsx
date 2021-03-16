@@ -47,8 +47,9 @@ export const Card = props => {
                             <STFDate _timestamp={props.post.published_at} _format="MMMM D, YYYY" />
                         </p>
 
-                        {props.post.description &&
-                            <Paragraphs text={props.post.description} classes="font-roboto text-base text-black font-normal mt-5" limit={200} />
+                        {props.post.excerpt &&
+
+                            <Paragraphs text={props.post.excerpt} classes="font-roboto text-base text-black font-normal mt-5" limit={200} />
                         }
 
                     </div>

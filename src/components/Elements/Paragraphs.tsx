@@ -9,9 +9,9 @@ function trimText(text, limit) {
 
         trimmed = text.substring(0,limit) + '...';
 
-    } else if(text.length == limit) {
+    } else if(text.length <= limit) {
 
-        trimmed = text.substring(0,limit);
+        trimmed = text;
 
     }
 
