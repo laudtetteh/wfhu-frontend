@@ -26,7 +26,7 @@ export const IntroCTA = (props) => {
                     <h3 className="section-heading font-bellota text-2xl text-white opacity-90 mb-3">{props.pageBag.intro_cta.intro_heading}</h3>
 
                     <div className="section-paragraph page-content font-roboto text-base text-white opacity-90 mb-3">
-                        {props.pageBag.intro_cta_paragraph}
+                        {props.pageBag.intro_cta.intro_paragraph}
                     </div>
 
                     <p className="section-paragraph font-roboto text-base text-white opacity-90 mb-2 mt-10 font-medium">

@@ -115,16 +115,6 @@ export const PAGE_QUERY = gql`
 
                 __typename
 
-                ... on ComponentPageIntroCta {
-                    intro_heading
-                    intro_paragraph
-                    intro_image {
-                        ext
-                        url
-                        formats
-                    }
-                }
-
                 ... on ComponentPageConnectCta {
                     heading
                     paragraph
@@ -150,14 +140,6 @@ export const PAGE_QUERY = gql`
                         url
                         formats
                       }
-                    }
-                }
-
-                ... on ComponentPageRowOfReviews {
-                    reviews {
-                      id
-                      name
-                      description
                     }
                 }
 
@@ -321,6 +303,28 @@ export const SITEOPTIONS_QUERY = gql`
                 facebook
                 instagram
                 twitter
+            }
+        }
+    }
+`;
+
+export const HOMEPAGE_QUERY = gql`
+    query homepage {
+        homepage {
+            id
+            IntroCTA {
+                intro_heading
+                intro_paragraph
+                intro_image {
+                    formats
+                }
+            }
+            row_of_reviews {
+                reviews {
+                    id
+                    name
+                    description
+                }
             }
         }
     }

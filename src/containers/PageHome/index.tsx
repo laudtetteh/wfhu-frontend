@@ -10,7 +10,7 @@ import { IntroCTA } from '../../components/Cta/IntroCTA';
 import { RowOfGifs } from '../../components/Elements/RowOfGifs';
 // Queries
 import { Query } from "../../components/Query";
-import { PAGE_QUERY } from "../../queries";
+import { HOMEPAGE_QUERY } from "../../queries";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
 import { getPageData } from '../../utils/apiHelper';
@@ -22,11 +22,11 @@ export const PageHome = props => {
 
     return (
 
-        <Query query={PAGE_QUERY} slug="home">
+        <Query query={HOMEPAGE_QUERY}>
 
-            {({ data: { pages } }) => {
+            {({ data: { homepage } }) => {
 
-                const pageBag = getPageData(pages[0]);
+                const pageBag = getPageData(homepage);
 
                 return (
 
@@ -58,55 +58,6 @@ export const PageHome = props => {
 
                         </section>
 
-                        <section className="w-full stf-bg-2">
-
-                            <div className="container mx-auto py-12">
-
-                                <RowOfGifs pageBag={pageBag} limit={3} />
-
-                            </div>
-
-                        </section>
-
-
-                        <section className="w-full bg-none section-events">
-
-                            <div className="container mx-auto py-12">
-
-                                <GetEvents
-                                    events={pageBag.row_of_events}
-                                    limit={5}
-                                    sort="event_start:ASC"
-                                    heading="Presentations"
-                                    heading_classes="text-4xl text-red mb-3"
-                                    more_link={true}
-                                    keep_on_homepage={true}
-                                />
-
-                            </div>
-
-                        </section>
-
-                        <section className="w-full stf-bg-2 section-posts--loop">
-
-                            <div className="container mx-auto py-12">
-
-                                <h2 className="section-heading font-bellota text-4xl text-white mb-3">
-                                    Blog Posts
-                                    <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
-                                </h2>
-
-                                <GetPosts
-                                    posts={pageBag.row_of_posts}
-                                    limit={3}
-                                    orientation="horizontal"
-                                    nameClasses="text-base text-yellow"
-                                    dateClasses="text-xs text-blue-100 italic"
-                                />
-
-                            </div>
-
-                        </section>
 
                     </React.Fragment>
                 )

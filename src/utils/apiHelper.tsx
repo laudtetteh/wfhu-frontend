@@ -8,9 +8,9 @@ export const getPageData = props => {
     let name = '';
     let description = '';
     let excerpt = '';
-    let intro_cta_paragraph = '';
-    let paragraph = '';
+    let intro_paragraph = '';
     let connect_cta_paragraph = '';
+    let paragraph = '';
     let category = {};
     let image = {};
     let intro_cta = {};
@@ -45,19 +45,20 @@ export const getPageData = props => {
         image = props.image;
     }
 
+    if( props.IntroCTA ) {
+
+        intro_cta = props.IntroCTA;
+
+        if( props.IntroCTA.intro_paragraph !== undefined ) {
+            intro_cta.intro_paragraph = <span className="intro_paragraph font-roboto" dangerouslySetInnerHTML={{__html: props.IntroCTA.intro_paragraph}} />
+        }
+    }
+
     if( props.dynamic_fields !== undefined ) {
 
         if( Array.isArray( props.dynamic_fields) ) {
 
             props.dynamic_fields.map((group) => {
-
-                if( group.__typename == "ComponentPageIntroCta" ) {
-                    intro_cta = group;
-
-                    if( intro_cta.intro_paragraph !== undefined ) {
-                        intro_cta_paragraph = <span className="intro_paragraph font-roboto" dangerouslySetInnerHTML={{__html: intro_cta.intro_paragraph}} />
-                    }
-                }
 
                 if( group.__typename == "ComponentPageConnectCta" ) {
                     connect_cta = group;
@@ -95,7 +96,7 @@ export const getPageData = props => {
     pageData["description"] = description;
     pageData["excerpt"] = excerpt;
     pageData["paragraph"] = paragraph;
-    pageData["intro_cta_paragraph"] = intro_cta_paragraph;
+    pageData["intro_paragraph"] = intro_paragraph;
     pageData["connect_cta_paragraph"] = connect_cta_paragraph;
     pageData["category"] = category;
     pageData["image"] = image;
