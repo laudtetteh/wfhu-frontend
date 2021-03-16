@@ -54,6 +54,10 @@ export const getPageData = props => {
         }
     }
 
+    if( props.row_of_gifs ) {
+        row_of_gifs = props.row_of_gifs
+    }
+
     if( props.dynamic_fields !== undefined ) {
 
         if( Array.isArray( props.dynamic_fields) ) {
@@ -66,10 +70,6 @@ export const getPageData = props => {
                     if( connect_cta.paragraph !== undefined ) {
                         connect_cta_paragraph = <span className="paragraph font-roboto" dangerouslySetInnerHTML={{__html: connect_cta.paragraph}} />
                     }
-                }
-
-                if( group.__typename == "ComponentPageRowOfGifs" ) {
-                    row_of_gifs = group.gifs_component;
                 }
 
                 if( group.__typename == "ComponentPageRowOfPosts" ) {

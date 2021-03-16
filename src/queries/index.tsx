@@ -122,48 +122,6 @@ export const PAGE_QUERY = gql`
                     button_text
                 }
 
-                ... on ComponentPageRowOfGifs {
-                    gifs_component {
-                      gif {
-                        url
-                      }
-                    }
-                }
-
-                ... on ComponentPageRowOfPosts {
-                    posts {
-                      id
-                      name
-                      slug
-                      image {
-                        ext
-                        url
-                        formats
-                      }
-                    }
-                }
-
-                ... on ComponentPageRowOfEvents {
-                    events {
-                        id
-                        name
-                        slug
-                        description
-                        event_details
-                        event_start
-                        event_end
-                        event_timezone
-                        event_ended
-                        keep_on_homepage
-                        image {
-                            ext
-                            url
-                            formats
-                        }
-                        published_at
-                    }
-                }
-
                 ... on ComponentPageSingleImage {
                     profile_pic {
                         ext
@@ -312,6 +270,7 @@ export const HOMEPAGE_QUERY = gql`
     query homepage {
         homepage {
             id
+
             IntroCTA {
                 intro_heading
                 intro_paragraph
@@ -319,11 +278,52 @@ export const HOMEPAGE_QUERY = gql`
                     formats
                 }
             }
+
             row_of_reviews {
                 reviews {
                     id
                     name
                     description
+                }
+            }
+
+            row_of_gifs {
+                gif {
+                    url
+                }
+            }
+
+            row_of_events {
+                events {
+                    id
+                    name
+                    slug
+                    description
+                    event_details
+                    event_start
+                    event_end
+                    event_timezone
+                    event_ended
+                    keep_on_homepage
+                    image {
+                        ext
+                        url
+                        formats
+                    }
+                    published_at
+                }
+            }
+
+            row_of_posts {
+                posts {
+                  id
+                  name
+                  slug
+                  image {
+                    ext
+                    url
+                    formats
+                  }
                 }
             }
         }
