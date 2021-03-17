@@ -13,18 +13,18 @@ export const Card = props => {
 
         <div className="mx-auto md:mt-0 mt-1 md:first:mt-0">
 
-            { props.review.description &&
+            { props.review.review &&
 
                 <p className="card-review-description text-base font-roboto font-medium mt-3 mb-3">
                     <i aria-hidden="true" className="fa fa-quote-left inline mr-2"></i>
-                    <Paragraphs text={props.review.description} classes="review-text inline" />
+                    <Paragraphs text={props.review.review} classes="review-text inline" />
                     <i aria-hidden="true" className="fa fa-quote-right text-xs inline ml-2"></i>
                 </p>
             }
 
-            { props.review.name &&
+            { props.review.reviewer_name &&
                 <p className="card-review-name text-base font-roboto italic">
-                    - {props.review.name}
+                    - {props.review.reviewer_name}
                 </p>
             }
 

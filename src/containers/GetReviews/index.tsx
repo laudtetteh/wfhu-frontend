@@ -18,38 +18,23 @@ export const GetReviews = props => {
         _reviews = false;
     }
 
-    return (
 
-        <React.Fragment>
+    if(_reviews) {
 
-        {_reviews &&
+        return (
 
-            <Reviews
-                reviews={_reviews}
-                limit={props.limit}
-            />
-        }
+            <React.Fragment>
 
-        {!_reviews &&
+                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Reviews</h2>
 
-            <Query query={REVIEWS_QUERY} limit={props.limit}>
+                <Reviews
+                    reviews={_reviews}
+                    limit={props.limit}
+                />
 
-                {({ data: { reviews } }) => {
+            </React.Fragment>
+        );
+    }
 
-                    _reviews = reviews;
-
-                    return (
-
-                        <Reviews
-                            reviews={_reviews}
-                            limit={props.limit}
-                        />
-                    )
-                }}
-            </Query>
-
-        }
-
-        </React.Fragment>
-    );
+    return null
 };

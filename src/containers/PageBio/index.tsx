@@ -58,9 +58,10 @@ export const PageBio = () => {
 
                             <div className="container mx-auto py-12 section-reviews">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Reviews</h2>
-
-                                <GetReviews limit={4} />
+                                <GetReviews
+                                    reviews={pages[0].rowof_reviews}
+                                    limit={4}
+                                />
 
                             </div>
 

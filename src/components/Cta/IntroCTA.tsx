@@ -5,7 +5,7 @@ import { SmartImage } from '../../utils/helpers';
 
 export const IntroCTA = (props) => {
 
-    const object = props.pageBag.intro_cta;
+    const object = props.intro_cta;
     const content_type = "split_section";
     const image_size = "split_section";
 
@@ -23,10 +23,10 @@ export const IntroCTA = (props) => {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 
                 <div className="mx-auto py-12 lg:mr-5">
-                    <h3 className="section-heading font-bellota text-2xl text-white opacity-90 mb-3">{props.pageBag.intro_cta.intro_heading}</h3>
+                    <h3 className="section-heading font-bellota text-2xl text-white opacity-90 mb-3">{props.intro_cta.intro_heading}</h3>
 
                     <div className="section-paragraph page-content font-roboto text-base text-white opacity-90 mb-3">
-                        {props.pageBag.intro_cta.intro_paragraph}
+                        <span className="intro_paragraph font-roboto" dangerouslySetInnerHTML={{__html: props.intro_cta.intro_paragraph}} />
                     </div>
 
                     <p className="section-paragraph font-roboto text-base text-white opacity-90 mb-2 mt-10 font-medium">

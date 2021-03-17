@@ -13,7 +13,6 @@ import { Query } from "../../components/Query";
 import { HOMEPAGE_QUERY } from "../../queries";
 // Utilities
 import { DocumentHead } from '../../utils/helpers';
-import { getPageData } from '../../utils/apiHelper';
 
 export const PageHome = props => {
 
@@ -26,8 +25,6 @@ export const PageHome = props => {
 
             {({ data: { homepage } }) => {
 
-                const pageBag = getPageData(homepage);
-
                 return (
 
                     <React.Fragment>
@@ -38,7 +35,7 @@ export const PageHome = props => {
 
                             <div className="container">
 
-                                <IntroCTA pageBag={pageBag} />
+                                <IntroCTA intro_cta={homepage.IntroCTA} />
 
                             </div>
 
@@ -48,11 +45,10 @@ export const PageHome = props => {
 
                             <div className="container mx-auto py-12 section-reviews">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Reviews</h2>
-
                                 <GetReviews
-                                    reviews={pageBag.row_of_reviews}
-                                    limit={4} />
+                                    reviews={homepage.rowof_reviews}
+                                    limit={4}
+                                />
 
                             </div>
 
@@ -62,7 +58,7 @@ export const PageHome = props => {
 
                             <div className="container mx-auto py-12">
 
-                                <RowOfGifs pageBag={pageBag} limit={3} />
+                                <RowOfGifs gifs={homepage.rowof_gifs} limit={3} />
 
                             </div>
 
@@ -73,7 +69,7 @@ export const PageHome = props => {
                             <div className="container mx-auto py-12">
 
                                 <GetEvents
-                                    events={pageBag.row_of_events}
+                                    events={homepage.rowof_events}
                                     limit={5}
                                     sort="event_start:ASC"
                                     heading="Presentations"
@@ -96,7 +92,7 @@ export const PageHome = props => {
                                 </h2>
 
                                 <GetPosts
-                                    posts={pageBag.row_of_posts}
+                                    posts={homepage.rowof_posts}
                                     limit={3}
                                     orientation="horizontal"
                                     nameClasses="text-base text-yellow"
@@ -106,7 +102,6 @@ export const PageHome = props => {
                             </div>
 
                         </section>
-
 
                     </React.Fragment>
                 )

@@ -54,8 +54,20 @@ export const getPageData = props => {
         }
     }
 
-    if( props.row_of_gifs ) {
-        row_of_gifs = props.row_of_gifs
+    if( props.rowof_reviews ) {
+        row_of_reviews = props.rowof_reviews;
+    }
+
+    if( props.rowof_gifs ) {
+        row_of_gifs = props.rowof_gifs;
+    }
+
+    if( props.rowof_events ) {
+        row_of_events = props.rowof_events;
+    }
+
+    if( props.rowof_posts ) {
+        row_of_posts = props.rowof_posts;
     }
 
     if( props.dynamic_fields !== undefined ) {
@@ -70,19 +82,6 @@ export const getPageData = props => {
                     if( connect_cta.paragraph !== undefined ) {
                         connect_cta_paragraph = <span className="paragraph font-roboto" dangerouslySetInnerHTML={{__html: connect_cta.paragraph}} />
                     }
-                }
-
-                if( group.__typename == "ComponentPageRowOfPosts" ) {
-                    row_of_posts = group.posts;
-                }
-
-                if( group.__typename == "ComponentPageRowOfReviews" ) {
-                    row_of_reviews = group.reviews;
-                }
-
-
-                if( group.__typename == "ComponentPageRowOfEvents" ) {
-                    row_of_events = group.events;
                 }
 
                 if( group.__typename == "ComponentPageSingleImage" ) {

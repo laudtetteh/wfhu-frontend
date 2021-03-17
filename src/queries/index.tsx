@@ -279,51 +279,44 @@ export const HOMEPAGE_QUERY = gql`
                 }
             }
 
-            row_of_reviews {
-                reviews {
-                    id
-                    name
-                    description
-                }
+            rowof_reviews {
+                review
+                reviewer_name
             }
 
-            row_of_gifs {
+            rowof_gifs {
                 gif {
                     url
                 }
             }
 
-            row_of_events {
-                events {
-                    id
-                    name
-                    slug
-                    description
-                    event_details
-                    event_start
-                    event_end
-                    event_timezone
-                    event_ended
-                    keep_on_homepage
-                    image {
-                        ext
-                        url
-                        formats
-                    }
-                    published_at
-                }
-            }
-
-            row_of_posts {
-                posts {
-                  id
-                  name
-                  slug
-                  image {
+            rowof_events {
+                id
+                name
+                slug
+                description
+                event_details
+                event_start
+                event_end
+                event_timezone
+                event_ended
+                keep_on_homepage
+                image {
                     ext
                     url
                     formats
-                  }
+                }
+                published_at
+            }
+
+            rowof_posts {
+                id
+                name
+                slug
+                image {
+                    ext
+                        url
+                    formats
                 }
             }
         }

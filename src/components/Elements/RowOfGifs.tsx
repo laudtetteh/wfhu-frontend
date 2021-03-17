@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "../Card/gif";
 
 export const RowOfGifs = (props) => {
-    const gifs = props.pageBag.row_of_gifs;
+    const gifs = props.gifs;
 
     return (
         <React.Fragment>
