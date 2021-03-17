@@ -7,7 +7,9 @@
     "start": "yarn clean && yarn generate:fragments && yarn run:dev && yarn redirects:copy",
     "run:dev": "parcel src/index.html",
     "build": "yarn clean && yarn generate:fragments && yarn run:build && yarn redirects:copy",
+    "build-staging": "yarn clean && yarn generate:fragments && yarn run:build-staging && yarn redirects:copy",
     "run:build": "parcel build src/index.html -d ./dist",
+    "run:build-staging": "NODE_ENV=staging REACT_APP_API_URL=https://wfhu-backend-staging.studiotenfour.biz parcel build src/index.html -d ./dist",
     "clean": "rm -rf .cache",
     "redirects:copy": "cp ./_redirects ./dist/",
     "generate:fragments": "node -r dotenv/config src/utils/schemaQuery.tsx"
