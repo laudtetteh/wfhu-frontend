@@ -45,9 +45,7 @@ export const PageBio = () => {
                                     }
 
                                     {pageBag.profile_pic &&
-
                                         <SingleImage image={pageBag.profile_pic} classes="col-span-3 mx-auto md:mx-0 float-right" />
-
                                     }
 
                                 </div>
