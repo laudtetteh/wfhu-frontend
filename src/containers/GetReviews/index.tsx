@@ -18,7 +18,6 @@ export const GetReviews = props => {
         _reviews = false;
     }
 
-
     if(_reviews) {
 
         return (
