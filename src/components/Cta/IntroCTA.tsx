@@ -30,7 +30,7 @@ export const IntroCTA = (props) => {
                     </div>
 
                     <p className="section-paragraph font-roboto text-base text-white opacity-90 mb-2 mt-10 font-medium">
-                        Subscribe to her mailing list and enter a monthly drawing for a free 20-minute 1:1 Zoom diagnostic session with Elisabeth.
+                        {props.pageBag.intro_cta.intro_form_blurb}
                     </p>
 
                    <div className="signup-form-container">

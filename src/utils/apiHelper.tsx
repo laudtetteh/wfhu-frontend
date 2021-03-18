@@ -9,6 +9,7 @@ export const getPageData = props => {
     let description = '';
     let excerpt = '';
     let intro_paragraph = '';
+    let intro_form_blurb = '';
     let connect_cta_paragraph = '';
     let paragraph = '';
     let category = {};
@@ -51,6 +52,10 @@ export const getPageData = props => {
 
         if( props.IntroCTA.intro_paragraph !== undefined ) {
             intro_cta.intro_paragraph = <span className="intro_paragraph font-roboto" dangerouslySetInnerHTML={{__html: props.IntroCTA.intro_paragraph}} />
+        }
+
+        if( props.IntroCTA.intro_form_blurb !== undefined ) {
+            intro_cta.intro_form_blurb = <span className="intro_form_blurb font-roboto" dangerouslySetInnerHTML={{__html: props.IntroCTA.intro_form_blurb}} />
         }
     }
 
@@ -97,6 +102,7 @@ export const getPageData = props => {
     pageData["excerpt"] = excerpt;
     pageData["paragraph"] = paragraph;
     pageData["intro_paragraph"] = intro_paragraph;
+    pageData["intro_form_blurb"] = intro_form_blurb;
     pageData["connect_cta_paragraph"] = connect_cta_paragraph;
     pageData["category"] = category;
     pageData["image"] = image;

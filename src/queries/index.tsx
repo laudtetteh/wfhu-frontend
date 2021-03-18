@@ -115,13 +115,6 @@ export const PAGE_QUERY = gql`
 
                 __typename
 
-                ... on ComponentPageConnectCta {
-                    heading
-                    paragraph
-                    button_link
-                    button_text
-                }
-
                 ... on ComponentPageSingleImage {
                     profile_pic {
                         ext
@@ -156,42 +149,11 @@ export const PAGES_QUERY = gql`
 
                 __typename
 
-                ... on ComponentPageIntroCta {
-                    intro_heading
-                    intro_paragraph
-                    intro_image {
-                        ext
-                        url
-                        formats
-                    }
-                }
-
                 ... on ComponentPageConnectCta {
                     heading
                     paragraph
                     button_link
                     button_text
-                }
-
-                ... on ComponentPageRowOfGifs {
-                    gifs_component {
-                      gif {
-                        url
-                      }
-                    }
-                }
-
-                ... on ComponentPageRowOfPosts {
-                    posts {
-                      id
-                      name
-                      slug
-                      image {
-                        ext
-                        url
-                        formats
-                      }
-                    }
                 }
 
                 ... on ComponentPageSingleImage {
@@ -274,6 +236,7 @@ export const HOMEPAGE_QUERY = gql`
             IntroCTA {
                 intro_heading
                 intro_paragraph
+                intro_form_blurb
                 intro_image {
                     formats
                 }
