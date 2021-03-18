@@ -36,7 +36,7 @@ const emailField: CSS.Properties = {
     width: '100%',
     height: '35px',
     paddingRight: '30%',
-    border: '1px solid rgba(255, 255, 255, .6)',
+    border: '1px solid rgba(255, 255, 255, .9)',
     borderRadius: '3px',
     paddingLeft: '15px',
     fontFamily: 'roboto',
@@ -123,7 +123,7 @@ export class SignupForm extends Component {
                                 <input type="text" name="b_9ae21d5dd8d2f0f5acee71058_4a8e40d9cb" tabIndex="-1" value="" />
                             </div>
 
-                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button hover:bg-red hover:text-white" onClick={this._handleClick} />
+                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button font-roboto text-darkblue bg-white bg-opacity-90 hover:text-white hover:bg-red hover:bg-opacity-1" onClick={this._handleClick} />
                         </div>
 
                         <div id="mce-responses" className="clear">

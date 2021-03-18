@@ -15,8 +15,8 @@ export const Events = props => {
                 {props.heading}
 
                 { props.more_link &&
-                    <Link to="/events" className="link-all font-roboto text-base text-yellow underline pl-3">
-                        All Events
+                    <Link to="/events" className="link-all font-roboto text-base text-darkblue underline pl-3">
+                        view all
                     </Link>
                 }
 

@@ -77,7 +77,7 @@ export const PageHome = props => {
                                     limit={5}
                                     sort="event_start:ASC"
                                     heading="Presentations"
-                                    heading_classes="text-4xl text-red mb-3"
+                                    heading_classes="text-4xl text-darkblue mb-3"
                                     more_link={true}
                                     keep_on_homepage={true}
                                 />
@@ -90,16 +90,16 @@ export const PageHome = props => {
 
                             <div className="container mx-auto py-12">
 
-                                <h2 className="section-heading font-bellota text-4xl text-white mb-3">
+                                <h2 className="section-heading font-bellota text-4xl text-white stf-text-shadow-darkblue-bottom-right mb-3">
                                     Blog Posts
-                                    <a href="/blog" className="link-all font-roboto text-base text-yellow underline pl-3">All Posts</a>
+                                    <a href="/blog" className="link-all font-roboto text-base text-white underline pl-3">view all</a>
                                 </h2>
 
                                 <GetPosts
                                     posts={pageBag.row_of_posts}
                                     limit={3}
                                     orientation="horizontal"
-                                    nameClasses="text-base text-yellow"
+                                    nameClasses="text-base text-white stf-text-shadow-darkblue-bottom-right"
                                     dateClasses="text-xs text-blue-100 italic"
                                 />
 
