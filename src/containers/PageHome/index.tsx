@@ -48,7 +48,7 @@ export const PageHome = props => {
 
                             <div className="container mx-auto py-12 section-reviews">
 
-                                <h2 className="section-heading font-bellota text-4xl text-red text-left mb-8">Reviews</h2>
+                                <h2 className="section-heading font-bellota text-4xl text-darkblue text-left mb-8">Reviews</h2>
 
                                 <GetReviews
                                     reviews={pageBag.row_of_reviews}
