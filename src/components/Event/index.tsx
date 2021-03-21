@@ -28,7 +28,7 @@ export const EventComponent = props => {
             <div className={`col-span-5 event-${props.event.id}`}>
 
                 <a href="/events">
-                    <h4 className="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Events</h4>
+                    <h4 className="section-heading font-bellota text-3xl text-darkblue text-left mb-5">&lt;All Events</h4>
                 </a>
 
                 <div className="card-event--image w-full">

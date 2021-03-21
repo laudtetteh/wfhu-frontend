@@ -129,7 +129,7 @@ export const ContactForm = () => {
                         </div>
 
                         <div className="col-span-6 float-right">
-                            <button id="submit" className="bg-red hover:bg-blue text-white text-base font-roboto rounded-md" type="submit">Send</button>
+                            <button id="submit" className="btn-primary bg-red hover:bg-blue text-white text-base font-roboto rounded-md" type="submit">Send</button>
                         </div>
 
                     </div>

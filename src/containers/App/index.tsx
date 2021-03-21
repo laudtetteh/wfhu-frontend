@@ -38,7 +38,7 @@ export const App = () => {
 
             <React.Fragment>
 
-                <div id="wrapper" className="flex-grow mb-60">
+                <div id="wrapper" className="flex-grow mb-64">
 
                     <section className="w-full">
                         <Header toggleFunction={toggleVisibility} menuVisibility={menuVisibility} hideMenu={hideMenu} />

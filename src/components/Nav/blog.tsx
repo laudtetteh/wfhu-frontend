@@ -29,7 +29,7 @@ export const BlogNav = props => {
 
                         <nav className="nav-sidebar">
 
-                            <h2 className="section-heading font-bellota text-3xl text-red text-left mb-5">More Posts</h2>
+                            <h2 className="section-heading font-bellota text-3xl text-darkblue text-left mb-5">More Posts</h2>
 
                             <ul className="loop-posts font-roboto text-base text-black font-medium">
 
@@ -65,7 +65,7 @@ export const BlogNav = props => {
 
                         <nav className="nav-sidebar">
 
-                            <h2 className="section-heading font-bellota text-3xl text-red text-left mb-5">Categories</h2>
+                            <h2 className="section-heading font-bellota text-3xl text-darkblue text-left mb-5">Categories</h2>
 
                             <ul className="loop-categories font-roboto text-base text-black font-medium">
 

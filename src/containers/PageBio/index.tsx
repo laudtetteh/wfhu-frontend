@@ -35,7 +35,7 @@ export const PageBio = () => {
 
                             <div className="container mx-auto py-12 section-bio">
 
-                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Bio</h1>
+                                <h1 className="section-heading font-bellota text-5xl text-darkblue text-left mb-8">Bio</h1>
 
                                 <div className="md:grid md:grid-cols-7 md:grid-flow-col md:gap-8 w-full md:w-auto">
 

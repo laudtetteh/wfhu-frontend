@@ -35,7 +35,7 @@ export const PageEvents = () => {
 
                             <div className="container mx-auto py-12 section-reviews">
 
-                                <h1 className="section-heading font-bellota text-5xl text-red text-left mb-8">Events</h1>
+                                <h1 className="section-heading font-bellota text-5xl text-darkblue text-left mb-8">Events</h1>
 
                                 {pageBag.description &&
                                     <div className="contact-page-content page-content block">
@@ -56,7 +56,7 @@ export const PageEvents = () => {
                                     event_start_gt={_nowIso}
                                     sort="event_start:ASC"
                                     heading="Upcoming Presentations"
-                                    heading_classes="text-3xl text-red mb-5"
+                                    heading_classes="text-3xl text-darkblue mb-5"
                                     more_link={false}
                                 />
 
@@ -73,7 +73,7 @@ export const PageEvents = () => {
                                     event_start_lt={_nowIso}
                                     sort="event_start:ASC"
                                     heading="Recent Presentations"
-                                    heading_classes="text-3xl text-red mb-5"
+                                    heading_classes="text-3xl text-darkblue mb-5"
                                     more_link={false}
                                 />
 

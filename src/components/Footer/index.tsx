@@ -21,7 +21,7 @@ export const Footer = props => {
 
                     <React.Fragment>
 
-                        <section className="section-footer w-full bg-darkblue text-white py-16 h-60 bottom-0 absolute">
+                        <section className="section-footer w-full bg-darkblue text-white pt-12 h-64 bottom-0 absolute">
 
                             <div className="container">
 
@@ -35,7 +35,7 @@ export const Footer = props => {
 
                                 <p className="font-roboto mx-auto block text-center mt-3">&copy; {new Date().getFullYear()} Work from Home University, LLC</p>
                                 <p className="font-roboto mx-auto block text-center mt-3">
-                                    <a href="/contact">Contact</a>
+                                    <a href="/contact" className="underline">Contact</a>
                                 </p>
                             </div>
 

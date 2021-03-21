@@ -29,7 +29,7 @@ export const PostComponent = props => {
             <div className="col-span-5">
 
                 <a href="/blog">
-                    <h4 className="section-heading font-bellota text-3xl text-red text-left mb-5">&lt;All Posts</h4>
+                    <h4 className="section-heading font-bellota text-3xl text-darkblue text-left mb-5">&lt;All Posts</h4>
                 </a>
 
                 <div className="w-full">
