@@ -149,13 +149,6 @@ export const PAGES_QUERY = gql`
 
                 __typename
 
-                ... on ComponentPageConnectCta {
-                    heading
-                    paragraph
-                    button_link
-                    button_text
-                }
-
                 ... on ComponentPageSingleImage {
                     profile_pic {
                         formats
