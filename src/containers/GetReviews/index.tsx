@@ -3,6 +3,7 @@ import React from "react";
 // Components
 import { Query } from "../../components/Query";
 import { Reviews } from "../../components/Reviews";
+// Queries
 import { REVIEWS_QUERY } from "../../queries";
 
 export const GetReviews = props => {
