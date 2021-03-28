@@ -185,8 +185,8 @@ export const POST_QUERY = gql`
 `;
 
 export const POSTS_QUERY = gql`
-    query Posts($limit: Int, $exclude: ID, $sort: String) {
-        posts(sort: $sort, limit: $limit, where: {_id_nin: [$exclude]}) {
+    query Posts($limit: Int, $exclude: ID, $sort: String, $keep_on_homepage: Boolean) {
+        posts(sort: $sort, limit: $limit, where: {_id_nin: [$exclude], keep_on_homepage: $keep_on_homepage}) {
             id
             name
             slug
@@ -235,51 +235,9 @@ export const HOMEPAGE_QUERY = gql`
                 }
             }
 
-            row_of_reviews {
-                reviews {
-                    id
-                    name
-                    description
-                }
-            }
-
             row_of_gifs {
                 gif {
                     url
-                }
-            }
-
-            row_of_events {
-                events {
-                    id
-                    name
-                    slug
-                    description
-                    event_details
-                    event_start
-                    event_end
-                    event_timezone
-                    event_ended
-                    keep_on_homepage
-                    image {
-                        ext
-                        url
-                        formats
-                    }
-                    published_at
-                }
-            }
-
-            row_of_posts {
-                posts {
-                  id
-                  name
-                  slug
-                  image {
-                    ext
-                    url
-                    formats
-                  }
                 }
             }
         }
@@ -298,8 +256,8 @@ export const REVIEW_QUERY = gql`
 `;
 
 export const REVIEWS_QUERY = gql`
-    query Reviews($limit: Int!)  {
-        reviews(limit: $limit) {
+    query Reviews($limit: Int!, $keep_on_homepage: Boolean)  {
+        reviews(limit: $limit, where: {keep_on_homepage: $keep_on_homepage} ) {
             id
             name
             description

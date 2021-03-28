@@ -8,34 +8,9 @@ import { EVENTS_QUERY } from "../../queries";
 
 export const GetEvents = props => {
 
-    let _events;
-
-    if( props.events && props.events.length > 0 ) {
-
-        _events = props.events;
-
-    } else if( !props.events || (props.events.length === 0) ) {
-
-        _events = false;
-    }
-
     return (
 
         <React.Fragment>
-
-        {_events &&
-
-            <Events
-                events={_events}
-                limit={props.limit}
-                event_ended={props.event_ended}
-                heading={props.heading}
-                heading_classes={props.heading_classes}
-                more_link={props.more_link}
-            />
-        }
-
-        {!_events &&
 
             <Query
                 query={EVENTS_QUERY}
@@ -48,12 +23,10 @@ export const GetEvents = props => {
 
                 {({ data: { events } }) => {
 
-                    _events = events;
-
                     return (
 
                         <Events
-                            events={_events}
+                            events={events}
                             event_ended={props.event_ended}
                             heading={props.heading}
                             heading_classes={props.heading_classes}
@@ -62,7 +35,6 @@ export const GetEvents = props => {
                     )
                 }}
             </Query>
-        }
 
         </React.Fragment>
     );

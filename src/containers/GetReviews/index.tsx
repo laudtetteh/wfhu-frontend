@@ -8,48 +8,26 @@ import { REVIEWS_QUERY } from "../../queries";
 
 export const GetReviews = props => {
 
-    let _reviews;
-
-    if( props.reviews && props.reviews.length > 0 ) {
-
-        _reviews = props.reviews;
-
-    } else if( !props.reviews || (props.reviews.length === 0) ) {
-
-        _reviews = false;
-    }
-
     return (
 
         <React.Fragment>
 
-        {_reviews &&
-
-            <Reviews
-                reviews={_reviews}
+            <Query
+                query={REVIEWS_QUERY}
                 limit={props.limit}
-            />
-        }
-
-        {!_reviews &&
-
-            <Query query={REVIEWS_QUERY} limit={props.limit}>
+                keep_on_homepage={props.keep_on_homepage}>
 
                 {({ data: { reviews } }) => {
-
-                    _reviews = reviews;
 
                     return (
 
                         <Reviews
-                            reviews={_reviews}
+                            reviews={reviews}
                             limit={props.limit}
                         />
                     )
                 }}
             </Query>
-
-        }
 
         </React.Fragment>
     );

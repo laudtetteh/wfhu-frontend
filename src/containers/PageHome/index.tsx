@@ -52,7 +52,8 @@ export const PageHome = props => {
 
                                 <GetReviews
                                     reviews={pageBag.row_of_reviews}
-                                    limit={4} />
+                                    limit={4}
+                                    keep_on_homepage={true} />
 
                             </div>
 
@@ -101,6 +102,7 @@ export const PageHome = props => {
                                     orientation="horizontal"
                                     nameClasses="text-base text-white stf-text-shadow-darkblue-bottom-right"
                                     dateClasses="text-xs text-blue-100 italic"
+                                    keep_on_homepage={true}
                                 />
 
                             </div>

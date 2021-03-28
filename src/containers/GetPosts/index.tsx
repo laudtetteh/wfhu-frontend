@@ -8,57 +8,31 @@ import { POSTS_QUERY } from "../../queries";
 
 export const GetPosts = props => {
 
-    let _posts;
-
-    if( props.posts && props.posts.length > 0 ) {
-
-        _posts = props.posts;
-
-    } else if( !props.posts || (props.posts.length === 0) ) {
-
-        _posts = false;
-    }
-
     return (
 
         <React.Fragment>
 
-            {_posts &&
+            <Query
+                query={POSTS_QUERY}
+                limit={props.limit}
+                keep_on_homepage={props.keep_on_homepage}>
 
-                <Posts
-                    posts={_posts}
-                    limit={props.limit}
-                    orientation={props.orientation}
-                    heading={props.heading}
-                    nameClasses={props.nameClasses}
-                    dateClasses={props.dateClasses}
-                />
+                {({ data: { posts } }) => {
 
-            }
+                    return (
 
-            {!_posts &&
+                        <Posts
+                            posts={posts}
+                            limit={props.limit}
+                            orientation={props.orientation}
+                            heading={props.heading}
+                            nameClasses={props.nameClasses}
+                            dateClasses={props.dateClasses}
+                        />
+                    )
+                }}
 
-                <Query query={POSTS_QUERY} limit={props.limit}>
-
-                    {({ data: { posts } }) => {
-
-                        _posts = posts;
-
-                        return (
-
-                            <Posts
-                                posts={_posts}
-                                limit={props.limit}
-                                orientation={props.orientation}
-                                heading={props.heading}
-                                nameClasses={props.nameClasses}
-                                dateClasses={props.dateClasses}
-                            />
-                        )
-                    }}
-
-                </Query>
-            }
+            </Query>
 
         </React.Fragment>
     )
