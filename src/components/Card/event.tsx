@@ -18,7 +18,7 @@ export const Card = ({ event }) => {
 
         <React.Fragment>
 
-            <div className={`events-loop events-loop--horizontal md:mt-0 mt-5 first:mt-0 event-${event.id}`}>
+            <div className={`events-loop events-loop--horizontal border border-solid border-darkblue rounded border-opacity-20 p-4 md:mt-0 mt-5 first:mt-0 event-${event.id}`}>
 
                 <div className="card-event--image-wrapper">
                     <Link to={`/event/${event.slug}`} className="card-event--image">

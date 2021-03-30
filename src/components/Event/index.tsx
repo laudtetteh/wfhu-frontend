@@ -31,7 +31,7 @@ export const EventComponent = props => {
                     <h4 className="section-heading font-bellota text-3xl text-darkblue text-left mb-5">&lt;All Events</h4>
                 </a>
 
-                <div className="card-event--image w-full">
+                <div className="card-event--image w-full border border-solid border-darkblue rounded border-opacity-20 p-4">
                     <img src={imageUrl} alt={imageUrl} className="w-full"/>
                     <STFUpcomingBadge _start={props.event.event_start} event_ended={props.event.event_ended} />
                 </div>

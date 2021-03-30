@@ -117,13 +117,13 @@ export class SignupForm extends Component {
                     <div id="mc_embed_signup_scroll">
                         <div className="mc-field-group" style={fieldGroup}>
 
-                            <input type="email" onChange={this.changeHandler} name="EMAIL" className="required email" id="mce-EMAIL" placeholder="Enter your email" style={emailField} />
+                            <input type="email" onChange={this.changeHandler} name="EMAIL" className="required email mc-email-field" id="mce-EMAIL" placeholder="Enter your email" style={emailField} />
 
                             <div aria-hidden="true" style={honeyPot} >
                                 <input type="text" name="b_9ae21d5dd8d2f0f5acee71058_4a8e40d9cb" tabIndex="-1" value="" />
                             </div>
 
-                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button font-roboto text-darkblue bg-white bg-opacity-90 hover:text-white hover:bg-red hover:bg-opacity-1" onClick={this._handleClick} />
+                            <input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" className="mc-embedded-subscribe button font-semibold font-roboto text-darkblue bg-white bg-opacity-90 hover:text-white hover:bg-red hover:bg-opacity-1" onClick={this._handleClick} />
                         </div>
 
                         <div id="mce-responses" className="clear">
