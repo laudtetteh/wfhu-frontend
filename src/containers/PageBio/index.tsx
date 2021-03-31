@@ -54,17 +54,7 @@ export const PageBio = () => {
 
                         </section>
 
-                        <section className="w-full bg-none">
-
-                            <div className="container mx-auto py-12 section-reviews">
-
-                                <h2 className="section-heading font-bellota text-4xl text-darkblue text-left mb-8">Reviews</h2>
-
-                                <GetReviews limit={4} />
-
-                            </div>
-
-                        </section>
+                        
 
                     </React.Fragment>
                 )
