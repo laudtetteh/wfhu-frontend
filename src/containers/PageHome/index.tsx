@@ -44,6 +44,23 @@ export const PageHome = props => {
 
                         </section>
 
+                        <section className="w-full stf-bg-2 section-connect-cta">
+
+                            <div className="container mx-auto py-12">
+
+                                <ConnectCTA
+                                    pageBag={pageBag}
+                                    containerClasses="float-none md:float-right mx-auto"
+                                    headingColor="darkblue"
+                                    headingClasses="stf-text-shadow-white-top-left text-center md:text-right"
+                                    listClasses="flex justify-center"
+                                />
+
+                            </div>
+
+                        </section>
+
+
                         <section className="w-full bg-none">
 
                             <div className="container mx-auto py-12 section-reviews">
