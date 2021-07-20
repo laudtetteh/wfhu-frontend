@@ -1,7 +1,9 @@
 # React Frontend
 
 ## About this app
-This was Version 1.0 of the ReactJS front end web site for www.wfhuniv.com, before it was rebranded as www.elisabethsteele.com. The published site at www.elisabethsteele.com is currently a WordPress site, which as also built by me at Studio Ten Four (www.studiotenfour.com).
+This was Version 1.0 of the ReactJS front end web site for Work from Home University, LLC. Check out the Staging site here: https://wfhu-frontend-prod.studiotenfour.biz/
+
+Work from Home University, LLC was recently rebranded as Elisabeth Steele, LLC. Their current website at www.elisabethsteele.com is currently a WordPress site, which as also built by me at Studio Ten Four (www.studiotenfour.com).
 
 For the React project, I learned and used a few technologies, such as:
 1. ReactJS - A component-based javascript UI framework (https://reactjs.org)
