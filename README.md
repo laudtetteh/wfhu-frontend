@@ -1,7 +1,7 @@
 # React Frontend
 
 ## About this app
-This was Version 1.0 of the ReactJS front end web site for Work from Home University, LLC. Check out the Staging site here: https://wfhu-frontend-prod.studiotenfour.biz/
+This was Version 1.0 of the ReactJS frontend for Work from Home University, LLC. Check out the Staging site here: https://wfhu-frontend-prod.studiotenfour.biz/
 
 Work from Home University, LLC was recently rebranded as Elisabeth Steele, LLC. Their current website at www.elisabethsteele.com is currently a WordPress site, which as also built by me at Studio Ten Four (www.studiotenfour.com).
 
