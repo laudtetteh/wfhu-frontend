@@ -4,11 +4,11 @@
 This was Version 1.0 of the ReactJS front end web site for www.wfhuniv.com, before it was rebranded as www.elisabethsteele.com. The published site at www.elisabethsteele.com is currently a WordPress site, which as also built by me at Studio Ten Four (www.studiotenfour.com).
 
 For the React project, I learned and used a few technologies, such as:
-1. ReactJS
+1. ReactJS - A component-based javascript UI framework (https://reactjs.org)
 2. Parcel - A fast, zero configuration web application bundler (https://parceljs.org)
-3. TailwindCSS - A utility-first CSS framework (https://tailwindcss.com/)
-4. Netlify - For CI/CD and hosting
-5. GraphQL - For making api calls to the backend app
+3. TailwindCSS - A utility-first CSS framework (https://tailwindcss.com)
+4. Netlify - For CI/CD and hosting (https://www.netlify.com)
+5. GraphQL - For making api calls to the backend app (https://www.apollographql.com)
 
 ## Available Scripts
 
